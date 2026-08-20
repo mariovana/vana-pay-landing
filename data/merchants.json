@@ -22,7 +22,7 @@
   {
    "slug": "adidas",
    "name": "Adidas",
-   "photo": null,
+   "photo": "assets/img/photos/adidas.jpg",
    "logo": "assets/img/merchants/adidas.avif",
    "categories": [
     "Deportes"
