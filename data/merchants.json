@@ -1,0 +1,2450 @@
+{
+ "merchants": [
+  {
+   "slug": "1001",
+   "name": "1001",
+   "logo": "assets/img/merchants/1001.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "Tenis tennis shoes zapateria zapatería deporte 1001 running run niños niñas infantil bebe bebes zapatos calzado zapaterías moda tenis sandalias sneakers botines correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport niños niñas infantil nike adidas puma reebok new balance fut futbol nba jersey jerseys real madrid barcelona",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50247963586"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 0
+  },
+  {
+   "slug": "adidas",
+   "name": "Adidas",
+   "logo": "assets/img/merchants/adidas.avif",
+   "categories": [
+    "Deportes"
+   ],
+   "keywords": "niños niñas infantil bebe bebes zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport adidas gorras gorra",
+   "modalities": {
+    "online": {
+     "url": "https://www.adidas.com.gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://www.adidas.com.gt/stores"
+    },
+    "whatsapp": {
+     "phone": "50230768666"
+    }
+   },
+   "chatEnabled": true,
+   "featured": true,
+   "order": 1
+  },
+  {
+   "slug": "adoc",
+   "name": "Adoc",
+   "logo": "assets/img/merchants/adoc.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport niño niña adoc cintas calcatas calcetines limpieza accesorios",
+   "modalities": {
+    "online": {
+     "url": "https://gt.tiendasadoc.com/"
+    },
+    "tienda": {
+     "locatorUrl": "https://gt.tiendasadoc.com/pages/nuestras-tiendas"
+    },
+    "whatsapp": {
+     "phone": "50231516547"
+    }
+   },
+   "chatEnabled": true,
+   "featured": true,
+   "order": 2
+  },
+  {
+   "slug": "agencias-way",
+   "name": "Agencias Way",
+   "logo": "assets/img/merchants/agencias-way.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "tecnología accesorios electronica bocinas micrófonos audio camaras alarmas sensores cables adaptadores router antena antenas herramientas video juegos consolas Xbox play station Nintendo tele television televisión computadora laptop refri refrigerador estufa lavadora secadora monitor mouse mando control samsung lg agencia agencias way honor xiaomi heinse made whirlpool",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50237601111"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 3
+  },
+  {
+   "slug": "aletses",
+   "name": "Aletse's",
+   "logo": "assets/img/merchants/aletses.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Aletses, copas menstruales, copa menstrual, higiene femenina, cuidado menstrual, salud íntima, periodo, menstruación consciente, productos reutilizables, alternativa ecológica, zero waste, sostenibilidad, silicona de grado médico, esterilizador de copas, jabon para copas, cuidado de la mujer, bienestar femenino, aletses guatemala, guate, envios, libertad femenina, kit menstrual, copa menstrual certificada, higiene íntima, ecofriendly, salud menstrual, ahorro mensual",
+   "modalities": {
+    "online": {
+     "url": "https://copasmenstrualesgt.com/"
+    },
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 4
+  },
+  {
+   "slug": "almacenes-tropigas",
+   "name": "Almacenes Tropigas",
+   "logo": "assets/img/merchants/almacenes-tropigas.avif",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "celulares, línea blanca,electrónicos, televisores, hogar, tecnología, estufa, microondas, aire acondicionado, refrigeradora, lavadora, congelador, ventilador, camas, colchones, dormitorio, teléfono fijo,",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50224202970"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 5
+  },
+  {
+   "slug": "american-eagle",
+   "name": "American Eagle",
+   "logo": "assets/img/merchants/american-eagle.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "ropa prenda moda camisas camisa tshirt blusa blusas vestidos short shorts pantalón pants pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante american eagle pantalon jeans lona falda hoodie",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.ae.com.gt/localizador-de-tiendas"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 6
+  },
+  {
+   "slug": "anais",
+   "name": "Anais",
+   "logo": "assets/img/merchants/anais.avif",
+   "categories": [
+    "Deportes"
+   ],
+   "keywords": "niños niñas infantil bebe bebes zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport anais kids niños niñas infantil nike adidas puma reebok new balance fut futbol",
+   "modalities": {
+    "online": {
+     "url": "https://www.anaisonline.com/"
+    },
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50247963586"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 7
+  },
+  {
+   "slug": "anais-kids",
+   "name": "Anais KIDS",
+   "logo": "assets/img/merchants/anais-kids.avif",
+   "categories": [
+    "Deportes"
+   ],
+   "keywords": "niños niñas infantil bebe bebes zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport anais kids nike adidas new balance puma converse reebok gorras gorra calcetin calcetines",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50247963586"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 8
+  },
+  {
+   "slug": "aqua-sport",
+   "name": "Aqua Sport",
+   "logo": "assets/img/merchants/aqua-sport.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "hurley sport surf tabla accesorios calcetin calcetas calcetines sombreros gorra gorros lentes camisas camisa playa short shorts calzoneta calzonetas billeteras billetera bolso bolsas bolsa mochila bolson bolsón bikini tops top bottom",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://aquasport.gt/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 9
+  },
+  {
+   "slug": "arca-de-noe",
+   "name": "Arca de Noé",
+   "logo": "assets/img/merchants/arca-de-noe.avif",
+   "categories": [
+    "Mascotas"
+   ],
+   "keywords": "Arca de Noe, mascotas, perros, gatos, comida para perros, concentrado, purina, pro plan, royal canin, dog chow, cat chow, accesorios para mascotas, correas, collares, camas, juguetes, higiene, shampoo para perros, antipulgas, desparasitantes, bravecto, nexgard, acuarios, peces, peceras, filtros, alimento para peces, aves, hamsters, conejos, terrarios, reptiles, jaulas, arena para gatos, rascadores, mps, guatemala, guate, envios, veterinaria, pet shop, grooming, peluquería canina, salud animal.",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 10
+  },
+  {
+   "slug": "avant",
+   "name": "Avant",
+   "logo": "assets/img/merchants/avant.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "avant ropa mujer blusa chaleco vestido jumpsuit traje de baño abrigo sweater sweaters interior panty tangas calzon calzones braga top bottoms",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 11
+  },
+  {
+   "slug": "ayalah",
+   "name": "Ayalah",
+   "logo": "assets/img/merchants/ayalah.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Ropa, vestidos, ropa de mujer, moda, estilo, bolsas",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50230589946"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 12
+  },
+  {
+   "slug": "beauty-pro",
+   "name": "Beauty Pro",
+   "logo": "assets/img/merchants/beauty-pro.avif",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "Beauty Pro, belleza, maquillaje, profesional, cuidado del cabello, shampoo, acondicionador, tratamiento capilar, tintes, hair color, keratina, alisado, decolorante, peróxido, planchas, secadoras, tenazas, cepillos, maquillaje profesional, skincare, cuidado facial, uñas, esmaltes, gelish, acrilico, pestañas, cejas, loreal, alfaparf, tec italy, yuya, babyliss, olaplex, revlon, chihtsai, firenze, wahl, andis, barberia, salon de belleza, suministros, mps, guatemala, guate, envios, oferta, mayoreo.",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 13
+  },
+  {
+   "slug": "bibi",
+   "name": "bibi",
+   "logo": "assets/img/merchants/bibi.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "bebe bebes niños niñas tenis zapatos zapateria zapatería calzado moda caual casuales sport deporte baby fresh sneakers accesorios ropa vestidos calcetas calcetines pijamas pijama bibi bodies bodie boxer falda pantalon pantalones leggins jeans",
+   "modalities": {
+    "online": {
+     "url": "https://www.bibi.com.gt/"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 14
+  },
+  {
+   "slug": "bitter",
+   "name": "Bitter",
+   "logo": "assets/img/merchants/bitter.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport adidas nike puma new balance gorras gorra bitter hombre mujer tshirt pants shorts short",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.bitterheads.com/contact"
+    },
+    "whatsapp": {
+     "phone": "50248548165"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 15
+  },
+  {
+   "slug": "boston-clinical-consulting",
+   "name": "Boston Clinical Consulting",
+   "logo": "assets/img/merchants/boston-clinical-consulting.png",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "Psicologia, consulting, coaching, terapia",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50242142077"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 16
+  },
+  {
+   "slug": "bottega-verde",
+   "name": "Bottega Verde",
+   "logo": "assets/img/merchants/bottega-verde.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "salud crema cremas natural piel cara cuerpo sol bottega verde limpieza fragancia locion loción",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 17
+  },
+  {
+   "slug": "caesar-s-collection",
+   "name": "Caesar´s Collection",
+   "logo": "assets/img/merchants/caesar-s-collection.png",
+   "categories": [
+    "Entretenimiento"
+   ],
+   "keywords": "Colecciones, clasicos, Hot Wheels",
+   "modalities": {
+    "online": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 18
+  },
+  {
+   "slug": "calvin-klein",
+   "name": "Calvin Klein",
+   "logo": "assets/img/merchants/calvin-klein.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "ropa prenda moda camisas camisa blusa blusas vestidos short shorts pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear calvin klein pantalon pantalones jeans",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 19
+  },
+  {
+   "slug": "calzado-roy",
+   "name": "Calzado Roy",
+   "logo": "assets/img/merchants/calzado-roy.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "calzado roy zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://tiendaroy.com/ubicaciones/"
+    },
+    "whatsapp": {
+     "phone": "50254943298"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 20
+  },
+  {
+   "slug": "camas-olympia",
+   "name": "Camas Olympia",
+   "logo": "assets/img/merchants/camas-olympia.avif",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "",
+   "modalities": {
+    "online": {
+     "url": "https://camasolympiaonline.com/gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://camasolympiaonline.com/gt/contactenos/"
+    },
+    "whatsapp": {
+     "phone": "50224294720"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 21
+  },
+  {
+   "slug": "therapedic",
+   "name": "Camas Therapedic",
+   "logo": "assets/img/merchants/therapedic.avif",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "Therapedic, camas, colchones, somier, bases, almohadas, descanso, ortopedico, ortopédico, soporte lumbar, salud de espalda, confort, firmeza, memory foam, espuma, resortes, king size, queen size, matrimonial, imperial, individuales, cama doble, therapedic guatemala, mps, guate, envios, tecnologia de sueño, bionic, posture plus, back sense, medicas, relax, sueño profundo, juego de cama, amueblados, dormitorio, bienestar, garantia de por vida, ofertas en camas.",
+   "modalities": {
+    "online": {
+     "url": "https://camastherapedic.com/"
+    },
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50224294720"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 22
+  },
+  {
+   "slug": "cargo-expreso",
+   "name": "Cargo Expreso",
+   "logo": "assets/img/merchants/cargo-expreso.png",
+   "categories": [
+    "Logística"
+   ],
+   "keywords": "envios, paquetes, logistica",
+   "modalities": {
+    "online": {
+     "url": "https://cargoexpreso.com/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 23
+  },
+  {
+   "slug": "carry-me",
+   "name": "Carry me",
+   "logo": "assets/img/merchants/carry-me.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Carry Me, Carry Me Guatemala, Carry Me Luggage, Swissbrand, maletas, maletas de viaje, mochilas, equipaje de mano, maletas carry-on, maleta grande, maleta mediana, set de maletas, maletas rígidas, maletas de lujo, maletas resistentes, accesorios de viaje, mochilas de viaje, backpacks, bolsos de viaje, equipaje ligero, maletas con ruedas, maletas con candado TSA, organizadores de equipaje, fundas para maletas, artículos de viaje, travel gear, estilo de vida viajero, maletas para avión, ofertas en maletas, maletas premium, maletas de colores, equipaje duradero, tienda de maletas en línea, envíos a toda Guatemala, maletas para vacaciones, travel lifestyle, maletas ejecutivas, mochilas para laptop, equipo de viaje, Carry Me Luxury, Carry Me Ultra.",
+   "modalities": {
+    "online": {
+     "url": "https://tocarryme.com/"
+    },
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50237636728"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 24
+  },
+  {
+   "slug": "cat",
+   "name": "CAT",
+   "logo": "assets/img/merchants/cat.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "zapatos zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas camisas ropa gorra cincho gorras cintas accesorios cat pantalones pantalon pantalón sweater chumpa sweaters sudadero sudadera",
+   "modalities": {
+    "online": {
+     "url": "https://caterpillargt.com/"
+    },
+    "tienda": {
+     "locatorUrl": "https://caterpillargt.com/pages/nuestras-tiendas"
+    },
+    "whatsapp": {
+     "phone": "50231516547"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 25
+  },
+  {
+   "slug": "cedetsa",
+   "name": "CEDETSA",
+   "logo": "assets/img/merchants/cedetsa.png",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "Importadora, productos Farmacéuticos, Cosméticos, Dispositivos Médicos",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50258415965"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 26
+  },
+  {
+   "slug": "cemaco",
+   "name": "Cemaco",
+   "logo": "assets/img/merchants/cemaco.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "cemaco tv television televisión smart control herramientas luces focos librera libreras mueble muebles sala arbol navidad piscina piscinas plantas baño blancos toallas tornillo tornillos caja cajas juguetes niños niñas infantil juguete sercha baño cafetera cocina oficina escolar materiales cuadernos lapiceros crayones marcadores pintura pinturas repisa repisas tecnologia linea blanca tecnologia hogar camas colchones colchon dormitorio limpieza lavanderia cocina mesa silla sillas organización organizacion electrodomesticos electrodomésticos jardin patio bebes ropa calcetines bodies cuna carruaje pacha pachas biberon biberones plomeria plomería autos motos decoracion decoración ferreteria ferretería mascotas alimentos cuna cunas pelotas legos lego cortinas cortina alfombra alfombras closet armarios gaveteros literas fundas tubos cuadro cuadros espejos marco marcos foto fotos edredon edredones edredón frazada frazadas taza tazas vaso vasos cubiertos cuchillo cuchillos sarten sartenes sartén licuadora freidora churrasquera lavaplatos samsung lg mabe xiaomi copas bar textiles botellas jarras alamcenaje carritos carrito pachones termos loncheras escaleras bancos banquitos molde moldes bases empaques empaque olla batidora batidoras parrillas hornilla hornillas pizza pasta gabinetes grifos grifería brocha brochas generadores calentador brocas cepillos barreno adaptadores aceite lubricante sierras router lijas lijadora alicates cinta cintas destornillador enprapadora plomeria plomería tijeras cuchillas guante guantes botas bota soldadoras canping deportes inflables pisos tierra computadora tablet libros salud plato platos papel garrafon porta utensilios gym gimnasio pesa pesas patio",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50224999990"
+    }
+   },
+   "chatEnabled": true,
+   "featured": true,
+   "order": 27
+  },
+  {
+   "slug": "chapinisima",
+   "name": "Chapinisima",
+   "logo": "assets/img/merchants/chapinisima.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "maquillaje, brochas, esponjas, espejos,computadoras, portátiles,relojes,decoración, utensilios, electrónicos, discos duros, accesorios, camisas, jeans, relojes, reloj, muebles, decoración, hogar, iluminación, utensilios, utensilios cocina",
+   "modalities": {
+    "online": {
+     "url": "https://chapinisima.com/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 28
+  },
+  {
+   "slug": "chars",
+   "name": "Chars",
+   "logo": "assets/img/merchants/chars.png",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "Bocinas, audífonos, cargadores, mochilas, proyectores",
+   "modalities": {
+    "online": {
+     "url": "https://chars.com.gt/"
+    },
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 29
+  },
+  {
+   "slug": "clarity-optica",
+   "name": "Clarity Óptica",
+   "logo": "assets/img/merchants/clarity-optica.png",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "Optica, lentes, vista",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50255673393"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 30
+  },
+  {
+   "slug": "clean-master",
+   "name": "Clean Master",
+   "logo": "assets/img/merchants/clean-master.avif",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "Clean Master, limpieza, higiene, desinfección, productos de limpieza, servicios de limpieza, limpieza profunda, desinfectantes, sanitización, limpieza de oficinas, limpieza de alfombras, lavado de muebles, lavado de colchones, limpieza residencial, limpieza comercial, jabón, detergente, cloro, multiusos, suministros de limpieza, equipo de limpieza, mopas, escobas, aspiradoras, pulido de pisos, abrillantado, mps, guatemala, guate, envios, control de plagas, fumigación, limpieza post-construcción, mantenimiento, aseo, productos industriales, limpieza de vidrios, bioseguridad.",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50242868954"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 31
+  },
+  {
+   "slug": "clinicas-sonrie",
+   "name": "Clínicas Sonríe",
+   "logo": "assets/img/merchants/clinicas-sonrie.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "sonrie clinicas clínicas dientes salud examen diagnostico doctor dentista consulta brackets blanqueamiento odontólogo odontología clínicas dental ortodoncia ortodoncia odontologo odontologia limpieza muela diente doctor doctora cita",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.clinicassonrie.com/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 32
+  },
+  {
+   "slug": "club-municipal",
+   "name": "Club Municipal",
+   "logo": "assets/img/merchants/club-municipal.png",
+   "categories": [
+    "Deportes"
+   ],
+   "keywords": "CSD Municipal, Club Municipal, Los Rojos, El Mimado de la Afición, Rojos del Municipal, Pentacampeón, El Más Grande de Guatemala, fútbol guatemalteco, Liga Nacional de Guatemala, equipo de fútbol profesional, Club Social y Deportivo Municipal, afición roja, infierno rojo, fuerza roja, clásicos de Guatemala, resultados Municipal, partidos en vivo Municipal, tabla de posiciones Liga Guate, boletos Municipal, camisola del Municipal, uniforme de los rojos, tienda oficial rojos, indumentaria Municipal, productos oficiales Municipal, bufandas Municipal, gorras Municipal, socios Municipal, abonados Municipal, noticias Municipal, fichajes rojos, alineación Municipal, cuerpo técnico Municipal, estadio de los rojos, trofeos de Municipal, historia del club Municipal, canteras del Municipal, fuerzas básicas, jugadores históricos de Municipal, el club más ganador de Guatemala, pasión roja.",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50266610507"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 33
+  },
+  {
+   "slug": "conecta",
+   "name": "Conecta",
+   "logo": "assets/img/merchants/conecta.png",
+   "categories": [
+    "Logística"
+   ],
+   "keywords": "Paquetes, envíos, amazon",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 34
+  },
+  {
+   "slug": "conjuro-wear",
+   "name": "Conjuro Wear",
+   "logo": "assets/img/merchants/conjuro-wear.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Fashion, accesorios, moda, ropa, tienda",
+   "modalities": {
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 35
+  },
+  {
+   "slug": "corazon-mall",
+   "name": "Corazón Mall",
+   "logo": "assets/img/merchants/corazon-mall.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Corazón Mall, moda, ropa, mujer, dama, accesorios, joyas, bolsos, carteras, zapatos, calzado, vestidos, blusas, conjuntos, sets, tendencias, fashion, boutique, mps, guatemala, guate, envios, corazon mall guatemala, estilo, outfit, regalos, cuidado personal, belleza, maquillaje, skincare, colecciones, temporada, ofertas, rebajas, emprendimiento, marcas locales, diseño, showroom, centros comerciales, compras.",
+   "modalities": {
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 36
+  },
+  {
+   "slug": "crea",
+   "name": "CREA",
+   "logo": "assets/img/merchants/crea.png",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "Muebles, hogar, decoración",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 37
+  },
+  {
+   "slug": "dcoast",
+   "name": "D'Coast",
+   "logo": "assets/img/merchants/dcoast.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "dcoast d'coast zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport",
+   "modalities": {
+    "online": {
+     "url": "https://d-coast.com/"
+    },
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 38
+  },
+  {
+   "slug": "deposito-de-belleza",
+   "name": "Depósito de Belleza",
+   "logo": "assets/img/merchants/deposito-de-belleza.avif",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "Belleza, cosmeticos, maquillaje, peluqueria, salon de belleza, estilismo, cuidado del cabello, uñas, manicure, pedicure, tintes, decoloracion, keratina, alisado, shampoo, acondicionador, tratamiento capilar, extensiones, pestañas, cejas, depilacion, cera, planchas, secadoras, maquinas de corte, barbery, barberia, mobiliario, spa, skin care, cuidado de la piel, mascarillas, esmaltes, gelish, acrilico, herramientas de belleza, deposito de belleza, guatemala, guate, mayoreo, suministros profesionales, higiene, bioseguridad, accesorios de belleza.",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.depositodebelleza.com/ubicaciones/"
+    },
+    "whatsapp": {
+     "phone": "50258250853"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 39
+  },
+  {
+   "slug": "devlyn",
+   "name": "Devlyn",
+   "logo": "assets/img/merchants/devlyn.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "salud ópticas óptica lente lentes examen vista ojos ojo reparación aro sol lentes de contacto contacto estuche estuches accesorios limpieza moda devlyn",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://devlyn.com.gt/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 40
+  },
+  {
+   "slug": "dressy",
+   "name": "Dressy",
+   "logo": "assets/img/merchants/dressy.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Moda, accesorios, joyas, ropa, perfumes,zapatos,calzonetas,casa, electrónicos,belleza,bolsas,trajes de baño,blusas, pantalones, vestidos, faldas,librería,oficina, papelería,audífonos, maquillaje,juguetes",
+   "modalities": {
+    "online": {
+     "url": "https://www.dressygt.com/"
+    },
+    "whatsapp": {
+     "phone": "50241054072"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 41
+  },
+  {
+   "slug": "electronica-panamericana",
+   "name": "Electronica Panamericana",
+   "logo": "assets/img/merchants/electronica-panamericana.png",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "Electrónicos, TV´s, estufas, refrigeradoras, instrumentos",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://electronicapanamericana.com/nuestras-tiendas/"
+    },
+    "whatsapp": {
+     "phone": "50255149999"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 42
+  },
+  {
+   "slug": "emporium",
+   "name": "Emporium",
+   "logo": "assets/img/merchants/emporium.png",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "Trajes para caballero, trajes formales, trajes Slim Fit, trajes clásicos, sacos para hombre, pantalones de vestir, trajes para bodas, trajes para graduaciones, sastrería guate,Camisas casuales, camisas de vestir, jeans para hombre, pantalones chinos, shorts para hombre, guayaberas, ropa de verano para hombre, sneakers para caballero, zapatos de vestir, zapatos Stacy Adams, Adidas para hombre, Skechers Guatemala.malteca, trajes marca Colletti, trajes marca Smart, trajes premium.",
+   "modalities": {
+    "online": {},
+    "whatsapp": {
+     "phone": "50223835630"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 43
+  },
+  {
+   "slug": "epa",
+   "name": "EPA",
+   "logo": "assets/img/merchants/epa.avif",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "EPA tv television televisión smart control herramientas luces focos librera libreras mueble muebles sala arbol navidad piscina piscinas plantas baño blancos toallas tornillo tornillos caja cajas juguetes niños niñas infantil juguete sercha baño cafetera cocina oficina escolar materiales cuadernos lapiceros crayones marcadores pintura pinturas repisa repisas tecnologia linea blanca tecnologia hogar camas colchones colchon dormitorio limpieza lavanderia cocina mesa silla sillas organización organizacion electrodomesticos electrodomésticos jardin patio bebes ropa calcetines bodies cuna carruaje pacha pachas biberon biberones plomeria plomería autos motos decoracion decoración ferreteria ferretería mascotas alimentos cuna cunas pelotas legos lego cortinas cortina alfombra alfombras closet armarios gaveteros literas fundas tubos cuadro cuadros espejos marco marcos foto fotos edredon edredones edredón frazada frazadas taza tazas vaso vasos cubiertos cuchillo cuchillos sarten sartenes sartén licuadora freidora churrasquera lavaplatos samsung lg mabe xiaomi copas bar textiles botellas jarras alamcenaje carritos carrito pachones termos loncheras escaleras bancos banquitos molde moldes bases empaques empaque olla batidora batidoras parrillas hornilla hornillas pizza pasta gabinetes grifos grifería brocha brochas generadores calentador brocas cepillos barreno adaptadores aceite lubricante sierras router lijas lijadora alicates cinta cintas destornillador enprapadora plomeria plomería tijeras cuchillas guante guantes botas bota soldadoras canping deportes inflables pisos tierra computadora tablet libros salud plato platos papel garrafon porta utensilios gym gimnasio pesa pesas patio muebles, organización, exteriores, cocinas, baños, pinturas, electrodomésticos, lámparas, construcción, ferretería, pisos, herramientas, decoración, iluminación, limpieza, automotríz, cerrajería,plomería, electricidad,",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://gt.epaenlinea.com/tiendas.html"
+    },
+    "whatsapp": {
+     "phone": "50223050100"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 44
+  },
+  {
+   "slug": "epack",
+   "name": "Epack",
+   "logo": "assets/img/merchants/epack.avif",
+   "categories": [
+    "Logística"
+   ],
+   "keywords": "Logística, courier, mensajería, servicios, paquetes, envíos, envios, logistica, mesajeria, compras, paquetería, paqueteria, transporte, fletes, carga, internacional, nacional, express, urgente, casillero, rastreo, tracking, domicilio, recolección, entregas, curier, currier, distribucion, logística, ecommerce, encomiendas, despacho, importaciones, exportaciones.",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50237706442"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 45
+  },
+  {
+   "slug": "fajas-salome",
+   "name": "Fajas Salomé",
+   "logo": "assets/img/merchants/fajas-salome.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Fajas colombianas, faja hombre, brasier, bra, chaleco ,short, cinturilla latex ,almohadillas ,cinta levanta busto, chaleco hombre, copas de silicón, copas, extensor de hombro, tirantes, tirante, sujetador,",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://fajascolombianascentroamerica.com/"
+    },
+    "whatsapp": {
+     "phone": "50235192035"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 46
+  },
+  {
+   "slug": "flash-lash",
+   "name": "Flash lash",
+   "logo": "assets/img/merchants/flash-lash.png",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "Belleza, pestañas, cejas, glamour",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50255936198"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 47
+  },
+  {
+   "slug": "flexi",
+   "name": "Flexi",
+   "logo": "assets/img/merchants/flexi.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casual tacones zapatillas botines botas botines mujer hombre formal flexi comodidad escolar escuela colegio juvenil calcentin calcetines calceta accesorios limpieza",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.flexishoes.gt/sucursales"
+    },
+    "whatsapp": {
+     "phone": "50247963618"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 48
+  },
+  {
+   "slug": "garmin-r96dp",
+   "name": "Garmin",
+   "logo": "assets/img/merchants/garmin-r96dp.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "tecnologia tecnología electronica electrónica camaras camara cámaras cámara deporte deportivo reloj watch smart smart watch garmin sport deportes",
+   "modalities": {
+    "online": {
+     "url": "https://garminguatemala.com/"
+    },
+    "tienda": {
+     "locatorUrl": "https://garminguatemala.com/garmincenter/"
+    },
+    "whatsapp": {
+     "phone": "50222243801"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 49
+  },
+  {
+   "slug": "giossepo",
+   "name": "Gioseppo",
+   "logo": "assets/img/merchants/giossepo.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "Gioseppo, zapatos, calzado, sandalias, tenis, sneakers, botas, botines, cuñas, plataformas, tacones, zapatillas, moda, estilo, mujer, niños, hombre, casual, cuero, piel, accesorios, bolsos, carteras, giosseppo, giosepo, gioseppo guatemala, mps, calzado español, diseño, comodidad, verano, invierno, ofertas, rebajas, zapatos de marca, sneakers mujer, sandalias de cuero, calzado infantil, bota militar, alpargatas, bailarinas, mules, calzado cómodo, tendencia.",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50230199258"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 50
+  },
+  {
+   "slug": "gnc",
+   "name": "GNC",
+   "logo": "assets/img/merchants/gnc.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "GNC, vitaminas, suplementos, nutrición, salud, bienestar, gnc guatemala, mps, proteínas, whey protein, creatina, colágeno, multivitamínicos, minerales, aceite de pescado, omega 3, probióticos, quemadores de grasa, pérdida de peso, rendimiento deportivo, bcaa, aminoácidos, pre entreno, post entreno, masa muscular, energía, defensas, sistema inmune, salud digestiva, articulaciones, biotina, magnesio, calcio, zinc, vitamina c, gomitas vitanimas, suplementos naturales, vida sana, fitness, guate, envios.",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 51
+  },
+  {
+   "slug": "gp-store",
+   "name": "GP Store",
+   "logo": "assets/img/merchants/gp-store.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "gp store bikini accesorios gorra gorras caps dress polo hombre mujer tshirt zapatos short shorts jogger camisa camisas top",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://gpstoreguatemala.com/contact/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 52
+  },
+  {
+   "slug": "gravity-skydive",
+   "name": "Gravity Skydive",
+   "logo": "assets/img/merchants/gravity-skydive.avif",
+   "categories": [
+    "Entretenimiento"
+   ],
+   "keywords": "Gravity Skydive, paracaidismo, salto de paracaídas, skydiving, salto tándem, adrenalina, deportes extremos, aventura, Guatemala, guate, puerto san jose, escuintla, aviación, caída libre, curso de paracaidismo, licencia de paracaidista, regalo de cumpleaños, experiencia única, turismo de aventura, gravity guatemala, salto de avión, paracaídas, video de salto, fotos de salto, aventura extrema, deportes aéreos, seguridad aérea, instructor certificado, uspa, recreación, fin de semana, tour extremo.",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50244347728"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 53
+  },
+  {
+   "slug": "guat-store",
+   "name": "GuatStore",
+   "logo": "assets/img/merchants/guat-store.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "guat store online accesorios iphone smart phone tab ipad tablet tablets watch apple termo vaso yeti stanley cables cargador charger audio audifonos audífonos camara cámara foto fotos nintendo play station xbox series s x amazon gorras",
+   "modalities": {
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 54
+  },
+  {
+   "slug": "hurley",
+   "name": "Hurley",
+   "logo": "assets/img/merchants/hurley.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "hurley sport surf tabla accesorios calcetin calcetas calcetines sombreros gorra gorros lentes camisas camisa playa short shorts calzoneta calzonetas billeteras billetera bolso bolsas bolsa mochila bolson bolsón bikini tops top bottom",
+   "modalities": {
+    "online": {
+     "url": "https://shopialo.com/"
+    },
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 55
+  },
+  {
+   "slug": "hush-puppies",
+   "name": "Hush Puppies",
+   "logo": "assets/img/merchants/hush-puppies.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas hush puppies accesorios calcetas limpieza calcetas comodidad homnre mujer niños infantil niñas",
+   "modalities": {
+    "online": {
+     "url": "https://hushpuppies.gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://hushpuppies.gt/pages/nuestras-tiendas"
+    },
+    "whatsapp": {
+     "phone": "50231516547"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 56
+  },
+  {
+   "slug": "hypestreet",
+   "name": "Hypestreet",
+   "logo": "assets/img/merchants/hypestreet.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "ropa prenda moda camisas camisa blusa blusas vestidos short shorts pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear hype hypestreet",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 57
+  },
+  {
+   "slug": "indigo",
+   "name": "Indgo",
+   "logo": "assets/img/merchants/indigo.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "jenas lona indigo indgo ropa prenda moda camisas camisa tshirt blusa blusas vestidos short shorts pantalón pants pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante accesorios",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://shop.denimart.com.gt/ubicaciones/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 58
+  },
+  {
+   "slug": "inn-studio",
+   "name": "Inn Studio",
+   "logo": "assets/img/merchants/inn-studio.png",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "Salon, color, corte, tratamientos, hairstyle, nail art",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 59
+  },
+  {
+   "slug": "isadora",
+   "name": "Isadora",
+   "logo": "assets/img/merchants/isadora.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "fashion trendy formal elegante collar cadena arete aretes anillo anillos diadema pulsera bolso bolsa accesorios sandalias sombrero pintalabios labios reloj agenda agendas mujer mujeres isadora",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 60
+  },
+  {
+   "slug": "ishop",
+   "name": "iShop",
+   "logo": "assets/img/merchants/ishop.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "smart ishop tecnología tecnologia accesorios watch apple watch ipad iphone laptop reloj cargador cable inalambrico inalámbrico cubo wireless tv imac mac air airpods hogar airtag airtags macbook se",
+   "modalities": {
+    "online": {
+     "url": "https://ishop.gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://ishop.gt/pages/contact"
+    },
+    "whatsapp": {
+     "phone": "50222779988"
+    }
+   },
+   "chatEnabled": true,
+   "featured": true,
+   "order": 61
+  },
+  {
+   "slug": "istore",
+   "name": "istore",
+   "logo": "assets/img/merchants/istore.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "smart istore tecnología tecnologia accesorios watch apple watch ipad iphone laptop reloj cargador cable inalambrico inalámbrico cubo wireless tv imac mac air airpods hogar airtag airtags macbook se",
+   "modalities": {
+    "online": {
+     "url": "https://istore.gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://istore.gt/ubicaciones/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 62
+  },
+  {
+   "slug": "jireh",
+   "name": "Jireh",
+   "logo": "assets/img/merchants/jireh.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear jireh ropa prenda moda camisas camisa blusa blusas vestidos short shorts pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 63
+  },
+  {
+   "slug": "joyerias-de-centroamerica",
+   "name": "Joyerías de Centroamérica",
+   "logo": "assets/img/merchants/joyerias-de-centroamerica.avif",
+   "categories": [
+    "Joyería"
+   ],
+   "keywords": "Joyerías de Centroamérica, joyería, joyas, oro, plata, anillos, anillos de compromiso, argollas matrimoniales, cadenas, dijes, aretes, pulseras, relojes, plata 925, oro 10k, oro 14k, chapa de oro, esmeraldas, diamantes, piedras preciosas, joyas personalizadas, reparación de joyas, limpieza de joyas, mps, guatemala, guate, envios, Edificio Atlantis, zona 10, Punto Roosevelt, Gran Plaza, Escuintla, regalos, aniversario, bodas, compromiso, graduación, joyería fina, joyas casuales, gargantillas, brazaletes,",
+   "modalities": {
+    "online": {
+     "url": "https://joyeria.com.gt/shop/"
+    },
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 64
+  },
+  {
+   "slug": "kasperle",
+   "name": "Kasperle",
+   "logo": "assets/img/merchants/kasperle.png",
+   "categories": [
+    "Juguetes"
+   ],
+   "keywords": "Kasperle, juguetería, juguetes, Kasperle Guatemala, juguetes educativos, juguetes de madera, estimulación temprana, rompecabezas, juegos de mesa, LEGO, Playmobil, Schleich, Hape, Djeco, Ravensburger, artes y manualidades, figuras coleccionables, peluches, disfraces, mps, guate, envios, zona 10, zona 14, La Estación, Arkadia, Oakland, Miraflores, regalos para niños, baby shower, primera infancia, STEM, juegos didácticos, desarrollo infantil, juguetes creativos, coleccionables, juguetes importados,",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://kasperle.com/tiendas"
+    },
+    "whatsapp": {
+     "phone": "50222136276"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 65
+  },
+  {
+   "slug": "kemik",
+   "name": "Kemik",
+   "logo": "assets/img/merchants/kemik.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "kemik online compras celular consola xbox play station nintendo bebidas herramientas pesas audio smart carros motos libros instrumentos musicales musica television televisor televisión latop computadora electronicos electrónicos samsung xiaomi lg iphone contol maquillaje perfumes perfume locion loción lociones cabello shop barber baño spa cremas crema manos facial jabon jabones jabón peliculas cámara camaras camara home watch reloj redes conexion conexión equipo dron drones",
+   "modalities": {
+    "online": {
+     "url": "https://www.kemik.gt/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": true,
+   "order": 66
+  },
+  {
+   "slug": "kraftely",
+   "name": "Kraftely",
+   "logo": "assets/img/merchants/kraftely.png",
+   "categories": [
+    "Entretenimiento"
+   ],
+   "keywords": "fotos, fotos impresas, impresiones, regalos",
+   "modalities": {
+    "online": {
+     "url": "https://kraftely.com/"
+    },
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 67
+  },
+  {
+   "slug": "lacoste",
+   "name": "Lacoste",
+   "logo": "assets/img/merchants/lacoste.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "pants jeans lacoste ropa prenda moda camisas camisa tshirt blusa blusas vestidos short shorts pantalón pants pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante bolso bolsa accesorios sandalias sombrero zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 68
+  },
+  {
+   "slug": "la-curacao",
+   "name": "La Curacao",
+   "logo": "assets/img/merchants/la-curacao.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "televisores,línea blanca, muebles, televisor, LG, Samsung, TCL, lavadora, congelador, refrigerador, estufa, ventilador, aire acondicionado, centro de lavado, torre de lavado, extractor, lavaplatos,sala, cocina, comedor, sillones, sillas, mesas,",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50224202920"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 69
+  },
+  {
+   "slug": "le-bolsha",
+   "name": "Le Bolshá",
+   "logo": "assets/img/merchants/le-bolsha.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "bolsos, mochilas, maletas, LB, Samsonite, Swissbrand, juvenil, elegante, tarjetero, cartera, back pack, satchel, bandolera, mochila con ruedas, billetera, cincho, giftcard, mochila para laptop, laptop, baguette, funda, pañalera, ejecutivo, casual, escolar, lonchera,",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://lebolsha.com.gt/ubicaciones"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 70
+  },
+  {
+   "slug": "levis",
+   "name": "Levis",
+   "logo": "assets/img/merchants/levis.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "ropa prenda moda camisas camisa blusa blusas vestidos short shorts pantalón pants pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante levis pantalon pantalones jeans lona faldas falda",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.levi.com.gt/guatemala/puntos-de-venta"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 71
+  },
+  {
+   "slug": "lili-pink",
+   "name": "Lili Pink",
+   "logo": "assets/img/merchants/lili-pink.avif",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "Lili Pink, lili pink guatemala, ropa interior, lencería, brasier, brasieres, panties, cacheteros, tangas, hilos, tops, ropa deportiva, activewear, leggings, tops deportivos, pijamas, batas, ropa de dormir, trajes de baño, bikinis, calcetines, medias, accesorios de belleza, body mists, cremas, fragancias, lili pink mps, guate, envios, comodidad, moda intima, juvenil, ofertas, rebajas, packs de panties, sin costuras, seamless, push up, bralettes, lencería diaria.",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50223140943"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 72
+  },
+  {
+   "slug": "little-mic",
+   "name": "Little Mic",
+   "logo": "assets/img/merchants/little-mic.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Ropa, niños, bebes",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 73
+  },
+  {
+   "slug": "llanresa",
+   "name": "Llanresa",
+   "logo": "assets/img/merchants/llanresa.avif",
+   "categories": [
+    "Automotriz y Accesorios"
+   ],
+   "keywords": "Llanresa, llantas, neumáticos, rines, alineación, balanceo, mecánica, frenos, suspensión, amortiguadores, cambio de aceite, servicios automotrices, llantera, guatemala, mps, guate, envios, inflado con nitrógeno, rotación de llantas, pinchazos, llantera móvil, michelin, bridgestone, goodyear, firestone, dunlop, pirelli, hankook, maxxis, kumho, llantas para carro, llantas para camioneta, llantas 4x4, llantas de moto, mantenimiento preventivo, baterías, accesorios para autos, seguridad vial, rendimiento, ofertas en llantas.",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://llanresa.com.gt/"
+    },
+    "whatsapp": {
+     "phone": "50230063605"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 74
+  },
+  {
+   "slug": "mad-house",
+   "name": "Mad House",
+   "logo": "assets/img/merchants/mad-house.png",
+   "categories": [
+    "Juguetes"
+   ],
+   "keywords": "videojuegos, colecciones, pokemon",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 75
+  },
+  {
+   "slug": "maki",
+   "name": "Maki",
+   "logo": "assets/img/merchants/maki.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "MAKI, MAKI Guatemala, MAKI GT, productos personalizados, regalos personalizados, artículos con diseño, sublimación, impresión personalizada, tazas personalizadas, termos personalizados, pachones, cases personalizados, fundas para celular, carcasas personalizadas, agendas personalizadas, regalos corporativos, playeras personalizadas, diseño personalizado, regalos creativos, accesorios personalizados, personalización de artículos, merchandising, regalos para parejas, detalles personalizados, tienda de regalos en línea, envíos a domicilio, grabado láser, bordados personalizados, llaveros, cuadernos de notas, etiquetas personalizadas, kits de regalo, sorpresas personalizadas, papelería creativa, diseño gráfico, productos promocionales, branding, regalos de cumpleaños, detalles para eventos, obsequios únicos.",
+   "modalities": {
+    "online": {
+     "url": "https://makigt.com/"
+    },
+    "whatsapp": {
+     "phone": "50239060609"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 76
+  },
+  {
+   "slug": "max",
+   "name": "Max",
+   "logo": "assets/img/merchants/max.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "tecnología accesorios electronica bocinas micrófonos audio camaras alarmas sensores cables adaptadores router antena antenas herramientas video juegos consolas Xbox play station Nintendo tele television televisión computadora laptop refri refrigerador estufa lavadora secadora monitor mouse mando control samsung lg max honor xiaomi heinse made whirlpool smart tablet tab phone",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50224230100"
+    }
+   },
+   "chatEnabled": true,
+   "featured": true,
+   "order": 77
+  },
+  {
+   "slug": "meat-pack",
+   "name": "Meat Pack",
+   "logo": "assets/img/merchants/meat-pack.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport meat pack",
+   "modalities": {
+    "online": {
+     "url": "https://meatpack.com/"
+    },
+    "tienda": {
+     "locatorUrl": "https://meatpack.com/"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 78
+  },
+  {
+   "slug": "medilab",
+   "name": "Medilab",
+   "logo": "assets/img/merchants/medilab.png",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "Laboratorio, examenes, Medilab, clinica",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50251151254"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 79
+  },
+  {
+   "slug": "medivision",
+   "name": "Medivisión",
+   "logo": "assets/img/merchants/medivision.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "salud ópticas óptica lente lentes examen vista ojos ojo reparación aro sol lentes de contacto contacto estuche estuches accesorios limpieza moda medvision vision medivision",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.medivision.com.gt/ubicaciones-2/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 80
+  },
+  {
+   "slug": "merrel",
+   "name": "Merrel",
+   "logo": "assets/img/merchants/merrel.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías zapaterias zapateria zapatería moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear merrel",
+   "modalities": {
+    "online": {
+     "url": "https://merrell.gt/"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 81
+  },
+  {
+   "slug": "meyca-s-fashion",
+   "name": "Meyca´s Fashion",
+   "logo": "assets/img/merchants/meyca-s-fashion.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "botas, botines, ropa, carteras, billeteras, accesorios, sandalias, mules, tenis dama , tenis caballero, bolsas, tacones, flats, zapatillas",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50251132687"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 82
+  },
+  {
+   "slug": "mic",
+   "name": "Mic",
+   "logo": "assets/img/merchants/mic.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Bebes, ropa, personajes, peliculas",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 83
+  },
+  {
+   "slug": "minimakers-gt",
+   "name": "MiniMakers GT",
+   "logo": "assets/img/merchants/minimakers-gt.png",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "Maquina, snacks, emprendedores, cocina",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50231695584"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 84
+  },
+  {
+   "slug": "miramas",
+   "name": "Miramas",
+   "logo": "assets/img/merchants/miramas.png",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "Lentes, ojos, vista, examen de la vista, graduación de lentes, aros",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 85
+  },
+  {
+   "slug": "molvu",
+   "name": "Molvu",
+   "logo": "assets/img/merchants/molvu.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "tecnología reloj relojes smart calcetas calcetines sport deportes viaje viajes mochila bolsa mochilas bolson bolsón run audio audifonos audífonos deporte deportes cámara camara laptop fundas smart watch pulsera pulseras gym gimnasio futbol maletin maletines lentes chaleco molvu",
+   "modalities": {
+    "online": {
+     "url": "https://molvu.com.gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://molvu.com.gt/pages/tiendas"
+    },
+    "whatsapp": {
+     "phone": "50230711913"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 86
+  },
+  {
+   "slug": "momentum-fisios",
+   "name": "Momentum Fisios",
+   "logo": "assets/img/merchants/momentum-fisios.png",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "Momentum Fisios, Momentum Fisioterapia, Momentum Guatemala, clínica de fisioterapia en Guatemala, fisioterapeutas certificados, rehabilitación física Guatemala, fisioterapia deportiva, rehabilitación traumatológica, fisioterapia ortopédica, fisioterapia geriátrica, rehabilitación post-operatoria, fisioterapia neurológica, terapia respiratoria, punción seca, liberación miofascial, masajes terapéuticos, drenaje linfático, terapia manual, estiramientos asistidos, electroterapia, ultrasonido terapéutico, vendaje neuromuscular, kinesiotape, dolor de espalda, tratamiento para hernia discal, ciática, dolor de cuello, cervicalgia, lesión de rodilla, esguinces, tendinitis, manguito rotador, recuperación de fracturas, fascitis plantar, túnel carpiano, cita fisioterapia Guatemala, recuperación deportiva, prevención de lesiones, mejorar movilidad,",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 87
+  },
+  {
+   "slug": "motopolis-2",
+   "name": "Motopolis",
+   "logo": "assets/img/merchants/motopolis-2.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "moto motos motopolis d-air air botas casco cascos motoplay exploradora pantalones pantalon pantalón tshirt playera playeras motocicletas accesorios bolsa bolsas caja cajas defensa defensas aluminio",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://motopolis.com.gt/contact-us/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 88
+  },
+  {
+   "slug": "movies",
+   "name": "Movies",
+   "logo": "assets/img/merchants/movies.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Ropa, películas, mujer, hombre",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 89
+  },
+  {
+   "slug": "nava",
+   "name": "Nava",
+   "logo": "assets/img/merchants/nava.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "nava nava wear ropa prenda moda camisas camisa tshirt blusa blusas vestidos short shorts pantalón pants pantaloneta sudadera deportivo deportiva boxer interior fashion trendy accesorios sandalias run sport sweater swaters tops bottoms loungewear lounge mujer hombre tank tanks crop top tops sportbra bra",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://navawear.com/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 90
+  },
+  {
+   "slug": "new-balance",
+   "name": "New Balance",
+   "logo": "assets/img/merchants/new-balance.avif",
+   "categories": [
+    "Deportes"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters new balance gorra short pantaloneta shorts blusa tshirt ropa prenda",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50230597923"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 91
+  },
+  {
+   "slug": "nine-west",
+   "name": "Nine West",
+   "logo": "assets/img/merchants/nine-west.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "zapatos, mujeres comodidad zapatos calzado zapaterías moda tenis sandalias sneakers casual tacones zapatillas botines botas bolsa bolsas accesorios nine west",
+   "modalities": {
+    "online": {
+     "url": "https://rikeli.com.gt/"
+    },
+    "whatsapp": {
+     "phone": "50230625357"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 92
+  },
+  {
+   "slug": "optica-la-curacao",
+   "name": "Optica La Curacao",
+   "logo": "assets/img/merchants/optica-la-curacao.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "aros oftálmicos, lentes de sol, accesorios, lentes de contacto, aros, lentes, solución oftálmica, cuerdas, gotas, spray limpieza, solución, líquido, liquido, Ray Ban, Palaroid,",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50224202920"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 93
+  },
+  {
+   "slug": "optical-center",
+   "name": "Optical Center",
+   "logo": "assets/img/merchants/optical-center.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "salud ópticas óptica lente lentes examen vista ojos ojo reparación aro sol lentes de contacto contacto estuche estuches accesorios limpieza moda optical center",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.soyoptical.com/sucursales"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 94
+  },
+  {
+   "slug": "opticas-deluxe",
+   "name": "Ópticas Deluxe",
+   "logo": "assets/img/merchants/opticas-deluxe.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "salud ópticas opticas óptica optica lente lentes examen vista ojos ojo reparación aro sol lentes de contacto contacto estuche estuches accesorios limpieza moda opticas deluxe ópticas deluxe",
+   "modalities": {
+    "online": {
+     "url": "https://opticasdeluxe.com/"
+    },
+    "tienda": {
+     "locatorUrl": "https://opticasdeluxe.com/tiendas/"
+    },
+    "whatsapp": {
+     "phone": "50255550561"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 95
+  },
+  {
+   "slug": "paleta",
+   "name": "Paleta",
+   "logo": "assets/img/merchants/paleta.png",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "Cubeta, Pinturas, Paleta, Pinturas Paleta",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.pinturaspaleta.com/tiendas"
+    },
+    "whatsapp": {
+     "phone": "50254111010"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 96
+  },
+  {
+   "slug": "par2",
+   "name": "PAR2",
+   "logo": "assets/img/merchants/par2.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport niño niña par2 cintas calcatas calcetines limpieza accesorios",
+   "modalities": {
+    "online": {
+     "url": "https://par2.gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://par2.gt/pages/nuestras-tiendas"
+    },
+    "whatsapp": {
+     "phone": "50231516547"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 97
+  },
+  {
+   "slug": "payless",
+   "name": "Payless",
+   "logo": "assets/img/merchants/payless.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport payless mujer hombre niño niñas calcetas calcetines cintas accesorios limpieza",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://paylesschat.com/guatemala/es/content/6-tiendas"
+    },
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": true,
+   "order": 98
+  },
+  {
+   "slug": "peinados",
+   "name": "Peinados",
+   "logo": "assets/img/merchants/peinados.png",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "salon, corte, peinados, belleza, tratamientos,",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 99
+  },
+  {
+   "slug": "premier-cosmetics",
+   "name": "Premier Cosmetics",
+   "logo": "assets/img/merchants/premier-cosmetics.png",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "Cosméticos, cuidado personal, cremas,",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50234843486"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 100
+  },
+  {
+   "slug": "pump-stop",
+   "name": "Pump Stop",
+   "logo": "assets/img/merchants/pump-stop.png",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "soluciones de limpieza, servicios, productos, equipos de presion",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50257983976"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 101
+  },
+  {
+   "slug": "punto-optico",
+   "name": "Punto Óptico",
+   "logo": "assets/img/merchants/punto-optico.png",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "Optica, lentes vision, ojos",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 102
+  },
+  {
+   "slug": "punx",
+   "name": "Punx",
+   "logo": "assets/img/merchants/punx.avif",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "Muebles, hogar, decoración, interiores, sala, comedor, dormitorio, oficina, escritorios, sillas, sofás, sillones, mesas de centro, estanterías, libreras, camas, cabeceras, mesas de noche, clóset, amueblados, diseño moderno, muebles de madera, minimalista, contemporáneo, punx, punx muebles, mps, guatemala, guate, envíos, mobiliario, organización, accesorios de hogar, lámparas, espejos, alfombras, decoración de interiores, muebles a medida, estilo industrial, tendencia hogar.",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://punxstudio.com/contactenos/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 103
+  },
+  {
+   "slug": "quici-sportif",
+   "name": "Quici Sportif",
+   "logo": "assets/img/merchants/quici-sportif.avif",
+   "categories": [
+    "Deportes"
+   ],
+   "keywords": "sport bici bicicletas ciclismo running run trisuit playeras licras licra chumpa jersey camisetas short shorts chaleco quici sportif",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://quicideportes.com/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 104
+  },
+  {
+   "slug": "radioshack",
+   "name": "RadioShack",
+   "logo": "assets/img/merchants/radioshack.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "televisores, audios, gaming, audífonos",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50224202950"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 105
+  },
+  {
+   "slug": "ranero-logistic",
+   "name": "Ranero Logistic",
+   "logo": "assets/img/merchants/ranero-logistic.png",
+   "categories": [
+    "Logística"
+   ],
+   "keywords": "courier, envios, paquetes",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 106
+  },
+  {
+   "slug": "rebecana",
+   "name": "Rebecana",
+   "logo": "assets/img/merchants/rebecana.png",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "Rebecana, salón de belleza, estética, spa, peluquería, salón de belleza en Guatemala, cosméticos, productos de belleza, cuidado personal, Corte de cabello, tinte de pelo, balayage, Manicura, pedicura, uñas acrílicas, gelish, diseño de uñas, uñas de gel, cuidado de manos, spa de pies. highlights, keratina, alisado permanente, tratamiento capilar, peinados para eventos, extensiones de cabello, hidratación profunda,",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://rebecana.com/ubicaciones-y-horarios-1"
+    },
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 107
+  },
+  {
+   "slug": "reebok",
+   "name": "Reebok",
+   "logo": "assets/img/merchants/reebok.avif",
+   "categories": [
+    "Deportes"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport reebok ropa prenda camisa tshirt short shorts pantaloneta fut futbol boxer boxers pants",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50248548165"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 108
+  },
+  {
+   "slug": "republic-cosmetic",
+   "name": "Republic Cosmetics",
+   "logo": "assets/img/merchants/republic-cosmetic.avif",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "Republic Cosmetics, maquillaje, cosmetics, beauty, makeup, labiales, sombras, paletas, iluminadores, brochas, delineadores, rímel, pestañas, colecciones, edicion limitada, skin care, cuidado de la piel, mascarillas, hidratacion, serum, gloss, rubor, polvos, base de maquillaje, fijador, desmaquillante, republic, cosméticos, cosmeticos, guatemala, mps, guate, envios, belleza, moda, cruelty free, vegano, paraben free, accesorios, estuches, regalos.",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 109
+  },
+  {
+   "slug": "rikeli",
+   "name": "Rikeli",
+   "logo": "assets/img/merchants/rikeli.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias casuales casual tacones zapatillas botines botas mujer hombre rikeli comodidad accesorios calcetin calcetines calceta limpieza",
+   "modalities": {
+    "online": {
+     "url": "https://rikeli.com.gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://rikeli.com.gt/pages/tiendas"
+    },
+    "whatsapp": {
+     "phone": "50259057684"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 110
+  },
+  {
+   "slug": "ruiz-arriaga-odontologia-y-ortodoncia-digital",
+   "name": "Ruiz Arriaga Odontología y Ortodoncia Digital",
+   "logo": "assets/img/merchants/ruiz-arriaga-odontologia-y-ortodoncia-digital.png",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 111
+  },
+  {
+   "slug": "samsung",
+   "name": "Samsung",
+   "logo": "assets/img/merchants/samsung.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "samsung smart tv television televisión refri refrigerador teléfono phone galaxy tecnologia tecnología hogar laptop tablet tab cables cargador charger wireless watch lavadora micro microondas secadora hub family estufa bandas online adaptadores audio bocina accesorios",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.vana.gt/pay/ubicaciones-comercios"
+    },
+    "whatsapp": {
+     "phone": "50239945100"
+    }
+   },
+   "chatEnabled": true,
+   "featured": true,
+   "order": 112
+  },
+  {
+   "slug": "seek",
+   "name": "Seek",
+   "logo": "assets/img/merchants/seek.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa seek mujer hombre gorra gorras nike adidas new balance converse jordan sport",
+   "modalities": {
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 113
+  },
+  {
+   "slug": "serta",
+   "name": "Serta",
+   "logo": "assets/img/merchants/serta.avif",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "Serta, colchones, somier, camas, bases, almohadas, sábanas, protectores de colchón, descanso, sueño, confort, ortopédico, memory foam, espuma viscoelástica, resortes, king size, queen size, matrimonial, imperial, individuales, serta guatemala, mps, guate, envios, tecnología de sueño, iComfort, Perfect Sleeper, salud de espalda, relajación, mobiliario de dormitorio, amueblado de cuarto, bedding, ofertas en colchones, garantía de descanso.",
+   "modalities": {
+    "online": {
+     "url": "https://sertacentroamerica.com/guatemala/"
+    },
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50224294720"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 114
+  },
+  {
+   "slug": "shopialo",
+   "name": "Shopialo",
+   "logo": "assets/img/merchants/shopialo.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "shopialo shopialo.com online ropa prenda moda camisas camisa tshirt blusa blusas vestidos short shorts pantalón pants pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante collar cadena arete aretes anillo anillos diadema pulsera bolso bolsa accesorios sandalias sombrero velez hurley nava wear new era skechers zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport",
+   "modalities": {
+    "online": {
+     "url": "https://shopialo.com/"
+    },
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50230262561"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 115
+  },
+  {
+   "slug": "smile-factory",
+   "name": "Smile Factory",
+   "logo": "assets/img/merchants/smile-factory.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "smile factory clinicas clínicas dientes salud examen diagnostico doctor dentista consulta brackets blanqueamiento odontólogo odontología clínicas dental ortodoncia ortodoncia odontologo odontologia limpieza muela diente doctor doctora cita",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.smilefactory.com.gt/ubicaciones"
+    },
+    "whatsapp": {
+     "phone": "50249799492"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 116
+  },
+  {
+   "slug": "sneaker-king",
+   "name": "Sneaker King",
+   "logo": "assets/img/merchants/sneaker-king.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "hurley sport surf tabla accesorios calcetin calcetas calcetines sombreros gorra gorros lentes camisas camisa playa short shorts calzoneta calzonetas billeteras billetera bolso bolsas bolsa mochila bolson bolsón bikini tops top bottom sneaker king hombre mujer nike adidas puma new balance",
+   "modalities": {
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 117
+  },
+  {
+   "slug": "spejos",
+   "name": "Spejos",
+   "logo": "assets/img/merchants/spejos.png",
+   "categories": [
+    "Belleza y Cuidado Personal"
+   ],
+   "keywords": "salón, salon, salón de belleza, cuidado, corte de cabello, uñas",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 118
+  },
+  {
+   "slug": "steren",
+   "name": "Steren",
+   "logo": "assets/img/merchants/steren.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "smart cámaras cámara camaras camara seguridad accesorios audio bocina vigilancia Tecnología Electrónicos Steren tecnologia electronica bocinas microfonos micrófonos audio cámaras camaras alarmas sensores cables adaptadores router antenas antena herramientas",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.steren.com.gt/storelocator"
+    },
+    "whatsapp": {
+     "phone": "50224987000"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 119
+  },
+  {
+   "slug": "sunglass-hut",
+   "name": "Sunglass Hut",
+   "logo": "assets/img/merchants/sunglass-hut.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Lentes, aros, lentes de sol, estilos moda",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 120
+  },
+  {
+   "slug": "super-ofertas",
+   "name": "Super Ofertas",
+   "logo": "assets/img/merchants/super-ofertas.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "Super ofertas, calzado, zapatos, tenis, sandalias, botas, botines, tacones, zapatillas, sneakers, cuñas, plataformas, liquidación, remate, rebajas, descuentos, promociones, precios bajos, outlet, sale, clearance, calzado barato, zapatos en oferta, guatemala, mps, guate, envios, 2x1, gangas, calzado dama, calzado caballero, zapatos de niños, moda económica, ultimas tallas, stock fuera, calzado de marca, calzado cuero, sandalias de verano, botas de invierno, zapatos casuales, zapatos formales, sneakers urbanos.",
+   "modalities": {
+    "online": {
+     "url": "https://www.superofertas.com.gt/collections/all"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 121
+  },
+  {
+   "slug": "tecno-facil",
+   "name": "TECNO FACIL",
+   "logo": "assets/img/merchants/tecno-facil.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "tecnología accesorios electronica bocinas micrófonos audio camaras alarmas sensores cables adaptadores router antena antenas herramientas video juegos consolas Xbox play station Nintendo tele television televisión computadora laptop refri refrigerador estufa lavadora secadora monitor mouse mando control samsung lg honor sony xiaomi mabe whirpool tecno facil heinse smart",
+   "modalities": {
+    "whatsapp": {
+     "phone": "50224230200"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 122
+  },
+  {
+   "slug": "loop",
+   "name": "The Loop",
+   "logo": "assets/img/merchants/loop.png",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "Ropa, marcas, zapatos, nike, adidas, new balaance, sneakers, vans",
+   "modalities": {
+    "online": {
+     "url": "https://theloop.gt/"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 123
+  },
+  {
+   "slug": "the-north-face",
+   "name": "The North Face",
+   "logo": "assets/img/merchants/the-north-face.avif",
+   "categories": [
+    "Deportes"
+   ],
+   "keywords": "ropa prenda moda camisas camisa tshirt blusa blusas pants pantalon pantalón accesorios chumpa sweaters sweater gorro gorra gorros gorras zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear deporte deportes deportivo sport run deportivo deportiva sweater sweaters ropa sport the north face",
+   "modalities": {
+    "online": {
+     "url": "https://thenorthface.gt/"
+    },
+    "tienda": {
+     "locatorUrl": "https://thenorthface.gt/pages/nuestras-tiendas"
+    },
+    "whatsapp": {
+     "phone": "50231516547"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 124
+  },
+  {
+   "slug": "todomoda",
+   "name": "TODOMODA",
+   "logo": "assets/img/merchants/todomoda.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 125
+  },
+  {
+   "slug": "tommy-hilfiger",
+   "name": "Tommy Hilfiger",
+   "logo": "assets/img/merchants/tommy-hilfiger.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "ropa prenda moda camisas camisa blusa blusas vestidos short shorts pantaloneta sudadera chaqueta casual deportivo deportiva trajes boxer interior fashion trendy formal elegante zapatos calzado zapaterías moda tenis sandalias sneakers casuales casual tacones zapatillas botines botas correr ejercicio gym gimnasio streetwear tommy hilfiger jeans pantalones",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.vana.gt/pay/ubicaciones-comercios"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 126
+  },
+  {
+   "slug": "totto",
+   "name": "Totto",
+   "logo": "assets/img/merchants/totto.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "toto bolsas estuches bolson bolsón mochilas mochilas escolar escuela colegio niños niñas infantil fashion camisa pantalon pantalón short mujer hombre sombrero gorra lentes animal mascota perro gato billetera billeteras aretes arete deportivo deporte casual chaqueta sudadera sudadero pantalon pantalón accesorios reloj lentes sol totto",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://gt.totto.com/stores"
+    },
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 127
+  },
+  {
+   "slug": "trendy",
+   "name": "Trendy",
+   "logo": "assets/img/merchants/trendy.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "Trendy, Trendy La Estacion, zapateria, calzado, zapatos, sandalias, tacones, plataformas, cuñas, zapatillas, botines, botas, moda, mujer, dama, estilo, tendencia, Trendy Guatemala, mps, guate, zona 10, La Estacion, calzado de moda, zapatos elegantes, sandalias de plataforma, tacones altos, stilettos, flats, balerinas, calzado de fiesta, zapatos de vestir, rebajas, ofertas, sandalias de cuero, botines de moda, calzado comodo, zapateria guatemala, boutique de zapatos,",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50222285416"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 128
+  },
+  {
+   "slug": "tupperware",
+   "name": "Tupperware",
+   "logo": "assets/img/merchants/tupperware.png",
+   "categories": [
+    "Hogar y Ferreteria"
+   ],
+   "keywords": "",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {
+     "phone": "50254967678"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 129
+  },
+  {
+   "slug": "unident",
+   "name": "UniDent",
+   "logo": "assets/img/merchants/unident.avif",
+   "categories": [
+    "Salud"
+   ],
+   "keywords": "unident clinicas clínicas dientes salud examen diagnostico doctor dentista consulta brackets blanqueamiento odontólogo odontología clínicas dental ortodoncia ortodoncia odontologo odontologia limpieza muela diente doctor doctora cita",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.unidentguatemala.com/"
+    }
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 130
+  },
+  {
+   "slug": "ursoul-germany",
+   "name": "Ursoul Germany",
+   "logo": "assets/img/merchants/ursoul-germany.png",
+   "categories": [
+    "Joyería"
+   ],
+   "keywords": "Joyería, accesorios, pulseras, moda, premium",
+   "modalities": {
+    "online": {
+     "url": "https://ursoul-gt.com/"
+    },
+    "whatsapp": {
+     "phone": "50235373866"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 131
+  },
+  {
+   "slug": "vans",
+   "name": "Vans",
+   "logo": "assets/img/merchants/vans.avif",
+   "categories": [
+    "Zapatos"
+   ],
+   "keywords": "Vans, vans guatemala, tenis, sneakers, calzado, skate, skateboarding, calzado urbano, estilo de vida, off the wall, vans old skool, vans authentic, vans era, vans sk8-hi, vans slip-on, cuadros, checkerboard, tenis negros, suela waffle, moda urbana, ropa vans, playeras, sudaderas, hoodies, mochilas, gorras, accesorios, mps, guate, envios, calzado juvenil, zapatos de lona, streetwear, tendencia, ofertas, rebajas, estilo alternativo,",
+   "modalities": {
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 132
+  },
+  {
+   "slug": "velez",
+   "name": "Vélez",
+   "logo": "assets/img/merchants/velez.avif",
+   "categories": [
+    "Moda y accesorios"
+   ],
+   "keywords": "fashion trendy formal elegante collar cadena arete aretes anillo anillos diadema pulsera bolso bolsa accesorios sandalias sombrero pintalabios labios reloj velez cartera carteras zapatos calzado mujer hombre chaquetas cinturones viajes organizador organizadores cuero jeans complementos blusas camisa camisas sweater sweaters short shorts",
+   "modalities": {
+    "tienda": {
+     "locatorUrl": "https://www.velez.gt/tiendas"
+    },
+    "whatsapp": {
+     "phone": "50230262561"
+    }
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 133
+  },
+  {
+   "slug": "ventas-guate",
+   "name": "Ventas Guate",
+   "logo": "assets/img/merchants/ventas-guate.avif",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "ventas guate tecnologia tecnología smart alexa amazon audio audifinos watch reloj relojes consola consolas videojuegos play station nintendo xbox game music musica tab tablet cargador cable laptop computadora compu iphone phone telefono telefonos teléfono case estuche",
+   "modalities": {
+    "tienda": {},
+    "whatsapp": {}
+   },
+   "chatEnabled": true,
+   "featured": false,
+   "order": 134
+  },
+  {
+   "slug": "watermelon-shop",
+   "name": "Watermelon shop",
+   "logo": "assets/img/merchants/watermelon-shop.png",
+   "categories": [
+    "Electrónicos"
+   ],
+   "keywords": "Mercaderia desde EE.UU, limpieza, decoración,",
+   "modalities": {
+    "online": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 135
+  },
+  {
+   "slug": "wazu",
+   "name": "Wazu",
+   "logo": "assets/img/merchants/wazu.avif",
+   "categories": [
+    "Mascotas"
+   ],
+   "keywords": "mascotas perros gatos perro correa correas alimentos alimentacion medicina alimentación pet pets mascota gato juguetes croquetas huesos veterinaria concentrado vacunas pipeta pipetas collar collares shampoo wazu",
+   "modalities": {
+    "online": {
+     "url": "https://www.instagram.com/wazugt/"
+    },
+    "tienda": {}
+   },
+   "chatEnabled": false,
+   "featured": false,
+   "order": 136
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "ofertas": [
+  {
+   "slug": "rebecana-1e4dbc16-c04d-448a-a4cb-d4fe148f9814",
+   "merchantSlug": "rebecana",
+   "merchantName": "Rebecana",
+   "amount": "Q50",
+   "condition": "de descuento. ¡Solo aplican los miércoles!",
+   "modalities": [
+    "tienda"
+   ]
+  },
+  {
+   "slug": "republic-cosmetics-e51329b3-73af-4167-80b2-3c00cc61d627",
+   "merchantSlug": "republic-cosmetic",
+   "merchantName": "Republic Cosmetics",
+   "amount": "Q50",
+   "condition": "de descuento. ¡Solo aplican los miércoles!",
+   "modalities": [
+    "tienda"
+   ]
+  },
+  {
+   "slug": "deposito-de-belleza-1fc2764f-3247-4ae5-917c-4bcf9e54ce29",
+   "merchantSlug": "deposito-de-belleza",
+   "merchantName": "Depósito de Belleza",
+   "amount": "Q50",
+   "condition": "de descuento. ¡Solo aplican los miércoles!",
+   "modalities": [
+    "tienda"
+   ]
+  },
+  {
+   "slug": "steren-5ec79f70-14e7-4b9d-a08f-ae6871eb9ceb",
+   "merchantSlug": "steren",
+   "merchantName": "Steren",
+   "amount": "Q100",
+   "condition": "de descuento. ¡Solo aplican los martes!",
+   "modalities": [
+    "tienda"
+   ]
+  },
+  {
+   "slug": "tecno-facil-05794ec4-76c1-459c-88f6-633dad26a49b",
+   "merchantSlug": "tecno-facil",
+   "merchantName": "TECNO FACIL",
+   "amount": "Q100",
+   "condition": "de descuento. ¡Solo aplican los martes!",
+   "modalities": [
+    "whatsapp"
+   ]
+  },
+  {
+   "slug": "la-curacao-4d66a842-826d-4403-bb75-202b3c47dbf7",
+   "merchantSlug": "la-curacao",
+   "merchantName": "La Curacao",
+   "amount": "Q100",
+   "condition": "de descuento. ¡Solo aplican los martes!",
+   "modalities": [
+    "whatsapp"
+   ]
+  },
+  {
+   "slug": "max-4a55e8fd-27a4-4145-8672-ed55c44aa360",
+   "merchantSlug": "max",
+   "merchantName": "MAX",
+   "amount": "Q100",
+   "condition": "de descuento. ¡Solo aplican los martes!",
+   "modalities": [
+    "whatsapp"
+   ]
+  },
+  {
+   "slug": "velez-f4a6801f-1a24-4212-89cb-5a9652125b04",
+   "merchantSlug": "velez",
+   "merchantName": "Vélez",
+   "amount": "Q100",
+   "condition": "de descuento en compras desde Q500",
+   "modalities": [
+    "tienda"
+   ]
+  },
+  {
+   "slug": "hurley-e1157450-4197-40d7-b3e7-4e57d0408ee1",
+   "merchantSlug": "hurley",
+   "merchantName": "Hurley",
+   "amount": "Q100",
+   "condition": "de descuento en compras desde Q500",
+   "modalities": [
+    "tienda"
+   ]
+  },
+  {
+   "slug": "nava-wear-33455277-e6ff-4e24-96c5-12cf2546614d",
+   "merchantSlug": "nava",
+   "merchantName": "Nava Wear",
+   "amount": "Q100",
+   "condition": "de descuento en compras desde Q500",
+   "modalities": [
+    "tienda"
+   ]
+  },
+  {
+   "slug": "avant-62ec93ff-bef8-47ed-8ebf-c7ffb628a7a9",
+   "merchantSlug": "avant",
+   "merchantName": "Avant Clothing",
+   "amount": "Q35",
+   "condition": "De descuento en el segundo artículo",
+   "modalities": [
+    "tienda"
+   ]
+  },
+  {
+   "slug": "lili-pink-694b197d-d6c6-4bdd-a095-77ba39f48ae3",
+   "merchantSlug": "lili-pink",
+   "merchantName": "Lili Pink",
+   "amount": "Q100",
+   "condition": "de descuento por compras de Q500",
+   "modalities": [
+    "tienda",
+    "whatsapp"
+   ]
+  },
+  {
+   "slug": "shopialo-74f1c26d-2937-42ab-998b-a43e0bf27d57",
+   "merchantSlug": "shopialo",
+   "merchantName": "Shopialo",
+   "amount": "20%",
+   "condition": "de descuento",
+   "modalities": [
+    "online",
+    "tienda",
+    "whatsapp"
+   ]
+  },
+  {
+   "slug": "par2-e7b8275b-45f0-4c7e-9b0b-c822355f5ff6",
+   "merchantSlug": "par2",
+   "merchantName": "PAR2",
+   "amount": "50%",
+   "condition": "En el segundo par",
+   "modalities": [
+    "online",
+    "tienda",
+    "whatsapp"
+   ]
+  },
+  {
+   "slug": "optical-center-9bdcc77c-c7ea-440f-a276-85777f6df68a",
+   "merchantSlug": "optical-center",
+   "merchantName": "Optical Center",
+   "amount": "30%",
+   "condition": "Aplica pagando con vana pay",
+   "modalities": [
+    "online",
+    "tienda"
+   ]
+  }
+ ]
+}

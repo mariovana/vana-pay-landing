@@ -1,0 +1,391 @@
+/* ============================================================
+   vana pay — landing. Un solo archivo de CSS, mobile-first.
+   Paleta: turquesa/azul de vana pay (case deck) sobre el ramp
+   de neutrales del vana Design System (compartido con vana shop,
+   que usa morado — NO mezclar los acentos).
+   Escala de espaciado mobile: 8·12·16·24·32·40·48.
+   Regla heredada de vana-shop: en .wrap/.section usar
+   padding-inline, nunca el shorthand padding.
+   ============================================================ */
+
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("../fonts/SofiaPro-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("../fonts/SofiaPro-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("../fonts/SofiaPro-Black.woff2") format("woff2");
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+
+:root{
+  /* marca vana pay */
+  --brand:#0FB3CE;
+  --brand-strong:#0C93AB;
+  --brand-deep:#086B7D;
+  --brand-soft:rgba(15,179,206,.12);
+  --brand-10:#E7F7FA;
+  --vana:#4F7BFF;
+
+  /* neutrales del vana Design System */
+  --n0:#FFFFFF; --n10:#F6F8FB; --n30:#E2E6E9; --n50:#C6CCD3;
+  --n60:#9BA6B1; --n70:#708090; --n80:#56636E; --n100:#364049;
+  --ink:#101011;
+  --wa:#25D366;
+  --pos:#27AE60;
+
+  /* pasteles (testimonios / avatares) */
+  --t1:#E7F7FA; --t2:#FCE7C2; --t3:#D7F0E0; --t4:#E8F2FF; --t5:#FBD9D9;
+
+  --r-card:24px; --r-lg:32px; --r-md:14px; --r-pill:999px;
+  --sh-card:0 1px 2px rgba(54,64,73,.08), 0 8px 24px rgba(8,107,125,.07);
+  --sh-brand:0 6px 16px rgba(15,179,206,.32);
+
+  --font-sans:"Sofia Pro",-apple-system,"Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --maxw:1120px;
+  --hdr-h:64px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr-h) + 12px)}
+body{
+  font-family:var(--font-sans);
+  color:var(--ink);
+  background:var(--n0);
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:0;background:none;cursor:pointer}
+ul{list-style:none}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+.section{padding-block:48px}
+.section-alt{background:var(--n10)}
+
+/* --------------------------------------------------- tipografía */
+h1{font-weight:900;font-size:clamp(2.1rem,8.5vw,3.4rem);line-height:1.06;letter-spacing:-.02em}
+h2{font-weight:900;font-size:clamp(1.55rem,5.5vw,2.2rem);line-height:1.12;letter-spacing:-.015em}
+h3{font-weight:700;font-size:1.15rem;line-height:1.25}
+.lead{font-size:1.1rem;color:var(--n80)}
+.eyebrow{
+  display:inline-block;font-weight:700;font-size:.85rem;color:var(--brand-strong);
+  background:var(--brand-soft);border-radius:var(--r-pill);
+  padding:6px 14px;margin-bottom:12px;
+}
+.section-head{margin-bottom:24px}
+.section-head p{color:var(--n80);margin-top:8px;max-width:34em}
+
+/* ------------------------------------------------------ botones */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-weight:700;font-size:1rem;border-radius:var(--r-pill);
+  padding:14px 24px;min-height:48px;transition:transform .08s ease, box-shadow .15s ease;
+}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:var(--sh-brand)}
+.btn-primary:hover{background:var(--brand-strong)}
+.btn-secondary{background:var(--n0);color:var(--ink);border:1.5px solid var(--n30)}
+.btn-secondary:hover{border-color:var(--n60)}
+.btn-chat{background:var(--wa);color:#fff}
+.btn-chat:hover{background:#1fb457}
+.btn-ghost{color:var(--brand-strong);font-weight:700;padding:10px 4px}
+.btn-block{width:100%}
+.btn-sm{min-height:40px;padding:9px 16px;font-size:.92rem}
+
+.ico{width:1.2em;height:1.2em;fill:currentColor;flex:none}
+
+/* ------------------------------------------------------- header */
+.hdr{
+  position:sticky;top:0;z-index:50;height:var(--hdr-h);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--n30);
+}
+.hdr .wrap{height:100%;display:flex;align-items:center;gap:16px}
+.brand-logo{height:26px;width:auto}
+.hdr-nav{display:none}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:14px}
+.hdr-login{font-weight:700;color:var(--n80);font-size:.95rem}
+.hdr-login:hover{color:var(--ink)}
+
+/* --------------------------------------------------------- hero */
+.hero{
+  background:linear-gradient(180deg,var(--brand-10) 0%,var(--n0) 88%);
+  padding-block:40px 48px;overflow:hidden;
+}
+.hero-grid{display:grid;gap:32px}
+.hero-copy .lead{margin-top:14px;max-width:30em}
+.hero-ctas{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.hero-note{margin-top:14px;font-size:.9rem;color:var(--n70);display:flex;align-items:center;gap:6px}
+
+/* mock de checkout: la compra, vana pay seleccionado y los paguitos */
+.mock{
+  background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-lg);
+  box-shadow:var(--sh-card);padding:20px;max-width:400px;margin-inline:auto;width:100%;
+}
+.mock-store{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--n30)}
+.mock-store img{width:42px;height:42px;border-radius:12px;object-fit:contain;background:var(--n10);padding:4px}
+.mock-store-name{font-weight:700}
+.mock-store-total{margin-left:auto;font-weight:900;font-size:1.15rem}
+.mock-label{font-size:.8rem;font-weight:700;color:var(--n70);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 8px}
+.mock-pay{display:flex;align-items:center;gap:10px;border:2px solid var(--brand);background:var(--brand-soft);border-radius:var(--r-md);padding:12px 14px;font-weight:700}
+.mock-pay-off{display:flex;align-items:center;gap:10px;border:1.5px solid var(--n30);border-radius:var(--r-md);padding:12px 14px;color:var(--n70);margin-top:8px}
+.mock-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--n50);flex:none;position:relative}
+.mock-pay .mock-radio{border-color:var(--brand);background:var(--brand)}
+.mock-pay .mock-radio::after{
+  content:"";position:absolute;inset:0;margin:auto;width:10px;height:5px;
+  border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:translateY(-1px) rotate(-45deg);
+}
+.mock-pay .mock-logo{height:16px;width:auto}
+.mock-rows{margin-top:6px}
+.mock-row{display:flex;align-items:center;gap:10px;padding:9px 2px;border-bottom:1px dashed var(--n30);font-size:.95rem}
+.mock-row:last-child{border-bottom:0}
+.mock-row .when{color:var(--n70)}
+.mock-row .amt{margin-left:auto;font-weight:700}
+.mock-row.paid .amt{color:var(--pos)}
+.mock-check{width:20px;height:20px;border-radius:50%;background:var(--pos);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none;font-size:.7rem;font-weight:900}
+.mock-dot{width:20px;height:20px;border-radius:50%;border:2px dashed var(--n50);flex:none}
+
+/* ------------------------------------------------- cómo funciona */
+.steps{display:grid;gap:16px;counter-reset:paso}
+.step{
+  background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-card);
+  padding:24px;position:relative;
+}
+.step-n{
+  width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;
+  font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+.step h3{margin-bottom:6px}
+.step p{color:var(--n80);font-size:.98rem}
+
+/* --------------------------------------------- widget de paguitos */
+.pagui{
+  background:var(--ink);color:#fff;border-radius:var(--r-lg);
+  padding:28px 22px;
+}
+.pagui h2{color:#fff}
+.pagui-sub{color:var(--n50);margin-top:6px}
+.pagui-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-card);padding:18px;margin-top:20px;
+}
+.pagui-buy{display:flex;align-items:baseline;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.14)}
+.pagui-buy .lbl{color:var(--n50);font-size:.95rem}
+.pagui-buy .val{font-weight:900;font-size:1.5rem;margin-left:auto}
+.pagui-line{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.12);font-size:.98rem}
+.pagui-line:last-of-type{border-bottom:0}
+.pagui-line .when{color:var(--n50)}
+.pagui-line .amt{margin-left:auto;font-weight:700}
+.pagui-line.paid .amt{color:#5EE39A}
+.pagui-note{margin-top:14px;font-size:.88rem;color:var(--n50);line-height:1.5}
+.pagui-note b{color:#fff}
+
+/* ------------------------------------------------ formas de comprar */
+.ways{display:grid;gap:16px}
+.way{
+  background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-card);
+  padding:24px;display:flex;flex-direction:column;gap:12px;
+}
+.way-tag{
+  align-self:flex-start;font-size:.8rem;font-weight:700;border-radius:var(--r-pill);
+  padding:5px 12px;
+}
+.way-tag.tienda{background:var(--brand-soft);color:var(--brand-strong)}
+.way-tag.online{background:#EDF1FF;color:var(--vana)}
+.way-tag.chat{background:#E4F8EC;color:#1B9E4B}
+.way p{color:var(--n80);font-size:.98rem}
+.way-mock{
+  background:var(--n10);border-radius:var(--r-md);padding:16px;margin-top:4px;
+  font-size:.9rem;
+}
+.bubble{
+  background:var(--n0);border:1px solid var(--n30);border-radius:16px 16px 16px 4px;
+  padding:10px 14px;max-width:88%;box-shadow:0 1px 2px rgba(54,64,73,.06);
+}
+.bubble.me{
+  margin-left:auto;border-radius:16px 16px 4px 16px;background:#DCF8C6;border-color:#c9ecb2;
+}
+.bubble + .bubble{margin-top:8px}
+.way-mock .mini-pay{display:flex;align-items:center;gap:8px;background:var(--n0);border:2px solid var(--brand);border-radius:10px;padding:8px 10px;font-weight:700;font-size:.88rem}
+.way-mock .mini-pay img{height:14px}
+
+/* --------------------------------------------------- buscador/chips */
+.searchrow{position:relative;margin-bottom:14px}
+.searchrow input{
+  width:100%;min-height:52px;border:1.5px solid var(--n30);border-radius:var(--r-pill);
+  padding:12px 20px 12px 48px;font:inherit;background:var(--n0);color:var(--ink);
+}
+.searchrow input:focus{outline:none;border-color:var(--brand)}
+.searchrow .ico{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--n60)}
+.chiprow{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.chiprow::-webkit-scrollbar{display:none}
+.chip{
+  flex:none;border:1.5px solid var(--n30);border-radius:var(--r-pill);
+  padding:8px 16px;font-weight:700;font-size:.9rem;color:var(--n80);background:var(--n0);
+}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* ------------------------------------------------- merchant cards */
+.mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mcard{
+  background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-card);
+  padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0;
+  transition:box-shadow .15s ease,border-color .15s ease;
+}
+.mcard:hover{box-shadow:var(--sh-card);border-color:var(--n50)}
+.mcard-logo{
+  width:56px;height:56px;border-radius:14px;background:var(--n10);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.mcard-logo img{width:100%;height:100%;object-fit:contain;padding:6px}
+.mcard-name{font-weight:700;font-size:1rem;line-height:1.2}
+.mcard-cat{font-size:.82rem;color:var(--n70)}
+.badges{display:flex;flex-wrap:wrap;gap:5px}
+.badge{
+  font-size:.72rem;font-weight:700;border-radius:var(--r-pill);padding:3px 9px;
+  background:var(--n10);color:var(--n80);
+}
+.badge.chat{background:#E4F8EC;color:#1B9E4B}
+.mcard-cta{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.empty{
+  text-align:center;color:var(--n80);padding:40px 16px;
+  display:none;flex-direction:column;align-items:center;gap:14px;
+}
+.empty.show{display:flex}
+
+/* ------------------------------------------------------- ofertas */
+.orow{display:grid;grid-auto-flow:column;grid-auto-columns:260px;gap:12px;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+.ocard{
+  background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-card);
+  padding:18px;display:flex;flex-direction:column;gap:8px;
+}
+.ocard-merchant{font-size:.85rem;font-weight:700;color:var(--n70);text-transform:uppercase;letter-spacing:.04em}
+.ocard-amount{font-weight:900;font-size:1.9rem;color:var(--brand-strong);line-height:1}
+.ocard-cond{color:var(--n80);font-size:.92rem}
+.ocard .badges{margin-top:auto}
+
+/* ---------------------------------------------------- beneficios */
+.bens{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.ben{
+  background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-card);
+  padding:20px 16px;
+}
+.ben-ico{
+  width:40px;height:40px;border-radius:12px;background:var(--brand-soft);color:var(--brand-strong);
+  display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:1.2rem;
+}
+.ben h3{font-size:1rem;margin-bottom:4px}
+.ben p{font-size:.88rem;color:var(--n80)}
+
+/* --------------------------------------------------- testimonios */
+.quotes{display:grid;gap:12px}
+.quote{
+  border-radius:var(--r-card);padding:20px;display:flex;flex-direction:column;gap:12px;
+}
+.quote p{font-size:1rem;line-height:1.5}
+.quote-who{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.9rem}
+.quote-av{
+  width:34px;height:34px;border-radius:50%;background:var(--n0);
+  display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--n100);
+}
+.q1{background:var(--t1)} .q2{background:var(--t2)} .q3{background:var(--t3)}
+.q4{background:var(--t4)} .q5{background:var(--t5)}
+
+/* ------------------------------------------------------------ FAQ */
+.faq{max-width:720px}
+.faq details{border-bottom:1px solid var(--n30)}
+.faq summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;
+  font-weight:700;font-size:1.02rem;padding:18px 2px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";margin-left:auto;font-size:1.4rem;font-weight:400;color:var(--brand-strong);
+  transition:transform .15s ease;flex:none;
+}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{padding:0 2px 18px;color:var(--n80);line-height:1.55}
+
+/* ------------------------------------------------------ CTA final */
+.ctaband{
+  background:linear-gradient(135deg,var(--brand) 0%,var(--brand-strong) 100%);
+  border-radius:var(--r-lg);color:#fff;text-align:center;
+  padding:40px 24px;
+}
+.ctaband h2{color:#fff}
+.ctaband p{margin-top:8px;color:rgba(255,255,255,.85)}
+.ctaband .btn{margin-top:22px;background:#fff;color:var(--brand-deep);box-shadow:0 6px 20px rgba(8,107,125,.3)}
+
+/* -------------------------------------------------------- footer */
+.footer{background:var(--ink);color:var(--n50);margin-top:48px;padding-block:40px}
+.footer .brand-logo{height:24px;margin-bottom:20px}
+.footer p{font-size:.9rem;line-height:1.6}
+.footer a{color:var(--n30);font-weight:700}
+.footer a:hover{color:#fff}
+.f-links{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;font-size:.92rem}
+.f-legal{margin-top:24px;font-size:.8rem;color:var(--n70)}
+
+/* ------------------------------------------- página de comercio */
+.mhero{padding-block:32px 8px}
+.mhero-top{display:flex;align-items:center;gap:16px}
+.mhero-logo{
+  width:76px;height:76px;border-radius:18px;background:var(--n10);flex:none;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  border:1px solid var(--n30);
+}
+.mhero-logo img{width:100%;height:100%;object-fit:contain;padding:8px}
+.mhero h1{font-size:clamp(1.7rem,7vw,2.4rem)}
+.mhero .badges{margin-top:8px}
+.back{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--n70);margin-bottom:18px;font-size:.92rem}
+.back:hover{color:var(--ink)}
+
+.chatbox{
+  background:#E4F8EC;border:1px solid #bfe8cd;border-radius:var(--r-card);
+  padding:22px;margin-top:24px;
+}
+.chatbox h3{margin-bottom:6px}
+.chatbox p{color:var(--n80);font-size:.95rem;margin-bottom:14px}
+
+.mods{display:grid;gap:14px;margin-top:24px}
+.mod{
+  background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-card);
+  padding:22px;
+}
+.mod-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.mod-head h3{font-size:1.05rem}
+.mod p{color:var(--n80);font-size:.95rem;margin-bottom:14px}
+.mod ol{margin:0 0 16px 18px;color:var(--n80);font-size:.93rem;display:grid;gap:6px}
+
+.mrelated{margin-top:40px}
+
+/* ------------------------------------------------------- desktop */
+@media (min-width:720px){
+  .section{padding-block:64px}
+  .mgrid{grid-template-columns:repeat(3,1fr)}
+  .bens{grid-template-columns:repeat(4,1fr)}
+  .quotes{grid-template-columns:repeat(2,1fr)}
+  .ways{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .hero-ctas{flex-direction:row}
+  .mods{grid-template-columns:repeat(2,1fr)}
+}
+@media (min-width:960px){
+  .hdr-nav{display:flex;gap:24px;margin-left:24px}
+  .hdr-nav a{font-weight:700;font-size:.95rem;color:var(--n80)}
+  .hdr-nav a:hover{color:var(--ink)}
+  .hero{padding-block:64px}
+  .hero-grid{grid-template-columns:1.1fr .9fr;align-items:center;gap:48px}
+  .mock{margin-inline:0;margin-left:auto}
+  .mgrid{grid-template-columns:repeat(4,1fr)}
+  .quotes{grid-template-columns:repeat(3,1fr)}
+  .pagui{padding:40px}
+  .pagui-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+}
