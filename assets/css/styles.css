@@ -179,7 +179,13 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .hero-copy{text-align:center}
 .hero-copy .lead{margin-top:16px;max-width:26em;margin-inline:auto}
 .hero-ctas{display:flex;flex-direction:column;gap:12px;margin-top:26px}
-.hero-note{margin-top:16px;font-size:.9rem;color:var(--n70);display:flex;align-items:center;justify-content:center;gap:6px}
+/* inline-flex: se encoge al contenido y el text-align del padre lo centra
+   en mobile — con flex full-width el ícono quedaba desfasado del texto. */
+.hero-note{
+  margin-top:16px;font-size:.9rem;color:var(--n70);
+  display:inline-flex;align-items:center;gap:8px;text-align:left;max-width:100%;
+}
+.hero-note .ico{flex:none}
 @keyframes mockfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
 /* mock de checkout: la compra, vana pay seleccionado y los paguitos */
@@ -190,10 +196,17 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   animation:mockfloat 7s ease-in-out infinite;
 }
 .no-anim .mock{animation:none}
-.mock-store{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--n30)}
-.mock-store img{width:42px;height:42px;border-radius:12px;object-fit:contain;background:var(--n10);padding:4px}
+.mock-store{display:flex;align-items:center;gap:12px}
+.mock-store img{width:36px;height:36px;border-radius:10px;object-fit:contain;background:var(--n10);padding:4px}
 .mock-store-name{font-weight:700}
-.mock-store-total{margin-left:auto;font-weight:900;font-size:1.15rem}
+.mock-item{
+  display:flex;align-items:center;gap:12px;margin-top:12px;
+  padding:10px;background:var(--n10);border-radius:var(--r-md);
+}
+.mock-item img{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--n0)}
+.mock-item-name{font-weight:700;font-size:.95rem;line-height:1.2}
+.mock-item-qty{font-size:.8rem;color:var(--n70)}
+.mock-item-price{margin-left:auto;font-weight:900;font-size:1.1rem}
 .mock-label{font-size:.8rem;font-weight:700;color:var(--n70);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 8px}
 .mock-pay{display:flex;align-items:center;gap:10px;border:2px solid var(--brand);background:var(--brand-soft);border-radius:var(--r-md);padding:12px 14px;font-weight:700}
 .mock-pay-off{display:flex;align-items:center;gap:10px;border:1.5px solid var(--n30);border-radius:var(--r-md);padding:12px 14px;color:var(--n70);margin-top:8px}
@@ -279,6 +292,23 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .way-mock .mini-pay{display:flex;align-items:center;gap:8px;background:var(--n0);border:2px solid var(--brand);border-radius:10px;padding:8px 10px;font-weight:700;font-size:.88rem}
 .way-mock .mini-pay img{height:14px}
 
+/* ------------------------------------- banner de vana pay chat (home) */
+.chatband{
+  background:var(--ink);color:#fff;border-radius:var(--r-lg);
+  padding:36px 24px;display:grid;gap:28px;overflow:hidden;position:relative;
+}
+.chatband::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(420px 300px at 92% 8%, rgba(37,211,102,.22), transparent 60%);
+}
+.chatband>*{position:relative}
+.chatband .eyebrow{background:rgba(37,211,102,.18);color:#5EE39A}
+.chatband h2{color:#fff}
+.chatband p{color:var(--n50);margin-top:10px;max-width:28em}
+.chatband .btn-chat{margin-top:20px}
+.chatband-demo .bubble{background:#1E2A31;border-color:#2C3B44;color:var(--n30)}
+.chatband-demo .bubble.me{background:#144D33;border-color:#1B6343;color:#DFF7E8}
+
 /* --------------------------------------------------- buscador/chips */
 .searchrow{position:relative;margin-bottom:14px}
 .searchrow input{
@@ -287,6 +317,27 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 }
 .searchrow input:focus{outline:none;border-color:var(--brand)}
 .searchrow .ico{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--n60)}
+/* super search: dropdown de sugerencias (comercios + vana pay chat) */
+.ss-drop{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:60;
+  background:var(--n0);border:1px solid var(--n30);border-radius:22px;
+  box-shadow:0 20px 56px rgba(54,64,73,.18);overflow:hidden;display:none;
+}
+.ss-drop.open{display:block}
+.ss-chat{
+  display:flex;align-items:center;gap:12px;padding:16px;
+  background:#E4F8EC;color:#116B36;font-weight:700;font-size:.98rem;
+}
+.ss-chat:hover{background:#D6F3E1}
+.ss-chat .ico{flex:none;width:1.4em;height:1.4em;color:#1B9E4B}
+.ss-chat b{color:#0C5229}
+.ss-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--n10)}
+.ss-item:hover{background:var(--n10)}
+.ss-item img{width:38px;height:38px;border-radius:10px;background:var(--n10);object-fit:contain;padding:4px;flex:none}
+.ss-item .n{font-weight:700;font-size:.95rem}
+.ss-item .m{font-size:.78rem;color:var(--n70)}
+.ss-item .go{margin-left:auto;color:var(--brand-strong);flex:none}
+
 .chiprow{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .chiprow::-webkit-scrollbar{display:none}
 .chip{
@@ -539,6 +590,9 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   .mhero{padding-block:32px 44px}
 }
 @media (min-width:960px){
+  .chatband{grid-template-columns:1.2fr .8fr;align-items:center;padding:56px}
+  .chatband-demo{max-width:340px;justify-self:end;width:100%}
+
   /* Formas de comprar estilo Klarna: texto fijo mientras las cards pasan */
   .ways-split{display:grid;grid-template-columns:.9fr 1.4fr;gap:56px;align-items:start}
   .ways-side .section-head{position:sticky;top:120px;margin-bottom:0}
@@ -553,7 +607,6 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   .hero-grid{grid-template-columns:1.1fr .9fr;align-items:center;gap:56px}
   .hero-copy{text-align:left}
   .hero-copy .lead{margin-inline:0}
-  .hero-note{justify-content:flex-start}
   .mock{margin-inline:0;margin-left:auto}
   .mgrid{grid-template-columns:repeat(4,1fr)}
   .quotes{grid-template-columns:repeat(3,1fr)}

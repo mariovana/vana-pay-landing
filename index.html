@@ -9,13 +9,14 @@
   <meta property="og:description" content="Una nueva forma de pagar tus compras: divide el pago en paguitos quincenales, sin tarjeta de crédito.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=9">
-  <script src="assets/js/config.js?v=9"></script>
-  <script src="assets/js/analytics.js?v=9" defer></script>
-  <script src="assets/js/cards.js?v=9" defer></script>
-  <script src="assets/js/anim.js?v=9" defer></script>
-  <script src="assets/js/home.js?v=9" defer></script>
-  <script src="assets/js/embed-height.js?v=9" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=10">
+  <script src="assets/js/config.js?v=10"></script>
+  <script src="assets/js/analytics.js?v=10" defer></script>
+  <script src="assets/js/cards.js?v=10" defer></script>
+  <script src="assets/js/anim.js?v=10" defer></script>
+  <script src="assets/js/search.js?v=10" defer></script>
+  <script src="assets/js/home.js?v=10" defer></script>
+  <script src="assets/js/embed-height.js?v=10" defer></script>
 </head>
 <body>
 
@@ -67,7 +68,14 @@
       <div class="mock-store">
         <img src="assets/img/merchants/adidas.avif" alt="Adidas">
         <span class="mock-store-name">Adidas</span>
-        <span class="mock-store-total">Q1,500</span>
+      </div>
+      <div class="mock-item">
+        <img src="assets/img/mock-tenis.jpg" alt="Tenis">
+        <div>
+          <div class="mock-item-name">Tenis Gazelle</div>
+          <div class="mock-item-qty">1 par · talla 40</div>
+        </div>
+        <span class="mock-item-price">Q1,500</span>
       </div>
       <p class="mock-label">Método de pago</p>
       <div class="mock-pay">
@@ -86,18 +94,6 @@
         <div class="mock-row"><span class="mock-dot"></span><span class="when">En 30 días</span><span class="amt">Q408</span></div>
         <div class="mock-row"><span class="mock-dot"></span><span class="when">+ 2 paguitos más</span><span class="amt"></span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================== stats -->
-<section class="section" id="stats" style="padding-block:48px">
-  <div class="wrap">
-    <div class="stats">
-      <div class="reveal"><div class="stat-n">+100</div><div class="stat-l">comercios afiliados</div></div>
-      <div class="reveal d1"><div class="stat-n">Q3,000</div><div class="stat-l">de línea para comprar</div></div>
-      <div class="reveal d2"><div class="stat-n">3·5·8</div><div class="stat-l">paguitos quincenales</div></div>
-      <div class="reveal d3"><div class="stat-n"><b>0</b></div><div class="stat-l">tarjetas de crédito necesarias</div></div>
     </div>
   </div>
 </section>
@@ -221,6 +217,27 @@
     <div class="brandrow" id="homeGrid" style="margin-top:14px"></div>
     <div style="text-align:center;margin-top:24px">
       <a class="btn btn-secondary" href="donde-comprar/">Ver todos los comercios <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== banner vana pay chat -->
+<section class="section" id="chat-banner" style="padding-block:24px">
+  <div class="wrap">
+    <div class="chatband reveal">
+      <div>
+        <span class="eyebrow">vana pay chat</span>
+        <h2>Pide lo que quieras.<br>Nosotros te lo conseguimos.</h2>
+        <p>Cuéntanos qué buscas y te ayudamos a encontrarlo en un comercio afiliado, comprarlo y pagarlo en paguitos.</p>
+        <a class="btn btn-chat" id="bannerChat" data-wa-context="home-banner" href="#" target="_blank" rel="noopener">
+          <svg class="ico"><use href="#i-wa"/></svg> Pedir por vana pay chat
+        </a>
+      </div>
+      <div class="chatband-demo" aria-hidden="true">
+        <div class="bubble me">Busco unos AirPods Pro</div>
+        <div class="bubble">Los tienes en iShop. ¿Te ayudamos a comprarlos en paguitos?</div>
+        <div class="bubble me">¡Sí, va!</div>
+      </div>
     </div>
   </div>
 </section>

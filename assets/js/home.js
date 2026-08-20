@@ -7,6 +7,8 @@
     ways.target = "_blank";
     ways.rel = "noopener";
   }
+  var banner = document.getElementById("bannerChat");
+  if (banner) banner.href = window.VP.chatGenericLink();
 
   // Los montos del ejemplo salen de VP.paguitos() para que la fórmula del
   // paguito seguro viva en un solo lugar (los Q del HTML son fallback).
@@ -54,6 +56,10 @@
       data.ofertas.slice(0, 8).map(function (o) {
         return window.VP.offerCardHTML(o, data.bySlug);
       }).join("");
+
+    // Super search con sugerencias (comercios + vana pay chat).
+    var q = document.querySelector("#homeSearch input");
+    if (q && window.VP.superSearch) window.VP.superSearch(q, data);
 
     // Re-armar los observers para el contenido recién renderizado.
     if (window.VPanim) window.VPanim.arm();

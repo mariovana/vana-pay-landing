@@ -93,6 +93,10 @@
       render();
     });
 
+    // Super search: sugerencias + resultado prominente de vana pay chat
+    // (el grid de abajo sigue filtrando en vivo, como siempre).
+    if (window.VP.superSearch) window.VP.superSearch($q, data);
+
     render();
   });
 })();
