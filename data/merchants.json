@@ -46,7 +46,7 @@
   {
    "slug": "adoc",
    "name": "Adoc",
-   "photo": "assets/img/photos/adoc.jpg",
+   "photo": "assets/img/photos/adoc.png",
    "logo": "assets/img/merchants/adoc.avif",
    "categories": [
     "Zapatos"
@@ -525,7 +525,7 @@
   {
    "slug": "cemaco",
    "name": "Cemaco",
-   "photo": null,
+   "photo": "assets/img/photos/cemaco.webp",
    "logo": "assets/img/merchants/cemaco.avif",
    "categories": [
     "Electrónicos"
@@ -1162,7 +1162,7 @@
   {
    "slug": "ishop",
    "name": "iShop",
-   "photo": null,
+   "photo": "assets/img/photos/ishop.png",
    "logo": "assets/img/merchants/ishop.avif",
    "categories": [
     "Electrónicos"
@@ -1263,7 +1263,7 @@
   {
    "slug": "kemik",
    "name": "Kemik",
-   "photo": "assets/img/photos/kemik.jpg",
+   "photo": "assets/img/photos/kemik.png",
    "logo": "assets/img/merchants/kemik.avif",
    "categories": [
     "Electrónicos"
@@ -1863,7 +1863,7 @@
   {
    "slug": "payless",
    "name": "Payless",
-   "photo": null,
+   "photo": "assets/img/photos/payless.webp",
    "logo": "assets/img/merchants/payless.avif",
    "categories": [
     "Zapatos"
@@ -2117,7 +2117,7 @@
   {
    "slug": "samsung",
    "name": "Samsung",
-   "photo": null,
+   "photo": "assets/img/photos/samsung.jpg",
    "logo": "assets/img/merchants/samsung.avif",
    "categories": [
     "Electrónicos"
