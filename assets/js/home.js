@@ -17,6 +17,67 @@
     if (el.textContent.trim()) el.textContent = window.VP.money(q.per);
   });
 
+  // Cutouts de producto flotando con parallax (top notch ✨). Vienen de
+  // data/floats.json (build_data los lee de assets/img/floats/). Solo se
+  // inyectan en pantallas anchas — así mobile ni siquiera los descarga.
+  // Hero: 6 curados. Resto: distribuidos por los laterales de toda la
+  // página (≥1440px, donde hay gutter libre junto a la columna de 1120px).
+  var HERO_PICKS = ["tenis-nike", "airpods-pro", "apple-watch",
+    "audifonos-jbl", "bocina-jbl", "tenis-puma-retro"];
+
+  if (window.matchMedia("(min-width:1150px)").matches) {
+    fetch(window.VP.ROOT + "data/floats.json" + window.VP.VQ)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var all = d.floats || [];
+        if (!all.length) return;
+
+        var hero = [];
+        HERO_PICKS.forEach(function (k) {
+          var hit = all.filter(function (s) { return s.indexOf(k) >= 0; })[0];
+          if (hit) hero.push(hit);
+        });
+        all.forEach(function (s) {
+          if (hero.length < 6 && hero.indexOf(s) < 0) hero.push(s);
+        });
+
+        var host = document.getElementById("heroFloats");
+        if (host) {
+          host.innerHTML = hero.map(function (src, i) {
+            return '<img class="float f' + (i + 1) + '" src="' +
+              window.VP.ROOT + src + '" alt="" loading="lazy">';
+          }).join("");
+        }
+
+        // laterales del resto de la página
+        if (!window.matchMedia("(min-width:1440px)").matches) return;
+        var rest = all.filter(function (s) { return hero.indexOf(s) < 0; });
+        var rail = document.createElement("div");
+        rail.className = "page-floats";
+        document.body.appendChild(rail);
+        function layout() {
+          var h = document.body.scrollHeight;
+          var start = window.innerHeight + 200;   // debajo del hero
+          var gap = 780;
+          var n = Math.min(rest.length, Math.max(0, Math.floor((h - start - 600) / gap)));
+          var html = "";
+          for (var i = 0; i < n; i++) {
+            var side = i % 2 ? "right" : "left";
+            var w = 110 + ((i * 37) % 50);        // 110–160px, determinista
+            var rot = ((i * 53) % 24) - 12;       // −12°..12°
+            html += '<img class="pf ' + (i % 2 ? "pf-down" : "pf-up") +
+              '" src="' + window.VP.ROOT + rest[i] + '" alt="" loading="lazy" style="' +
+              side + ":28px;top:" + (start + i * gap) + "px;width:" + w +
+              "px;--rot:" + rot + 'deg">';
+          }
+          rail.innerHTML = html;
+        }
+        // esperar a que los grids dinámicos definan la altura final
+        setTimeout(layout, 600);
+      })
+      .catch(function () {});
+  }
+
   window.VP.fetchData().then(function (data) {
     // Comercios destacados como brand cards (ref. Klarna): el chip muestra
     // la oferta activa del comercio si la tiene.

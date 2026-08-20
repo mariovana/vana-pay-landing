@@ -68,6 +68,7 @@ body{
   background:var(--n0);
   line-height:1.45;
   -webkit-font-smoothing:antialiased;
+  position:relative;  /* ancla del rail absoluto .page-floats */
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -189,6 +190,47 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 }
 .hero-note .ico{flex:none}
 @keyframes mockfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* --------- cutouts de producto flotando con parallax (solo desktop) */
+.hero{position:relative}
+.hero .wrap{position:relative;z-index:1}
+.floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:none}
+.float{
+  position:absolute;width:150px;height:auto;
+  filter:drop-shadow(0 18px 28px rgba(8,107,125,.22));
+}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}50%{transform:translateY(-12px) rotate(var(--rot,0deg))}}
+.f1{--rot:-9deg;left:1.5%;top:12%;width:170px;animation:bob 7s ease-in-out infinite}
+.f2{--rot:7deg;right:1%;bottom:4%;width:190px;animation:bob 8s 1.2s ease-in-out infinite}
+.f3{--rot:-6deg;left:3%;bottom:6%;width:130px;animation:bob 9s .6s ease-in-out infinite}
+.f4{--rot:10deg;right:2.5%;top:6%;width:120px;animation:bob 7.5s 1.8s ease-in-out infinite}
+.f5{--rot:-4deg;left:24%;bottom:0;width:100px;animation:bob 8.5s .3s ease-in-out infinite}
+.f6{--rot:5deg;right:22%;top:2%;width:90px;animation:bob 9.5s 2.2s ease-in-out infinite}
+.no-anim .float{animation:none}
+
+/* laterales de toda la página (≥1440px): rail absoluto sobre el body */
+.page-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.pf{position:absolute;filter:drop-shadow(0 16px 26px rgba(54,64,73,.18));transform:rotate(var(--rot,0deg))}
+@supports (animation-timeline: view()){
+  html:not(.no-anim) .pf-up{animation:drift-up linear both;animation-timeline:view()}
+  html:not(.no-anim) .pf-down{animation:drift-down linear both;animation-timeline:view()}
+}
+
+@media (min-width:1150px){
+  .floats{display:block}
+  @supports (animation-timeline: view()){
+    html:not(.no-anim) .f1,html:not(.no-anim) .f4,html:not(.no-anim) .f5{
+      animation:bob 8s ease-in-out infinite, drift-up linear both;
+      animation-timeline:auto, view();
+      animation-range:normal, entry 0% exit 100%;
+    }
+    html:not(.no-anim) .f2,html:not(.no-anim) .f3,html:not(.no-anim) .f6{
+      animation:bob 9s 1s ease-in-out infinite, drift-down linear both;
+      animation-timeline:auto, view();
+      animation-range:normal, entry 0% exit 100%;
+    }
+  }
+}
 
 /* mock de checkout: la compra, vana pay seleccionado y los paguitos */
 .mock{
