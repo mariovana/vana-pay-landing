@@ -196,6 +196,17 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 }
 .hero-grid{display:grid;gap:36px}
 .hero-copy{text-align:center}
+/* mobile: hero descargado — sin eyebrow (repite el H1), un solo botón
+   protagonista y el secundario como link, mock sin la opción de tarjeta */
+@media (max-width:719px){
+  .hero-copy .eyebrow{display:none}
+  .hero-ctas .btn-secondary{
+    background:none;border:0;color:var(--brand-strong);
+    min-height:44px;padding:6px;box-shadow:none;
+  }
+  .mock{padding:18px}
+  .hero .mock-pay-off{display:none}
+}
 .hero-copy .lead{margin-top:16px;max-width:26em;margin-inline:auto}
 .hero-ctas{display:flex;flex-direction:column;gap:12px;margin-top:26px}
 /* inline-flex: se encoge al contenido y el text-align del padre lo centra
