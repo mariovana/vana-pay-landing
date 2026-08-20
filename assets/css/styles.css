@@ -41,6 +41,7 @@
   --accent:#F7AE4F;
   --accent-strong:#DB8A1E;
   --accent-soft:rgba(247,174,79,.18);
+  --heading:#22809E;  /* teal profundo on-brand para los H1 */
 
   /* neutrales del vana Design System */
   --n0:#FFFFFF; --n10:#F6F8FB; --n30:#E2E6E9; --n50:#C6CCD3;
@@ -82,7 +83,7 @@ ul{list-style:none}
 
 /* --------------------------------------------------- tipografía
    Display grande, línea apretada y secciones centradas (ref. Klarna). */
-h1{font-weight:900;font-size:clamp(2.5rem,10.5vw,4.4rem);line-height:1.0;letter-spacing:-.025em}
+h1{font-weight:900;font-size:clamp(2.5rem,10.5vw,4.4rem);line-height:1.0;letter-spacing:-.025em;color:var(--heading)}
 /* hero: primera línea extra grande y chunky; la segunda es el remate,
    más pequeña pero mismo peso Black para no perder impacto */
 .h1-xl{display:block;font-size:1.22em;letter-spacing:-.032em}
