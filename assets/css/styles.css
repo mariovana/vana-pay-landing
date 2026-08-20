@@ -33,13 +33,14 @@
   --brand-10:#E7F7FA;
   --vana:#4F7BFF;
 
-  /* acento cálido complementario del teal — el naranja de la paleta
-     oficial de vana pay (case deck). NO usar morado: es el acento
-     reservado de vana shop. Se usa con moderación: palabra clave del
-     hero, highlights de stats y todo lo de ofertas/descuentos. */
-  --accent:#F2994A;
-  --accent-strong:#DD7A22;
-  --accent-soft:rgba(242,153,74,.16);
+  /* paleta de marketing (flyers 2026-08): aqua claro de fondos, cyan
+     brillante para gradientes teal y ámbar como acento cálido. NO usar
+     morado (reservado de vana shop) ni bloques navy oscuros. */
+  --cyan:#18CAE7;
+  --aqua:#CFF0F5;
+  --accent:#F7AE4F;
+  --accent-strong:#DB8A1E;
+  --accent-soft:rgba(247,174,79,.18);
 
   /* neutrales del vana Design System */
   --n0:#FFFFFF; --n10:#F6F8FB; --n30:#E2E6E9; --n50:#C6CCD3;
@@ -270,26 +271,38 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .step h3{margin-bottom:6px}
 .step p{color:var(--n80);font-size:.98rem}
 
-/* --------------------------------------------- widget de paguitos */
+/* --------------------------------------------- widget de paguitos
+   Ticket teal estilo cupón de marketing: gradiente cyan→teal, tarjeta
+   interior con borde punteado blanco (como el cupón Q50) y deco flotante. */
 .pagui{
-  background:var(--ink);color:#fff;border-radius:var(--r-lg);
-  padding:28px 22px;
+  background:
+    radial-gradient(420px 300px at 90% 0%, rgba(255,255,255,.22), transparent 60%),
+    linear-gradient(140deg,var(--cyan) 0%,var(--brand) 55%,var(--brand-strong) 100%);
+  color:#fff;border-radius:var(--r-lg);
+  padding:28px 22px;position:relative;overflow:hidden;
+}
+.pagui::after{ /* deco: chip ámbar y esfera aqua, como en los flyers */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle 9px at 91% 16%, var(--accent) 98%, transparent),
+    radial-gradient(circle 6px at 6% 84%, rgba(255,255,255,.75) 98%, transparent),
+    radial-gradient(circle 12px at 96% 78%, rgba(255,255,255,.35) 98%, transparent);
 }
 .pagui h2{color:#fff}
-.pagui-sub{color:var(--n50);margin-top:6px}
+.pagui-sub{color:rgba(255,255,255,.88);margin-top:6px}
 .pagui-card{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
-  border-radius:var(--r-card);padding:18px;margin-top:20px;
+  background:rgba(255,255,255,.14);border:2px dashed rgba(255,255,255,.65);
+  border-radius:var(--r-card);padding:18px;margin-top:20px;position:relative;z-index:1;
 }
-.pagui-buy{display:flex;align-items:baseline;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.14)}
-.pagui-buy .lbl{color:var(--n50);font-size:.95rem}
+.pagui-buy{display:flex;align-items:baseline;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.3)}
+.pagui-buy .lbl{color:rgba(255,255,255,.85);font-size:.95rem}
 .pagui-buy .val{font-weight:900;font-size:1.5rem;margin-left:auto}
-.pagui-line{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.12);font-size:.98rem}
+.pagui-line{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.3);font-size:.98rem}
 .pagui-line:last-of-type{border-bottom:0}
-.pagui-line .when{color:var(--n50)}
-.pagui-line .amt{margin-left:auto;font-weight:700}
-.pagui-line.paid .amt{color:#5EE39A}
-.pagui-note{margin-top:14px;font-size:.88rem;color:var(--n50);line-height:1.5}
+.pagui-line .when{color:rgba(255,255,255,.85)}
+.pagui-line .amt{margin-left:auto;font-weight:900}
+.pagui-line.paid .amt{color:#FFE3B0}
+.pagui-note{margin-top:14px;font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.5}
 .pagui-note b{color:#fff}
 
 /* ------------------------------------------------ formas de comprar */
@@ -482,48 +495,54 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .stat-n b{color:var(--accent-strong)}
 .stat-l{color:var(--n70);margin-top:6px;font-size:.95rem}
 
-/* ------------------------- beneficios: bloque azul profundo (familia
-   del azul vana #4F7BFF) con aurora animada; la lista se enciende al
-   hacer scroll (anim.js marca .lit al ítem centrado en viewport) */
+/* ------------------------- beneficios: banda aqua luminosa (paleta de
+   marketing) con aurora suave; la lista se enciende al hacer scroll con
+   gradiente teal (anim.js marca .lit al ítem centrado en viewport) */
 .wl-band{
   position:relative;overflow:hidden;
   background:
-    radial-gradient(640px 420px at 88% 0%, rgba(79,123,255,.32), transparent 62%),
-    radial-gradient(520px 380px at 6% 100%, rgba(15,179,206,.20), transparent 60%),
-    linear-gradient(165deg,#1A2A66 0%,#0D1735 100%);
+    radial-gradient(640px 420px at 88% 0%, rgba(24,202,231,.22), transparent 62%),
+    radial-gradient(520px 380px at 6% 100%, rgba(247,174,79,.14), transparent 60%),
+    linear-gradient(170deg,#FFFFFF 0%,var(--aqua) 60%,#E9F8FB 100%);
 }
 .wl-band::before{
   content:"";position:absolute;inset:-45%;pointer-events:none;
   background:conic-gradient(from 0deg,
-    transparent, rgba(79,123,255,.20) 12%, transparent 32%,
-    rgba(94,227,154,.08) 48%, transparent 62%,
-    rgba(15,179,206,.16) 80%, transparent);
+    transparent, rgba(24,202,231,.14) 12%, transparent 32%,
+    rgba(247,174,79,.08) 48%, transparent 62%,
+    rgba(15,179,206,.12) 80%, transparent);
   animation:aurora 22s linear infinite;
 }
 @keyframes aurora{to{transform:rotate(360deg)}}
 .no-anim .wl-band::before{animation:none}
 .wl-band .wrap{position:relative;z-index:1}
-.wl-band .section-head h2{color:#fff}
+.wl-band .section-head h2{color:var(--ink)}
 
 .wl{text-align:center;display:grid;gap:52px;max-width:760px;margin-inline:auto;padding-block:16px}
+/* el gradiente teal vive siempre detrás del texto (background-clip); el
+   color sólido pálido lo tapa cuando el ítem está inactivo y al pasar a
+   transparent el gradiente aparece con transición suave */
 .wl-item h3{
   font-weight:900;font-size:clamp(2.1rem,8.5vw,3.3rem);line-height:1.02;
-  letter-spacing:-.02em;color:rgba(255,255,255,.24);
+  letter-spacing:-.02em;
+  background:linear-gradient(120deg,var(--brand-strong),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;
+  color:rgba(140,196,208,.55);
   transform:scale(.96);
   transition:color .45s ease, transform .6s cubic-bezier(.16,1,.3,1),
-    text-shadow .45s ease;
+    filter .45s ease;
 }
 .wl-item p{
-  color:#B9C7F5;max-width:26em;margin:0 auto;font-size:1.02rem;
+  color:var(--n80);max-width:26em;margin:0 auto;font-size:1.02rem;
   max-height:0;opacity:0;overflow:hidden;
   transition:max-height .45s ease,opacity .45s ease,margin-top .45s ease;
 }
 .wl-item.lit h3{
-  color:#fff;transform:scale(1.05);
-  text-shadow:0 0 36px rgba(122,162,255,.85), 0 0 80px rgba(79,123,255,.45);
+  color:transparent;transform:scale(1.05);
+  filter:drop-shadow(0 6px 24px rgba(24,202,231,.45));
 }
 .wl-item.lit p{max-height:120px;opacity:1;margin-top:14px}
-.no-anim .wl-item h3{color:#fff;transform:none}
+.no-anim .wl-item h3{color:transparent;transform:none}
 .no-anim .wl-item p{max-height:none;opacity:1;margin-top:14px}
 
 /* ------------------- brand cards (ref. Klarna "brands you love") */
