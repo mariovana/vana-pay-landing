@@ -204,13 +204,14 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .hero .wrap{position:relative;z-index:1}
 .page-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:30}
 .pf{position:absolute;filter:drop-shadow(0 16px 26px rgba(54,64,73,.18));transform:rotate(var(--rot,0deg))}
-/* al scrollear: suben con motion blur — entran borrosos desde abajo,
-   se enfocan al centro del viewport y se desenfocan al salir arriba */
+/* Suben ligados al scroll (view timeline). El BLUR es por MOVIMIENTO,
+   no por posición: en reposo siempre nítidos; mientras scrolleas home.js
+   pone .scrolling en el rail y se desenfocan, al detenerte se re-enfocan. */
 @keyframes float-rise{
-  0%{translate:0 120px;opacity:0;filter:blur(9px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
-  22%{opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
-  68%{opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
-  100%{translate:0 -140px;opacity:.5;filter:blur(10px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+  0%{translate:0 120px;opacity:0}
+  14%{opacity:1}
+  86%{opacity:1}
+  100%{translate:0 -140px;opacity:.55}
 }
 @supports (animation-timeline: view()){
   html:not(.no-anim) .pf{
@@ -218,6 +219,9 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
     animation-timeline:view();
   }
 }
+.pf{transition:filter .35s ease}
+.page-floats.scrolling .pf{filter:blur(6px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+.no-anim .page-floats.scrolling .pf{filter:drop-shadow(0 16px 26px rgba(54,64,73,.18))}
 
 /* mock de checkout: la compra, vana pay seleccionado y los paguitos */
 .mock{
