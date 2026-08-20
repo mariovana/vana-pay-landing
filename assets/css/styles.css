@@ -203,9 +203,19 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .hero .wrap{position:relative;z-index:1}
 .page-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:30}
 .pf{position:absolute;filter:drop-shadow(0 16px 26px rgba(54,64,73,.18));transform:rotate(var(--rot,0deg))}
+/* al scrollear: suben con motion blur — entran borrosos desde abajo,
+   se enfocan al centro del viewport y se desenfocan al salir arriba */
+@keyframes float-rise{
+  0%{translate:0 120px;opacity:0;filter:blur(9px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+  22%{opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+  68%{opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+  100%{translate:0 -140px;opacity:.5;filter:blur(10px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+}
 @supports (animation-timeline: view()){
-  html:not(.no-anim) .pf-up{animation:drift-up linear both;animation-timeline:view()}
-  html:not(.no-anim) .pf-down{animation:drift-down linear both;animation-timeline:view()}
+  html:not(.no-anim) .pf{
+    animation:float-rise linear both;
+    animation-timeline:view();
+  }
 }
 
 /* mock de checkout: la compra, vana pay seleccionado y los paguitos */
@@ -472,22 +482,49 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .stat-n b{color:var(--accent-strong)}
 .stat-l{color:var(--n70);margin-top:6px;font-size:.95rem}
 
-/* ------------------------- beneficios: lista que se enciende al
+/* ------------------------- beneficios: bloque azul profundo (familia
+   del azul vana #4F7BFF) con aurora animada; la lista se enciende al
    hacer scroll (anim.js marca .lit al ítem centrado en viewport) */
+.wl-band{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(640px 420px at 88% 0%, rgba(79,123,255,.32), transparent 62%),
+    radial-gradient(520px 380px at 6% 100%, rgba(15,179,206,.20), transparent 60%),
+    linear-gradient(165deg,#1A2A66 0%,#0D1735 100%);
+}
+.wl-band::before{
+  content:"";position:absolute;inset:-45%;pointer-events:none;
+  background:conic-gradient(from 0deg,
+    transparent, rgba(79,123,255,.20) 12%, transparent 32%,
+    rgba(94,227,154,.08) 48%, transparent 62%,
+    rgba(15,179,206,.16) 80%, transparent);
+  animation:aurora 22s linear infinite;
+}
+@keyframes aurora{to{transform:rotate(360deg)}}
+.no-anim .wl-band::before{animation:none}
+.wl-band .wrap{position:relative;z-index:1}
+.wl-band .section-head h2{color:#fff}
+
 .wl{text-align:center;display:grid;gap:52px;max-width:760px;margin-inline:auto;padding-block:16px}
 .wl-item h3{
   font-weight:900;font-size:clamp(2.1rem,8.5vw,3.3rem);line-height:1.02;
-  letter-spacing:-.02em;color:var(--n50);transition:color .4s ease;
+  letter-spacing:-.02em;color:rgba(255,255,255,.24);
+  transform:scale(.96);
+  transition:color .45s ease, transform .6s cubic-bezier(.16,1,.3,1),
+    text-shadow .45s ease;
 }
 .wl-item p{
-  color:var(--n80);max-width:26em;margin:0 auto;font-size:1.02rem;
+  color:#B9C7F5;max-width:26em;margin:0 auto;font-size:1.02rem;
   max-height:0;opacity:0;overflow:hidden;
   transition:max-height .45s ease,opacity .45s ease,margin-top .45s ease;
 }
-.wl-item.lit h3{color:var(--ink)}
-.wl-item.lit p{max-height:120px;opacity:1;margin-top:12px}
-.no-anim .wl-item h3{color:var(--ink)}
-.no-anim .wl-item p{max-height:none;opacity:1;margin-top:12px}
+.wl-item.lit h3{
+  color:#fff;transform:scale(1.05);
+  text-shadow:0 0 36px rgba(122,162,255,.85), 0 0 80px rgba(79,123,255,.45);
+}
+.wl-item.lit p{max-height:120px;opacity:1;margin-top:14px}
+.no-anim .wl-item h3{color:#fff;transform:none}
+.no-anim .wl-item p{max-height:none;opacity:1;margin-top:14px}
 
 /* ------------------- brand cards (ref. Klarna "brands you love") */
 .brandrow{
@@ -564,7 +601,7 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .q4{background:var(--t4)} .q5{background:var(--t5)}
 
 /* ------------------------------------------------------------ FAQ */
-.faq{max-width:720px}
+.faq{max-width:720px;margin-inline:auto}
 .faq details{border-bottom:1px solid var(--n30)}
 .faq summary{
   list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;
