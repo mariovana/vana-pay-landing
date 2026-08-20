@@ -318,7 +318,9 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   padding:12px 20px 12px 48px;font:inherit;background:var(--n0);color:var(--ink);
 }
 .searchrow input:focus{outline:none;border-color:var(--brand)}
-.searchrow .ico{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--n60)}
+/* solo la lupa del input (hijo directo) — el dropdown vive dentro del
+   searchrow y sus íconos NO deben heredar este posicionamiento */
+.searchrow > .ico{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--n60)}
 /* super search: dropdown de sugerencias (comercios + vana pay chat) */
 .ss-drop{
   position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:60;
@@ -326,14 +328,37 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   box-shadow:0 20px 56px rgba(54,64,73,.18);overflow:hidden;display:none;
 }
 .ss-drop.open{display:block}
-.ss-chat{
-  display:flex;align-items:center;gap:12px;padding:16px;
-  background:#E4F8EC;color:#116B36;font-weight:700;font-size:.98rem;
+/* resultado prominente de chat: borde de gradiente animado estilo neón.
+   El ángulo del conic-gradient se anima vía @property; sin soporte queda
+   un borde de gradiente estático (fallback correcto). */
+@property --ssang{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes ss-spin{to{--ssang:360deg}}
+@keyframes ss-glow{
+  0%,100%{box-shadow:0 0 14px rgba(37,211,102,.30),0 0 3px rgba(37,211,102,.45)}
+  50%{box-shadow:0 0 26px rgba(37,211,102,.55),0 0 5px rgba(94,227,154,.6)}
 }
-.ss-chat:hover{background:#D6F3E1}
+.ss-chat{
+  display:flex;align-items:center;gap:12px;
+  margin:10px;padding:14px 16px;border-radius:16px;
+  color:#0C5229;font-weight:700;font-size:.98rem;
+  border:2px solid transparent;
+  background:
+    linear-gradient(#EDFBF2,#DCF6E6) padding-box,
+    conic-gradient(from var(--ssang),
+      #25D366, #A9F5C9, #5EE39A, #0FB3CE, #A9F5C9, #25D366) border-box;
+  animation:ss-spin 2.8s linear infinite, ss-glow 2.8s ease-in-out infinite;
+}
+.ss-chat:hover{
+  background:
+    linear-gradient(#E2F8EA,#CFF2DD) padding-box,
+    conic-gradient(from var(--ssang),
+      #25D366, #A9F5C9, #5EE39A, #0FB3CE, #A9F5C9, #25D366) border-box;
+}
+.no-anim .ss-chat{animation:none;box-shadow:0 0 14px rgba(37,211,102,.3)}
 .ss-chat .ico{flex:none;width:1.4em;height:1.4em;color:#1B9E4B}
 .ss-chat b{color:#0C5229}
-.ss-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--n10)}
+.ss-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--n30)}
+.ss-chat + .ss-item{border-top:0}
 .ss-item:hover{background:var(--n10)}
 .ss-item img{width:38px;height:38px;border-radius:10px;background:var(--n10);object-fit:contain;padding:4px;flex:none}
 .ss-item .n{font-weight:700;font-size:.95rem}
