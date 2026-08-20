@@ -117,10 +117,14 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
    componer con los reveals y hovers sin pisarse. */
 @keyframes drift-up{from{translate:0 38px}to{translate:0 -38px}}
 @keyframes drift-down{from{translate:0 -26px}to{translate:0 26px}}
-/* versión sutil para cards en grid: amplitud corta para que las filas
-   nunca se coman el gap vertical entre ellas */
-@keyframes drift-up-sm{from{translate:0 10px}to{translate:0 -10px}}
-@keyframes drift-down-sm{from{translate:0 -8px}to{translate:0 8px}}
+/* versiones con amplitud calibrada al gap de cada grid, para que las
+   filas nunca se coman el espacio vertical entre ellas:
+   - md (brand cards, gap 48px): cierre máximo entre filas = 40px
+   - sm (quotes, gap 12px): cierre máximo = 8px */
+@keyframes drift-up-md{from{translate:0 22px}to{translate:0 -22px}}
+@keyframes drift-down-md{from{translate:0 -18px}to{translate:0 18px}}
+@keyframes drift-up-sm{from{translate:0 4px}to{translate:0 -4px}}
+@keyframes drift-down-sm{from{translate:0 -4px}to{translate:0 4px}}
 @keyframes zoom-settle{from{scale:.94}to{scale:1}}
 @media (min-width:960px){
   @supports (animation-timeline: view()){
@@ -134,11 +138,15 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
       animation-timeline:view();
       animation-range:entry 0% entry 90%;
     }
-    html:not(.no-anim) .brandcard:nth-child(odd),
+    html:not(.no-anim) .brandcard:nth-child(odd){
+      animation:drift-up-md linear both;animation-timeline:view();
+    }
+    html:not(.no-anim) .brandcard:nth-child(even){
+      animation:drift-down-md linear both;animation-timeline:view();
+    }
     html:not(.no-anim) .quote:nth-child(odd){
       animation:drift-up-sm linear both;animation-timeline:view();
     }
-    html:not(.no-anim) .brandcard:nth-child(even),
     html:not(.no-anim) .quote:nth-child(even){
       animation:drift-down-sm linear both;animation-timeline:view();
     }
@@ -208,19 +216,21 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .hero .wrap{position:relative;z-index:1}
 .page-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:30}
 .pf{position:absolute;filter:drop-shadow(0 16px 26px rgba(54,64,73,.18));transform:rotate(var(--rot,0deg))}
-/* Parallax de disolución (scroll-driven): cada float EMPIEZA nítido y,
-   conforme scrolleas, sube, se desenfoca y se desvanece hacia arriba.
-   El blur vive solo en la fase de salida (60%→100% del view timeline),
-   así en reposo y al entrar siempre se ven claros. */
-@keyframes float-rise{
-  0%{translate:0 60px;opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
-  60%{translate:0 -30px;opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
-  100%{translate:0 -170px;opacity:0;filter:blur(11px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+/* Parallax de disolución en DOS animaciones con rangos distintos:
+   - float-rise: la subida parallax durante todo el recorrido.
+   - float-dissolve: blur + fade SOLO en el rango `exit` — es decir,
+     únicamente mientras el elemento cruza el borde superior. Dentro del
+     viewport (hero incluido) siempre se ven nítidos. */
+@keyframes float-rise{from{translate:0 50px}to{translate:0 -90px}}
+@keyframes float-dissolve{
+  from{opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+  to{opacity:0;filter:blur(10px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
 }
 @supports (animation-timeline: view()){
   html:not(.no-anim) .pf{
-    animation:float-rise linear both;
-    animation-timeline:view();
+    animation:float-rise linear both, float-dissolve linear both;
+    animation-timeline:view(), view();
+    animation-range:normal, exit 0% exit 100%;
   }
 }
 
@@ -340,17 +350,23 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .bubble + .bubble{margin-top:8px}
 .way-mock .mini-pay{display:flex;align-items:center;gap:8px;background:var(--n0);border:2px solid var(--brand);border-radius:10px;padding:8px 10px;font-weight:700;font-size:.88rem}
 .way-mock .mini-pay img{height:14px}
-/* mock del link de pago (En tienda): recibo con QR, NO un chat */
+/* mock del link de pago (En tienda): recibo vertical, NO un chat.
+   Layout en columna para que no se aplaste en la celda angosta que le
+   toca dentro de la way card en desktop. */
 .mini-link{
-  display:flex;align-items:center;gap:12px;background:var(--n0);
-  border:1.5px solid var(--n30);border-radius:12px;padding:10px 12px;
-  box-shadow:0 1px 2px rgba(54,64,73,.06);
+  display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  background:var(--n0);border:1.5px solid var(--n30);border-radius:14px;
+  padding:14px;box-shadow:0 1px 2px rgba(54,64,73,.06);
 }
-.mini-link-logo{height:15px;width:auto;flex:none}
-.mini-link b{display:block;font-size:.9rem;line-height:1.2}
-.mini-link .sub{color:var(--n70);font-size:.8rem}
+.mini-link-top{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;margin-bottom:8px;gap:10px;
+}
+.mini-link-logo{height:14px;width:auto;flex:none}
+.mini-link b{font-size:.95rem;line-height:1.2}
+.mini-link .sub{color:var(--n70);font-size:.82rem}
 .mini-link .mini-go{
-  margin-left:auto;background:var(--brand);color:#fff;font-weight:700;
+  background:var(--brand);color:#fff;font-weight:700;
   border-radius:var(--r-pill);padding:6px 14px;font-size:.82rem;flex:none;
 }
 
@@ -528,7 +544,11 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
    color sólido pálido lo tapa cuando el ítem está inactivo y al pasar a
    transparent el gradiente aparece con transición suave */
 .wl-item h3{
-  font-weight:900;font-size:clamp(2.1rem,8.5vw,3.3rem);line-height:1.02;
+  font-weight:900;font-size:clamp(2.1rem,8.5vw,3.3rem);line-height:1.08;
+  /* padding-block: con background-clip:text el gradiente solo pinta
+     dentro de la caja — sin este aire los descendentes (j, g, y) salen
+     cortados */
+  padding-block:.04em .12em;
   letter-spacing:-.02em;
   background:linear-gradient(120deg,var(--brand-strong),var(--cyan));
   -webkit-background-clip:text;background-clip:text;
@@ -718,7 +738,7 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 @media (min-width:720px){
   .section{padding-block:96px}
   .stats{grid-template-columns:repeat(4,1fr)}
-  .brandrow{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);grid-auto-columns:unset;overflow:visible;gap:28px 14px}
+  .brandrow{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);grid-auto-columns:unset;overflow:visible;gap:48px 14px}
   .mgrid{grid-template-columns:repeat(3,1fr)}
   .bens{grid-template-columns:repeat(4,1fr)}
   .quotes{grid-template-columns:repeat(2,1fr)}
