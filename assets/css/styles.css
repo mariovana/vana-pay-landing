@@ -81,6 +81,8 @@ ul{list-style:none}
 /* --------------------------------------------------- tipografía
    Display grande, línea apretada y secciones centradas (ref. Klarna). */
 h1{font-weight:900;font-size:clamp(2.5rem,10.5vw,4.4rem);line-height:1.0;letter-spacing:-.025em}
+/* primera línea del hero: extra grande y chunky (jerarquía Klarna) */
+.h1-xl{display:block;font-size:1.22em;letter-spacing:-.032em}
 .hl{font-style:normal;color:var(--accent-strong)}
 h2{font-weight:900;font-size:clamp(1.9rem,6.8vw,2.9rem);line-height:1.04;letter-spacing:-.02em}
 h3{font-weight:700;font-size:1.15rem;line-height:1.25}
