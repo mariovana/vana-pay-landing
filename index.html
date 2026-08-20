@@ -9,13 +9,13 @@
   <meta property="og:description" content="Una nueva forma de pagar tus compras: divide el pago en paguitos quincenales, sin tarjeta de crédito.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=7">
-  <script src="assets/js/config.js?v=7"></script>
-  <script src="assets/js/analytics.js?v=7" defer></script>
-  <script src="assets/js/cards.js?v=7" defer></script>
-  <script src="assets/js/anim.js?v=7" defer></script>
-  <script src="assets/js/home.js?v=7" defer></script>
-  <script src="assets/js/embed-height.js?v=7" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=9">
+  <script src="assets/js/config.js?v=9"></script>
+  <script src="assets/js/analytics.js?v=9" defer></script>
+  <script src="assets/js/cards.js?v=9" defer></script>
+  <script src="assets/js/anim.js?v=9" defer></script>
+  <script src="assets/js/home.js?v=9" defer></script>
+  <script src="assets/js/embed-height.js?v=9" defer></script>
 </head>
 <body>
 
@@ -53,7 +53,7 @@
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <span class="eyebrow reveal">Una nueva forma de pagar</span>
-      <h1 class="reveal">Compra hoy.<br>Paga en paguitos.</h1>
+      <h1 class="reveal">Compra hoy.<br>Paga en <em class="hl">paguitos</em>.</h1>
       <p class="lead reveal d1">Compra en tus tiendas favoritas y divide el pago en paguitos quincenales. Sin tarjeta de crédito.</p>
       <div class="hero-ctas reveal d2">
         <a class="btn btn-primary" href="https://pay.vana.gt/registro">Crear mi cuenta</a>
@@ -154,25 +154,31 @@
 
 <!-- ============================================== formas de comprar -->
 <section class="section section-alt" id="formas">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Compra como prefieras</h2>
-      <p>vana pay funciona en la tienda, en línea y por chat.</p>
+  <div class="wrap ways-split">
+    <div class="ways-side">
+      <div class="section-head left reveal">
+        <h2>Compra como prefieras</h2>
+        <p>vana pay funciona en la tienda, en línea y por chat.</p>
+      </div>
     </div>
     <div class="ways">
       <div class="way reveal">
-        <span class="way-tag tienda">En tienda</span>
-        <h3>Di "quiero pagar con vana pay"</h3>
-        <p>Visita un comercio afiliado y pídelo en caja. Completas el pago desde tu teléfono.</p>
+        <div class="way-copy">
+          <span class="way-tag tienda">En tienda</span>
+          <h3>Di "quiero pagar con vana pay"</h3>
+          <p>Visita un comercio afiliado y pídelo en caja. Completas el pago desde tu teléfono.</p>
+        </div>
         <div class="way-mock">
           <div class="bubble me">Quiero pagar con vana pay</div>
           <div class="bubble">¡Claro! Te enviamos tu link de pago 📲</div>
         </div>
       </div>
       <div class="way reveal d1">
-        <span class="way-tag online">En línea</span>
-        <h3>Elígelo al pagar tu carrito</h3>
-        <p>Compra en la tienda en línea del comercio y selecciona vana pay como método de pago.</p>
+        <div class="way-copy">
+          <span class="way-tag online">En línea</span>
+          <h3>Elígelo al pagar tu carrito</h3>
+          <p>Compra en la tienda en línea del comercio y selecciona vana pay como método de pago.</p>
+        </div>
         <div class="way-mock">
           <div class="mini-pay">
             <span class="mock-radio" style="border-color:var(--brand);background:var(--brand)"></span>
@@ -182,16 +188,18 @@
         </div>
       </div>
       <div class="way reveal d2">
-        <span class="way-tag chat">vana pay chat</span>
-        <h3>Te ayudamos a comprar</h3>
-        <p>¿No sabes por dónde empezar? Escríbenos y te ayudamos a comprar en el comercio que quieras.</p>
+        <div class="way-copy">
+          <span class="way-tag chat">vana pay chat</span>
+          <h3>Te ayudamos a comprar</h3>
+          <p>¿No sabes por dónde empezar? Escríbenos y te ayudamos a comprar en el comercio que quieras.</p>
+          <a class="btn btn-chat btn-sm" data-wa-context="ways" href="#" id="waysChat">
+            <svg class="ico"><use href="#i-wa"/></svg> Escribir a vana pay chat
+          </a>
+        </div>
         <div class="way-mock">
           <div class="bubble me">Quiero comprar en Adidas</div>
           <div class="bubble">Te ayudamos a elegir y pagar en paguitos</div>
         </div>
-        <a class="btn btn-chat btn-sm" data-wa-context="ways" href="#" id="waysChat">
-          <svg class="ico"><use href="#i-wa"/></svg> Escribir a vana pay chat
-        </a>
       </div>
     </div>
   </div>

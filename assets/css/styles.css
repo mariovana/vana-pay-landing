@@ -33,6 +33,14 @@
   --brand-10:#E7F7FA;
   --vana:#4F7BFF;
 
+  /* acento cálido complementario del teal — el naranja de la paleta
+     oficial de vana pay (case deck). NO usar morado: es el acento
+     reservado de vana shop. Se usa con moderación: palabra clave del
+     hero, highlights de stats y todo lo de ofertas/descuentos. */
+  --accent:#F2994A;
+  --accent-strong:#DD7A22;
+  --accent-soft:rgba(242,153,74,.16);
+
   /* neutrales del vana Design System */
   --n0:#FFFFFF; --n10:#F6F8FB; --n30:#E2E6E9; --n50:#C6CCD3;
   --n60:#9BA6B1; --n70:#708090; --n80:#56636E; --n100:#364049;
@@ -73,6 +81,7 @@ ul{list-style:none}
 /* --------------------------------------------------- tipografía
    Display grande, línea apretada y secciones centradas (ref. Klarna). */
 h1{font-weight:900;font-size:clamp(2.5rem,10.5vw,4.4rem);line-height:1.0;letter-spacing:-.025em}
+.hl{font-style:normal;color:var(--accent-strong)}
 h2{font-weight:900;font-size:clamp(1.9rem,6.8vw,2.9rem);line-height:1.04;letter-spacing:-.02em}
 h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .lead{font-size:1.12rem;color:var(--n80)}
@@ -95,6 +104,36 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .reveal.d2{transition-delay:.16s}
 .reveal.d3{transition-delay:.24s}
 .no-anim .reveal{opacity:1;transform:none;transition:none}
+
+/* Parallax de scroll en desktop (ref. Klarna), progresivo: CSS
+   scroll-driven animations — los navegadores sin soporte simplemente no
+   lo ven. Usa las propiedades `translate`/`scale` (no `transform`) para
+   componer con los reveals y hovers sin pisarse. */
+@keyframes drift-up{from{translate:0 38px}to{translate:0 -38px}}
+@keyframes drift-down{from{translate:0 -26px}to{translate:0 26px}}
+@keyframes zoom-settle{from{scale:.94}to{scale:1}}
+@media (min-width:960px){
+  @supports (animation-timeline: view()){
+    html:not(.no-anim) .mock{
+      animation:mockfloat 7s ease-in-out infinite, drift-up linear both;
+      animation-timeline:auto, view();
+      animation-range:normal, entry 0% exit 100%;
+    }
+    html:not(.no-anim) .pagui{
+      animation:zoom-settle linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 90%;
+    }
+    html:not(.no-anim) .brandcard:nth-child(odd),
+    html:not(.no-anim) .quote:nth-child(odd){
+      animation:drift-up linear both;animation-timeline:view();
+    }
+    html:not(.no-anim) .brandcard:nth-child(even),
+    html:not(.no-anim) .quote:nth-child(even){
+      animation:drift-down linear both;animation-timeline:view();
+    }
+  }
+}
 
 /* ------------------------------------------------------ botones */
 .btn{
@@ -216,6 +255,7 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-card);
   padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--sh-card);
 }
+.way-copy{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .way-tag{
   align-self:flex-start;font-size:.8rem;font-weight:700;border-radius:var(--r-pill);
   padding:5px 12px;
@@ -291,14 +331,14 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   padding:18px;display:flex;flex-direction:column;gap:8px;
 }
 .ocard-merchant{font-size:.85rem;font-weight:700;color:var(--n70);text-transform:uppercase;letter-spacing:.04em}
-.ocard-amount{font-weight:900;font-size:1.9rem;color:var(--brand-strong);line-height:1}
+.ocard-amount{font-weight:900;font-size:1.9rem;color:var(--accent-strong);line-height:1}
 .ocard-cond{color:var(--n80);font-size:.92rem}
 .ocard .badges{margin-top:auto}
 
 /* --------------------------------------------- stats (ref. Klarna) */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 16px;text-align:center}
 .stat-n{font-weight:900;font-size:clamp(2.1rem,8vw,3.2rem);line-height:1;letter-spacing:-.02em}
-.stat-n b{color:var(--brand-strong)}
+.stat-n b{color:var(--accent-strong)}
 .stat-l{color:var(--n70);margin-top:6px;font-size:.95rem}
 
 /* ------------------------- beneficios: lista que se enciende al
@@ -348,7 +388,7 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .brandcard-media.t4{background:linear-gradient(160deg,#E8F2FF,#D6E7FE)}
 .brandcard-media.t5{background:linear-gradient(160deg,#FBD9D9,#F8C9C9)}
 .brandcard-chip{
-  position:absolute;top:14px;left:14px;background:#CFF5DC;color:#116B36;
+  position:absolute;top:14px;left:14px;background:#FDEBD9;color:var(--accent-strong);
   font-weight:700;font-size:.82rem;border-radius:var(--r-pill);padding:6px 12px;
 }
 .brandcard-chip.soft{background:rgba(255,255,255,.85);color:var(--brand-deep)}
@@ -499,6 +539,13 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   .mhero{padding-block:32px 44px}
 }
 @media (min-width:960px){
+  /* Formas de comprar estilo Klarna: texto fijo mientras las cards pasan */
+  .ways-split{display:grid;grid-template-columns:.9fr 1.4fr;gap:56px;align-items:start}
+  .ways-side .section-head{position:sticky;top:120px;margin-bottom:0}
+  .ways{grid-template-columns:1fr;gap:20px}
+  .way{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding:32px}
+  .way-mock{margin-top:0}
+
   .hdr-nav{display:flex;gap:24px;margin-left:24px}
   .hdr-nav a{font-weight:700;font-size:.95rem;color:var(--n80)}
   .hdr-nav a:hover{color:var(--ink)}
