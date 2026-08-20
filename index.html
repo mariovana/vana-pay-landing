@@ -9,14 +9,14 @@
   <meta property="og:description" content="Una nueva forma de pagar tus compras: divide el pago en paguitos quincenales, sin tarjeta de crédito.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=27">
-  <script src="assets/js/config.js?v=27"></script>
-  <script src="assets/js/analytics.js?v=27" defer></script>
-  <script src="assets/js/cards.js?v=27" defer></script>
-  <script src="assets/js/anim.js?v=27" defer></script>
-  <script src="assets/js/search.js?v=27" defer></script>
-  <script src="assets/js/home.js?v=27" defer></script>
-  <script src="assets/js/embed-height.js?v=27" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=28">
+  <script src="assets/js/config.js?v=28"></script>
+  <script src="assets/js/analytics.js?v=28" defer></script>
+  <script src="assets/js/cards.js?v=28" defer></script>
+  <script src="assets/js/anim.js?v=28" defer></script>
+  <script src="assets/js/search.js?v=28" defer></script>
+  <script src="assets/js/home.js?v=28" defer></script>
+  <script src="assets/js/embed-height.js?v=28" defer></script>
 </head>
 <body>
 
@@ -75,8 +75,9 @@
           <div class="mock-item-name">Tenis Gazelle</div>
           <div class="mock-item-qty">1 par · talla 40</div>
         </div>
-        <span class="mock-item-price">Q1,500</span>
+        <span class="mock-item-price" id="mockPrice">Q1,500</span>
       </div>
+      <input type="range" class="mock-range" id="mockRange" min="100" max="3000" step="50" value="1500" aria-label="Monto de tu compra">
       <p class="mock-label">Método de pago</p>
       <div class="mock-pay">
         <span class="mock-radio"></span>
@@ -87,12 +88,9 @@
         <span class="mock-radio"></span>
         Tarjeta de crédito
       </div>
-      <p class="mock-label">Tus paguitos quincenales</p>
-      <div class="mock-rows">
-        <div class="mock-row paid"><span class="mock-check">✓</span><span class="when">Hoy</span><span class="amt">Q408</span></div>
-        <div class="mock-row"><span class="mock-dot"></span><span class="when">En 15 días</span><span class="amt">Q408</span></div>
-        <div class="mock-row"><span class="mock-dot"></span><span class="when">+ 3 paguitos más</span><span class="amt"></span></div>
-      </div>
+      <p class="mock-label" id="mockPagLabel">Tus paguitos quincenales</p>
+      <div class="mock-rows" id="mockRows"></div>
+      <p class="mock-fine">Estimado de referencia — verás los tuyos al crear tu cuenta.</p>
     </div>
   </div>
 </section>
@@ -119,27 +117,6 @@
         <div class="step-n">3</div>
         <h3>Paga en paguitos</h3>
         <p>Divide tu compra en paguitos quincenales que se cobran automáticamente a tu tarjeta.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================== ejemplo de paguitos -->
-<section class="section" id="paguitos">
-  <div class="wrap">
-    <div class="pagui reveal">
-      <div class="pagui-grid">
-        <div>
-          <h2>Calcula tus paguitos</h2>
-          <p class="pagui-sub">Mueve el monto y mira un estimado. El primer paguito se paga al momento de la compra y los demás se cobran solos a tu tarjeta, cada quincena.</p>
-          <p class="pagui-note">Es un estimado de referencia: al entrar a tu cuenta, conocerás cómo quedan tus paguitos según tu perfil.</p>
-        </div>
-        <div class="pagui-card">
-          <div class="pagui-buy"><span class="lbl">Compra de</span><span class="val" id="calcAmount">Q1,500</span></div>
-          <input type="range" class="calc-range" id="calcRange" min="100" max="3000" step="50" value="1500" aria-label="Monto de la compra">
-          <div class="calc-meta" id="calcMeta">5 paguitos quincenales estimados</div>
-          <div id="calcRows"></div>
-        </div>
       </div>
     </div>
   </div>
