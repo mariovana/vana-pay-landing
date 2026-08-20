@@ -10,12 +10,37 @@
   var banner = document.getElementById("bannerChat");
   if (banner) banner.href = window.VP.chatGenericLink();
 
-  // Los montos del ejemplo salen de VP.paguitos() para que la fórmula del
-  // paguito seguro viva en un solo lugar (los Q del HTML son fallback).
+  // Los montos del mock del hero salen de VP.paguitos() para que la
+  // fórmula del paguito seguro viva en un solo lugar.
   var q = window.VP.paguitos(1500, null); // {n:5, per:408} con fee máximo
-  document.querySelectorAll(".mock-row .amt, .pagui-line .amt").forEach(function (el) {
+  document.querySelectorAll(".mock-row .amt").forEach(function (el) {
     if (el.textContent.trim()) el.textContent = window.VP.money(q.per);
   });
+
+  // Calculadora de paguitos: un ESTIMADO de referencia, no la cotización
+  // final. Usa la misma VP.paguitos() (fee máximo) y la regla real del
+  // producto para el número de paguitos (3 si <Q300, 5 si no).
+  var range = document.getElementById("calcRange");
+  if (range) {
+    var renderCalc = function () {
+      var price = Number(range.value);
+      var est = window.VP.paguitos(price, null);
+      document.getElementById("calcAmount").textContent = window.VP.money(price);
+      document.getElementById("calcMeta").textContent =
+        est.n + " paguitos quincenales estimados";
+      var rows = "";
+      for (var i = 0; i < est.n; i++) {
+        rows +=
+          '<div class="pagui-line' + (i === 0 ? " paid" : "") + '">' +
+          (i === 0 ? '<span class="mock-check">✓</span>' : '<span class="mock-dot"></span>') +
+          '<span class="when">' + (i === 0 ? "Hoy" : "En " + i * 15 + " días") + "</span>" +
+          '<span class="amt">~' + window.VP.money(est.per) + "</span></div>";
+      }
+      document.getElementById("calcRows").innerHTML = rows;
+    };
+    range.addEventListener("input", renderCalc);
+    renderCalc();
+  }
 
   // Cutouts de producto flotando con parallax (data/floats.json, generado
   // por build_data desde assets/img/floats/). Viven ESTRICTAMENTE en los

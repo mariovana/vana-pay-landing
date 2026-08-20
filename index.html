@@ -9,14 +9,14 @@
   <meta property="og:description" content="Una nueva forma de pagar tus compras: divide el pago en paguitos quincenales, sin tarjeta de crédito.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=24">
-  <script src="assets/js/config.js?v=24"></script>
-  <script src="assets/js/analytics.js?v=24" defer></script>
-  <script src="assets/js/cards.js?v=24" defer></script>
-  <script src="assets/js/anim.js?v=24" defer></script>
-  <script src="assets/js/search.js?v=24" defer></script>
-  <script src="assets/js/home.js?v=24" defer></script>
-  <script src="assets/js/embed-height.js?v=24" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=25">
+  <script src="assets/js/config.js?v=25"></script>
+  <script src="assets/js/analytics.js?v=25" defer></script>
+  <script src="assets/js/cards.js?v=25" defer></script>
+  <script src="assets/js/anim.js?v=25" defer></script>
+  <script src="assets/js/search.js?v=25" defer></script>
+  <script src="assets/js/home.js?v=25" defer></script>
+  <script src="assets/js/embed-height.js?v=25" defer></script>
 </head>
 <body>
 
@@ -131,17 +131,15 @@
     <div class="pagui reveal">
       <div class="pagui-grid">
         <div>
-          <h2>Tú eliges en cuántos paguitos</h2>
-          <p class="pagui-sub">3, 5 u 8 paguitos quincenales. El primero se paga al momento de la compra y los demás se cobran solos a tu tarjeta.</p>
-          <p class="pagui-note">Al entrar a tu cuenta, conocerás cómo quedan tus paguitos según tu perfil.</p>
+          <h2>Calcula tus paguitos</h2>
+          <p class="pagui-sub">Mueve el monto y mira un estimado. El primer paguito se paga al momento de la compra y los demás se cobran solos a tu tarjeta, cada quincena.</p>
+          <p class="pagui-note">Es un estimado de referencia: al entrar a tu cuenta, conocerás cómo quedan tus paguitos según tu perfil.</p>
         </div>
         <div class="pagui-card">
-          <div class="pagui-buy"><span class="lbl">Compra de</span><span class="val">Q1,500</span></div>
-          <div class="pagui-line paid"><span class="mock-check">✓</span><span class="when">Hoy</span><span class="amt">Q408</span></div>
-          <div class="pagui-line"><span class="mock-dot"></span><span class="when">En 15 días</span><span class="amt">Q408</span></div>
-          <div class="pagui-line"><span class="mock-dot"></span><span class="when">En 30 días</span><span class="amt">Q408</span></div>
-          <div class="pagui-line"><span class="mock-dot"></span><span class="when">En 45 días</span><span class="amt">Q408</span></div>
-          <div class="pagui-line"><span class="mock-dot"></span><span class="when">En 60 días</span><span class="amt">Q408</span></div>
+          <div class="pagui-buy"><span class="lbl">Compra de</span><span class="val" id="calcAmount">Q1,500</span></div>
+          <input type="range" class="calc-range" id="calcRange" min="100" max="3000" step="50" value="1500" aria-label="Monto de la compra">
+          <div class="calc-meta" id="calcMeta">5 paguitos quincenales estimados</div>
+          <div id="calcRows"></div>
         </div>
       </div>
     </div>
