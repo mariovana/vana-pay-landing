@@ -117,6 +117,10 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
    componer con los reveals y hovers sin pisarse. */
 @keyframes drift-up{from{translate:0 38px}to{translate:0 -38px}}
 @keyframes drift-down{from{translate:0 -26px}to{translate:0 26px}}
+/* versión sutil para cards en grid: amplitud corta para que las filas
+   nunca se coman el gap vertical entre ellas */
+@keyframes drift-up-sm{from{translate:0 10px}to{translate:0 -10px}}
+@keyframes drift-down-sm{from{translate:0 -8px}to{translate:0 8px}}
 @keyframes zoom-settle{from{scale:.94}to{scale:1}}
 @media (min-width:960px){
   @supports (animation-timeline: view()){
@@ -132,11 +136,11 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
     }
     html:not(.no-anim) .brandcard:nth-child(odd),
     html:not(.no-anim) .quote:nth-child(odd){
-      animation:drift-up linear both;animation-timeline:view();
+      animation:drift-up-sm linear both;animation-timeline:view();
     }
     html:not(.no-anim) .brandcard:nth-child(even),
     html:not(.no-anim) .quote:nth-child(even){
-      animation:drift-down linear both;animation-timeline:view();
+      animation:drift-down-sm linear both;animation-timeline:view();
     }
   }
 }
@@ -204,14 +208,14 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .hero .wrap{position:relative;z-index:1}
 .page-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:30}
 .pf{position:absolute;filter:drop-shadow(0 16px 26px rgba(54,64,73,.18));transform:rotate(var(--rot,0deg))}
-/* Suben ligados al scroll (view timeline). El BLUR es por MOVIMIENTO,
-   no por posición: en reposo siempre nítidos; mientras scrolleas home.js
-   pone .scrolling en el rail y se desenfocan, al detenerte se re-enfocan. */
+/* Parallax de disolución (scroll-driven): cada float EMPIEZA nítido y,
+   conforme scrolleas, sube, se desenfoca y se desvanece hacia arriba.
+   El blur vive solo en la fase de salida (60%→100% del view timeline),
+   así en reposo y al entrar siempre se ven claros. */
 @keyframes float-rise{
-  0%{translate:0 120px;opacity:0}
-  14%{opacity:1}
-  86%{opacity:1}
-  100%{translate:0 -140px;opacity:.55}
+  0%{translate:0 60px;opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+  60%{translate:0 -30px;opacity:1;filter:blur(0) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
+  100%{translate:0 -170px;opacity:0;filter:blur(11px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
 }
 @supports (animation-timeline: view()){
   html:not(.no-anim) .pf{
@@ -219,9 +223,6 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
     animation-timeline:view();
   }
 }
-.pf{transition:filter .35s ease}
-.page-floats.scrolling .pf{filter:blur(6px) drop-shadow(0 16px 26px rgba(54,64,73,.18))}
-.no-anim .page-floats.scrolling .pf{filter:drop-shadow(0 16px 26px rgba(54,64,73,.18))}
 
 /* mock de checkout: la compra, vana pay seleccionado y los paguitos */
 .mock{
@@ -717,7 +718,7 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 @media (min-width:720px){
   .section{padding-block:96px}
   .stats{grid-template-columns:repeat(4,1fr)}
-  .brandrow{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);grid-auto-columns:unset;overflow:visible}
+  .brandrow{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);grid-auto-columns:unset;overflow:visible;gap:28px 14px}
   .mgrid{grid-template-columns:repeat(3,1fr)}
   .bens{grid-template-columns:repeat(4,1fr)}
   .quotes{grid-template-columns:repeat(2,1fr)}

@@ -48,16 +48,6 @@
         rail.className = "page-floats";
         document.body.appendChild(rail);
 
-        // blur por movimiento: borrosos SOLO mientras se scrollea
-        var blurTimer = null;
-        window.addEventListener("scroll", function () {
-          rail.classList.add("scrolling");
-          clearTimeout(blurTimer);
-          blurTimer = setTimeout(function () {
-            rail.classList.remove("scrolling");
-          }, 160);
-        }, { passive: true });
-
         // si la ventana se angosta después de cargar, el rail se esconde
         window.addEventListener("resize", function () {
           var g = (window.innerWidth - 1120) / 2;
