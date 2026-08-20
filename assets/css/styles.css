@@ -261,7 +261,12 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   display:flex;align-items:center;gap:12px;margin-top:12px;
   padding:10px;background:var(--n10);border-radius:var(--r-md);
 }
-.mock-item img{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--n0)}
+.mock-item img{width:56px;height:56px;border-radius:12px;object-fit:contain;padding:4px;background:var(--n0)}
+.mock-store-ico{
+  width:36px;height:36px;border-radius:10px;background:var(--brand-soft);
+  color:var(--brand-strong);display:flex;align-items:center;justify-content:center;
+  flex:none;font-size:1rem;
+}
 .mock-item-name{font-weight:700;font-size:.95rem;line-height:1.2}
 .mock-item-qty{font-size:.8rem;color:var(--n70)}
 .mock-item-price{margin-left:auto;font-weight:900;font-size:1.1rem}
