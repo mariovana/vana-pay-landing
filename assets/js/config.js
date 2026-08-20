@@ -79,13 +79,6 @@ window.VP = {
     return "https://wa.me/" + window.VP.WA_NUMBER + "?text=" + encodeURIComponent(msg);
   },
 
-  // WhatsApp propio de un comercio (modalidad "WhatsApp del comercio",
-  // distinta de vana pay chat — el usuario habla con la tienda, no con vana).
-  merchantWaLink: function (phone) {
-    return "https://wa.me/" + phone + "?text=" +
-      encodeURIComponent("Hola, quiero comprar un producto y pagarlo con vana pay.");
-  },
-
   // Salida al e-commerce del comercio, con atribución uniforme (las URLs se
   // guardan limpias en merchants.json; el utm se agrega solo aquí).
   merchantSiteLink: function (url) {

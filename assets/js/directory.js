@@ -19,7 +19,6 @@
     { key: "", label: "Todas" },
     { key: "tienda", label: "En tienda" },
     { key: "online", label: "En línea" },
-    { key: "whatsapp", label: "WhatsApp" },
     { key: "chat", label: "vana pay chat" },
   ];
 

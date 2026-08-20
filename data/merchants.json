@@ -3,6 +3,7 @@
   {
    "slug": "1001",
    "name": "1001",
+   "photo": null,
    "logo": "assets/img/merchants/1001.avif",
    "categories": [
     "Zapatos"
@@ -21,6 +22,7 @@
   {
    "slug": "adidas",
    "name": "Adidas",
+   "photo": null,
    "logo": "assets/img/merchants/adidas.avif",
    "categories": [
     "Deportes"
@@ -44,6 +46,7 @@
   {
    "slug": "adoc",
    "name": "Adoc",
+   "photo": "assets/img/photos/adoc.jpg",
    "logo": "assets/img/merchants/adoc.avif",
    "categories": [
     "Zapatos"
@@ -67,6 +70,7 @@
   {
    "slug": "agencias-way",
    "name": "Agencias Way",
+   "photo": null,
    "logo": "assets/img/merchants/agencias-way.avif",
    "categories": [
     "Electrónicos"
@@ -84,6 +88,7 @@
   {
    "slug": "aletses",
    "name": "Aletse's",
+   "photo": null,
    "logo": "assets/img/merchants/aletses.avif",
    "categories": [
     "Moda y accesorios"
@@ -102,6 +107,7 @@
   {
    "slug": "almacenes-tropigas",
    "name": "Almacenes Tropigas",
+   "photo": null,
    "logo": "assets/img/merchants/almacenes-tropigas.avif",
    "categories": [
     "Hogar y Ferreteria"
@@ -119,6 +125,7 @@
   {
    "slug": "american-eagle",
    "name": "American Eagle",
+   "photo": null,
    "logo": "assets/img/merchants/american-eagle.avif",
    "categories": [
     "Moda y accesorios"
@@ -136,6 +143,7 @@
   {
    "slug": "anais",
    "name": "Anais",
+   "photo": null,
    "logo": "assets/img/merchants/anais.avif",
    "categories": [
     "Deportes"
@@ -157,6 +165,7 @@
   {
    "slug": "anais-kids",
    "name": "Anais KIDS",
+   "photo": null,
    "logo": "assets/img/merchants/anais-kids.avif",
    "categories": [
     "Deportes"
@@ -175,6 +184,7 @@
   {
    "slug": "aqua-sport",
    "name": "Aqua Sport",
+   "photo": null,
    "logo": "assets/img/merchants/aqua-sport.avif",
    "categories": [
     "Moda y accesorios"
@@ -192,6 +202,7 @@
   {
    "slug": "arca-de-noe",
    "name": "Arca de Noé",
+   "photo": null,
    "logo": "assets/img/merchants/arca-de-noe.avif",
    "categories": [
     "Mascotas"
@@ -207,6 +218,7 @@
   {
    "slug": "avant",
    "name": "Avant",
+   "photo": null,
    "logo": "assets/img/merchants/avant.avif",
    "categories": [
     "Moda y accesorios"
@@ -222,6 +234,7 @@
   {
    "slug": "ayalah",
    "name": "Ayalah",
+   "photo": null,
    "logo": "assets/img/merchants/ayalah.png",
    "categories": [
     "Moda y accesorios"
@@ -240,6 +253,7 @@
   {
    "slug": "beauty-pro",
    "name": "Beauty Pro",
+   "photo": null,
    "logo": "assets/img/merchants/beauty-pro.avif",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -255,6 +269,7 @@
   {
    "slug": "bibi",
    "name": "bibi",
+   "photo": null,
    "logo": "assets/img/merchants/bibi.avif",
    "categories": [
     "Zapatos"
@@ -272,6 +287,7 @@
   {
    "slug": "bitter",
    "name": "Bitter",
+   "photo": null,
    "logo": "assets/img/merchants/bitter.avif",
    "categories": [
     "Zapatos"
@@ -292,6 +308,7 @@
   {
    "slug": "boston-clinical-consulting",
    "name": "Boston Clinical Consulting",
+   "photo": null,
    "logo": "assets/img/merchants/boston-clinical-consulting.png",
    "categories": [
     "Salud"
@@ -310,6 +327,7 @@
   {
    "slug": "bottega-verde",
    "name": "Bottega Verde",
+   "photo": null,
    "logo": "assets/img/merchants/bottega-verde.avif",
    "categories": [
     "Salud"
@@ -325,6 +343,7 @@
   {
    "slug": "caesar-s-collection",
    "name": "Caesar´s Collection",
+   "photo": null,
    "logo": "assets/img/merchants/caesar-s-collection.png",
    "categories": [
     "Entretenimiento"
@@ -340,6 +359,7 @@
   {
    "slug": "calvin-klein",
    "name": "Calvin Klein",
+   "photo": null,
    "logo": "assets/img/merchants/calvin-klein.avif",
    "categories": [
     "Moda y accesorios"
@@ -355,6 +375,7 @@
   {
    "slug": "calzado-roy",
    "name": "Calzado Roy",
+   "photo": null,
    "logo": "assets/img/merchants/calzado-roy.avif",
    "categories": [
     "Zapatos"
@@ -375,6 +396,7 @@
   {
    "slug": "camas-olympia",
    "name": "Camas Olympia",
+   "photo": null,
    "logo": "assets/img/merchants/camas-olympia.avif",
    "categories": [
     "Hogar y Ferreteria"
@@ -398,6 +420,7 @@
   {
    "slug": "therapedic",
    "name": "Camas Therapedic",
+   "photo": null,
    "logo": "assets/img/merchants/therapedic.avif",
    "categories": [
     "Hogar y Ferreteria"
@@ -419,6 +442,7 @@
   {
    "slug": "cargo-expreso",
    "name": "Cargo Expreso",
+   "photo": null,
    "logo": "assets/img/merchants/cargo-expreso.png",
    "categories": [
     "Logística"
@@ -436,6 +460,7 @@
   {
    "slug": "carry-me",
    "name": "Carry me",
+   "photo": null,
    "logo": "assets/img/merchants/carry-me.png",
    "categories": [
     "Moda y accesorios"
@@ -457,6 +482,7 @@
   {
    "slug": "cat",
    "name": "CAT",
+   "photo": null,
    "logo": "assets/img/merchants/cat.avif",
    "categories": [
     "Moda y accesorios"
@@ -480,6 +506,7 @@
   {
    "slug": "cedetsa",
    "name": "CEDETSA",
+   "photo": null,
    "logo": "assets/img/merchants/cedetsa.png",
    "categories": [
     "Salud"
@@ -498,6 +525,7 @@
   {
    "slug": "cemaco",
    "name": "Cemaco",
+   "photo": null,
    "logo": "assets/img/merchants/cemaco.avif",
    "categories": [
     "Electrónicos"
@@ -515,6 +543,7 @@
   {
    "slug": "chapinisima",
    "name": "Chapinisima",
+   "photo": null,
    "logo": "assets/img/merchants/chapinisima.avif",
    "categories": [
     "Moda y accesorios"
@@ -532,6 +561,7 @@
   {
    "slug": "chars",
    "name": "Chars",
+   "photo": null,
    "logo": "assets/img/merchants/chars.png",
    "categories": [
     "Electrónicos"
@@ -550,6 +580,7 @@
   {
    "slug": "clarity-optica",
    "name": "Clarity Óptica",
+   "photo": null,
    "logo": "assets/img/merchants/clarity-optica.png",
    "categories": [
     "Salud"
@@ -568,6 +599,7 @@
   {
    "slug": "clean-master",
    "name": "Clean Master",
+   "photo": null,
    "logo": "assets/img/merchants/clean-master.avif",
    "categories": [
     "Hogar y Ferreteria"
@@ -586,6 +618,7 @@
   {
    "slug": "clinicas-sonrie",
    "name": "Clínicas Sonríe",
+   "photo": null,
    "logo": "assets/img/merchants/clinicas-sonrie.avif",
    "categories": [
     "Salud"
@@ -603,6 +636,7 @@
   {
    "slug": "club-municipal",
    "name": "Club Municipal",
+   "photo": null,
    "logo": "assets/img/merchants/club-municipal.png",
    "categories": [
     "Deportes"
@@ -621,6 +655,7 @@
   {
    "slug": "conecta",
    "name": "Conecta",
+   "photo": null,
    "logo": "assets/img/merchants/conecta.png",
    "categories": [
     "Logística"
@@ -636,6 +671,7 @@
   {
    "slug": "conjuro-wear",
    "name": "Conjuro Wear",
+   "photo": null,
    "logo": "assets/img/merchants/conjuro-wear.png",
    "categories": [
     "Moda y accesorios"
@@ -651,6 +687,7 @@
   {
    "slug": "corazon-mall",
    "name": "Corazón Mall",
+   "photo": null,
    "logo": "assets/img/merchants/corazon-mall.png",
    "categories": [
     "Moda y accesorios"
@@ -666,6 +703,7 @@
   {
    "slug": "crea",
    "name": "CREA",
+   "photo": null,
    "logo": "assets/img/merchants/crea.png",
    "categories": [
     "Hogar y Ferreteria"
@@ -682,6 +720,7 @@
   {
    "slug": "dcoast",
    "name": "D'Coast",
+   "photo": null,
    "logo": "assets/img/merchants/dcoast.avif",
    "categories": [
     "Zapatos"
@@ -700,6 +739,7 @@
   {
    "slug": "deposito-de-belleza",
    "name": "Depósito de Belleza",
+   "photo": null,
    "logo": "assets/img/merchants/deposito-de-belleza.avif",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -720,6 +760,7 @@
   {
    "slug": "devlyn",
    "name": "Devlyn",
+   "photo": null,
    "logo": "assets/img/merchants/devlyn.avif",
    "categories": [
     "Salud"
@@ -737,6 +778,7 @@
   {
    "slug": "dressy",
    "name": "Dressy",
+   "photo": null,
    "logo": "assets/img/merchants/dressy.avif",
    "categories": [
     "Moda y accesorios"
@@ -757,6 +799,7 @@
   {
    "slug": "electronica-panamericana",
    "name": "Electronica Panamericana",
+   "photo": null,
    "logo": "assets/img/merchants/electronica-panamericana.png",
    "categories": [
     "Electrónicos"
@@ -777,6 +820,7 @@
   {
    "slug": "emporium",
    "name": "Emporium",
+   "photo": null,
    "logo": "assets/img/merchants/emporium.png",
    "categories": [
     "Zapatos"
@@ -795,6 +839,7 @@
   {
    "slug": "epa",
    "name": "EPA",
+   "photo": null,
    "logo": "assets/img/merchants/epa.avif",
    "categories": [
     "Hogar y Ferreteria"
@@ -815,6 +860,7 @@
   {
    "slug": "epack",
    "name": "Epack",
+   "photo": null,
    "logo": "assets/img/merchants/epack.avif",
    "categories": [
     "Logística"
@@ -833,6 +879,7 @@
   {
    "slug": "fajas-salome",
    "name": "Fajas Salomé",
+   "photo": null,
    "logo": "assets/img/merchants/fajas-salome.avif",
    "categories": [
     "Moda y accesorios"
@@ -853,6 +900,7 @@
   {
    "slug": "flash-lash",
    "name": "Flash lash",
+   "photo": null,
    "logo": "assets/img/merchants/flash-lash.png",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -871,6 +919,7 @@
   {
    "slug": "flexi",
    "name": "Flexi",
+   "photo": null,
    "logo": "assets/img/merchants/flexi.avif",
    "categories": [
     "Zapatos"
@@ -891,6 +940,7 @@
   {
    "slug": "garmin-r96dp",
    "name": "Garmin",
+   "photo": null,
    "logo": "assets/img/merchants/garmin-r96dp.avif",
    "categories": [
     "Electrónicos"
@@ -914,6 +964,7 @@
   {
    "slug": "giossepo",
    "name": "Gioseppo",
+   "photo": null,
    "logo": "assets/img/merchants/giossepo.avif",
    "categories": [
     "Zapatos"
@@ -932,6 +983,7 @@
   {
    "slug": "gnc",
    "name": "GNC",
+   "photo": null,
    "logo": "assets/img/merchants/gnc.avif",
    "categories": [
     "Salud"
@@ -947,6 +999,7 @@
   {
    "slug": "gp-store",
    "name": "GP Store",
+   "photo": null,
    "logo": "assets/img/merchants/gp-store.avif",
    "categories": [
     "Moda y accesorios"
@@ -964,6 +1017,7 @@
   {
    "slug": "gravity-skydive",
    "name": "Gravity Skydive",
+   "photo": null,
    "logo": "assets/img/merchants/gravity-skydive.avif",
    "categories": [
     "Entretenimiento"
@@ -982,6 +1036,7 @@
   {
    "slug": "guat-store",
    "name": "GuatStore",
+   "photo": null,
    "logo": "assets/img/merchants/guat-store.avif",
    "categories": [
     "Electrónicos"
@@ -997,6 +1052,7 @@
   {
    "slug": "hurley",
    "name": "Hurley",
+   "photo": null,
    "logo": "assets/img/merchants/hurley.avif",
    "categories": [
     "Moda y accesorios"
@@ -1015,6 +1071,7 @@
   {
    "slug": "hush-puppies",
    "name": "Hush Puppies",
+   "photo": null,
    "logo": "assets/img/merchants/hush-puppies.avif",
    "categories": [
     "Zapatos"
@@ -1038,6 +1095,7 @@
   {
    "slug": "hypestreet",
    "name": "Hypestreet",
+   "photo": null,
    "logo": "assets/img/merchants/hypestreet.avif",
    "categories": [
     "Moda y accesorios"
@@ -1053,6 +1111,7 @@
   {
    "slug": "indigo",
    "name": "Indgo",
+   "photo": null,
    "logo": "assets/img/merchants/indigo.avif",
    "categories": [
     "Moda y accesorios"
@@ -1070,6 +1129,7 @@
   {
    "slug": "inn-studio",
    "name": "Inn Studio",
+   "photo": null,
    "logo": "assets/img/merchants/inn-studio.png",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -1086,6 +1146,7 @@
   {
    "slug": "isadora",
    "name": "Isadora",
+   "photo": null,
    "logo": "assets/img/merchants/isadora.avif",
    "categories": [
     "Moda y accesorios"
@@ -1101,6 +1162,7 @@
   {
    "slug": "ishop",
    "name": "iShop",
+   "photo": null,
    "logo": "assets/img/merchants/ishop.avif",
    "categories": [
     "Electrónicos"
@@ -1124,6 +1186,7 @@
   {
    "slug": "istore",
    "name": "istore",
+   "photo": null,
    "logo": "assets/img/merchants/istore.avif",
    "categories": [
     "Electrónicos"
@@ -1144,6 +1207,7 @@
   {
    "slug": "jireh",
    "name": "Jireh",
+   "photo": null,
    "logo": "assets/img/merchants/jireh.avif",
    "categories": [
     "Moda y accesorios"
@@ -1159,6 +1223,7 @@
   {
    "slug": "joyerias-de-centroamerica",
    "name": "Joyerías de Centroamérica",
+   "photo": null,
    "logo": "assets/img/merchants/joyerias-de-centroamerica.avif",
    "categories": [
     "Joyería"
@@ -1177,6 +1242,7 @@
   {
    "slug": "kasperle",
    "name": "Kasperle",
+   "photo": null,
    "logo": "assets/img/merchants/kasperle.png",
    "categories": [
     "Juguetes"
@@ -1197,6 +1263,7 @@
   {
    "slug": "kemik",
    "name": "Kemik",
+   "photo": "assets/img/photos/kemik.jpg",
    "logo": "assets/img/merchants/kemik.avif",
    "categories": [
     "Electrónicos"
@@ -1214,6 +1281,7 @@
   {
    "slug": "kraftely",
    "name": "Kraftely",
+   "photo": null,
    "logo": "assets/img/merchants/kraftely.png",
    "categories": [
     "Entretenimiento"
@@ -1232,6 +1300,7 @@
   {
    "slug": "lacoste",
    "name": "Lacoste",
+   "photo": null,
    "logo": "assets/img/merchants/lacoste.avif",
    "categories": [
     "Moda y accesorios"
@@ -1247,6 +1316,7 @@
   {
    "slug": "la-curacao",
    "name": "La Curacao",
+   "photo": null,
    "logo": "assets/img/merchants/la-curacao.avif",
    "categories": [
     "Electrónicos"
@@ -1264,6 +1334,7 @@
   {
    "slug": "le-bolsha",
    "name": "Le Bolshá",
+   "photo": null,
    "logo": "assets/img/merchants/le-bolsha.avif",
    "categories": [
     "Moda y accesorios"
@@ -1281,6 +1352,7 @@
   {
    "slug": "levis",
    "name": "Levis",
+   "photo": null,
    "logo": "assets/img/merchants/levis.avif",
    "categories": [
     "Moda y accesorios"
@@ -1298,6 +1370,7 @@
   {
    "slug": "lili-pink",
    "name": "Lili Pink",
+   "photo": null,
    "logo": "assets/img/merchants/lili-pink.avif",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -1316,6 +1389,7 @@
   {
    "slug": "little-mic",
    "name": "Little Mic",
+   "photo": null,
    "logo": "assets/img/merchants/little-mic.png",
    "categories": [
     "Moda y accesorios"
@@ -1331,6 +1405,7 @@
   {
    "slug": "llanresa",
    "name": "Llanresa",
+   "photo": null,
    "logo": "assets/img/merchants/llanresa.avif",
    "categories": [
     "Automotriz y Accesorios"
@@ -1351,6 +1426,7 @@
   {
    "slug": "mad-house",
    "name": "Mad House",
+   "photo": null,
    "logo": "assets/img/merchants/mad-house.png",
    "categories": [
     "Juguetes"
@@ -1366,6 +1442,7 @@
   {
    "slug": "maki",
    "name": "Maki",
+   "photo": null,
    "logo": "assets/img/merchants/maki.png",
    "categories": [
     "Moda y accesorios"
@@ -1386,6 +1463,7 @@
   {
    "slug": "max",
    "name": "Max",
+   "photo": "assets/img/photos/max.jpg",
    "logo": "assets/img/merchants/max.avif",
    "categories": [
     "Electrónicos"
@@ -1403,6 +1481,7 @@
   {
    "slug": "meat-pack",
    "name": "Meat Pack",
+   "photo": null,
    "logo": "assets/img/merchants/meat-pack.avif",
    "categories": [
     "Zapatos"
@@ -1423,6 +1502,7 @@
   {
    "slug": "medilab",
    "name": "Medilab",
+   "photo": null,
    "logo": "assets/img/merchants/medilab.png",
    "categories": [
     "Salud"
@@ -1441,6 +1521,7 @@
   {
    "slug": "medivision",
    "name": "Medivisión",
+   "photo": null,
    "logo": "assets/img/merchants/medivision.avif",
    "categories": [
     "Salud"
@@ -1458,6 +1539,7 @@
   {
    "slug": "merrel",
    "name": "Merrel",
+   "photo": null,
    "logo": "assets/img/merchants/merrel.avif",
    "categories": [
     "Zapatos"
@@ -1475,6 +1557,7 @@
   {
    "slug": "meyca-s-fashion",
    "name": "Meyca´s Fashion",
+   "photo": null,
    "logo": "assets/img/merchants/meyca-s-fashion.avif",
    "categories": [
     "Moda y accesorios"
@@ -1492,6 +1575,7 @@
   {
    "slug": "mic",
    "name": "Mic",
+   "photo": null,
    "logo": "assets/img/merchants/mic.png",
    "categories": [
     "Moda y accesorios"
@@ -1507,6 +1591,7 @@
   {
    "slug": "minimakers-gt",
    "name": "MiniMakers GT",
+   "photo": null,
    "logo": "assets/img/merchants/minimakers-gt.png",
    "categories": [
     "Electrónicos"
@@ -1524,6 +1609,7 @@
   {
    "slug": "miramas",
    "name": "Miramas",
+   "photo": null,
    "logo": "assets/img/merchants/miramas.png",
    "categories": [
     "Salud"
@@ -1539,6 +1625,7 @@
   {
    "slug": "molvu",
    "name": "Molvu",
+   "photo": null,
    "logo": "assets/img/merchants/molvu.avif",
    "categories": [
     "Moda y accesorios"
@@ -1562,6 +1649,7 @@
   {
    "slug": "momentum-fisios",
    "name": "Momentum Fisios",
+   "photo": null,
    "logo": "assets/img/merchants/momentum-fisios.png",
    "categories": [
     "Salud"
@@ -1578,6 +1666,7 @@
   {
    "slug": "motopolis-2",
    "name": "Motopolis",
+   "photo": null,
    "logo": "assets/img/merchants/motopolis-2.avif",
    "categories": [
     "Moda y accesorios"
@@ -1595,6 +1684,7 @@
   {
    "slug": "movies",
    "name": "Movies",
+   "photo": null,
    "logo": "assets/img/merchants/movies.png",
    "categories": [
     "Moda y accesorios"
@@ -1610,6 +1700,7 @@
   {
    "slug": "nava",
    "name": "Nava",
+   "photo": null,
    "logo": "assets/img/merchants/nava.avif",
    "categories": [
     "Moda y accesorios"
@@ -1627,6 +1718,7 @@
   {
    "slug": "new-balance",
    "name": "New Balance",
+   "photo": null,
    "logo": "assets/img/merchants/new-balance.avif",
    "categories": [
     "Deportes"
@@ -1645,6 +1737,7 @@
   {
    "slug": "nine-west",
    "name": "Nine West",
+   "photo": null,
    "logo": "assets/img/merchants/nine-west.avif",
    "categories": [
     "Moda y accesorios"
@@ -1665,6 +1758,7 @@
   {
    "slug": "optica-la-curacao",
    "name": "Optica La Curacao",
+   "photo": null,
    "logo": "assets/img/merchants/optica-la-curacao.avif",
    "categories": [
     "Salud"
@@ -1682,6 +1776,7 @@
   {
    "slug": "optical-center",
    "name": "Optical Center",
+   "photo": null,
    "logo": "assets/img/merchants/optical-center.avif",
    "categories": [
     "Salud"
@@ -1699,6 +1794,7 @@
   {
    "slug": "opticas-deluxe",
    "name": "Ópticas Deluxe",
+   "photo": null,
    "logo": "assets/img/merchants/opticas-deluxe.avif",
    "categories": [
     "Salud"
@@ -1722,6 +1818,7 @@
   {
    "slug": "paleta",
    "name": "Paleta",
+   "photo": null,
    "logo": "assets/img/merchants/paleta.png",
    "categories": [
     "Hogar y Ferreteria"
@@ -1742,6 +1839,7 @@
   {
    "slug": "par2",
    "name": "PAR2",
+   "photo": null,
    "logo": "assets/img/merchants/par2.avif",
    "categories": [
     "Zapatos"
@@ -1765,6 +1863,7 @@
   {
    "slug": "payless",
    "name": "Payless",
+   "photo": null,
    "logo": "assets/img/merchants/payless.avif",
    "categories": [
     "Zapatos"
@@ -1783,6 +1882,7 @@
   {
    "slug": "peinados",
    "name": "Peinados",
+   "photo": null,
    "logo": "assets/img/merchants/peinados.png",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -1798,6 +1898,7 @@
   {
    "slug": "premier-cosmetics",
    "name": "Premier Cosmetics",
+   "photo": null,
    "logo": "assets/img/merchants/premier-cosmetics.png",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -1816,6 +1917,7 @@
   {
    "slug": "pump-stop",
    "name": "Pump Stop",
+   "photo": null,
    "logo": "assets/img/merchants/pump-stop.png",
    "categories": [
     "Electrónicos"
@@ -1834,6 +1936,7 @@
   {
    "slug": "punto-optico",
    "name": "Punto Óptico",
+   "photo": null,
    "logo": "assets/img/merchants/punto-optico.png",
    "categories": [
     "Salud"
@@ -1850,6 +1953,7 @@
   {
    "slug": "punx",
    "name": "Punx",
+   "photo": null,
    "logo": "assets/img/merchants/punx.avif",
    "categories": [
     "Hogar y Ferreteria"
@@ -1867,6 +1971,7 @@
   {
    "slug": "quici-sportif",
    "name": "Quici Sportif",
+   "photo": null,
    "logo": "assets/img/merchants/quici-sportif.avif",
    "categories": [
     "Deportes"
@@ -1884,6 +1989,7 @@
   {
    "slug": "radioshack",
    "name": "RadioShack",
+   "photo": null,
    "logo": "assets/img/merchants/radioshack.avif",
    "categories": [
     "Electrónicos"
@@ -1901,6 +2007,7 @@
   {
    "slug": "ranero-logistic",
    "name": "Ranero Logistic",
+   "photo": null,
    "logo": "assets/img/merchants/ranero-logistic.png",
    "categories": [
     "Logística"
@@ -1916,6 +2023,7 @@
   {
    "slug": "rebecana",
    "name": "Rebecana",
+   "photo": null,
    "logo": "assets/img/merchants/rebecana.png",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -1934,6 +2042,7 @@
   {
    "slug": "reebok",
    "name": "Reebok",
+   "photo": null,
    "logo": "assets/img/merchants/reebok.avif",
    "categories": [
     "Deportes"
@@ -1952,6 +2061,7 @@
   {
    "slug": "republic-cosmetic",
    "name": "Republic Cosmetics",
+   "photo": null,
    "logo": "assets/img/merchants/republic-cosmetic.avif",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -1967,6 +2077,7 @@
   {
    "slug": "rikeli",
    "name": "Rikeli",
+   "photo": null,
    "logo": "assets/img/merchants/rikeli.avif",
    "categories": [
     "Zapatos"
@@ -1990,6 +2101,7 @@
   {
    "slug": "ruiz-arriaga-odontologia-y-ortodoncia-digital",
    "name": "Ruiz Arriaga Odontología y Ortodoncia Digital",
+   "photo": null,
    "logo": "assets/img/merchants/ruiz-arriaga-odontologia-y-ortodoncia-digital.png",
    "categories": [
     "Salud"
@@ -2005,6 +2117,7 @@
   {
    "slug": "samsung",
    "name": "Samsung",
+   "photo": null,
    "logo": "assets/img/merchants/samsung.avif",
    "categories": [
     "Electrónicos"
@@ -2025,6 +2138,7 @@
   {
    "slug": "seek",
    "name": "Seek",
+   "photo": null,
    "logo": "assets/img/merchants/seek.avif",
    "categories": [
     "Zapatos"
@@ -2040,6 +2154,7 @@
   {
    "slug": "serta",
    "name": "Serta",
+   "photo": null,
    "logo": "assets/img/merchants/serta.avif",
    "categories": [
     "Hogar y Ferreteria"
@@ -2061,6 +2176,7 @@
   {
    "slug": "shopialo",
    "name": "Shopialo",
+   "photo": null,
    "logo": "assets/img/merchants/shopialo.avif",
    "categories": [
     "Moda y accesorios"
@@ -2082,6 +2198,7 @@
   {
    "slug": "smile-factory",
    "name": "Smile Factory",
+   "photo": null,
    "logo": "assets/img/merchants/smile-factory.avif",
    "categories": [
     "Salud"
@@ -2102,6 +2219,7 @@
   {
    "slug": "sneaker-king",
    "name": "Sneaker King",
+   "photo": null,
    "logo": "assets/img/merchants/sneaker-king.avif",
    "categories": [
     "Moda y accesorios"
@@ -2117,6 +2235,7 @@
   {
    "slug": "spejos",
    "name": "Spejos",
+   "photo": null,
    "logo": "assets/img/merchants/spejos.png",
    "categories": [
     "Belleza y Cuidado Personal"
@@ -2133,6 +2252,7 @@
   {
    "slug": "steren",
    "name": "Steren",
+   "photo": null,
    "logo": "assets/img/merchants/steren.avif",
    "categories": [
     "Electrónicos"
@@ -2153,6 +2273,7 @@
   {
    "slug": "sunglass-hut",
    "name": "Sunglass Hut",
+   "photo": null,
    "logo": "assets/img/merchants/sunglass-hut.png",
    "categories": [
     "Moda y accesorios"
@@ -2168,6 +2289,7 @@
   {
    "slug": "super-ofertas",
    "name": "Super Ofertas",
+   "photo": null,
    "logo": "assets/img/merchants/super-ofertas.avif",
    "categories": [
     "Zapatos"
@@ -2185,6 +2307,7 @@
   {
    "slug": "tecno-facil",
    "name": "TECNO FACIL",
+   "photo": null,
    "logo": "assets/img/merchants/tecno-facil.avif",
    "categories": [
     "Electrónicos"
@@ -2202,6 +2325,7 @@
   {
    "slug": "loop",
    "name": "The Loop",
+   "photo": null,
    "logo": "assets/img/merchants/loop.png",
    "categories": [
     "Moda y accesorios"
@@ -2219,6 +2343,7 @@
   {
    "slug": "the-north-face",
    "name": "The North Face",
+   "photo": null,
    "logo": "assets/img/merchants/the-north-face.avif",
    "categories": [
     "Deportes"
@@ -2242,6 +2367,7 @@
   {
    "slug": "todomoda",
    "name": "TODOMODA",
+   "photo": null,
    "logo": "assets/img/merchants/todomoda.avif",
    "categories": [
     "Moda y accesorios"
@@ -2257,6 +2383,7 @@
   {
    "slug": "tommy-hilfiger",
    "name": "Tommy Hilfiger",
+   "photo": null,
    "logo": "assets/img/merchants/tommy-hilfiger.avif",
    "categories": [
     "Moda y accesorios"
@@ -2274,6 +2401,7 @@
   {
    "slug": "totto",
    "name": "Totto",
+   "photo": null,
    "logo": "assets/img/merchants/totto.avif",
    "categories": [
     "Moda y accesorios"
@@ -2292,6 +2420,7 @@
   {
    "slug": "trendy",
    "name": "Trendy",
+   "photo": null,
    "logo": "assets/img/merchants/trendy.avif",
    "categories": [
     "Zapatos"
@@ -2310,6 +2439,7 @@
   {
    "slug": "tupperware",
    "name": "Tupperware",
+   "photo": null,
    "logo": "assets/img/merchants/tupperware.png",
    "categories": [
     "Hogar y Ferreteria"
@@ -2328,6 +2458,7 @@
   {
    "slug": "unident",
    "name": "UniDent",
+   "photo": null,
    "logo": "assets/img/merchants/unident.avif",
    "categories": [
     "Salud"
@@ -2345,6 +2476,7 @@
   {
    "slug": "ursoul-germany",
    "name": "Ursoul Germany",
+   "photo": null,
    "logo": "assets/img/merchants/ursoul-germany.png",
    "categories": [
     "Joyería"
@@ -2365,6 +2497,7 @@
   {
    "slug": "vans",
    "name": "Vans",
+   "photo": null,
    "logo": "assets/img/merchants/vans.avif",
    "categories": [
     "Zapatos"
@@ -2380,6 +2513,7 @@
   {
    "slug": "velez",
    "name": "Vélez",
+   "photo": null,
    "logo": "assets/img/merchants/velez.avif",
    "categories": [
     "Moda y accesorios"
@@ -2400,6 +2534,7 @@
   {
    "slug": "ventas-guate",
    "name": "Ventas Guate",
+   "photo": null,
    "logo": "assets/img/merchants/ventas-guate.avif",
    "categories": [
     "Electrónicos"
@@ -2416,6 +2551,7 @@
   {
    "slug": "watermelon-shop",
    "name": "Watermelon shop",
+   "photo": null,
    "logo": "assets/img/merchants/watermelon-shop.png",
    "categories": [
     "Electrónicos"
@@ -2431,6 +2567,7 @@
   {
    "slug": "wazu",
    "name": "Wazu",
+   "photo": null,
    "logo": "assets/img/merchants/wazu.avif",
    "categories": [
     "Mascotas"

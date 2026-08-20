@@ -7,38 +7,60 @@
     });
   };
 
-  var MODAL_LABEL = { tienda: "En tienda", online: "En línea", whatsapp: "WhatsApp" };
+  var MODAL_LABEL = { tienda: "En tienda", online: "En línea" };
 
-  window.VP.modalityBadges = function (m, withChat) {
-    var out = Object.keys(m.modalities).map(function (k) {
-      return '<span class="badge">' + MODAL_LABEL[k] + "</span>";
+  // El WhatsApp directo del comercio ya no se ofrece como modalidad
+  // (decisión de Mario, 2026-08-19): lo reemplaza vana pay chat. La clave
+  // whatsapp de merchants.json se conserva como dato pero no se renderiza.
+  window.VP.modalityBadges = function (m) {
+    var out = [];
+    Object.keys(m.modalities).forEach(function (k) {
+      if (MODAL_LABEL[k]) out.push('<span class="badge">' + MODAL_LABEL[k] + "</span>");
     });
-    // El badge de chat solo cuando la card no trae ya el botón verde.
-    if (m.chatEnabled && withChat !== false) {
-      out.push('<span class="badge chat">vana pay chat</span>');
-    }
+    if (m.chatEnabled) out.push('<span class="badge chat">vana pay chat</span>');
     return out.join("");
   };
 
-  // Card de comercio: el área del comercio linkea a su página; el botón de
-  // vana pay chat (si aplica) es un atajo directo, separado del link.
+  // Card de comercio: toda la card es un link a la página del comercio.
   window.VP.merchantCardHTML = function (m) {
     var root = window.VP.ROOT;
-    var chat = m.chatEnabled
-      ? '<a class="btn btn-chat btn-sm" data-wa-context="merchant-card" data-wa-slug="' + esc(m.slug) +
-        '" href="' + window.VP.chatMerchantLink(m.name) + '" target="_blank" rel="noopener">' +
-        '<svg class="ico"><use href="#i-wa"/></svg> Pedir por chat</a>'
-      : "";
     return (
-      '<div class="mcard">' +
-        '<a href="' + root + "comercios/" + esc(m.slug) + '/" aria-label="Comprar en ' + esc(m.name) + ' con vana pay">' +
-          '<div class="mcard-logo"><img loading="lazy" src="' + root + esc(m.logo) + '" alt="' + esc(m.name) + '"></div>' +
-          '<div class="mcard-name" style="margin-top:10px">' + esc(m.name) + "</div>" +
-          '<div class="mcard-cat">' + esc((m.categories || [])[0] || "") + "</div>" +
-        "</a>" +
-        '<div class="badges">' + window.VP.modalityBadges(m, false) + "</div>" +
-        '<div class="mcard-cta">' + chat + "</div>" +
-      "</div>"
+      '<a class="mcard" href="' + root + "comercios/" + esc(m.slug) +
+        '/" aria-label="Comprar en ' + esc(m.name) + ' con vana pay">' +
+        '<div class="mcard-logo"><img loading="lazy" src="' + root + esc(m.logo) + '" alt="' + esc(m.name) + '"></div>' +
+        '<div class="mcard-name">' + esc(m.name) + "</div>" +
+        '<div class="mcard-cat">' + esc((m.categories || [])[0] || "") + "</div>" +
+        '<div class="badges">' + window.VP.modalityBadges(m) + "</div>" +
+      "</a>"
+    );
+  };
+
+  // Card grande de marca (ref. Klarna "brands you love"): media pastel con
+  // el logo del comercio, chip flotante con su beneficio (oferta activa o
+  // "en paguitos") y tarjeta blanca con logo + nombre + modalidades.
+  var PASTELS = ["t1", "t2", "t3", "t4", "t5"];
+  window.VP.brandCardHTML = function (m, offer, i) {
+    var root = window.VP.ROOT;
+    var chip = offer
+      ? '<span class="brandcard-chip">' + esc(offer.amount) + " de descuento</span>"
+      : '<span class="brandcard-chip soft">en paguitos</span>';
+    var meta = (m.categories || [])[0] || "";
+    if (m.chatEnabled) meta += (meta ? " · " : "") + "vana pay chat";
+    // Con foto de mkt: la imagen llena la media (los fondos blancos se
+    // funden con el pastel via mix-blend). Sin foto: tile blanco con logo.
+    var media = m.photo
+      ? '<img class="bc-photo" loading="lazy" src="' + root + esc(m.photo) + '" alt="">'
+      : '<img class="bc-tile" loading="lazy" src="' + root + esc(m.logo) + '" alt="">';
+    return (
+      '<a class="brandcard" href="' + root + "comercios/" + esc(m.slug) + '/">' +
+        '<div class="brandcard-media ' + PASTELS[i % PASTELS.length] + '">' +
+          media + chip +
+        "</div>" +
+        '<div class="brandcard-info">' +
+          '<span class="brandcard-logo"><img loading="lazy" src="' + root + esc(m.logo) + '" alt=""></span>' +
+          "<div><b>" + esc(m.name) + "</b><span>" + esc(meta) + "</span></div>" +
+        "</div>" +
+      "</a>"
     );
   };
 
@@ -46,6 +68,8 @@
     var root = window.VP.ROOT;
     var m = o.merchantSlug ? merchantsBySlug[o.merchantSlug] : null;
     var badges = (o.modalities || []).map(function (k) {
+      // Las ofertas por WhatsApp ahora se piden por vana pay chat.
+      if (k === "whatsapp") return '<span class="badge chat">vana pay chat</span>';
       return '<span class="badge">' + (MODAL_LABEL[k] || k) + "</span>";
     }).join("");
     var href = m ? root + "comercios/" + esc(m.slug) + "/" : root + "donde-comprar/";

@@ -9,12 +9,13 @@
   <meta property="og:description" content="Una nueva forma de pagar tus compras: divide el pago en paguitos quincenales, sin tarjeta de crédito.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=1">
-  <script src="assets/js/config.js?v=1"></script>
-  <script src="assets/js/analytics.js?v=1" defer></script>
-  <script src="assets/js/cards.js?v=1" defer></script>
-  <script src="assets/js/home.js?v=1" defer></script>
-  <script src="assets/js/embed-height.js?v=1" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=5">
+  <script src="assets/js/config.js?v=5"></script>
+  <script src="assets/js/analytics.js?v=5" defer></script>
+  <script src="assets/js/cards.js?v=5" defer></script>
+  <script src="assets/js/anim.js?v=5" defer></script>
+  <script src="assets/js/home.js?v=5" defer></script>
+  <script src="assets/js/embed-height.js?v=5" defer></script>
 </head>
 <body>
 
@@ -51,18 +52,18 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">Una nueva forma de pagar</span>
-      <h1>Compra hoy.<br>Paga en paguitos.</h1>
-      <p class="lead">Compra en tus tiendas favoritas y divide el pago en paguitos quincenales. Sin tarjeta de crédito.</p>
-      <div class="hero-ctas">
+      <span class="eyebrow reveal">Una nueva forma de pagar</span>
+      <h1 class="reveal">Compra hoy.<br>Paga en paguitos.</h1>
+      <p class="lead reveal d1">Compra en tus tiendas favoritas y divide el pago en paguitos quincenales. Sin tarjeta de crédito.</p>
+      <div class="hero-ctas reveal d2">
         <a class="btn btn-primary" href="https://pay.vana.gt/registro">Crear mi cuenta</a>
         <a class="btn btn-secondary" href="donde-comprar/">Ver dónde comprar</a>
       </div>
-      <p class="hero-note"><svg class="ico"><use href="#i-shield"/></svg> Hasta Q3,000 · con tu tarjeta de débito de cualquier banco</p>
+      <p class="hero-note reveal d3"><svg class="ico"><use href="#i-shield"/></svg> Hasta Q3,000 · con tu tarjeta de débito de cualquier banco</p>
     </div>
 
     <!-- la compra, vana pay seleccionado y los paguitos -->
-    <div class="mock" aria-label="Ejemplo de una compra pagada con vana pay">
+    <div class="mock reveal d2" aria-label="Ejemplo de una compra pagada con vana pay">
       <div class="mock-store">
         <img src="assets/img/merchants/adidas.avif" alt="Adidas">
         <span class="mock-store-name">Adidas</span>
@@ -89,25 +90,37 @@
   </div>
 </section>
 
+<!-- ============================================== stats -->
+<section class="section" id="stats" style="padding-block:48px">
+  <div class="wrap">
+    <div class="stats">
+      <div class="reveal"><div class="stat-n">+100</div><div class="stat-l">comercios afiliados</div></div>
+      <div class="reveal d1"><div class="stat-n">Q3,000</div><div class="stat-l">de línea para comprar</div></div>
+      <div class="reveal d2"><div class="stat-n">3·5·8</div><div class="stat-l">paguitos quincenales</div></div>
+      <div class="reveal d3"><div class="stat-n"><b>0</b></div><div class="stat-l">tarjetas de crédito necesarias</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================== cómo funciona -->
 <section class="section" id="como-funciona">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>Así de fácil funciona</h2>
       <p>Tres pasos y pagas tu compra poco a poco.</p>
     </div>
     <div class="steps">
-      <div class="step">
+      <div class="step reveal">
         <div class="step-n">1</div>
         <h3>Crea tu cuenta</h3>
         <p>Regístrate en vana y conoce cuánto tienes disponible para comprar.</p>
       </div>
-      <div class="step">
+      <div class="step reveal d1">
         <div class="step-n">2</div>
         <h3>Compra donde quieras</h3>
         <p>Elige un comercio afiliado y pide pagar con vana pay.</p>
       </div>
-      <div class="step">
+      <div class="step reveal d2">
         <div class="step-n">3</div>
         <h3>Paga en paguitos</h3>
         <p>Divide tu compra en paguitos quincenales que se cobran automáticamente a tu tarjeta.</p>
@@ -119,7 +132,7 @@
 <!-- ============================================== ejemplo de paguitos -->
 <section class="section" id="paguitos">
   <div class="wrap">
-    <div class="pagui">
+    <div class="pagui reveal">
       <div class="pagui-grid">
         <div>
           <h2>Tú eliges en cuántos paguitos</h2>
@@ -142,12 +155,12 @@
 <!-- ============================================== formas de comprar -->
 <section class="section section-alt" id="formas">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>Compra como prefieras</h2>
       <p>vana pay funciona en la tienda, en línea y por chat.</p>
     </div>
     <div class="ways">
-      <div class="way">
+      <div class="way reveal">
         <span class="way-tag tienda">En tienda</span>
         <h3>Di "quiero pagar con vana pay"</h3>
         <p>Visita un comercio afiliado y pídelo en caja. Completas el pago desde tu teléfono.</p>
@@ -156,7 +169,7 @@
           <div class="bubble">¡Claro! Te enviamos tu link de pago 📲</div>
         </div>
       </div>
-      <div class="way">
+      <div class="way reveal d1">
         <span class="way-tag online">En línea</span>
         <h3>Elígelo al pagar tu carrito</h3>
         <p>Compra en la tienda en línea del comercio y selecciona vana pay como método de pago.</p>
@@ -168,7 +181,7 @@
           </div>
         </div>
       </div>
-      <div class="way">
+      <div class="way reveal d2">
         <span class="way-tag chat">vana pay chat</span>
         <h3>Te ayudamos a comprar</h3>
         <p>¿No sabes por dónde empezar? Escríbenos y te ayudamos a comprar en el comercio que quieras.</p>
@@ -187,16 +200,17 @@
 <!-- ============================================== dónde comprar -->
 <section class="section" id="comercios">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>Dónde comprar</h2>
       <p>Más de 100 comercios afiliados en todo el país.</p>
     </div>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="homeMarquee"></div></div>
     <form class="searchrow" id="homeSearch" action="donde-comprar/" method="get">
       <svg class="ico"><use href="#i-search"/></svg>
       <input type="search" name="q" placeholder="Busca una tienda o lo que quieres comprar" aria-label="Buscar comercio">
     </form>
     <div class="chiprow" id="homeChips"></div>
-    <div class="mgrid" id="homeGrid" style="margin-top:14px"></div>
+    <div class="brandrow" id="homeGrid" style="margin-top:14px"></div>
     <div style="text-align:center;margin-top:24px">
       <a class="btn btn-secondary" href="donde-comprar/">Ver todos los comercios <svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
@@ -206,38 +220,37 @@
 <!-- ============================================== ofertas -->
 <section class="section section-alt" id="ofertas">
   <div class="wrap">
-    <div class="section-head" style="display:flex;align-items:baseline;gap:16px">
-      <h2 style="margin-right:auto">Ofertas con vana pay</h2>
-      <a class="btn-ghost" href="ofertas/">Ver todas</a>
+    <div class="section-head reveal">
+      <h2>Ofertas con vana pay</h2>
+      <p>Descuentos por pagar con vana pay, directo en cada comercio.</p>
     </div>
     <div class="orow" id="homeOfertas"></div>
+    <div style="text-align:center;margin-top:24px">
+      <a class="btn btn-secondary" href="ofertas/">Ver todas las ofertas <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
   </div>
 </section>
 
-<!-- ============================================== beneficios -->
+<!-- ==================== beneficios: se encienden al hacer scroll -->
 <section class="section" id="beneficios">
   <div class="wrap">
-    <div class="section-head"><h2>Por qué vana pay</h2></div>
-    <div class="bens">
-      <div class="ben">
-        <div class="ben-ico"><svg class="ico"><use href="#i-card"/></svg></div>
+    <div class="section-head reveal"><h2>Por qué vana pay</h2></div>
+    <div class="wl">
+      <div class="wl-item">
         <h3>Sin tarjeta de crédito</h3>
         <p>Paga con tu tarjeta de débito de cualquier banco del país.</p>
       </div>
-      <div class="ben">
-        <div class="ben-ico"><svg class="ico"><use href="#i-shield"/></svg></div>
+      <div class="wl-item">
         <h3>Hasta Q3,000</h3>
         <p>Crea tu cuenta y conoce tu disponible en minutos.</p>
       </div>
-      <div class="ben">
-        <div class="ben-ico"><svg class="ico"><use href="#i-check"/></svg></div>
+      <div class="wl-item">
         <h3>Paguitos automáticos</h3>
         <p>Se cobran solos a tu tarjeta, quincena a quincena.</p>
       </div>
-      <div class="ben">
-        <div class="ben-ico"><svg class="ico"><use href="#i-store"/></svg></div>
+      <div class="wl-item">
         <h3>+100 comercios</h3>
-        <p>En tienda, en línea o por chat, en todo el país.</p>
+        <p>En tienda, en línea o por vana pay chat, en todo el país.</p>
       </div>
     </div>
   </div>
@@ -246,27 +259,27 @@
 <!-- ============================================== testimonios -->
 <section class="section section-alt" id="testimonios">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>Lo que dicen quienes ya usan vana pay</h2>
     </div>
     <div class="quotes">
-      <div class="quote q1">
+      <div class="quote q1 reveal">
         <p>“Muy buena experiencia: te permite comprar y cancelar a paguitos, muy buena ayuda.”</p>
         <div class="quote-who"><span class="quote-av">J</span> Jessicka V.</div>
       </div>
-      <div class="quote q2">
+      <div class="quote q2 reveal d1">
         <p>“Es una buena oportunidad de compra para los que no nos gusta usar tarjetas de crédito.”</p>
         <div class="quote-who"><span class="quote-av">K</span> Kelly C.</div>
       </div>
-      <div class="quote q3">
+      <div class="quote q3 reveal d2">
         <p>“Es una nueva y buena forma para comprar por paguitos si no tienes tarjeta de crédito.”</p>
         <div class="quote-who"><span class="quote-av">F</span> Franz O.</div>
       </div>
-      <div class="quote q4">
+      <div class="quote q4 reveal d1">
         <p>“Muy buena forma de pago y facilidades de pago excelentes.”</p>
         <div class="quote-who"><span class="quote-av">E</span> Eyner H.</div>
       </div>
-      <div class="quote q5">
+      <div class="quote q5 reveal d2">
         <p>“Me encanta. Es la primera vez que lo uso, mi esposo me contó y él también lo usa.”</p>
         <div class="quote-who"><span class="quote-av">D</span> David S.</div>
       </div>
@@ -322,7 +335,7 @@
 <!-- ============================================== CTA final -->
 <section class="section">
   <div class="wrap">
-    <div class="ctaband">
+    <div class="ctaband reveal">
       <h2>El primer paso es crear tu cuenta</h2>
       <p>Toma minutos y conoces cuánto tienes disponible para comprar.</p>
       <a class="btn" href="https://pay.vana.gt/registro">Crear mi cuenta gratis</a>
