@@ -9,14 +9,14 @@
   <meta property="og:description" content="Una nueva forma de pagar tus compras: divide el pago en paguitos quincenales, sin tarjeta de crédito.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=15">
-  <script src="assets/js/config.js?v=15"></script>
-  <script src="assets/js/analytics.js?v=15" defer></script>
-  <script src="assets/js/cards.js?v=15" defer></script>
-  <script src="assets/js/anim.js?v=15" defer></script>
-  <script src="assets/js/search.js?v=15" defer></script>
-  <script src="assets/js/home.js?v=15" defer></script>
-  <script src="assets/js/embed-height.js?v=15" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=17">
+  <script src="assets/js/config.js?v=17"></script>
+  <script src="assets/js/analytics.js?v=17" defer></script>
+  <script src="assets/js/cards.js?v=17" defer></script>
+  <script src="assets/js/anim.js?v=17" defer></script>
+  <script src="assets/js/search.js?v=17" defer></script>
+  <script src="assets/js/home.js?v=17" defer></script>
+  <script src="assets/js/embed-height.js?v=17" defer></script>
 </head>
 <body>
 
@@ -30,6 +30,7 @@
     <symbol id="i-cart" viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM7.2 14.6l.1-.2.9-1.6h7.4c.8 0 1.4-.4 1.8-1l3.8-7-1.8-1-3.8 7H8.5L4.3 2H1v2h2l3.6 7.6-1.4 2.4A2 2 0 0 0 7 17h12v-2H7.4a.3.3 0 0 1-.2-.4z"/></symbol>
     <symbol id="i-card" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4H4V6h16v2zm0 4H4v6h16v-6z"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm-2 15l-4-4 1.4-1.4L10 13.2l6.6-6.6L18 8l-8 8z"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm8-2h2v2h-2v-2zm4 0h2v2h-2v-2zm2 2h2v2h-2v-2zm-4 0h2v2h-2v-2zm-2 2h2v2h-2v-2zm4 0h2v2h-2v-2zm-2 2h2v2h-2v-2zm4 0h2v2h-2v-2z"/></symbol>
   </defs>
 </svg>
 
@@ -51,7 +52,6 @@
 
 <!-- ============================================== hero -->
 <section class="hero">
-  <div class="floats" id="heroFloats" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <span class="eyebrow reveal">Una nueva forma de pagar</span>
@@ -134,7 +134,7 @@
         <div>
           <h2>Tú eliges en cuántos paguitos</h2>
           <p class="pagui-sub">3, 5 u 8 paguitos quincenales. El primero se paga al momento de la compra y los demás se cobran solos a tu tarjeta.</p>
-          <p class="pagui-note">Mostramos el <b>paguito máximo</b>: al entrar a tu cuenta, el tuyo puede bajar según tu perfil — <b>nunca subir</b>.</p>
+          <p class="pagui-note">Al entrar a tu cuenta, conocerás cómo quedan tus paguitos según tu perfil.</p>
         </div>
         <div class="pagui-card">
           <div class="pagui-buy"><span class="lbl">Compra de</span><span class="val">Q1,500</span></div>
@@ -161,18 +161,24 @@
     <div class="ways">
       <div class="way reveal">
         <div class="way-copy">
-          <span class="way-tag tienda">En tienda</span>
+          <span class="way-tag tienda"><svg class="ico"><use href="#i-store"/></svg> En tienda</span>
           <h3>Di "quiero pagar con vana pay"</h3>
           <p>Visita un comercio afiliado y pídelo en caja. Completas el pago desde tu teléfono.</p>
         </div>
         <div class="way-mock">
-          <div class="bubble me">Quiero pagar con vana pay</div>
-          <div class="bubble">¡Claro! Te enviamos tu link de pago 📲</div>
+          <div class="mini-link">
+            <svg class="ico"><use href="#i-qr"/></svg>
+            <div>
+              <b>Tu link de pago</b>
+              <span class="sub">Adidas · Q1,500</span>
+            </div>
+            <span class="mini-go">Pagar</span>
+          </div>
         </div>
       </div>
       <div class="way reveal d1">
         <div class="way-copy">
-          <span class="way-tag online">En línea</span>
+          <span class="way-tag online"><svg class="ico"><use href="#i-cart"/></svg> En línea</span>
           <h3>Elígelo al pagar tu carrito</h3>
           <p>Compra en la tienda en línea del comercio y selecciona vana pay como método de pago.</p>
         </div>
@@ -186,7 +192,7 @@
       </div>
       <div class="way reveal d2">
         <div class="way-copy">
-          <span class="way-tag chat">vana pay chat</span>
+          <span class="way-tag chat"><svg class="ico"><use href="#i-wa"/></svg> vana pay chat</span>
           <h3>Te ayudamos a comprar</h3>
           <p>¿No sabes por dónde empezar? Escríbenos y te ayudamos a comprar en el comercio que quieras.</p>
           <a class="btn btn-chat btn-sm" data-wa-context="ways" href="#" id="waysChat">
@@ -230,7 +236,7 @@
         <span class="eyebrow">vana pay chat</span>
         <h2>Pide lo que quieras.<br>Nosotros te lo conseguimos.</h2>
         <p>Cuéntanos qué buscas y te ayudamos a encontrarlo en un comercio afiliado, comprarlo y pagarlo en paguitos.</p>
-        <a class="btn btn-chat" id="bannerChat" data-wa-context="home-banner" href="#" target="_blank" rel="noopener">
+        <a class="btn btn-chat btn-neon" id="bannerChat" data-wa-context="home-banner" href="#" target="_blank" rel="noopener">
           <svg class="ico"><use href="#i-wa"/></svg> Pedir por vana pay chat
         </a>
       </div>

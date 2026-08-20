@@ -17,66 +17,59 @@
     if (el.textContent.trim()) el.textContent = window.VP.money(q.per);
   });
 
-  // Cutouts de producto flotando con parallax (top notch ✨). Vienen de
-  // data/floats.json (build_data los lee de assets/img/floats/). Solo se
-  // inyectan en pantallas anchas — así mobile ni siquiera los descarga.
-  // Hero: 6 curados. Resto: distribuidos por los laterales de toda la
-  // página (≥1440px, donde hay gutter libre junto a la columna de 1120px).
+  // Cutouts de producto flotando con parallax (data/floats.json, generado
+  // por build_data desde assets/img/floats/). Viven ESTRICTAMENTE en los
+  // gutters laterales junto a la columna de 1120px: si el gutter libre no
+  // alcanza, no se inyectan (ni se descargan) — así jamás caen encima de
+  // cards, buscador, banner ni ofertas, en ningún ancho de pantalla.
   var HERO_PICKS = ["tenis-nike", "airpods-pro", "apple-watch",
     "audifonos-jbl", "bocina-jbl", "tenis-puma-retro"];
 
-  if (window.matchMedia("(min-width:1150px)").matches) {
+  (function () {
+    var gutter = (window.innerWidth - 1120) / 2;
+    if (gutter < 140) return;
     fetch(window.VP.ROOT + "data/floats.json" + window.VP.VQ)
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var all = d.floats || [];
         if (!all.length) return;
 
-        var hero = [];
+        // los curados primero, para que abran la página
+        var ordered = [];
         HERO_PICKS.forEach(function (k) {
           var hit = all.filter(function (s) { return s.indexOf(k) >= 0; })[0];
-          if (hit) hero.push(hit);
+          if (hit && ordered.indexOf(hit) < 0) ordered.push(hit);
         });
         all.forEach(function (s) {
-          if (hero.length < 6 && hero.indexOf(s) < 0) hero.push(s);
+          if (ordered.indexOf(s) < 0) ordered.push(s);
         });
 
-        var host = document.getElementById("heroFloats");
-        if (host) {
-          host.innerHTML = hero.map(function (src, i) {
-            return '<img class="float f' + (i + 1) + '" src="' +
-              window.VP.ROOT + src + '" alt="" loading="lazy">';
-          }).join("");
-        }
-
-        // laterales del resto de la página
-        if (!window.matchMedia("(min-width:1440px)").matches) return;
-        var rest = all.filter(function (s) { return hero.indexOf(s) < 0; });
         var rail = document.createElement("div");
         rail.className = "page-floats";
         document.body.appendChild(rail);
-        function layout() {
+
+        // esperar a que los grids dinámicos definan la altura final
+        setTimeout(function () {
           var h = document.body.scrollHeight;
-          var start = window.innerHeight + 200;   // debajo del hero
-          var gap = 780;
-          var n = Math.min(rest.length, Math.max(0, Math.floor((h - start - 600) / gap)));
+          var start = 140, gap = 620;
+          var maxW = Math.min(170, Math.floor(gutter) - 28);
+          var n = Math.min(ordered.length,
+            Math.max(0, Math.floor((h - start - 520) / gap)));
           var html = "";
           for (var i = 0; i < n; i++) {
             var side = i % 2 ? "right" : "left";
-            var w = 110 + ((i * 37) % 50);        // 110–160px, determinista
-            var rot = ((i * 53) % 24) - 12;       // −12°..12°
+            var w = Math.min(maxW, 104 + ((i * 37) % 60));
+            var rot = ((i * 53) % 24) - 12;
             html += '<img class="pf ' + (i % 2 ? "pf-down" : "pf-up") +
-              '" src="' + window.VP.ROOT + rest[i] + '" alt="" loading="lazy" style="' +
-              side + ":28px;top:" + (start + i * gap) + "px;width:" + w +
+              '" src="' + window.VP.ROOT + ordered[i] + '" alt="" loading="lazy" style="' +
+              side + ":14px;top:" + (start + i * gap) + "px;width:" + w +
               "px;--rot:" + rot + 'deg">';
           }
           rail.innerHTML = html;
-        }
-        // esperar a que los grids dinámicos definan la altura final
-        setTimeout(layout, 600);
+        }, 600);
       })
       .catch(function () {});
-  }
+  })();
 
   window.VP.fetchData().then(function (data) {
     // Comercios destacados como brand cards (ref. Klarna): el chip muestra

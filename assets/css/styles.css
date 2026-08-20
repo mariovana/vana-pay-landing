@@ -193,47 +193,19 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .hero-note .ico{flex:none}
 @keyframes mockfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
-/* --------- cutouts de producto flotando con parallax (solo desktop) */
+/* --------- cutouts de producto flotando con parallax.
+   Rail absoluto sobre el body, SOLO en los gutters laterales — home.js
+   los inyecta únicamente si hay ≥140px de gutter libre junto a la columna
+   de 1120px, y les fija un ancho que quepa en ese gutter: así jamás caen
+   encima de cards, buscador, banner ni ofertas, en ningún viewport.
+   Capa z30: sobre el contenido, debajo del header (z50) y buscador (z60). */
 .hero{position:relative}
 .hero .wrap{position:relative;z-index:1}
-/* z-index 30: los floats vuelan POR ENCIMA de todo el contenido
-   (debajo solo del header sticky z50 y el dropdown del buscador z60) */
-.floats{position:absolute;inset:0;pointer-events:none;overflow:visible;display:none;z-index:30}
-.float{
-  position:absolute;width:150px;height:auto;
-  filter:drop-shadow(0 18px 28px rgba(8,107,125,.22));
-}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}50%{transform:translateY(-12px) rotate(var(--rot,0deg))}}
-.f1{--rot:-9deg;left:1.5%;top:12%;width:170px;animation:bob 7s ease-in-out infinite}
-.f2{--rot:7deg;right:1%;bottom:4%;width:190px;animation:bob 8s 1.2s ease-in-out infinite}
-.f3{--rot:-6deg;left:3%;bottom:6%;width:130px;animation:bob 9s .6s ease-in-out infinite}
-.f4{--rot:10deg;right:2.5%;top:6%;width:120px;animation:bob 7.5s 1.8s ease-in-out infinite}
-.f5{--rot:-4deg;left:24%;bottom:0;width:100px;animation:bob 8.5s .3s ease-in-out infinite}
-.f6{--rot:5deg;right:22%;top:2%;width:90px;animation:bob 9.5s 2.2s ease-in-out infinite}
-.no-anim .float{animation:none}
-
-/* laterales de toda la página (≥1440px): rail absoluto sobre el body */
 .page-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:30}
 .pf{position:absolute;filter:drop-shadow(0 16px 26px rgba(54,64,73,.18));transform:rotate(var(--rot,0deg))}
 @supports (animation-timeline: view()){
   html:not(.no-anim) .pf-up{animation:drift-up linear both;animation-timeline:view()}
   html:not(.no-anim) .pf-down{animation:drift-down linear both;animation-timeline:view()}
-}
-
-@media (min-width:1150px){
-  .floats{display:block}
-  @supports (animation-timeline: view()){
-    html:not(.no-anim) .f1,html:not(.no-anim) .f4,html:not(.no-anim) .f5{
-      animation:bob 8s ease-in-out infinite, drift-up linear both;
-      animation-timeline:auto, view();
-      animation-range:normal, entry 0% exit 100%;
-    }
-    html:not(.no-anim) .f2,html:not(.no-anim) .f3,html:not(.no-anim) .f6{
-      animation:bob 9s 1s ease-in-out infinite, drift-down linear both;
-      animation-timeline:auto, view();
-      animation-range:normal, entry 0% exit 100%;
-    }
-  }
 }
 
 /* mock de checkout: la compra, vana pay seleccionado y los paguitos */
@@ -319,8 +291,9 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .way-copy{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .way-tag{
   align-self:flex-start;font-size:.8rem;font-weight:700;border-radius:var(--r-pill);
-  padding:5px 12px;
+  padding:5px 12px;display:inline-flex;align-items:center;gap:6px;
 }
+.way-tag .ico{width:1.1em;height:1.1em}
 .way-tag.tienda{background:var(--brand-soft);color:var(--brand-strong)}
 .way-tag.online{background:#EDF1FF;color:var(--vana)}
 .way-tag.chat{background:#E4F8EC;color:#1B9E4B}
@@ -339,6 +312,19 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .bubble + .bubble{margin-top:8px}
 .way-mock .mini-pay{display:flex;align-items:center;gap:8px;background:var(--n0);border:2px solid var(--brand);border-radius:10px;padding:8px 10px;font-weight:700;font-size:.88rem}
 .way-mock .mini-pay img{height:14px}
+/* mock del link de pago (En tienda): recibo con QR, NO un chat */
+.mini-link{
+  display:flex;align-items:center;gap:12px;background:var(--n0);
+  border:1.5px solid var(--n30);border-radius:12px;padding:10px 12px;
+  box-shadow:0 1px 2px rgba(54,64,73,.06);
+}
+.mini-link .ico{width:32px;height:32px;color:var(--ink);flex:none}
+.mini-link b{display:block;font-size:.9rem;line-height:1.2}
+.mini-link .sub{color:var(--n70);font-size:.8rem}
+.mini-link .mini-go{
+  margin-left:auto;background:var(--brand);color:#fff;font-weight:700;
+  border-radius:var(--r-pill);padding:6px 14px;font-size:.82rem;flex:none;
+}
 
 /* ------------------------------------- banner de vana pay chat (home) */
 .chatband{
@@ -356,6 +342,27 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .chatband .btn-chat{margin-top:20px}
 .chatband-demo .bubble{background:#1E2A31;border-color:#2C3B44;color:var(--n30)}
 .chatband-demo .bubble.me{background:#144D33;border-color:#1B6343;color:#DFF7E8}
+
+/* botón con borde neón (mismo efecto del super search, versión botón) */
+@keyframes neon-glow{
+  0%,100%{box-shadow:0 0 16px rgba(37,211,102,.40),0 0 4px rgba(94,227,154,.5)}
+  50%{box-shadow:0 0 32px rgba(94,227,154,.7),0 0 6px rgba(169,245,201,.8)}
+}
+.btn-neon{
+  border:2px solid transparent;
+  background:
+    linear-gradient(#25D366,#1FB457) padding-box,
+    conic-gradient(from var(--ssang),
+      #A9F5C9, #5EE39A, #EFFFF5, #0FB3CE, #5EE39A, #A9F5C9) border-box;
+  animation:ss-spin 2.8s linear infinite, neon-glow 2.8s ease-in-out infinite;
+}
+.btn-neon:hover{
+  background:
+    linear-gradient(#1FB457,#189A49) padding-box,
+    conic-gradient(from var(--ssang),
+      #A9F5C9, #5EE39A, #EFFFF5, #0FB3CE, #5EE39A, #A9F5C9) border-box;
+}
+.no-anim .btn-neon{animation:none;box-shadow:0 0 16px rgba(37,211,102,.4)}
 
 /* --------------------------------------------------- buscador/chips */
 .searchrow{position:relative;margin-bottom:14px}
