@@ -82,8 +82,10 @@ ul{list-style:none}
 /* --------------------------------------------------- tipografía
    Display grande, línea apretada y secciones centradas (ref. Klarna). */
 h1{font-weight:900;font-size:clamp(2.5rem,10.5vw,4.4rem);line-height:1.0;letter-spacing:-.025em}
-/* primera línea del hero: extra grande y chunky (jerarquía Klarna) */
+/* hero: primera línea extra grande y chunky; la segunda es el remate,
+   más pequeña pero mismo peso Black para no perder impacto */
 .h1-xl{display:block;font-size:1.22em;letter-spacing:-.032em}
+.h1-sub{display:block;font-size:.64em;letter-spacing:-.018em;margin-top:10px;line-height:1.08}
 .hl{font-style:normal;color:var(--accent-strong)}
 h2{font-weight:900;font-size:clamp(1.9rem,6.8vw,2.9rem);line-height:1.04;letter-spacing:-.02em}
 h3{font-weight:700;font-size:1.15rem;line-height:1.25}
@@ -194,7 +196,9 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 /* --------- cutouts de producto flotando con parallax (solo desktop) */
 .hero{position:relative}
 .hero .wrap{position:relative;z-index:1}
-.floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:none}
+/* z-index 30: los floats vuelan POR ENCIMA de todo el contenido
+   (debajo solo del header sticky z50 y el dropdown del buscador z60) */
+.floats{position:absolute;inset:0;pointer-events:none;overflow:visible;display:none;z-index:30}
 .float{
   position:absolute;width:150px;height:auto;
   filter:drop-shadow(0 18px 28px rgba(8,107,125,.22));
@@ -209,7 +213,7 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .no-anim .float{animation:none}
 
 /* laterales de toda la página (≥1440px): rail absoluto sobre el body */
-.page-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.page-floats{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:30}
 .pf{position:absolute;filter:drop-shadow(0 16px 26px rgba(54,64,73,.18));transform:rotate(var(--rot,0deg))}
 @supports (animation-timeline: view()){
   html:not(.no-anim) .pf-up{animation:drift-up linear both;animation-timeline:view()}
