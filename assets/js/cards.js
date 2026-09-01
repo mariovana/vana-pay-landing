@@ -7,14 +7,16 @@
     });
   };
 
-  var MODAL_LABEL = { tienda: "En tienda", online: "En línea" };
+  var MODAL_LABEL = { tienda: "En tienda", online: "En línea", whatsapp: "WhatsApp" };
 
-  // El WhatsApp directo del comercio ya no se ofrece como modalidad
-  // (decisión de Mario, 2026-08-19): lo reemplaza vana pay chat. La clave
-  // whatsapp de merchants.json se conserva como dato pero no se renderiza.
+  // Dos chats distintos (pivot 2026-08-21): "WhatsApp" = chateas con la
+  // tienda (su propio número); "vana pay chat" = te atiende un agente de
+  // vana (solo el piloto). En las tiendas del piloto el agente reemplaza al
+  // WhatsApp de la tienda, así que ese badge se omite.
   window.VP.modalityBadges = function (m) {
     var out = [];
     Object.keys(m.modalities).forEach(function (k) {
+      if (k === "whatsapp" && m.chatEnabled) return;
       if (MODAL_LABEL[k]) out.push('<span class="badge">' + MODAL_LABEL[k] + "</span>");
     });
     if (m.chatEnabled) out.push('<span class="badge chat">vana pay chat</span>');
@@ -68,8 +70,6 @@
     var root = window.VP.ROOT;
     var m = o.merchantSlug ? merchantsBySlug[o.merchantSlug] : null;
     var badges = (o.modalities || []).map(function (k) {
-      // Las ofertas por WhatsApp ahora se piden por vana pay chat.
-      if (k === "whatsapp") return '<span class="badge chat">vana pay chat</span>';
       return '<span class="badge">' + (MODAL_LABEL[k] || k) + "</span>";
     }).join("");
     var href = m ? root + "comercios/" + esc(m.slug) + "/" : root + "donde-comprar/";

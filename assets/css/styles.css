@@ -387,6 +387,7 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .way-tag.tienda{background:var(--brand-soft);color:var(--brand-strong)}
 .way-tag.online{background:#EDF1FF;color:var(--vana)}
 .way-tag.chat{background:#E4F8EC;color:#1B9E4B}
+.way-tag.wa{background:var(--n10);color:var(--n80)}  /* chat con la tienda: neutro, para no confundirlo con vana pay chat */
 .way p{color:var(--n80);font-size:.98rem}
 .way-mock{
   background:var(--n10);border-radius:var(--r-md);padding:16px;margin-top:4px;
