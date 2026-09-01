@@ -1,15 +1,5 @@
 /* vana pay landing — home. */
 (function () {
-  // CTA genérico de vana pay chat en "Formas de comprar".
-  var ways = document.getElementById("waysChat");
-  if (ways) {
-    ways.href = window.VP.chatGenericLink();
-    ways.target = "_blank";
-    ways.rel = "noopener";
-  }
-  var banner = document.getElementById("bannerChat");
-  if (banner) banner.href = window.VP.chatGenericLink();
-
   // El mock del hero ES la calculadora (feedback real: todos intentaban
   // tocarlo). Slider de monto Q100–Q3,000; estimado de referencia con
   // VP.paguitos() (fee máximo) y la regla real del producto para el
@@ -135,6 +125,20 @@
       data.ofertas.slice(0, 8).map(function (o) {
         return window.VP.offerCardHTML(o, data.bySlug);
       }).join("");
+
+    // Banner de vana pay chat: un CTA prellenado por tienda del piloto
+    // (chatEnabled viene de build_data → ampliar el piloto es solo data).
+    var pilot = document.getElementById("pilotStores");
+    if (pilot) {
+      pilot.innerHTML = data.merchants.filter(function (m) { return m.chatEnabled; })
+        .map(function (m) {
+          return '<a class="pilot-btn" data-wa-context="pilot-banner" data-wa-slug="' + m.slug +
+            '" href="' + window.VP.chatMerchantLink(m.name) + '" target="_blank" rel="noopener">' +
+            '<img src="' + window.VP.ROOT + m.logo + '" alt="">' +
+            "<span><b>Comprar en " + m.name + "</b><small>por vana pay chat</small></span>" +
+            '<svg class="ico"><use href="#i-wa"/></svg></a>';
+        }).join("");
+    }
 
     // Super search con sugerencias (comercios + vana pay chat).
     var q = document.querySelector("#homeSearch input");

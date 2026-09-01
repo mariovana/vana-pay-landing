@@ -439,6 +439,20 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .chatband-demo .bubble{background:#1E2A31;border-color:#2C3B44;color:var(--n30)}
 .chatband-demo .bubble.me{background:#144D33;border-color:#1B6343;color:#DFF7E8}
 
+/* tiendas del piloto de chat: un CTA prellenado por tienda */
+.pilot-grid{display:grid;gap:10px;margin-top:22px}
+.pilot-btn{
+  display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:12px 14px;
+  color:#fff;transition:background .15s ease,border-color .15s ease,transform .15s ease;
+}
+.pilot-btn:hover{background:rgba(37,211,102,.16);border-color:rgba(94,227,154,.6);transform:translateY(-1px)}
+.pilot-btn img{width:42px;height:42px;border-radius:11px;background:#fff;object-fit:contain;padding:4px;flex:none}
+.pilot-btn span{display:flex;flex-direction:column;line-height:1.2}
+.pilot-btn b{font-size:.98rem}
+.pilot-btn small{font-size:.78rem;color:#5EE39A}
+.pilot-btn .ico{margin-left:auto;color:#5EE39A;width:1.4em;height:1.4em}
+
 /* botón con borde neón (mismo efecto del super search, versión botón) */
 @keyframes neon-glow{
   0%,100%{box-shadow:0 0 16px rgba(37,211,102,.40),0 0 4px rgba(94,227,154,.5)}

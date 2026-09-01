@@ -46,14 +46,17 @@
         .filter(function (x) { return x.s > 0; })
         .sort(function (a, b) { return b.s - a.s || a.m.order - b.m.order; })
         .slice(0, 5);
+      if (!hits.length) { close(); return; }
 
-      // Resultado prominente de vana pay chat — SIEMPRE presente.
-      var chatMsg = "Hola, quiero comprar *" + q + "* con vana pay. ¿Me ayudas?";
-      var html =
-        '<a class="ss-chat" data-wa-context="supersearch" href="' +
-        window.VP.waRaw(chatMsg) + '" target="_blank" rel="noopener">' +
-        '<svg class="ico"><use href="#i-wa"/></svg>' +
-        "<span>Te ayudamos a comprar <b>" + esc(q) + "</b> — pídelo en vana pay chat</span></a>";
+      // Fila prominente de vana pay chat: solo para las tiendas del piloto
+      // que matchean (chatEnabled) — el chat no está disponible en todas.
+      var html = hits.filter(function (x) { return x.m.chatEnabled; }).map(function (x) {
+        var msg = "Hola, quiero comprar *" + q + "* en *" + x.m.name + "* con vana pay. ¿Me ayudas?";
+        return '<a class="ss-chat" data-wa-context="supersearch" data-wa-slug="' + esc(x.m.slug) +
+          '" href="' + window.VP.waRaw(msg) + '" target="_blank" rel="noopener">' +
+          '<svg class="ico"><use href="#i-wa"/></svg>' +
+          "<span>Cómpralo por chat en <b>" + esc(x.m.name) + "</b> — te ayudamos a conseguir " + esc(q) + "</span></a>";
+      }).join("");
 
       html += hits.map(function (x) {
         var m = x.m;

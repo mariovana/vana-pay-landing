@@ -15,7 +15,7 @@
      "phone": "50247963586"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 0
   },
@@ -39,7 +39,7 @@
      "phone": "50230768666"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": true,
    "order": 1
   },
@@ -81,7 +81,7 @@
      "phone": "50237601111"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 3
   },
@@ -100,7 +100,7 @@
     },
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 4
   },
@@ -118,7 +118,7 @@
      "phone": "50224202970"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 5
   },
@@ -158,7 +158,7 @@
      "phone": "50247963586"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 7
   },
@@ -177,7 +177,7 @@
      "phone": "50247963586"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 8
   },
@@ -246,7 +246,7 @@
      "phone": "50230589946"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 12
   },
@@ -280,7 +280,7 @@
      "url": "https://www.bibi.com.gt/"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 14
   },
@@ -301,7 +301,7 @@
      "phone": "50248548165"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 15
   },
@@ -320,7 +320,7 @@
      "phone": "50242142077"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 16
   },
@@ -389,7 +389,7 @@
      "phone": "50254943298"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 20
   },
@@ -413,7 +413,7 @@
      "phone": "50224294720"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 21
   },
@@ -435,7 +435,7 @@
      "phone": "50224294720"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 22
   },
@@ -475,14 +475,14 @@
      "phone": "50237636728"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 24
   },
   {
    "slug": "cat",
    "name": "CAT",
-   "photo": null,
+   "photo": "assets/img/photos/cat.jpg",
    "logo": "assets/img/merchants/cat.avif",
    "categories": [
     "Moda y accesorios"
@@ -500,7 +500,7 @@
     }
    },
    "chatEnabled": true,
-   "featured": false,
+   "featured": true,
    "order": 25
   },
   {
@@ -518,7 +518,7 @@
      "phone": "50258415965"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 26
   },
@@ -536,7 +536,7 @@
      "phone": "50224999990"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": true,
    "order": 27
   },
@@ -592,7 +592,7 @@
      "phone": "50255673393"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 30
   },
@@ -611,7 +611,7 @@
      "phone": "50242868954"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 31
   },
@@ -648,7 +648,7 @@
      "phone": "50266610507"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 33
   },
@@ -680,7 +680,7 @@
    "modalities": {
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 35
   },
@@ -696,7 +696,7 @@
    "modalities": {
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 36
   },
@@ -713,7 +713,7 @@
     "tienda": {},
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 37
   },
@@ -753,7 +753,7 @@
      "phone": "50258250853"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 39
   },
@@ -778,7 +778,7 @@
   {
    "slug": "dressy",
    "name": "Dressy",
-   "photo": null,
+   "photo": "assets/img/photos/dressy.png",
    "logo": "assets/img/merchants/dressy.avif",
    "categories": [
     "Moda y accesorios"
@@ -793,7 +793,7 @@
     }
    },
    "chatEnabled": true,
-   "featured": false,
+   "featured": true,
    "order": 41
   },
   {
@@ -813,7 +813,7 @@
      "phone": "50255149999"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 42
   },
@@ -832,7 +832,7 @@
      "phone": "50223835630"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 43
   },
@@ -853,7 +853,7 @@
      "phone": "50223050100"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 44
   },
@@ -872,7 +872,7 @@
      "phone": "50237706442"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 45
   },
@@ -893,7 +893,7 @@
      "phone": "50235192035"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 46
   },
@@ -912,7 +912,7 @@
      "phone": "50255936198"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 47
   },
@@ -933,7 +933,7 @@
      "phone": "50247963618"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 48
   },
@@ -957,7 +957,7 @@
      "phone": "50222243801"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 49
   },
@@ -976,7 +976,7 @@
      "phone": "50230199258"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 50
   },
@@ -1029,7 +1029,7 @@
      "phone": "50244347728"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 53
   },
@@ -1045,7 +1045,7 @@
    "modalities": {
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 54
   },
@@ -1088,7 +1088,7 @@
      "phone": "50231516547"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 56
   },
@@ -1139,7 +1139,7 @@
     "tienda": {},
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 59
   },
@@ -1179,7 +1179,7 @@
      "phone": "50222779988"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": true,
    "order": 61
   },
@@ -1256,7 +1256,7 @@
      "phone": "50222136276"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 65
   },
@@ -1293,7 +1293,7 @@
     },
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 67
   },
@@ -1327,7 +1327,7 @@
      "phone": "50224202920"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 69
   },
@@ -1382,7 +1382,7 @@
      "phone": "50223140943"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 72
   },
@@ -1419,7 +1419,7 @@
      "phone": "50230063605"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 74
   },
@@ -1456,7 +1456,7 @@
      "phone": "50239060609"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 76
   },
@@ -1474,7 +1474,7 @@
      "phone": "50224230100"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": true,
    "order": 77
   },
@@ -1495,7 +1495,7 @@
      "locatorUrl": "https://meatpack.com/"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 78
   },
@@ -1514,7 +1514,7 @@
      "phone": "50251151254"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 79
   },
@@ -1550,7 +1550,7 @@
      "url": "https://merrell.gt/"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 81
   },
@@ -1568,7 +1568,7 @@
      "phone": "50251132687"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 82
   },
@@ -1602,7 +1602,7 @@
      "phone": "50231695584"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 84
   },
@@ -1642,7 +1642,7 @@
      "phone": "50230711913"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 86
   },
@@ -1659,7 +1659,7 @@
     "tienda": {},
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 87
   },
@@ -1730,7 +1730,7 @@
      "phone": "50230597923"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 91
   },
@@ -1751,7 +1751,7 @@
      "phone": "50230625357"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 92
   },
@@ -1769,7 +1769,7 @@
      "phone": "50224202920"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 93
   },
@@ -1811,7 +1811,7 @@
      "phone": "50255550561"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 95
   },
@@ -1832,7 +1832,7 @@
      "phone": "50254111010"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 96
   },
@@ -1856,7 +1856,7 @@
      "phone": "50231516547"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 97
   },
@@ -1875,7 +1875,7 @@
     },
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": true,
    "order": 98
   },
@@ -1910,7 +1910,7 @@
      "phone": "50234843486"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 100
   },
@@ -1929,7 +1929,7 @@
      "phone": "50257983976"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 101
   },
@@ -1946,7 +1946,7 @@
     "tienda": {},
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 102
   },
@@ -2000,7 +2000,7 @@
      "phone": "50224202950"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 105
   },
@@ -2035,7 +2035,7 @@
     },
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 107
   },
@@ -2054,7 +2054,7 @@
      "phone": "50248548165"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 108
   },
@@ -2094,7 +2094,7 @@
      "phone": "50259057684"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 110
   },
@@ -2131,7 +2131,7 @@
      "phone": "50239945100"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": true,
    "order": 112
   },
@@ -2147,7 +2147,7 @@
    "modalities": {
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 113
   },
@@ -2169,7 +2169,7 @@
      "phone": "50224294720"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 114
   },
@@ -2191,7 +2191,7 @@
      "phone": "50230262561"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 115
   },
@@ -2212,7 +2212,7 @@
      "phone": "50249799492"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 116
   },
@@ -2228,7 +2228,7 @@
    "modalities": {
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 117
   },
@@ -2245,7 +2245,7 @@
     "tienda": {},
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 118
   },
@@ -2266,7 +2266,7 @@
      "phone": "50224987000"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 119
   },
@@ -2300,7 +2300,7 @@
      "url": "https://www.superofertas.com.gt/collections/all"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 121
   },
@@ -2318,7 +2318,7 @@
      "phone": "50224230200"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 122
   },
@@ -2336,7 +2336,7 @@
      "url": "https://theloop.gt/"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 123
   },
@@ -2360,7 +2360,7 @@
      "phone": "50231516547"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 124
   },
@@ -2413,7 +2413,7 @@
     },
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 127
   },
@@ -2432,7 +2432,7 @@
      "phone": "50222285416"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 128
   },
@@ -2451,7 +2451,7 @@
      "phone": "50254967678"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 129
   },
@@ -2490,7 +2490,7 @@
      "phone": "50235373866"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 131
   },
@@ -2527,7 +2527,7 @@
      "phone": "50230262561"
     }
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 133
   },
@@ -2544,7 +2544,7 @@
     "tienda": {},
     "whatsapp": {}
    },
-   "chatEnabled": true,
+   "chatEnabled": false,
    "featured": false,
    "order": 134
   },

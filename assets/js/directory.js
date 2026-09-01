@@ -47,13 +47,6 @@
       ? list.length + " comercio" + (list.length === 1 ? "" : "s")
       : "";
     $empty.classList.toggle("show", !list.length);
-    if (!list.length) {
-      var chat = document.getElementById("emptyChat");
-      chat.href = state.q
-        ? window.VP.waRaw("Hola, quiero comprar *" + state.q + "* con vana pay. ¿Me ayudas?")
-        : window.VP.chatGenericLink();
-      chat.setAttribute("data-wa-context", "empty-search");
-    }
   }
 
   function chips(el, items, get, set) {
