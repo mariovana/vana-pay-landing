@@ -572,6 +572,15 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   background:var(--n0);border:1px solid var(--n30);border-radius:var(--r-card);
   padding:18px;display:flex;flex-direction:column;gap:8px;
 }
+.ocard.has-media{padding:0;overflow:hidden;gap:0}
+/* las artes de oferta son verticales con texto horneado y fondo aqua:
+   contain sobre aqua para no recortar el copy del arte */
+.ocard-media{position:relative;aspect-ratio:1;background:var(--aqua)}
+.ocard-media img{width:100%;height:100%;object-fit:contain}
+.ocard-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.ocard-head{display:flex;align-items:center;gap:8px}
+.ocard-logo{width:26px;height:26px;border-radius:8px;background:var(--n10);object-fit:contain;padding:2px;flex:none}
+.ocard-cond b{color:var(--accent-strong)}
 .ocard-merchant{font-size:.85rem;font-weight:700;color:var(--n70);text-transform:uppercase;letter-spacing:.04em}
 .ocard-amount{font-weight:900;font-size:1.9rem;color:var(--accent-strong);line-height:1}
 .ocard-cond{color:var(--n80);font-size:.92rem}

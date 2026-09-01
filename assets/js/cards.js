@@ -73,12 +73,23 @@
       return '<span class="badge">' + (MODAL_LABEL[k] || k) + "</span>";
     }).join("");
     var href = m ? root + "comercios/" + esc(m.slug) + "/" : root + "donde-comprar/";
+    // Con imagen de la oferta (scrapeada del sitio actual): card estilo
+    // brand card — foto arriba, chip con el monto, logo del comercio abajo.
+    var media = o.image
+      ? '<div class="ocard-media"><img loading="lazy" src="' + root + esc(o.image) + '" alt="">' +
+        '<span class="brandcard-chip">' + esc(o.amount) + "</span></div>"
+      : "";
+    var logo = m ? '<img class="ocard-logo" loading="lazy" src="' + root + esc(m.logo) + '" alt="">' : "";
     return (
-      '<a class="ocard" href="' + href + '">' +
-        '<span class="ocard-merchant">' + esc(o.merchantName) + "</span>" +
-        '<span class="ocard-amount">' + esc(o.amount) + "</span>" +
-        '<span class="ocard-cond">' + esc(o.condition) + "</span>" +
-        '<div class="badges">' + badges + "</div>" +
+      '<a class="ocard' + (o.image ? " has-media" : "") + '" href="' + href + '">' +
+        media +
+        '<div class="ocard-body">' +
+          '<div class="ocard-head">' + logo +
+            '<span class="ocard-merchant">' + esc(o.merchantName) + "</span></div>" +
+          (o.image ? "" : '<span class="ocard-amount">' + esc(o.amount) + "</span>") +
+          '<span class="ocard-cond">' + (o.image ? "<b>" + esc(o.amount) + "</b> " : "") + esc(o.condition) + "</span>" +
+          '<div class="badges">' + badges + "</div>" +
+        "</div>" +
       "</a>"
     );
   };
