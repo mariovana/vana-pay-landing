@@ -387,7 +387,26 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .way-tag.tienda{background:var(--brand-soft);color:var(--brand-strong)}
 .way-tag.online{background:#EDF1FF;color:var(--vana)}
 .way-tag.chat{background:#E4F8EC;color:#1B9E4B}
-.way-tag.wa{background:var(--n10);color:var(--n80)}  /* chat con la tienda: neutro, para no confundirlo con vana pay chat */
+/* callout del piloto de personal shopper dentro de la card "Por chat" */
+.way-callout{
+  width:100%;margin-top:4px;padding:14px;border-radius:16px;
+  background:linear-gradient(135deg,#E9F9EF,#DCF4E4);border:1px solid #bfe8cd;
+}
+.way-callout-tag{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:#116B36;background:#CFF5DC;
+  border-radius:var(--r-pill);padding:4px 10px;margin-bottom:8px;
+}
+.way-callout p{font-size:.9rem;color:var(--n80);margin:0 0 10px}
+.way-callout-shops{display:flex;flex-wrap:wrap;gap:8px}
+.way-callout-shops a{
+  display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.88rem;
+  background:var(--n0);color:#116B36;border:1.5px solid #bfe8cd;
+  border-radius:var(--r-pill);padding:7px 14px;
+}
+.way-callout-shops a::after{content:"→"}
+.way-callout-shops a:hover{background:#CFF5DC}
+.chatbox-eyebrow{background:#CFF5DC;color:#116B36;margin-bottom:10px}
 .way p{color:var(--n80);font-size:.98rem}
 .way-mock{
   background:var(--n10);border-radius:var(--r-md);padding:16px;margin-top:4px;

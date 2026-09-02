@@ -135,10 +135,21 @@
           return '<a class="pilot-btn" data-wa-context="pilot-banner" data-wa-slug="' + m.slug +
             '" href="' + window.VP.chatMerchantLink(m.name) + '" target="_blank" rel="noopener">' +
             '<img src="' + window.VP.ROOT + m.logo + '" alt="">' +
-            "<span><b>Comprar en " + m.name + "</b><small>por vana pay chat</small></span>" +
+            "<span><b>Comprar en " + m.name + "</b><small>con tu personal shopper</small></span>" +
             '<svg class="ico"><use href="#i-wa"/></svg></a>';
         }).join("");
     }
+
+    // Chips del piloto de personal shopper en la card "Por chat": link
+    // prellenado por tienda, con el nombre real desde merchants.json.
+    document.querySelectorAll("a[data-pilot]").forEach(function (a) {
+      var m = data.bySlug[a.getAttribute("data-pilot")];
+      if (!m) { a.remove(); return; }
+      a.textContent = m.name;
+      a.href = window.VP.chatMerchantLink(m.name);
+      a.target = "_blank"; a.rel = "noopener";
+      a.setAttribute("data-wa-slug", m.slug);
+    });
 
     // Super search con sugerencias (comercios + vana pay chat).
     var q = document.querySelector("#homeSearch input");

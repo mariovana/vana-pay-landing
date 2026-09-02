@@ -7,19 +7,18 @@
     });
   };
 
-  var MODAL_LABEL = { tienda: "En tienda", online: "En línea", whatsapp: "WhatsApp" };
+  var MODAL_LABEL = { tienda: "En tienda", online: "En línea", whatsapp: "Por chat" };
 
-  // Dos chats distintos (pivot 2026-08-21): "WhatsApp" = chateas con la
-  // tienda (su propio número); "vana pay chat" = te atiende un agente de
-  // vana (solo el piloto). En las tiendas del piloto el agente reemplaza al
-  // WhatsApp de la tienda, así que ese badge se omite.
+  // TRES formas de comprar: en tienda, en línea y por chat (WhatsApp, la
+  // vía conversacional de ventas). Dentro de "por chat", el piloto de
+  // PERSONAL SHOPPER (chatEnabled: Dressy, CAT, Adoc) — ahí te atiende un
+  // agente de vana pay chat. Se muestra como capa extra, no como 4a vía.
   window.VP.modalityBadges = function (m) {
     var out = [];
     Object.keys(m.modalities).forEach(function (k) {
-      if (k === "whatsapp" && m.chatEnabled) return;
       if (MODAL_LABEL[k]) out.push('<span class="badge">' + MODAL_LABEL[k] + "</span>");
     });
-    if (m.chatEnabled) out.push('<span class="badge chat">vana pay chat</span>');
+    if (m.chatEnabled) out.push('<span class="badge chat">Personal shopper</span>');
     return out.join("");
   };
 
@@ -47,7 +46,7 @@
       ? '<span class="brandcard-chip">' + esc(offer.amount) + " de descuento</span>"
       : '<span class="brandcard-chip soft">en paguitos</span>';
     var meta = (m.categories || [])[0] || "";
-    if (m.chatEnabled) meta += (meta ? " · " : "") + "vana pay chat";
+    if (m.chatEnabled) meta += (meta ? " · " : "") + "Personal shopper";
     // Con foto de mkt: la imagen llena la media (los fondos blancos se
     // funden con el pastel via mix-blend). Sin foto: tile blanco con logo.
     var media = m.photo
