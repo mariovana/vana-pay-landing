@@ -55,7 +55,7 @@
         return '<a class="ss-chat" data-wa-context="supersearch" data-wa-slug="' + esc(x.m.slug) +
           '" href="' + window.VP.waRaw(msg) + '" target="_blank" rel="noopener">' +
           '<svg class="ico"><use href="#i-wa"/></svg>' +
-          "<span>Personal shopper en <b>" + esc(x.m.name) + "</b> — te ayudamos a conseguir " + esc(q) + "</span></a>";
+          "<span>Personal shopper en <b>" + esc(x.m.name) + "</b>: te ayudamos a conseguir " + esc(q) + "</span></a>";
       }).join("");
 
       html += hits.map(function (x) {
