@@ -8,6 +8,7 @@
   var params = new URLSearchParams(location.search);
   state.q = (params.get("q") || "").trim();
   state.cat = params.get("cat") || "";
+  state.mod = params.get("mod") || "";   // ?mod=whatsapp desde "Ver otras tiendas por chat"
 
   var $q = document.getElementById("q");
   var $grid = document.getElementById("grid");

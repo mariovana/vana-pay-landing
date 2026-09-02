@@ -9,14 +9,14 @@
   <meta property="og:description" content="Una nueva forma de pagar tus compras: divide el pago en paguitos quincenales, sin tarjeta de crédito.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=35">
-  <script src="assets/js/config.js?v=35"></script>
-  <script src="assets/js/analytics.js?v=35" defer></script>
-  <script src="assets/js/cards.js?v=35" defer></script>
-  <script src="assets/js/anim.js?v=35" defer></script>
-  <script src="assets/js/search.js?v=35" defer></script>
-  <script src="assets/js/home.js?v=35" defer></script>
-  <script src="assets/js/embed-height.js?v=35" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=36">
+  <script src="assets/js/config.js?v=36"></script>
+  <script src="assets/js/analytics.js?v=36" defer></script>
+  <script src="assets/js/cards.js?v=36" defer></script>
+  <script src="assets/js/anim.js?v=36" defer></script>
+  <script src="assets/js/search.js?v=36" defer></script>
+  <script src="assets/js/home.js?v=36" defer></script>
+  <script src="assets/js/embed-height.js?v=36" defer></script>
 </head>
 <body>
 
@@ -163,24 +163,18 @@
           </div>
         </div>
       </div>
-      <div class="way reveal d2">
+      <div class="way way-chat reveal d2">
         <div class="way-copy">
-          <span class="way-tag chat"><svg class="ico"><use href="#i-wa"/></svg> Por chat</span>
-          <h3>Compra por WhatsApp</h3>
-          <p>Escríbele al comercio, elige tu producto y pide pagar con vana pay. Recibes tu link de pago en el chat.</p>
-          <div class="way-callout">
-            <span class="way-callout-tag">Nuevo · Personal shopper</span>
-            <p>En estas tiendas te atiende un agente de vana pay chat que te ayuda a encontrar, comprar y pagar en paguitos:</p>
-            <div class="way-callout-shops">
-              <a href="#" data-pilot="dressy" data-wa-context="ways-pilot">Dressy</a>
-              <a href="#" data-pilot="cat" data-wa-context="ways-pilot">CAT</a>
-              <a href="#" data-pilot="adoc" data-wa-context="ways-pilot">Adoc</a>
-            </div>
-          </div>
+          <span class="eyebrow way-chat-eyebrow"><svg class="ico"><use href="#i-wa"/></svg> Por chat · Nuevo: Personal shopper</span>
+          <h3 class="way-chat-title">Compra por chat.<br>Paga en paguitos.</h3>
+          <p>Por ahora en Dressy, CAT y Adoc: compras por chat con un agente de vana pay que te ayuda a encontrarlo, comprarlo y pagarlo en paguitos.</p>
+          <div class="pilot-stores" id="pilotStores"></div>
+          <a class="way-more" href="donde-comprar/?mod=whatsapp">Ver otras tiendas por chat <svg class="ico"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="way-mock">
-          <div class="bubble me">Hola, ¿tienen talla 40?</div>
-          <div class="bubble">¡Sí! Te mando tu link de pago con vana pay</div>
+        <div class="way-mock chatband-demo" aria-hidden="true">
+          <div class="bubble me">Busco unas botas de trabajo</div>
+          <div class="bubble">En CAT las tienes. ¿Te ayudamos a comprarlas en paguitos?</div>
+          <div class="bubble me">¡Sí, va!</div>
         </div>
       </div>
     </div>
@@ -203,25 +197,6 @@
     <div class="brandrow" id="homeGrid" style="margin-top:14px"></div>
     <div style="text-align:center;margin-top:24px">
       <a class="btn btn-secondary" href="donde-comprar/">Ver todos los comercios <svg class="ico"><use href="#i-arrow"/></svg></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================== banner vana pay chat (piloto) -->
-<section class="section" id="chat-banner" style="padding-block:24px">
-  <div class="wrap">
-    <div class="chatband reveal">
-      <div>
-        <span class="eyebrow">Nuevo · Personal shopper</span>
-        <h2>Compra por chat.<br>Paga en paguitos.</h2>
-        <p>Por ahora en Dressy, CAT y Adoc: compras por chat con un agente de vana pay que te ayuda a encontrarlo, comprarlo y pagarlo en paguitos.</p>
-        <div class="pilot-grid" id="pilotStores"></div>
-      </div>
-      <div class="chatband-demo" aria-hidden="true">
-        <div class="bubble me">Busco unas botas de trabajo</div>
-        <div class="bubble">En CAT las tienes. ¿Te ayudamos a comprarlas en paguitos?</div>
-        <div class="bubble me">¡Sí, va!</div>
-      </div>
     </div>
   </div>
 </section>

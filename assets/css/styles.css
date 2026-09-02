@@ -387,6 +387,28 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 .way-tag.tienda{background:var(--brand-soft);color:var(--brand-strong)}
 .way-tag.online{background:#EDF1FF;color:var(--vana)}
 .way-tag.chat{background:#E4F8EC;color:#1B9E4B}
+/* tercera card = banner oscuro de personal shopper (reemplaza al banner
+   suelto): misma paleta del chatband, con los CTAs por tienda y un link
+   al directorio filtrado por chat */
+.way-chat{
+  background:var(--ink);color:#fff;border-color:transparent;position:relative;overflow:hidden;
+}
+.way-chat::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(420px 300px at 92% 8%, rgba(37,211,102,.22), transparent 60%);
+}
+.way-chat>*{position:relative}
+.way-chat-eyebrow{background:rgba(37,211,102,.18);color:#5EE39A;margin-bottom:0;display:inline-flex;align-items:center;gap:6px}
+.way-chat-title{font-weight:900;font-size:clamp(1.6rem,6vw,2.1rem);line-height:1.05;letter-spacing:-.02em;color:#fff}
+.way-chat p{color:var(--n50)}
+.way-chat .pilot-stores{width:100%}
+.way-more{
+  display:inline-flex;align-items:center;gap:6px;font-weight:700;color:#5EE39A;
+  margin-top:4px;
+}
+.way-more:hover{color:#A9F5C9}
+.way-chat .way-mock{background:transparent;padding:0}
+
 /* callout del piloto de personal shopper dentro de la card "Por chat" */
 .way-callout{
   width:100%;margin-top:4px;padding:14px;border-radius:16px;
@@ -461,6 +483,7 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
 
 /* tiendas del piloto de chat: un CTA prellenado por tienda */
 .pilot-grid{display:grid;gap:10px;margin-top:22px}
+.pilot-stores{display:grid;gap:10px;margin-top:6px}
 .pilot-btn{
   display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:12px 14px;
