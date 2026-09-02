@@ -16,7 +16,11 @@
   // haría que el mensaje se descarte en silencio.
   var STATIC_ORIGINS = [
     "https://www.vana.gt",
-    "https://vana.gt"
+    "https://vana.gt",
+    // editor de Framer (canvas/preview dentro de la app): sin esto el
+    // embed se queda en la altura inicial mientras se edita la página
+    "https://framer.com",
+    "https://www.framer.com"
   ];
 
   // Previews de Framer: la URL incluye un id de rama y cambia sola
