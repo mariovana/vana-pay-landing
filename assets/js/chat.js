@@ -21,7 +21,40 @@
   AGENT_URL = AGENT_URL.replace(/\/+$/, "");
 
   var STORES = VP.AGENT_STORES || ["dressy"];
-  var STORE_NAME = VP.AGENT_STORE_NAME || "Dressy";
+  var NAMES = VP.AGENT_STORE_NAMES || { dressy: "Dressy" };
+  // "Dressy y CAT" / "Dressy, CAT y 4 tiendas más": la lista completa no cabe en la cabecera.
+  function joinNames(list) {
+    if (list.length <= 2) return list.join(" y ");
+    return list.slice(0, 2).join(", ") + " y " + (list.length - 2) + " tiendas más";
+  }
+  var ALL_NAMES = joinNames(STORES.map(function (s) { return NAMES[s] || s; }));
+  var STORE_NAME = ALL_NAMES;              // texto de cabecera; cambia con el foco
+  var focusSlug = "";                      // "" = todas las tiendas
+  try { focusSlug = sessionStorage.getItem("vp.chat.store") || ""; } catch (e) { /* noop */ }
+  function setFocus(slug) {
+    focusSlug = STORES.indexOf(slug) >= 0 ? slug : "";
+    try { sessionStorage.setItem("vp.chat.store", focusSlug); } catch (e) { /* noop */ }
+    STORE_NAME = focusSlug ? NAMES[focusSlug] : ALL_NAMES;
+    var sub = panel && panel.querySelector(".vpc-head small");
+    if (sub) sub.textContent = "Tu personal shopper en " + STORE_NAME;
+    var note = panel && panel.querySelector(".vpc-note");
+    if (note) note.textContent = (focusSlug ? NAMES[focusSlug] + " es la tienda." : "Cada tienda vende lo suyo.") + " vana pay es tu forma de pago.";
+  }
+  // Miniaturas: el CDN de Shopify redimensiona con el sufijo _{ancho}x antes de la
+  // extensión (las fotos originales de Dressy pesan hasta 1.7 MB).
+  function thumb(url, w) {
+    if (!url || url.indexOf("cdn.shopify.com") < 0) return url;
+    return url.replace(/(\.[a-zA-Z0-9]+)(\?[^#]*)?$/, "_" + w + "x$1$2");
+  }
+  // Paguitos estimados: misma fórmula y política que el hero (VP.paguitos, paguito
+  // seguro con fee máximo, estimado de referencia). Solo la interfaz lo muestra; el
+  // agente nunca cotiza. A partir de Q300 el estimado va como precio principal.
+  var PAGUI_MIN = 300;
+  function paguiHTML(price, cls) {
+    if (!(price > PAGUI_MIN) || !VP.paguitos) return "";
+    var pg = VP.paguitos(price);
+    return '<div class="' + (cls || "vpc-pagui") + '"><b>~' + VP.money(pg.per) + "</b> <small>x " + pg.n + " paguitos</small></div>";
+  }
   var MONEY = function (v) { return "Q" + Number(v).toLocaleString("es-GT", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
 
   // ---- sesión ---------------------------------------------------------------
@@ -43,8 +76,53 @@
   // ---- DOM ----------------------------------------------------------------------
   var ICON = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 5v2h10V9H7zm0 4v2h7v-2H7z"/></svg>';
   var fab = document.createElement("button");
-  fab.type = "button"; fab.className = "vpc-fab btn-neon"; fab.setAttribute("aria-label", "Abrir el chat del personal shopper");
-  fab.innerHTML = ICON + '<span class="vpc-fab-txt">Personal shopper<small>en ' + esc(STORE_NAME) + "</small></span>";
+  fab.type = "button"; fab.className = "vpc-fab"; fab.setAttribute("aria-label", "Abrir el chat del personal shopper");
+  fab.innerHTML = '<span class="vpc-fab-ring" aria-hidden="true"></span>' + ICON + '<span class="vpc-fab-dot" aria-hidden="true"></span>';
+
+  // Burbujas de invitación: salen del bubble una por una (con "escribiendo" antes) hasta que
+  // la persona abre el chat o las cierra. Una vez por sesión. Con reduced-motion, una sola
+  // burbuja fija.
+  var TEASERS = [
+    "Hola, soy tu personal shopper. ¿Qué buscas hoy?",
+    "Te ayudo a encontrarlo en " + (STORES.length > 2 ? "las tiendas afiliadas" : ALL_NAMES) + " y a pagarlo en paguitos.",
+    "Escríbeme lo que quieras comprar y yo lo busco por ti."
+  ];
+  var teasers = document.createElement("div");
+  teasers.className = "vpc-teasers"; teasers.hidden = true;
+  teasers.innerHTML = '<button type="button" class="vpc-teasers-close" aria-label="Cerrar sugerencias">&times;</button><div class="vpc-teasers-list"></div>';
+  var teaserTimers = [];
+  function stopTeasers(remember) {
+    teaserTimers.forEach(clearTimeout); teaserTimers = [];
+    teasers.hidden = true;
+    if (remember) { try { sessionStorage.setItem("vp.chat.teased", "1"); } catch (e) { /* noop */ } }
+  }
+  function pushTeaser(text, i) {
+    var list = teasers.querySelector(".vpc-teasers-list");
+    var b = document.createElement("div"); b.className = "vpc-teaser";
+    b.innerHTML = '<img class="vpc-teaser-avatar" src="' + (VP.ROOT || "") + 'assets/img/favicon.svg" alt="">' +
+      '<span class="vpc-teaser-body"><span class="vpc-teaser-typing"><i></i><i></i><i></i></span></span>';
+    b.addEventListener("click", function () { open("teaser-" + (i + 1)); });
+    list.appendChild(b);
+    while (list.children.length > 3) list.removeChild(list.firstChild);
+    var reduced = document.documentElement.classList.contains("no-anim");
+    teaserTimers.push(setTimeout(function () {
+      b.querySelector(".vpc-teaser-body").textContent = text;
+      b.classList.add("is-text");
+    }, reduced ? 0 : 900));
+  }
+  function startTeasers() {
+    var teased = false;
+    try { teased = sessionStorage.getItem("vp.chat.teased") === "1"; } catch (e) { /* noop */ }
+    if (teased || !panel.hidden) return;
+    teasers.hidden = false;
+    if (document.documentElement.classList.contains("no-anim")) { pushTeaser(TEASERS[0], 0); return; }
+    TEASERS.forEach(function (t, i) {
+      teaserTimers.push(setTimeout(function () { pushTeaser(t, i); }, 1400 + i * 4200));
+    });
+  }
+  teasers.querySelector(".vpc-teasers-close").addEventListener("click", function (e) {
+    e.stopPropagation(); stopTeasers(true); track("chat_teaser_close");
+  });
 
   var panel = document.createElement("section");
   panel.className = "vpc-panel"; panel.hidden = true; panel.setAttribute("aria-label", "vana pay chat");
@@ -58,10 +136,13 @@
     '<div class="vpc-log" role="log" aria-live="polite"></div>' +
     '<div class="vpc-chips"></div>' +
     '<form class="vpc-form"><input type="text" maxlength="1000" autocomplete="off" placeholder="Escribe qué buscas" aria-label="Mensaje"><button type="submit">Enviar</button></form>' +
-    '<p class="vpc-foot">Prototipo. Tus paguitos exactos los verás al pagar con vana pay.</p>';
+    '<p class="vpc-foot">Prototipo. Los paguitos son un estimado de referencia; los tuyos los verás al pagar con vana pay.</p>';
 
+  document.body.appendChild(teasers);
   document.body.appendChild(fab);
   document.body.appendChild(panel);
+  if (document.readyState === "complete") startTeasers();
+  else window.addEventListener("load", startTeasers);
 
   var log = panel.querySelector(".vpc-log");
   var chips = panel.querySelector(".vpc-chips");
@@ -90,37 +171,57 @@
   }
   function addNode(el) { log.appendChild(el); scrollLog(); return el; }
 
-  function open(ctx) {
+  function open(ctx, slug) {
+    stopTeasers(true);
+    if (slug !== undefined) setFocus(slug);
     panel.hidden = false;
     document.documentElement.classList.add("vpc-open");
     if (!greeted) {
       greeted = true;
       add(fmt("Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Cuéntame qué buscas y te ayudo a encontrarlo, elegir talla o color y llegar al pago."));
-      setChips(["Busco un hoodie", "Quiero un vestido", "Ver bolsos"]);
+      setChips(focusSlug === "cat" ? ["Busco botas", "Ver mochilas", "Tenis para hombre"] : ["Busco un hoodie", "Quiero un vestido", "Ver bolsos"]);
     }
     track("chat_open", { chatContext: ctx || "fab" });
     setTimeout(function () { input.focus(); }, 50);
+    if (!modeChecked) {
+      modeChecked = true;
+      fetch(AGENT_URL + "/health").then(function (r) { return r.json(); }).then(function (h) {
+        if (h && h.mode === "demo") {
+          add(fmt("Modo demo: respuestas con guion sobre el catálogo real de " + STORE_NAME + ", todavía sin IA."), "sys");
+        }
+        if (h && h.stores && h.stores.length) {
+          h.stores.forEach(function (s) { NAMES[s.slug] = s.name; });
+          ALL_NAMES = joinNames(h.stores.map(function (s) { return s.name; }));
+          setFocus(focusSlug);
+        }
+        if (h && h.starters && h.starters.length && !busy && log.querySelectorAll(".vpc-msg.me").length === 0) {
+          setChips(h.starters);
+        }
+      }).catch(function () { /* el primer mensaje mostrará el error */ });
+    }
   }
+  var modeChecked = false;
   function close() {
     panel.hidden = true;
     document.documentElement.classList.remove("vpc-open");
   }
 
-  fab.addEventListener("click", function () { open("fab"); });
+  fab.addEventListener("click", function () { open("fab", onPilotPage ? pageSlug : focusSlug); });
   panel.querySelector(".vpc-close").addEventListener("click", close);
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) close(); });
 
   // Los CTAs del piloto de esta tienda abren el widget en vez de WhatsApp.
   // Fase de captura para que el listener de wa_click (analytics.js) no cuente
   // el clic como salida a WhatsApp.
-  var onPilotPage = STORES.some(function (s) { return location.pathname.indexOf("/comercios/" + s + "/") >= 0; });
+  var pageSlug = STORES.filter(function (s) { return location.pathname.indexOf("/comercios/" + s + "/") >= 0; })[0] || "";
+  var onPilotPage = !!pageSlug;
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a[data-pilot], a[data-wa-slug], .chatbox a.btn-chat");
     if (!a) return;
-    var slug = a.getAttribute("data-pilot") || a.getAttribute("data-wa-slug") || (onPilotPage ? STORES[0] : "");
+    var slug = a.getAttribute("data-pilot") || a.getAttribute("data-wa-slug") || pageSlug;
     if (STORES.indexOf(slug) < 0) return;
     e.preventDefault(); e.stopPropagation();
-    open(a.getAttribute("data-wa-context") || "pilot-cta");
+    open(a.getAttribute("data-wa-context") || "pilot-cta", slug);
   }, true);
 
   // ---- envío y stream ------------------------------------------------------------
@@ -165,7 +266,7 @@
     fetch(AGENT_URL + "/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ session_id: sid, message: text })
+      body: JSON.stringify({ session_id: sid, message: text, store: focusSlug })
     }).then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       var reader = res.body.getReader();
@@ -240,39 +341,79 @@
 
   // ---- render de componentes -------------------------------------------------------
   function renderUi(component, p) {
-    if (component === "present_products" || component === "present_comparison") {
+    // El blueprint emite products/comparison/suggestions/checkout/guide/plan; el modo demo
+    // usa los mismos nombres. Se aceptan también los "present_*" por compatibilidad.
+    component = String(component || "").replace(/^present_/, "");
+    if (component === "products" || component === "comparison") {
       var items = p.items || p.picks || p.products || [];
       if (!items.length) return;
       if (p.title) add(fmt(p.title), "sys");
-      var row = document.createElement("div"); row.className = "vpc-cards";
+      var row = document.createElement("div"); row.className = "vpc-cards" + (p.layout === "list" ? " vpc-cards-list" : "");
       items.forEach(function (it) {
         var prod = it.product || it;
         var card = document.createElement("div");
         card.className = "vpc-card" + (prod.in_stock === false ? " out" : "");
-        var opts = prod.option_values ? Object.keys(prod.option_values).map(function (k) { return prod.option_values[k]; }).join(" · ")
+        var ov = prod.option_values ? Object.keys(prod.option_values).filter(function (k) { return k !== "Tienda"; }).map(function (k) { return prod.option_values[k]; }) : null;
+        var opts = ov ? ov.join(" · ")
                  : prod.options ? Object.keys(prod.options).map(function (k) { return k + ": " + prod.options[k].join("/"); }).join(" · ") : "";
         card.innerHTML =
-          '<div class="vpc-img">' + (prod.image_url ? '<img src="' + esc(prod.image_url) + '" alt="" loading="lazy">' : "") + "</div>" +
+          '<div class="vpc-img">' + (prod.image_url ? '<img src="' + esc(thumb(prod.image_url, 480)) + '" alt="" loading="lazy">' : "") + "</div>" +
           '<div class="vpc-body">' +
+            (prod.brand && STORES.length > 1 ? '<div class="vpc-store">' + esc(prod.brand) + "</div>" : "") +
             '<div class="vpc-title">' + esc(prod.title) + "</div>" +
-            '<div class="vpc-price">' + (prod.price != null ? MONEY(prod.price) : "") + (prod.in_stock === false ? " · agotado" : "") + "</div>" +
+            (prod.price > PAGUI_MIN
+              ? paguiHTML(prod.price, "vpc-price vpc-price-pagui") + '<div class="vpc-fullprice">' + MONEY(prod.price) + " en total" + (prod.in_stock === false ? " · agotado" : "") + "</div>"
+              : '<div class="vpc-price">' + (prod.price != null ? MONEY(prod.price) : "") + (prod.in_stock === false ? " · agotado" : "") + "</div>") +
             (opts ? '<div class="vpc-opts">' + esc(opts) + "</div>" : "") +
             (it.reason ? '<div class="vpc-reason">' + esc(it.reason) + "</div>" : "") +
-            '<button type="button">Lo quiero</button>' +
+            (p.layout === "list" ? "" : '<button type="button">Lo quiero</button>') +
           "</div>";
-        card.querySelector("button").addEventListener("click", function () {
+        var img = card.querySelector("img");
+        if (img) img.addEventListener("error", function () { img.remove(); });
+        var btn = card.querySelector("button");
+        if (btn) btn.addEventListener("click", function () {
           if (!busy) send("Quiero " + prod.title + (prod.option_values ? "" : ". ¿Qué tallas y colores hay?"));
         });
         row.appendChild(card);
       });
       addNode(row);
+    } else if (component === "merchants") {
+      renderMerchants(p);
     } else if (component === "checkout") {
       renderCheckout(p);
-    } else if (component === "present_suggestions") {
+    } else if (component === "suggestions") {
       setChips(p.suggestions || p.items || p.chips || []);
-    } else if (component === "present_guide" || component === "present_plan") {
+    } else if (component === "guide" || component === "plan") {
       if (p.title) add(fmt(p.title), "sys");
     }
+  }
+
+  // Comercios afiliados a vana pay donde sí venden lo que pidió (respaldo cuando las tiendas
+  // del piloto no lo tienen). El botón lleva a la página del comercio en esta landing, que ya
+  // tiene sus formas de comprar; se abre en otra pestaña para no perder el chat.
+  function renderMerchants(p) {
+    var items = p.items || [];
+    if (!items.length) return;
+    add(fmt(p.note || ("Comercios afiliados a vana pay para \"" + (p.query || "") + "\"")), "sys");
+    var row = document.createElement("div"); row.className = "vpc-cards vpc-merchants";
+    items.forEach(function (m) {
+      var card = document.createElement("a");
+      card.className = "vpc-card vpc-merchant";
+      card.href = (VP.ROOT || "") + (m.page || ("comercios/" + m.slug + "/"));
+      card.target = "_blank"; card.rel = "noopener";
+      card.innerHTML =
+        '<div class="vpc-merchant-logo">' + (m.logo ? '<img src="' + esc((VP.ROOT || "") + m.logo) + '" alt="" loading="lazy">' : "") + "</div>" +
+        '<div class="vpc-body">' +
+          '<div class="vpc-title">' + esc(m.name) + "</div>" +
+          (m.categories && m.categories.length ? '<div class="vpc-opts">' + esc(m.categories.join(" · ")) + "</div>" : "") +
+          '<div class="vpc-mods">' + (m.modalities || []).map(function (x) { return "<span>" + esc(x) + "</span>"; }).join("") +
+            (m.chat_enabled ? '<span class="is-chat">Personal shopper</span>' : "") + "</div>" +
+          '<span class="vpc-merchant-cta">Ver cómo comprar</span>' +
+        "</div>";
+      card.addEventListener("click", function () { track("chat_merchant_click", { chatMerchant: m.slug }); });
+      row.appendChild(card);
+    });
+    addNode(row);
   }
 
   function renderCart(cart) {
@@ -281,28 +422,54 @@
     var subtotal = cart.subtotal != null ? cart.subtotal : items.reduce(function (n, i) { return n + (i.price || 0) * (i.quantity || 0); }, 0);
     var el = log.querySelector(".vpc-cart") || document.createElement("div");
     el.className = "vpc-cart";
-    el.innerHTML = ICON + "<span>Carrito en " + esc(STORE_NAME) + ": " + count + (count === 1 ? " artículo" : " artículos") + "</span><b>" + MONEY(subtotal) + "</b>";
+    var thumbs = items.filter(function (i) { return i.image_url; }).slice(0, 3).map(function (i) {
+      return '<img src="' + esc(thumb(i.image_url, 120)) + '" alt="" loading="lazy">';
+    }).join("");
+    el.innerHTML = '<span class="vpc-thumbs">' + (thumbs || ICON) + "</span><span>Carrito: " + count + (count === 1 ? " artículo" : " artículos") +
+      (subtotal > PAGUI_MIN ? paguiHTML(subtotal, "vpc-cart-pagui") : "") + "</span><b>" + MONEY(subtotal) + "</b>";
     addNode(el);
   }
 
   function renderCheckout(p) {
     var cart = p.cart || {};
     var items = cart.items || [];
-    var handoff = (p.handoffs || [])[0];
+    var handoffs = p.handoffs || [];
     var box = document.createElement("div"); box.className = "vpc-checkout";
     var subtotal = cart.subtotal != null ? cart.subtotal : items.reduce(function (n, i) { return n + (i.price || 0) * (i.quantity || 0); }, 0);
-    box.innerHTML =
-      "<h4>Tu compra en " + esc(STORE_NAME) + "</h4>" +
-      "<ul>" + items.map(function (i) {
-        return "<li><span>" + i.quantity + " x " + esc(i.title) + "</span><span>" + MONEY((i.price || 0) * (i.quantity || 1)) + "</span></li>";
-      }).join("") + "</ul>" +
-      '<div class="vpc-total"><span>Total</span><span>' + MONEY(subtotal) + "</span></div>" +
-      (handoff
-        ? '<a class="vpc-pay" href="' + esc(handoff.url) + '" target="_blank" rel="noopener">' + esc(handoff.label || ("Pagar con vana pay en " + STORE_NAME)) + "</a>" +
-          "<small>Vas al checkout de " + esc(STORE_NAME) + ". Ahí eliges vana pay como forma de pago y ves tus paguitos según tu perfil. El primer paguito se paga hoy.</small>"
-        : "<small>Aún no hay un enlace de pago. Agrega algo al carrito primero.</small>");
-    var a = box.querySelector(".vpc-pay");
-    if (a) a.addEventListener("click", function () { track("chat_checkout", { chatItems: items.length }); });
+    function lines(list) {
+      return "<ul>" + list.map(function (i) {
+        return "<li>" + (i.image_url ? '<img src="' + esc(thumb(i.image_url, 160)) + '" alt="" loading="lazy">' : "") +
+          "<span>" + i.quantity + " x " + esc(i.title) + "</span><span class=\"vpc-line-price\">" + MONEY((i.price || 0) * (i.quantity || 1)) + "</span></li>";
+      }).join("") + "</ul>";
+    }
+    function payBtn(h) {
+      return '<a class="vpc-pay" href="' + esc(h.url) + '" target="_blank" rel="noopener" data-seller="' + esc(h.seller || "") + '">' +
+        esc(h.label || ("Pagar con vana pay en " + (h.seller || STORE_NAME))) + "</a>";
+    }
+    var html = "";
+    if (handoffs.length > 1) {
+      html += "<h4>Tu compra: un pago por tienda</h4>";
+      handoffs.forEach(function (h) {
+        var mine = items.filter(function (i) { return (i.option_values || {}).Tienda === h.seller; });
+        var sub = mine.reduce(function (n, i) { return n + (i.price || 0) * (i.quantity || 0); }, 0);
+        html += '<div class="vpc-seller"><div class="vpc-seller-name">' + esc(h.seller) + "</div>" + lines(mine) +
+          '<div class="vpc-total"><span>Total en ' + esc(h.seller) + "</span><span>" + MONEY(sub) + "</span></div>" +
+          (sub > PAGUI_MIN ? '<div class="vpc-total-pagui"><span>Con vana pay</span>' + paguiHTML(sub, "vpc-pagui-inline") + "</div>" : "") + payBtn(h) + "</div>";
+      });
+      html += "<small>Cada botón abre el checkout de su tienda. Ahí eliges vana pay como forma de pago y ves tus paguitos según tu perfil. El primer paguito se paga hoy.</small>";
+    } else {
+      var seller = handoffs[0] && handoffs[0].seller ? handoffs[0].seller : STORE_NAME;
+      html += "<h4>Tu compra en " + esc(seller) + "</h4>" + lines(items) +
+        '<div class="vpc-total"><span>Total</span><span>' + MONEY(subtotal) + "</span></div>" +
+        (subtotal > PAGUI_MIN ? '<div class="vpc-total-pagui"><span>Con vana pay</span>' + paguiHTML(subtotal, "vpc-pagui-inline") + "</div>" : "") +
+        (handoffs[0]
+          ? payBtn(handoffs[0]) + "<small>Vas al checkout de " + esc(seller) + ". Ahí eliges vana pay como forma de pago y ves tus paguitos según tu perfil. El primer paguito se paga hoy.</small>"
+          : "<small>Aún no hay un enlace de pago. Agrega algo al carrito primero.</small>");
+    }
+    box.innerHTML = html;
+    box.querySelectorAll(".vpc-pay").forEach(function (a) {
+      a.addEventListener("click", function () { track("chat_checkout", { chatItems: items.length, chatSeller: a.getAttribute("data-seller") }); });
+    });
     addNode(box);
   }
 })();

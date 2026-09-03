@@ -15,8 +15,8 @@ window.VP = {
   // ("vp.agent") y aparece el widget; ?agent=0 lo apaga.
   AGENT_URL: "",
   AGENT_DEV_URL: "http://localhost:8010",
-  AGENT_STORES: ["dressy"],
-  AGENT_STORE_NAME: "Dressy",
+  AGENT_STORES: ["dressy", "cat", "molvu", "par2", "hush-puppies", "bibi"],
+  AGENT_STORE_NAMES: { dressy: "Dressy", cat: "CAT", molvu: "Molvu", par2: "PAR2", "hush-puppies": "Hush Puppies", bibi: "bibi" },
 
   // Raíz del sitio, derivada del src de este script. Las páginas de comercio
   // viven anidadas (/comercios/<slug>/), así que las rutas a data/ y assets/
