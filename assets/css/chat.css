@@ -168,6 +168,17 @@
 .vpc-checkout .vpc-seller{padding:10px 0 12px; border-top:1px solid rgba(8,107,125,.12)}
 .vpc-checkout .vpc-seller:first-of-type{border-top:0; padding-top:0}
 .vpc-checkout .vpc-seller-name{font-weight:900; text-transform:uppercase; letter-spacing:.04em; font-size:.8rem; color:var(--brand-deep,#086B7D); margin-bottom:4px}
+.vpc-phone{display:flex; flex-direction:column; gap:6px; margin:4px 0 10px; padding:12px; border-radius:12px; background:var(--brand-10,#E7F7FA)}
+.vpc-phone label{font-size:.85rem; font-weight:700}
+.vpc-phone label span{font-weight:400; color:var(--n70,#5B6770)}
+.vpc-phone-row{display:flex; align-items:center; gap:6px}
+.vpc-phone-cc{font-weight:700; color:var(--brand-deep,#086B7D)}
+.vpc-phone input{flex:1; min-width:0; border:1.5px solid rgba(8,107,125,.2); border-radius:10px; padding:10px 12px; font:inherit; font-size:1rem; letter-spacing:.04em; background:#fff}
+.vpc-phone input:focus{outline:none; border-color:var(--brand,#0FB3CE)}
+.vpc-phone small{font-size:.72rem; color:var(--n70,#5B6770); line-height:1.35}
+.vpc-phone .vpc-pay{margin-top:4px}
+.vpc-phone-err{font-size:.8rem; color:#9B1C1C}
+.vpc-paybtns{display:flex; flex-direction:column; gap:8px; margin-bottom:8px}
 .vpc-checkout small{display:block; margin-top:8px; font-size:.74rem; color:var(--n70,#5B6770); line-height:1.35}
 
 .vpc-chips{display:flex; gap:8px; flex-wrap:wrap; padding:0 16px 8px}

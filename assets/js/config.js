@@ -15,6 +15,8 @@ window.VP = {
   // ("vp.agent") y aparece el widget; ?agent=0 lo apaga.
   AGENT_URL: "",
   AGENT_DEV_URL: "http://localhost:8010",
+  // ?agent=<url> acepta solo estos hosts (evita que un link apunte el widget a un servidor ajeno).
+  AGENT_HOSTS: [/^localhost(:\d+)?$/, /^127\.0\.0\.1(:\d+)?$/, /\.trycloudflare\.com$/, /\.vana\.gt$/, /\.fly\.dev$/, /\.onrender\.com$/],
   AGENT_STORES: ["dressy", "cat", "molvu", "par2", "hush-puppies", "bibi"],
   AGENT_STORE_NAMES: { dressy: "Dressy", cat: "CAT", molvu: "Molvu", par2: "PAR2", "hush-puppies": "Hush Puppies", bibi: "bibi" },
 
