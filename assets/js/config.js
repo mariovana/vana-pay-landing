@@ -9,6 +9,15 @@ window.VP = {
   APP_URL: "https://pay.vana.gt/",
   SIGNUP_URL: "https://pay.vana.gt/registro",
 
+  // Prototipo del personal shopper IA (branch proto/chat-widget). Vacío en
+  // producción: sin URL no se carga ningún widget y los CTAs siguen a
+  // WhatsApp. En dev, ?agent=1 guarda http://localhost:8010 en localStorage
+  // ("vp.agent") y aparece el widget; ?agent=0 lo apaga.
+  AGENT_URL: "",
+  AGENT_DEV_URL: "http://localhost:8010",
+  AGENT_STORES: ["dressy"],
+  AGENT_STORE_NAME: "Dressy",
+
   // Raíz del sitio, derivada del src de este script. Las páginas de comercio
   // viven anidadas (/comercios/<slug>/), así que las rutas a data/ y assets/
   // no pueden ser relativas a la página: se calculan desde aquí.

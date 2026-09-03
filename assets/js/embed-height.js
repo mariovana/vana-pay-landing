@@ -212,4 +212,25 @@
   [250, 800, 2000].forEach(function (ms) {
     setTimeout(report, ms);
   });
+
+  // Links a la app (target="_top"): dentro de un iframe con sandbox, la
+  // navegación nativa a _top puede quedar bloqueada. Se avisa además al
+  // padre por postMessage y el snippet de Framer navega él mismo
+  // (storefront-navigate). Sin preventDefault: si _top funciona nativo,
+  // el mensaje llega a la misma URL y no estorba.
+  if (window.top !== window) {
+    document.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest && e.target.closest('a[target="_top"]');
+      if (!a || !/^https:\/\/pay\.vana\.gt\//.test(a.href)) return;
+      for (var i = 0; i < PARENT_ORIGINS.length; i++) {
+        try {
+          window.parent.postMessage(
+            { type: "storefront-navigate", url: a.href },
+            PARENT_ORIGINS[i]
+          );
+        } catch (err) { /* origen no coincide */ }
+      }
+    });
+  }
+
 })();
