@@ -217,33 +217,36 @@
       scrollLog();
     }
   }
-  function fitViewport() {
+  // adjustScroll: solo al abrir/cerrar el teclado o al enfocar. En los eventos de scroll del
+  // viewport visible NO se toca el scroll del log: Safari los dispara mientras la persona
+  // selecciona texto o mueve la lupa, y re-desplazar ahí cancela la selección (copiar/pegar).
+  function fitViewport(adjustScroll) {
     if (panel.hidden || !isMobile()) { panel.style.height = ""; panel.style.top = ""; return; }
     var vv = window.visualViewport;
     if (vv) {
       panel.style.height = Math.round(vv.height) + "px";
       panel.style.top = Math.round(vv.offsetTop) + "px";
     }
-    keepFocusedVisible();
+    if (adjustScroll) keepFocusedVisible();
   }
   if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", fitViewport);
-    window.visualViewport.addEventListener("scroll", fitViewport);
+    window.visualViewport.addEventListener("resize", function () { fitViewport(true); });
+    window.visualViewport.addEventListener("scroll", function () { fitViewport(false); });
   }
-  window.addEventListener("resize", fitViewport);
+  window.addEventListener("resize", function () { fitViewport(true); });
   panel.addEventListener("focusin", function (e) {
     var t = e.target;
     if (!(t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA"))) return;
     focusedField = t;
     if (!isMobile()) return;
     panel.classList.add("vpc-kb");  // esconde los chips para dejar espacio al teclado
-    setTimeout(fitViewport, 50); setTimeout(fitViewport, 350); setTimeout(fitViewport, 700);
+    setTimeout(function () { fitViewport(true); }, 50); setTimeout(function () { fitViewport(true); }, 350); setTimeout(function () { fitViewport(true); }, 700);
   });
   panel.addEventListener("focusout", function () {
     setTimeout(function () {
       var a = document.activeElement;
       if (a && panel.contains(a) && (a.tagName === "INPUT" || a.tagName === "TEXTAREA")) return;
-      focusedField = null; panel.classList.remove("vpc-kb"); fitViewport();
+      focusedField = null; panel.classList.remove("vpc-kb"); fitViewport(true);
     }, 250);
   });
   function lockPage() {
@@ -264,7 +267,7 @@
     if (slug !== undefined) setFocus(slug);
     panel.hidden = false;
     document.documentElement.classList.add("vpc-open");
-    lockPage(); fitViewport();
+    lockPage(); fitViewport(true);
     if (!greeted) {
       greeted = true;
       add(fmt(focusSlug
@@ -296,7 +299,7 @@
   function close() {
     panel.hidden = true;
     document.documentElement.classList.remove("vpc-open");
-    unlockPage(); fitViewport();
+    unlockPage(); fitViewport(false);
   }
 
   fab.addEventListener("click", function () { open("fab", onPilotPage ? pageSlug : focusSlug); });

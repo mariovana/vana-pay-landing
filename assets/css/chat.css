@@ -154,6 +154,8 @@ html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
 }
 
 .vpc-log{flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px; scroll-behavior:smooth}
+/* El texto del chat y los campos se pueden seleccionar y copiar (iOS incluido). */
+.vpc-msg,.vpc-checkout,.vpc-card .vpc-body,.vpc-form input,.vpc-phone input,.vpc-quick-idbox input{-webkit-user-select:text; user-select:text; -webkit-touch-callout:default}
 /* Hijos de una columna flex con scroll: los que tienen overflow propio (la fila
    de tarjetas) tienen min-height 0 y se aplastan cuando el log se llena. */
 .vpc-log > *{flex-shrink:0}
