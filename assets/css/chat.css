@@ -138,13 +138,20 @@
 .vpc-card button:hover{background:var(--brand-10,#E7F7FA)}
 .vpc-card.out .vpc-price{color:var(--n70,#5B6770)}
 
-.vpc-merchants .vpc-card{flex:0 0 190px; text-decoration:none; color:inherit}
-.vpc-merchant-logo{height:84px; display:grid; place-items:center; background:#fff; border-bottom:1px solid rgba(8,107,125,.08); padding:12px}
-.vpc-merchant-logo img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain}
-.vpc-mods{display:flex; flex-wrap:wrap; gap:4px; margin-top:2px}
-.vpc-mods span{font-size:.66rem; padding:2px 7px; border-radius:999px; background:#F2F5F7; color:var(--n70,#5B6770)}
+.vpc-merchants .vpc-card{flex:0 0 172px; text-decoration:none; color:inherit; display:flex; flex-direction:column}
+.vpc-merchants .vpc-card:hover{box-shadow:0 8px 24px rgba(8,107,125,.16)}
+.vpc-merchant-logo{
+  flex:0 0 auto; height:78px; padding:12px 16px; box-sizing:border-box;
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+  background:#fff; border-bottom:1px solid rgba(8,107,125,.08);
+}
+.vpc-merchant-logo img{display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain}
+.vpc-merchants .vpc-body{padding:10px 12px 12px; gap:6px}
+.vpc-merchants .vpc-title{font-size:.9rem}
+.vpc-mods{display:flex; flex-wrap:wrap; gap:4px}
+.vpc-mods span{font-size:.66rem; padding:2px 7px; border-radius:999px; background:#F2F5F7; color:var(--n70,#5B6770); white-space:nowrap}
 .vpc-mods span.is-chat{background:#E6F7EC; color:#1E7B45; font-weight:700}
-.vpc-merchant-cta{margin-top:auto; font-size:.8rem; font-weight:700; color:var(--brand-strong,#0C93AB)}
+.vpc-merchant-cta{margin-top:auto; padding-top:6px; font-size:.8rem; font-weight:700; color:var(--brand-strong,#0C93AB)}
 .vpc-merchant-cta::after{content:" \2192"}
 
 .vpc-cart{align-self:stretch; display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:12px; background:var(--brand-10,#E7F7FA); font-size:.85rem}
