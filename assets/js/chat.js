@@ -34,7 +34,8 @@
   // "Dressy y CAT" / "Dressy, CAT y 4 tiendas más": la lista completa no cabe en la cabecera.
   function joinNames(list) {
     if (list.length <= 2) return list.join(" y ");
-    return list.slice(0, 2).join(", ") + " y " + (list.length - 2) + " tiendas más";
+    if (list.length <= 3) return list.slice(0, -1).join(", ") + " y " + list[list.length - 1];
+    return "tus tiendas afiliadas";
   }
   var ALL_NAMES = joinNames(STORES.map(function (s) { return NAMES[s] || s; }));
   var STORE_NAME = ALL_NAMES;              // texto de cabecera; cambia con el foco
@@ -45,9 +46,9 @@
     try { sessionStorage.setItem("vp.chat.store", focusSlug); } catch (e) { /* noop */ }
     STORE_NAME = focusSlug ? NAMES[focusSlug] : ALL_NAMES;
     var sub = panel && panel.querySelector(".vpc-head small");
-    if (sub) sub.textContent = "Tu personal shopper en " + STORE_NAME;
+    if (sub) sub.textContent = focusSlug ? "Tu personal shopper en " + STORE_NAME : "Dime qué quieres comprar y te digo dónde pagarlo en paguitos";
     var note = panel && panel.querySelector(".vpc-note");
-    if (note) note.textContent = (focusSlug ? NAMES[focusSlug] + " es la tienda." : "Cada tienda vende lo suyo.") + " vana pay es tu forma de pago.";
+    if (note) note.textContent = (focusSlug ? NAMES[focusSlug] + " es la tienda." : "Compras en el comercio.") + " vana pay es tu forma de pago.";
   }
   // Miniaturas: el CDN de Shopify redimensiona con el sufijo _{ancho}x antes de la
   // extensión (las fotos originales de Dressy pesan hasta 1.7 MB).
@@ -96,7 +97,7 @@
   // burbuja fija.
   var TEASERS = [
     "Hola, soy tu personal shopper. ¿Qué buscas hoy?",
-    "Te ayudo a encontrarlo en " + (STORES.length > 2 ? "las tiendas afiliadas" : ALL_NAMES) + " y a pagarlo en paguitos.",
+    "Dime qué quieres comprar y te digo dónde pagarlo en paguitos.",
     "¿Nuevo en vana pay? Pregúntame qué es y qué necesitas para empezar."
   ];
   var teasers = document.createElement("div");
@@ -142,10 +143,10 @@
   panel.innerHTML =
     '<header class="vpc-head">' +
       '<img src="' + (VP.ROOT || "") + 'assets/img/logo-vanapay.svg" alt="vana pay">' +
-      '<div><b>vana pay chat</b><small>Tu personal shopper en ' + esc(STORE_NAME) + "</small></div>" +
+      '<div><b>vana pay chat</b><small>' + (focusSlug ? "Tu personal shopper en " + esc(STORE_NAME) : "Dime qué quieres comprar y te digo dónde pagarlo en paguitos") + "</small></div>" +
       '<button type="button" class="vpc-close" aria-label="Cerrar">&times;</button>' +
     "</header>" +
-    '<p class="vpc-note">' + esc(STORE_NAME) + " es la tienda. vana pay es tu forma de pago.</p>" +
+    '<p class="vpc-note">' + (focusSlug ? esc(STORE_NAME) + " es la tienda." : "Compras en el comercio.") + " vana pay es tu forma de pago.</p>" +
     '<div class="vpc-log" role="log" aria-live="polite"></div>' +
     '<div class="vpc-paybar" hidden></div>' +
     '<div class="vpc-chips"></div>' +
@@ -234,7 +235,9 @@
     lockPage(); fitViewport();
     if (!greeted) {
       greeted = true;
-      add(fmt("Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Puedo ayudarte a encontrar algo y pagarlo en paguitos, o contarte cómo funciona vana pay y qué necesitas para tenerlo."));
+      add(fmt(focusSlug
+        ? "Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Puedo ayudarte a encontrar algo y pagarlo en paguitos, o contarte cómo funciona vana pay y qué necesitas para tenerlo."
+        : "Hola, soy tu personal shopper de vana pay. Dime qué quieres comprar y te digo dónde conseguirlo y pagarlo en paguitos, o te cuento cómo funciona vana pay y qué necesitas para tenerlo."));
       setChips(["¿Qué es vana pay?", "¿Qué necesito para tener vana pay?", "¿Cómo funcionan los paguitos?"].concat(focusSlug === "cat" ? ["Busco botas", "Ver mochilas"] : ["Lo más vendido", "Busco un regalo"]));
     }
     track("chat_open", { chatContext: ctx || "fab" });

@@ -17,8 +17,8 @@ window.VP = {
   AGENT_DEV_URL: "http://localhost:8010",
   // ?agent=<url> acepta solo estos hosts (evita que un link apunte el widget a un servidor ajeno).
   AGENT_HOSTS: [/^localhost(:\d+)?$/, /^127\.0\.0\.1(:\d+)?$/, /\.trycloudflare\.com$/, /\.vana\.gt$/, /\.fly\.dev$/, /\.onrender\.com$/],
-  AGENT_STORES: ["dressy", "cat", "molvu", "par2", "hush-puppies", "bibi"],
-  AGENT_STORE_NAMES: { dressy: "Dressy", cat: "CAT", molvu: "Molvu", par2: "PAR2", "hush-puppies": "Hush Puppies", bibi: "bibi" },
+  AGENT_STORES: ["dressy", "cat", "molvu", "par2", "hush-puppies", "bibi", "meat-pack", "adoc", "the-north-face", "rikeli", "shopialo", "super-ofertas", "merrel", "loop"],
+  AGENT_STORE_NAMES: { dressy: "Dressy", cat: "CAT", molvu: "Molvu", par2: "PAR2", "hush-puppies": "Hush Puppies", bibi: "bibi", "meat-pack": "Meat Pack", adoc: "Adoc", "the-north-face": "The North Face", rikeli: "Rikeli", shopialo: "Shopialo", "super-ofertas": "Super Ofertas", merrel: "Merrell", loop: "The Loop" },
 
   // Raíz del sitio, derivada del src de este script. Las páginas de comercio
   // viven anidadas (/comercios/<slug>/), así que las rutas a data/ y assets/
