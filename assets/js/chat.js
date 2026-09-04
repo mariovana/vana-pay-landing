@@ -574,8 +574,8 @@
           if (j.exists) {
             identified = j;
             if (j.profile) saveProfile(j.profile);
-            add(fmt("Hola " + j.first_name + ". Tu cuenta de vana pay está lista" + (j.disponible_q ? " y tienes **" + VP.money(j.disponible_q) + " disponibles** para comprar en paguitos" : "") + ". Dime qué buscas y te muestro lo que te cabe." + (j.demo ? "\n\nPerfil de demostración." : "")), "bot");
-            setChips(["Lo más vendido que me cabe", "Busco tenis", "Busco un regalo"]);
+            add(fmt("Hola " + j.first_name + ". Tu cuenta de vana pay está lista" + (j.disponible_q ? " y tienes **" + VP.money(j.disponible_q) + " disponibles** para comprar en paguitos" : "") + ". Dime qué buscas y te muestro lo que te alcanza con tu crédito." + (j.demo ? "\n\nPerfil de demostración." : "")), "bot");
+            setChips(["Algo que me alcance con mi crédito", "Lo más vendido", "Busco un regalo"]);
           } else {
             // Sin cuenta: el agente toma la conversación y acompaña a crearla.
             add(fmt("No encontramos una cuenta de vana pay con ese número."), "sys");
