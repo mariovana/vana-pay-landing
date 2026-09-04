@@ -99,12 +99,16 @@ html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
   .vpc-teaser{font-size:.9rem; max-width:88%}
 
   /* Ventana a pantalla completa: altura real del viewport (chat.js la ajusta con el teclado) */
-  .vpc-panel{inset:0; top:0 !important; bottom:auto; height:100dvh; border-radius:0; overscroll-behavior:contain}
+  .vpc-panel{inset:0; bottom:auto; height:100dvh; border-radius:0; overscroll-behavior:contain}
+  .vpc-panel.vpc-kb .vpc-chips,.vpc-panel.vpc-kb .vpc-paybar{display:none}  /* con teclado, espacio para el campo */
   .vpc-foot{display:none}  /* con teclado abierto cada píxel cuenta */
   .vpc-head{padding-top:calc(12px + env(safe-area-inset-top, 0px))}
   .vpc-log{overscroll-behavior:contain; -webkit-overflow-scrolling:touch}
   .vpc-cards{overscroll-behavior-x:contain}
   .vpc-form{padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px))}
+  .vpc-chips{flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding-bottom:10px}
+  .vpc-chips::-webkit-scrollbar{display:none}
+  .vpc-chip{flex:0 0 auto; white-space:nowrap}
   .vpc-panel .vpc-form input,.vpc-panel .vpc-phone input{font-size:16px}  /* evita el zoom de iOS al enfocar (más específico que la regla base) */
 }
 

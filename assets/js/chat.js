@@ -206,25 +206,45 @@
 
   var isMobile = function () { return window.matchMedia("(max-width: 719px)").matches; };
   var savedScroll = 0;
-  // iOS: al abrir el teclado Safari empuja la página y desplaza lo que está en position:fixed.
-  // Remedio estable: el panel SIEMPRE en top:0, su altura = viewport visible, y cada vez que
-  // Safari mueva la ventana se regresa a 0 (la página está bloqueada, no pierde nada).
+  // iOS con teclado: el viewport visible se encoge y Safari lo desplaza dentro del de layout. El
+  // panel se ancla a ese viewport visible (top = offsetTop, height = height) y, si hay un campo
+  // enfocado dentro del log, se mantiene a la vista en lugar de saltar al final del chat.
+  var focusedField = null;
+  function keepFocusedVisible() {
+    if (focusedField && log.contains(focusedField)) {
+      try { focusedField.scrollIntoView({ block: "center", behavior: "instant" }); } catch (e) { focusedField.scrollIntoView(); }
+    } else {
+      scrollLog();
+    }
+  }
   function fitViewport() {
-    if (panel.hidden || !isMobile()) { panel.style.height = ""; return; }
+    if (panel.hidden || !isMobile()) { panel.style.height = ""; panel.style.top = ""; return; }
     var vv = window.visualViewport;
-    if (vv) panel.style.height = Math.round(vv.height) + "px";
-    if (window.scrollY || (vv && vv.offsetTop)) window.scrollTo(0, 0);
-    scrollLog();
+    if (vv) {
+      panel.style.height = Math.round(vv.height) + "px";
+      panel.style.top = Math.round(vv.offsetTop) + "px";
+    }
+    keepFocusedVisible();
   }
   if (window.visualViewport) {
     window.visualViewport.addEventListener("resize", fitViewport);
     window.visualViewport.addEventListener("scroll", fitViewport);
   }
   window.addEventListener("resize", fitViewport);
-  window.addEventListener("scroll", function () { if (!panel.hidden && isMobile() && window.scrollY) window.scrollTo(0, 0); }, { passive: true });
-  panel.addEventListener("focusin", function () {
+  panel.addEventListener("focusin", function (e) {
+    var t = e.target;
+    if (!(t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA"))) return;
+    focusedField = t;
     if (!isMobile()) return;
+    panel.classList.add("vpc-kb");  // esconde los chips para dejar espacio al teclado
     setTimeout(fitViewport, 50); setTimeout(fitViewport, 350); setTimeout(fitViewport, 700);
+  });
+  panel.addEventListener("focusout", function () {
+    setTimeout(function () {
+      var a = document.activeElement;
+      if (a && panel.contains(a) && (a.tagName === "INPUT" || a.tagName === "TEXTAREA")) return;
+      focusedField = null; panel.classList.remove("vpc-kb"); fitViewport();
+    }, 250);
   });
   function lockPage() {
     if (!isMobile()) return;
