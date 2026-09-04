@@ -313,7 +313,7 @@
   panel.querySelector(".vpc-close").addEventListener("click", close);
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) close(); });
 
-  // Los CTAs del piloto de esta tienda abren el widget en vez de WhatsApp.
+  // Los CTAs de personal shopper de esta tienda abren el widget en vez de WhatsApp.
   // Fase de captura para que el listener de wa_click (analytics.js) no cuente
   // el clic como salida a WhatsApp.
   var pageSlug = STORES.filter(function (s) { return location.pathname.indexOf("/comercios/" + s + "/") >= 0; })[0] || "";
@@ -336,9 +336,9 @@
     send(text);
   });
 
-  function setChips(list) {
+  function setChips(list, all) {
     chips.innerHTML = "";
-    (list || []).slice(0, isMobile() ? 4 : 6).forEach(function (c) {
+    (all ? (list || []) : (list || []).slice(0, isMobile() ? 4 : 6)).forEach(function (c) {
       var label = typeof c === "string" ? c : (c.label || c.text || c.title || "");
       var message = typeof c === "string" ? c : (c.message || c.prompt || c.query || label);
       if (!label) return;
@@ -528,6 +528,19 @@
   // Arranque: una sola pregunta con dos botones. "Sí" pide el número y saluda por nombre; "No"
   // pasa la conversación al agente para acompañar a abrir la cuenta; "Solo quiero ver productos"
   // salta el paso. Las tallas y demás las pregunta el agente solo cuando hacen falta.
+  // Sin cuenta: nada de mandar a registrarse; se muestra qué se puede comprar con vana pay.
+  var CATEGORY_CHIPS = [
+    { label: "Tenis", message: "Busco tenis" }, { label: "Ropa", message: "Busco ropa" },
+    { label: "Zapatos", message: "Busco zapatos" }, { label: "Mochilas", message: "Busco una mochila" },
+    { label: "Tecnología", message: "Busco tecnología" }, { label: "Relojes", message: "Busco un reloj" },
+    { label: "Bocinas", message: "Busco bocinas" }, { label: "Audífonos", message: "Busco audífonos" },
+    { label: "Belleza", message: "Busco belleza" }, { label: "Hogar", message: "Busco cosas para el hogar" }
+  ];
+  function offerCategories(intro) {
+    add(fmt(intro), "bot");
+    setChips(CATEGORY_CHIPS, true);
+  }
+
   function renderQuickStart() {
     var card = document.createElement("div"); card.className = "vpc-quick";
     card.innerHTML =
@@ -542,7 +555,7 @@
         '<div class="vpc-phone-row"><span class="vpc-phone-cc">+502</span>' +
         '<input type="tel" inputmode="numeric" maxlength="9" placeholder="5555 5555" autocomplete="tel-national" aria-label="Teléfono"></div>' +
         '<button type="button" class="vpc-pay vpc-quick-go">Continuar</button>' +
-        '<small>Solo lo usamos para reconocer tu cuenta. En esta demo se cargan datos de prueba.</small>' +
+        '<small>Solo lo usamos para reconocer tu cuenta.</small>' +
         '<div class="vpc-phone-err" hidden></div>' +
       "</div>";
     var idbox = card.querySelector(".vpc-quick-idbox");
@@ -550,7 +563,7 @@
     card.querySelector(".vpc-quick-no").addEventListener("click", function () {
       track("chat_onboard", { chatAnswer: "no" });
       card.remove();
-      if (!busy) send("No tengo cuenta de vana pay todavía. ¿Me ayudas a crearla?");
+      offerCategories("Sin problema, igual puedes ver todo lo que se compra con vana pay en paguitos. ¿Qué te interesa?");
     });
     card.querySelector(".vpc-quick-yes").addEventListener("click", function () {
       track("chat_onboard", { chatAnswer: "yes" });
@@ -579,8 +592,7 @@
             add(fmt("Hola " + j.first_name + ". Tu cuenta de vana pay está lista" + (j.disponible_q ? " y tienes **" + VP.money(j.disponible_q) + " disponibles** para comprar en paguitos" : "") + ". Dime qué buscas y te muestro lo que te alcanza con tu crédito." + (j.demo ? "\n\nPerfil de demostración." : "")), "bot");
             setChips(["Algo que me alcance con mi crédito", "Lo más vendido", "Busco un regalo"]);
           } else {
-            add(fmt("No encontramos una cuenta de vana pay con ese número."), "sys");
-            if (!busy) send("No tengo cuenta de vana pay todavía. ¿Me ayudas a crearla?");
+            offerCategories("No encontramos una cuenta con ese número, pero igual puedes ver todo lo que se compra con vana pay en paguitos. ¿Qué te interesa?");
           }
         })
         .catch(function (e) { err.textContent = "No pude verificar (" + (e && e.message ? e.message : "error") + "). Intenta de nuevo."; err.hidden = false; go.disabled = false; go.textContent = "Continuar"; });
@@ -589,7 +601,7 @@
   }
 
   // Comercios afiliados a vana pay donde sí venden lo que pidió (respaldo cuando las tiendas
-  // del piloto no lo tienen). El botón lleva a la página del comercio en esta landing, que ya
+  // Shopify no lo tienen). El botón lleva a la página del comercio en esta landing, que ya
   // tiene sus formas de comprar; se abre en otra pestaña para no perder el chat.
   function renderMerchants(p) {
     var items = p.items || [];
