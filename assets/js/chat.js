@@ -235,7 +235,7 @@
     if (!greeted) {
       greeted = true;
       add(fmt("Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Puedo ayudarte a encontrar algo y pagarlo en paguitos, o contarte cómo funciona vana pay y qué necesitas para tenerlo."));
-      setChips(["¿Qué es vana pay?", "¿Qué necesito para tener vana pay?"].concat(focusSlug === "cat" ? ["Busco botas", "Ver mochilas"] : ["Lo más vendido", "Busco un regalo"]));
+      setChips(["¿Qué es vana pay?", "¿Qué necesito para tener vana pay?", "¿Cómo funcionan los paguitos?"].concat(focusSlug === "cat" ? ["Busco botas", "Ver mochilas"] : ["Lo más vendido", "Busco un regalo"]));
     }
     track("chat_open", { chatContext: ctx || "fab" });
     setTimeout(function () { input.focus(); }, 50);
