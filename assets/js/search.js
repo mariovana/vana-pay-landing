@@ -50,7 +50,13 @@
 
       // Fila prominente de vana pay chat: solo para las tiendas del piloto
       // que matchean (chatEnabled) — el chat no está disponible en todas.
-      var html = hits.filter(function (x) { return x.m.chatEnabled; }).map(function (x) {
+      // Con el widget del personal shopper activo, una sola fila abre el chat con la búsqueda hecha.
+      var html = window.VPChat && window.VPChat.active
+        ? '<a class="ss-chat" href="#" data-vpchat-q="' + esc(q) + '">' +
+            '<svg class="ico"><use href="#i-wa"/></svg>' +
+            "<span>Pregúntale al personal shopper: <b>" + esc(q) + "</b> y te dice dónde pagarlo en paguitos</span></a>"
+        : "";
+      html += (window.VPChat && window.VPChat.active ? [] : hits.filter(function (x) { return x.m.chatEnabled; })).map(function (x) {
         var msg = "Hola, quiero comprar *" + q + "* en *" + x.m.name + "* con vana pay. ¿Me ayudas?";
         return '<a class="ss-chat" data-wa-context="supersearch" data-wa-slug="' + esc(x.m.slug) +
           '" href="' + window.VP.waRaw(msg) + '" target="_blank" rel="noopener">' +
@@ -71,6 +77,8 @@
       }).join("");
 
       drop.innerHTML = html;
+      var chatRow = drop.querySelector("[data-vpchat-q]");
+      if (chatRow) chatRow.addEventListener("click", function (e) { e.preventDefault(); close(); window.VPChat.ask(chatRow.getAttribute("data-vpchat-q"), "supersearch"); });
       drop.classList.add("open");
     }
 
