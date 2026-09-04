@@ -86,7 +86,10 @@
   var ICON = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 5v2h10V9H7zm0 4v2h7v-2H7z"/></svg>';
   var fab = document.createElement("button");
   fab.type = "button"; fab.className = "vpc-fab"; fab.setAttribute("aria-label", "Abrir el chat del personal shopper");
-  fab.innerHTML = '<span class="vpc-fab-ring" aria-hidden="true"></span>' + ICON + '<span class="vpc-fab-dot" aria-hidden="true"></span>';
+  fab.innerHTML = '<span class="vpc-fab-ring" aria-hidden="true"></span>' + ICON +
+    '<span class="vpc-fab-txt"><b>Compra por chat en paguitos</b><small>Tu personal shopper te ayuda a elegir y pagar</small></span>' +
+    '<span class="vpc-fab-go" aria-hidden="true">&rsaquo;</span>' +
+    '<span class="vpc-fab-dot" aria-hidden="true"></span>';
 
   // Burbujas de invitación: salen del bubble una por una (con "escribiendo" antes) hasta que
   // la persona abre el chat o las cierra. Una vez por sesión. Con reduced-motion, una sola
@@ -112,7 +115,8 @@
       '<span class="vpc-teaser-body"><span class="vpc-teaser-typing"><i></i><i></i><i></i></span></span>';
     b.addEventListener("click", function () { open("teaser-" + (i + 1)); });
     list.appendChild(b);
-    while (list.children.length > 3) list.removeChild(list.firstChild);
+    var maxBubbles = isMobile() ? 1 : 3;
+    while (list.children.length > maxBubbles) list.removeChild(list.firstChild);
     var reduced = document.documentElement.classList.contains("no-anim");
     teaserTimers.push(setTimeout(function () {
       b.querySelector(".vpc-teaser-body").textContent = text;
@@ -143,6 +147,7 @@
     "</header>" +
     '<p class="vpc-note">' + esc(STORE_NAME) + " es la tienda. vana pay es tu forma de pago.</p>" +
     '<div class="vpc-log" role="log" aria-live="polite"></div>' +
+    '<div class="vpc-paybar" hidden></div>' +
     '<div class="vpc-chips"></div>' +
     '<form class="vpc-form"><input type="text" maxlength="1000" autocomplete="off" placeholder="Escribe qué buscas" aria-label="Mensaje"><button type="submit">Enviar</button></form>' +
     '<p class="vpc-foot">Prototipo. Los paguitos son un estimado de referencia; los tuyos los verás al pagar con vana pay.</p>';
@@ -180,11 +185,38 @@
   }
   function addNode(el) { log.appendChild(el); scrollLog(); return el; }
 
+  var isMobile = function () { return window.matchMedia("(max-width: 719px)").matches; };
+  var savedScroll = 0;
+  function fitViewport() {
+    if (panel.hidden || !isMobile()) { panel.style.height = ""; panel.style.top = ""; return; }
+    var vv = window.visualViewport;
+    if (vv) { panel.style.height = Math.round(vv.height) + "px"; panel.style.top = Math.round(vv.offsetTop) + "px"; }
+    scrollLog();
+  }
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", fitViewport);
+    window.visualViewport.addEventListener("scroll", fitViewport);
+  }
+  window.addEventListener("resize", fitViewport);
+  function lockPage() {
+    if (!isMobile()) return;
+    savedScroll = window.scrollY || 0;
+    document.body.style.top = (-savedScroll) + "px";
+    document.documentElement.classList.add("vpc-lock");
+  }
+  function unlockPage() {
+    if (!document.documentElement.classList.contains("vpc-lock")) return;
+    document.documentElement.classList.remove("vpc-lock");
+    document.body.style.top = "";
+    window.scrollTo(0, savedScroll);
+  }
+
   function open(ctx, slug) {
     stopTeasers(true);
     if (slug !== undefined) setFocus(slug);
     panel.hidden = false;
     document.documentElement.classList.add("vpc-open");
+    lockPage(); fitViewport();
     if (!greeted) {
       greeted = true;
       add(fmt("Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Cuéntame qué buscas y te ayudo a encontrarlo, elegir talla o color y llegar al pago."));
@@ -213,6 +245,7 @@
   function close() {
     panel.hidden = true;
     document.documentElement.classList.remove("vpc-open");
+    unlockPage(); fitViewport();
   }
 
   fab.addEventListener("click", function () { open("fab", onPilotPage ? pageSlug : focusSlug); });
@@ -263,9 +296,24 @@
     scrollLog();
   }
 
+  var paybar = panel.querySelector(".vpc-paybar");
+  function setPaybar(box, handoffs, subtotal) {
+    if (!box || !handoffs.length) { paybar.hidden = true; paybar.innerHTML = ""; return; }
+    var label = handoffs.length > 1 ? "Pagar (" + handoffs.length + " tiendas)" : "Pagar con vana pay en " + (handoffs[0].seller || STORE_NAME);
+    paybar.innerHTML = '<div class="vpc-paybar-sum"><b>' + MONEY(subtotal) + "</b>" + (subtotal > PAGUI_MIN ? paguiHTML(subtotal, "vpc-paybar-pagui") : "") + "</div>" +
+      '<button type="button" class="vpc-pay">' + esc(label) + "</button>";
+    paybar.hidden = false;
+    paybar.querySelector("button").addEventListener("click", function () {
+      box.scrollIntoView({ block: "center", behavior: "smooth" });
+      var btn = box.querySelector(".vpc-paybtns .vpc-pay");
+      if (handoffs.length === 1 && btn) btn.click();
+      else if (box.querySelector(".vpc-phone input")) box.querySelector(".vpc-phone input").focus();
+    });
+  }
+
   function send(text) {
     busy = true; sendBtn.disabled = true; input.disabled = true;
-    setChips([]);
+    setChips([]); setPaybar(null, [], 0);
     add(fmt(text), "me");
     track("chat_message");
     var bot = null;     // burbuja de texto en curso
@@ -525,5 +573,6 @@
       });
     });
     addNode(box);
+    setPaybar(box, handoffs, subtotal);
   }
 })();

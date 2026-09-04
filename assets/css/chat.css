@@ -16,6 +16,7 @@
 }
 .vpc-fab:hover{transform:translateY(-2px) scale(1.04); box-shadow:0 16px 40px rgba(15,179,206,.55)}
 .vpc-fab .ico{width:30px;height:30px;fill:currentColor; grid-area:1/1}
+.vpc-fab .vpc-fab-txt,.vpc-fab .vpc-fab-go{display:none}
 .vpc-fab .vpc-fab-ring{
   grid-area:1/1; width:100%; height:100%; border-radius:50%;
   border:2px solid rgba(24,202,231,.9); animation:vpc-ring 2.2s ease-out infinite;
@@ -55,10 +56,46 @@
 @keyframes vpc-pop{0%{transform:scale(.6) translateY(12px);opacity:0}100%{transform:none;opacity:1}}
 @keyframes vpc-fadein{from{opacity:0}to{opacity:1}}
 .no-anim .vpc-teaser,.no-anim .vpc-teaser.is-text .vpc-teaser-body{animation:none}
+/* Bloqueo del scroll de la página con el chat abierto (iOS incluido) */
+html.vpc-lock, html.vpc-lock body{overflow:hidden; height:100%}
+html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
+
 @media (max-width:719px){
-  .vpc-fab{right:14px; bottom:14px; width:58px; height:58px}
-  .vpc-teasers{right:14px; bottom:86px; max-width:calc(100vw - 28px)}
-  .vpc-teaser{font-size:.88rem}
+  /* Barra fija a todo el ancho en vez del bubble redondo */
+  .vpc-fab{
+    left:0; right:0; bottom:0; width:auto; height:auto; border-radius:0;
+    display:flex; align-items:center; gap:12px; text-align:left;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    box-shadow:0 -10px 30px rgba(8,107,125,.22);
+  }
+  .vpc-fab:hover{transform:none}
+  .vpc-fab .ico{width:28px; height:28px; flex:0 0 auto}
+  .vpc-fab .vpc-fab-ring,.vpc-fab .vpc-fab-dot{display:none}
+  .vpc-fab .vpc-fab-txt{display:flex; flex-direction:column; flex:1; min-width:0; line-height:1.15}
+  .vpc-fab .vpc-fab-txt b{font-size:.98rem; font-weight:900}
+  .vpc-fab .vpc-fab-txt small{font-size:.76rem; font-weight:400; opacity:.9; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .vpc-fab .vpc-fab-go{display:block; font-size:1.8rem; line-height:1; opacity:.9}
+  .vpc-teasers{right:12px; left:12px; bottom:calc(84px + env(safe-area-inset-bottom, 0px)); max-width:none; align-items:flex-end}
+  .vpc-teasers-list{align-items:flex-end}
+  .vpc-teaser{font-size:.9rem; max-width:88%}
+
+  /* Ventana a pantalla completa: altura real del viewport (chat.js la ajusta con el teclado) */
+  .vpc-panel{inset:0; height:100dvh; border-radius:0; overscroll-behavior:contain}
+  .vpc-head{padding-top:calc(12px + env(safe-area-inset-top, 0px))}
+  .vpc-log{overscroll-behavior:contain; -webkit-overflow-scrolling:touch}
+  .vpc-cards{overscroll-behavior-x:contain}
+  .vpc-form{padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px))}
+  .vpc-form input,.vpc-phone input{font-size:16px}  /* evita el zoom de iOS al enfocar */
+}
+
+/* Barra de pago fija sobre el cajón de texto mientras hay un checkout */
+.vpc-paybar{display:flex; align-items:center; gap:12px; padding:10px 16px; border-top:1px solid rgba(8,107,125,.12); background:var(--aqua,#CFF0F5)}
+.vpc-paybar[hidden]{display:none}
+.vpc-paybar-sum{display:flex; flex-direction:column; line-height:1.15; min-width:0}
+.vpc-paybar-sum b{font-size:1.05rem; color:var(--heading,#22809E)}
+.vpc-paybar-pagui{font-size:.74rem; color:var(--brand-deep,#086B7D)}
+.vpc-paybar-pagui b{font-size:.8rem; font-weight:900}
+.vpc-paybar .vpc-pay{margin-left:auto; flex:0 0 auto; width:auto; padding:11px 18px; border:0; cursor:pointer; font:inherit; font-weight:700; color:#fff; background:var(--brand,#0FB3CE); border-radius:999px}
 }
 
 .vpc-panel{
