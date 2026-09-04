@@ -101,7 +101,6 @@ html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
 .vpc-paybar-pagui{font-size:.74rem; color:var(--brand-deep,#086B7D)}
 .vpc-paybar-pagui b{font-size:.8rem; font-weight:900}
 .vpc-paybar .vpc-pay{margin-left:auto; flex:0 0 auto; width:auto; padding:11px 18px; border:0; cursor:pointer; font:inherit; font-weight:700; color:#fff; background:var(--brand,#0FB3CE); border-radius:999px}
-}
 
 .vpc-panel{
   position:fixed; inset:0; z-index:950;
