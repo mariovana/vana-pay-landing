@@ -160,7 +160,6 @@
     "</header>" +
     '<p class="vpc-note">' + (focusSlug ? esc(STORE_NAME) + " es la tienda." : "Compras en el comercio.") + " vana pay es tu forma de pago.</p>" +
     '<div class="vpc-log" role="log" aria-live="polite"></div>' +
-    '<div class="vpc-paybar" hidden></div>' +
     '<div class="vpc-chips"></div>' +
     '<form class="vpc-form"><input type="text" maxlength="1000" autocomplete="off" placeholder="Escribe qué buscas" aria-label="Mensaje"><button type="submit">Enviar</button></form>' +
     '<p class="vpc-foot">Prototipo. Los paguitos son un estimado de referencia; los tuyos los verás al pagar con vana pay.</p>';
@@ -360,23 +359,9 @@
     scrollLog();
   }
 
-  var paybar = panel.querySelector(".vpc-paybar");
-  function setPaybar(box, handoffs, subtotal, onPay) {
-    if (!box || !handoffs.length) { paybar.hidden = true; paybar.innerHTML = ""; return; }
-    var single = handoffs.length === 1;
-    var label = single ? "Pagar con vana pay en " + (handoffs[0].seller || STORE_NAME) : "Elegir tienda para pagar";
-    paybar.innerHTML = '<div class="vpc-paybar-sum"><b>' + MONEY(subtotal) + "</b>" + (subtotal > PAGUI_MIN ? paguiHTML(subtotal, "vpc-paybar-pagui") : "") + "</div>" +
-      '<button type="button" class="vpc-pay">' + esc(label) + "</button>";
-    paybar.hidden = false;
-    paybar.querySelector("button").addEventListener("click", function () {
-      if (single) onPay(handoffs[0]);
-      else box.scrollIntoView({ block: "center", behavior: "smooth" });
-    });
-  }
-
   function send(text) {
     busy = true; sendBtn.disabled = true; input.disabled = true;
-    setChips([]); setPaybar(null, [], 0);
+    setChips([]);
     add(fmt(text), "me");
     track("chat_message");
     var bot = null;     // burbuja de texto en curso
@@ -680,41 +665,24 @@
       html += "<small>Aún no hay un enlace de pago. Agrega algo al carrito primero.</small>";
       box.innerHTML = html; addNode(box); return;
     }
-    html += '<div class="vpc-phone">' +
-      '<label>Tu número de teléfono <span>(opcional)</span></label>' +
-      '<div class="vpc-phone-row"><span class="vpc-phone-cc">+502</span>' +
-      '<input type="tel" inputmode="numeric" maxlength="9" placeholder="5555 5555" autocomplete="tel-national" aria-label="Número de teléfono"></div>' +
-      '<div class="vpc-phone-err" hidden></div>' +
-    "</div>" +
-    (single ? "" : '<div class="vpc-paybtns">' + handoffs.map(payBtn).join("") + "</div>") +
+    html += '<div class="vpc-paybtns">' + handoffs.map(payBtn).join("") + "</div>" +
     "<small class=\"vpc-checkout-foot\">" + (single
-      ? "El botón de abajo te lleva al checkout de " + esc(seller) + ". Ahí eliges vana pay y ves tus paguitos según tu perfil; el primero se paga hoy."
+      ? "Vas al checkout de " + esc(seller) + ". Ahí eliges vana pay y ves tus paguitos según tu perfil; el primero se paga hoy."
       : "Cada botón abre el checkout de su tienda. Ahí eliges vana pay y ves tus paguitos según tu perfil; el primero se paga hoy.") + "</small>";
     box.innerHTML = html;
 
-    var phoneIn = box.querySelector(".vpc-phone input"), errEl = box.querySelector(".vpc-phone-err");
-    try { var saved = sessionStorage.getItem("vp.chat.phone"); if (saved) phoneIn.value = saved; } catch (e) { /* noop */ }
-    phoneIn.addEventListener("input", function () { errEl.hidden = true; });
+    // El registro de la compra (nota en el carrito, UTM, intención) sigue por debajo, sin pedir datos.
     var intentSent = null;
-    function sendIntent(digits) {
+    function sendIntent() {
       if (intentSent) return intentSent;
       intentSent = fetch(AGENT_URL + "/api/checkout-intent", {
         method: "POST", headers: { "Content-Type": "application/json" }, keepalive: true,
-        body: JSON.stringify({ session_id: sid, phone: digits ? "+502" + digits : null })
+        body: JSON.stringify({ session_id: sid, phone: null })
       }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
       return intentSent;
     }
-    // Un solo camino de pago para la barra fija y para los botones por tienda: valida el teléfono
-    // (si lo puso), registra la intención y abre el checkout en otra pestaña con el gesto del usuario.
     function payWith(h, evt) {
-      var digits = phoneIn.value.replace(/\D/g, "");
-      if (digits && !/^[2-7]\d{7}$/.test(digits)) {
-        if (evt) evt.preventDefault();
-        errEl.textContent = "Escribe un número de Guatemala de 8 dígitos, o déjalo vacío."; errEl.hidden = false;
-        box.scrollIntoView({ block: "center", behavior: "smooth" }); phoneIn.focus(); return;
-      }
-      try { if (digits) sessionStorage.setItem("vp.chat.phone", digits); } catch (err) { /* noop */ }
-      track("chat_checkout", { chatItems: items.length, chatSeller: h.seller || "", chatPhone: !!digits });
+      track("chat_checkout", { chatItems: items.length, chatSeller: h.seller || "" });
       if (evt) evt.preventDefault();
       var w = null;
       try { w = window.open("about:blank", "_blank"); } catch (err) { w = null; }
@@ -722,12 +690,11 @@
       var done = false;
       var finish = function () { if (!done) { done = true; go(); } };
       setTimeout(finish, 2500);
-      sendIntent(digits).then(finish, finish);
+      sendIntent().then(finish, finish);
     }
     box.querySelectorAll(".vpc-paybtns .vpc-pay").forEach(function (a, i) {
       a.addEventListener("click", function (e) { payWith(handoffs[i], e); });
     });
     addNode(box);
-    setPaybar(box, handoffs, subtotal, function (h) { payWith(h, null); });
   }
 })();
