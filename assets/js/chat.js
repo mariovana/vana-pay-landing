@@ -97,7 +97,7 @@
   var TEASERS = [
     "Hola, soy tu personal shopper. ¿Qué buscas hoy?",
     "Te ayudo a encontrarlo en " + (STORES.length > 2 ? "las tiendas afiliadas" : ALL_NAMES) + " y a pagarlo en paguitos.",
-    "Escríbeme lo que quieras comprar y yo lo busco por ti."
+    "¿Nuevo en vana pay? Pregúntame qué es y qué necesitas para empezar."
   ];
   var teasers = document.createElement("div");
   teasers.className = "vpc-teasers"; teasers.hidden = true;
@@ -172,8 +172,14 @@
     });
   }
   function fmt(text) {
-    // Texto plano con negritas **x** y saltos de línea; nada más.
-    return esc(text).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+    // Texto plano con negritas **x**, saltos de línea y URLs como enlaces (el registro de vana pay
+    // se muestra como botón). Nada más.
+    var html = esc(text).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+    return html.replace(/(https?:\/\/[^\s<)]+?)([.,;:)]?)(?=\s|$)/g, function (m, url, tail) {
+      var isSignup = /pay\.vana\.gt\/registro/.test(url);
+      var label = isSignup ? "Crear mi cuenta de vana pay" : url.replace(/^https?:\/\//, "");
+      return '<a class="vpc-link' + (isSignup ? " vpc-link-cta" : "") + '" href="' + url + '" target="_blank" rel="noopener">' + label + "</a>" + tail;
+    });
   }
   function scrollLog() { log.scrollTop = log.scrollHeight; }
   function add(html, cls) {
@@ -228,8 +234,8 @@
     lockPage(); fitViewport();
     if (!greeted) {
       greeted = true;
-      add(fmt("Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Cuéntame qué buscas y te ayudo a encontrarlo, elegir talla o color y llegar al pago."));
-      setChips(focusSlug === "cat" ? ["Busco botas", "Ver mochilas", "Tenis para hombre"] : ["Busco un hoodie", "Quiero un vestido", "Ver bolsos"]);
+      add(fmt("Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Puedo ayudarte a encontrar algo y pagarlo en paguitos, o contarte cómo funciona vana pay y qué necesitas para tenerlo."));
+      setChips(["¿Qué es vana pay?", "¿Qué necesito para tener vana pay?"].concat(focusSlug === "cat" ? ["Busco botas", "Ver mochilas"] : ["Lo más vendido", "Busco un regalo"]));
     }
     track("chat_open", { chatContext: ctx || "fab" });
     setTimeout(function () { input.focus(); }, 50);
@@ -292,7 +298,10 @@
       if (!label) return;
       var b = document.createElement("button");
       b.type = "button"; b.className = "vpc-chip"; b.textContent = label;
-      b.addEventListener("click", function () { if (!busy) send(message); });
+      b.addEventListener("click", function () {
+        if (/^https?:\/\//.test(message)) { track("chat_link", { chatHref: message }); window.open(message, "_blank", "noopener"); return; }
+        if (!busy) send(message);
+      });
       chips.appendChild(b);
     });
   }
