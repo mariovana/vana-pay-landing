@@ -338,7 +338,7 @@
 
   function setChips(list) {
     chips.innerHTML = "";
-    (list || []).forEach(function (c) {
+    (list || []).slice(0, isMobile() ? 4 : 6).forEach(function (c) {
       var label = typeof c === "string" ? c : (c.label || c.text || c.title || "");
       var message = typeof c === "string" ? c : (c.message || c.prompt || c.query || label);
       if (!label) return;
@@ -361,17 +361,16 @@
   }
 
   var paybar = panel.querySelector(".vpc-paybar");
-  function setPaybar(box, handoffs, subtotal) {
+  function setPaybar(box, handoffs, subtotal, onPay) {
     if (!box || !handoffs.length) { paybar.hidden = true; paybar.innerHTML = ""; return; }
-    var label = handoffs.length > 1 ? "Pagar (" + handoffs.length + " tiendas)" : "Pagar con vana pay en " + (handoffs[0].seller || STORE_NAME);
+    var single = handoffs.length === 1;
+    var label = single ? "Pagar con vana pay en " + (handoffs[0].seller || STORE_NAME) : "Elegir tienda para pagar";
     paybar.innerHTML = '<div class="vpc-paybar-sum"><b>' + MONEY(subtotal) + "</b>" + (subtotal > PAGUI_MIN ? paguiHTML(subtotal, "vpc-paybar-pagui") : "") + "</div>" +
       '<button type="button" class="vpc-pay">' + esc(label) + "</button>";
     paybar.hidden = false;
     paybar.querySelector("button").addEventListener("click", function () {
-      box.scrollIntoView({ block: "center", behavior: "smooth" });
-      var btn = box.querySelector(".vpc-paybtns .vpc-pay");
-      if (handoffs.length === 1 && btn) btn.click();
-      else if (box.querySelector(".vpc-phone input")) box.querySelector(".vpc-phone input").focus();
+      if (single) onPay(handoffs[0]);
+      else box.scrollIntoView({ block: "center", behavior: "smooth" });
     });
   }
 
@@ -635,12 +634,14 @@
     var cart = p.cart || {};
     var items = cart.items || [];
     var handoffs = p.handoffs || [];
+    var single = handoffs.length === 1;
+    var old = log.querySelector(".vpc-cart"); if (old) old.remove();  // el resumen del carrito sobra aquí
     var box = document.createElement("div"); box.className = "vpc-checkout";
     var subtotal = cart.subtotal != null ? cart.subtotal : items.reduce(function (n, i) { return n + (i.price || 0) * (i.quantity || 0); }, 0);
     function lines(list) {
       return "<ul>" + list.map(function (i) {
-        return "<li>" + (i.image_url ? '<img src="' + esc(thumb(i.image_url, 160)) + '" alt="" loading="lazy">' : "") +
-          "<span>" + i.quantity + " x " + esc(i.title) + "</span><span class=\"vpc-line-price\">" + MONEY((i.price || 0) * (i.quantity || 1)) + "</span></li>";
+        return "<li>" + (i.image_url ? '<img src="' + esc(thumb(i.image_url, 120)) + '" alt="" loading="lazy">' : "") +
+          '<span class="vpc-line-title">' + i.quantity + " x " + esc(i.title) + "</span><span class=\"vpc-line-price\">" + MONEY((i.price || 0) * (i.quantity || 1)) + "</span></li>";
       }).join("") + "</ul>";
     }
     function payBtn(h) {
@@ -667,26 +668,22 @@
       html += "<small>Aún no hay un enlace de pago. Agrega algo al carrito primero.</small>";
       box.innerHTML = html; addNode(box); return;
     }
-    // Teléfono opcional en la misma tarjeta; se guarda al tocar "Pagar" (un solo paso). Se abre la
-    // pestaña de inmediato (gesto del usuario, sin bloqueo de popups) y se le pone la URL cuando
-    // el registro responde o pasan 2.5 s, lo que ocurra primero. El pago nunca se bloquea.
     html += '<div class="vpc-phone">' +
       '<label>Tu número de teléfono <span>(opcional)</span></label>' +
       '<div class="vpc-phone-row"><span class="vpc-phone-cc">+502</span>' +
       '<input type="tel" inputmode="numeric" maxlength="9" placeholder="5555 5555" autocomplete="tel-national" aria-label="Número de teléfono"></div>' +
-      '<small>Con tu número registramos esta compra en tu cuenta de vana pay y dejamos tu checkout listo. Nunca escribas aquí datos de tarjeta.</small>' +
       '<div class="vpc-phone-err" hidden></div>' +
     "</div>" +
-    '<div class="vpc-paybtns">' + handoffs.map(payBtn).join("") + "</div>" +
-    "<small class=\"vpc-checkout-foot\">" + (handoffs.length > 1
-      ? "Cada botón abre el checkout de su tienda. Ahí eliges vana pay como forma de pago y ves tus paguitos según tu perfil. El primer paguito se paga hoy."
-      : "Vas al checkout de " + esc(seller) + ". Ahí eliges vana pay como forma de pago y ves tus paguitos según tu perfil. El primer paguito se paga hoy.") + "</small>";
+    (single ? "" : '<div class="vpc-paybtns">' + handoffs.map(payBtn).join("") + "</div>") +
+    "<small class=\"vpc-checkout-foot\">" + (single
+      ? "El botón de abajo te lleva al checkout de " + esc(seller) + ". Ahí eliges vana pay y ves tus paguitos según tu perfil; el primero se paga hoy."
+      : "Cada botón abre el checkout de su tienda. Ahí eliges vana pay y ves tus paguitos según tu perfil; el primero se paga hoy.") + "</small>";
     box.innerHTML = html;
 
     var phoneIn = box.querySelector(".vpc-phone input"), errEl = box.querySelector(".vpc-phone-err");
     try { var saved = sessionStorage.getItem("vp.chat.phone"); if (saved) phoneIn.value = saved; } catch (e) { /* noop */ }
     phoneIn.addEventListener("input", function () { errEl.hidden = true; });
-    var intentSent = null;  // una sola llamada por tarjeta aunque haya dos botones
+    var intentSent = null;
     function sendIntent(digits) {
       if (intentSent) return intentSent;
       intentSent = fetch(AGENT_URL + "/api/checkout-intent", {
@@ -695,28 +692,30 @@
       }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
       return intentSent;
     }
-    box.querySelectorAll(".vpc-pay").forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        var digits = phoneIn.value.replace(/\D/g, "");
-        if (digits && !/^[2-7]\d{7}$/.test(digits)) {
-          e.preventDefault();
-          errEl.textContent = "Escribe un número de Guatemala de 8 dígitos, o déjalo vacío."; errEl.hidden = false;
-          phoneIn.focus(); return;
-        }
-        try { if (digits) sessionStorage.setItem("vp.chat.phone", digits); } catch (err) { /* noop */ }
-        track("chat_checkout", { chatItems: items.length, chatSeller: a.getAttribute("data-seller"), chatPhone: !!digits });
-        var url = a.href;
-        e.preventDefault();
-        var w = null;
-        try { w = window.open("about:blank", "_blank"); } catch (err) { w = null; }
-        var go = function () { if (w && !w.closed) { try { w.location.href = url; } catch (err) { location.assign(url); } } else { location.assign(url); } };
-        var done = false;
-        var finish = function () { if (!done) { done = true; go(); } };
-        setTimeout(finish, 2500);
-        sendIntent(digits).then(finish, finish);
-      });
+    // Un solo camino de pago para la barra fija y para los botones por tienda: valida el teléfono
+    // (si lo puso), registra la intención y abre el checkout en otra pestaña con el gesto del usuario.
+    function payWith(h, evt) {
+      var digits = phoneIn.value.replace(/\D/g, "");
+      if (digits && !/^[2-7]\d{7}$/.test(digits)) {
+        if (evt) evt.preventDefault();
+        errEl.textContent = "Escribe un número de Guatemala de 8 dígitos, o déjalo vacío."; errEl.hidden = false;
+        box.scrollIntoView({ block: "center", behavior: "smooth" }); phoneIn.focus(); return;
+      }
+      try { if (digits) sessionStorage.setItem("vp.chat.phone", digits); } catch (err) { /* noop */ }
+      track("chat_checkout", { chatItems: items.length, chatSeller: h.seller || "", chatPhone: !!digits });
+      if (evt) evt.preventDefault();
+      var w = null;
+      try { w = window.open("about:blank", "_blank"); } catch (err) { w = null; }
+      var go = function () { if (w && !w.closed) { try { w.location.href = h.url; } catch (err) { location.assign(h.url); } } else { location.assign(h.url); } };
+      var done = false;
+      var finish = function () { if (!done) { done = true; go(); } };
+      setTimeout(finish, 2500);
+      sendIntent(digits).then(finish, finish);
+    }
+    box.querySelectorAll(".vpc-paybtns .vpc-pay").forEach(function (a, i) {
+      a.addEventListener("click", function (e) { payWith(handoffs[i], e); });
     });
     addNode(box);
-    setPaybar(box, handoffs, subtotal);
+    setPaybar(box, handoffs, subtotal, function (h) { payWith(h, null); });
   }
 })();
