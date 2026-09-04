@@ -166,7 +166,8 @@ html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
 .vpc-msg .vpc-link-cta{display:inline-block; margin-top:6px; padding:9px 14px; border-radius:999px; background:var(--brand,#0FB3CE); color:#fff; text-decoration:none}
 .vpc-msg .vpc-link-cta:hover{background:var(--brand-strong,#0C93AB)}
 .vpc-msg.sys{align-self:center; background:transparent; color:var(--n70,#5B6770); font-size:.8rem; padding:2px 8px}
-.vpc-msg.err{align-self:center; background:#FDECEC; color:#9B1C1C; font-size:.85rem}
+.vpc-msg.err{align-self:center; background:#FDECEC; color:#9B1C1C; font-size:.85rem; display:flex; flex-direction:column; gap:8px; align-items:flex-start}
+.vpc-retry{background:#fff; border-color:#9B1C1C; color:#9B1C1C}
 .vpc-typing{align-self:flex-start; display:inline-flex; gap:6px; align-items:center; color:var(--n70,#5B6770); font-size:.82rem; padding:4px 6px}
 .vpc-typing i{width:7px;height:7px;border-radius:50%;background:var(--wa,#25D366);animation:vpc-blink 1s infinite}
 .vpc-typing i:nth-child(2){animation-delay:.15s}.vpc-typing i:nth-child(3){animation-delay:.3s}

@@ -384,43 +384,59 @@
     var botText = "";
     typing(true, "Pensando");
 
-    fetch(AGENT_URL + "/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ session_id: sid, message: text, store: focusSlug, profile: Object.keys(profile).length ? profile : null })
-    }).then(function (res) {
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      var reader = res.body.getReader();
-      var dec = new TextDecoder();
-      var buf = "";
-      function pump() {
-        return reader.read().then(function (r) {
-          if (r.done) { flush(true); return; }
-          buf += dec.decode(r.value, { stream: true });
-          flush(false);
-          return pump();
-        });
-      }
-      function flush(final) {
-        var frames = buf.split("\n\n");
-        buf = final ? "" : frames.pop();
-        frames.forEach(function (frame) {
-          var type = "", data = "";
-          frame.split("\n").forEach(function (line) {
-            if (line.indexOf("event:") === 0) type = line.slice(6).trim();
-            else if (line.indexOf("data:") === 0) data += line.slice(5).trim();
+    // Un corte de red (túnel, reinicio, señal) reintenta solo una vez tras 2 s; si vuelve a fallar,
+    // muestra un aviso claro con botón para reintentar el mismo mensaje.
+    function attempt(n) {
+      return fetch(AGENT_URL + "/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ session_id: sid, message: text, store: focusSlug, profile: Object.keys(profile).length ? profile : null })
+      }).then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        var reader = res.body.getReader();
+        var dec = new TextDecoder();
+        var buf = "";
+        function pump() {
+          return reader.read().then(function (r) {
+            if (r.done) { flush(true); return; }
+            buf += dec.decode(r.value, { stream: true });
+            flush(false);
+            return pump();
           });
-          if (!type) return;
-          var payload = {};
-          try { payload = data ? JSON.parse(data) : {}; } catch (e) { payload = {}; }
-          handle(type, payload);
-        });
-      }
-      return pump();
-    }).catch(function (err) {
-      typing(false);
-      add(fmt("No pude conectar con el personal shopper. " + (err && err.message ? err.message : "")), "err");
-    }).then(function () {
+        }
+        function flush(final) {
+          var frames = buf.split("\n\n");
+          buf = final ? "" : frames.pop();
+          frames.forEach(function (frame) {
+            var type = "", data = "";
+            frame.split("\n").forEach(function (line) {
+              if (line.indexOf("event:") === 0) type = line.slice(6).trim();
+              else if (line.indexOf("data:") === 0) data += line.slice(5).trim();
+            });
+            if (!type) return;
+            var payload = {};
+            try { payload = data ? JSON.parse(data) : {}; } catch (e) { payload = {}; }
+            handle(type, payload);
+          });
+        }
+        return pump();
+      }).catch(function (err) {
+        var network = !(err && /^HTTP \d+/.test(err.message || ""));
+        if (network && n < 1) {
+          typing(true, "Se cortó la conexión, reintentando");
+          return new Promise(function (r) { setTimeout(r, 2000); }).then(function () { return attempt(n + 1); });
+        }
+        typing(false);
+        var box = add(fmt(network
+          ? "Se cortó la conexión con el personal shopper. Revisa tu señal y vuelve a intentar."
+          : "El personal shopper no pudo responder ahora (" + err.message + ")."), "err");
+        var retry = document.createElement("button");
+        retry.type = "button"; retry.className = "vpc-chip vpc-retry"; retry.textContent = "Reintentar";
+        retry.addEventListener("click", function () { if (!busy) { box.remove(); send(text); } });
+        box.appendChild(retry);
+      });
+    }
+    attempt(0).then(function () {
       typing(false);
       busy = false; sendBtn.disabled = false; input.disabled = false;
       if (!isMobile()) input.focus();
