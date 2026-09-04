@@ -273,7 +273,7 @@
       greeted = true;
       add(fmt(focusSlug
         ? "Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Puedo ayudarte a encontrar algo y pagarlo en paguitos, o contarte cómo funciona vana pay y qué necesitas para tenerlo."
-        : "Hola, soy tu personal shopper de vana pay. Dime qué quieres comprar y te digo dónde conseguirlo y pagarlo en paguitos, o te cuento cómo funciona vana pay y qué necesitas para tenerlo."));
+        : "Hola, soy tu personal shopper de vana pay. Te ayudo a encontrar lo que quieras comprar y a pagarlo en paguitos."));
       setChips(["¿Qué es vana pay?", "¿Qué necesito para tener vana pay?", "¿Cómo funcionan los paguitos?"].concat(focusSlug === "cat" ? ["Busco botas", "Ver mochilas"] : ["Lo más vendido", "Busco un regalo"]));
       renderQuickStart();
     }
@@ -510,57 +510,41 @@
     }
   }
 
-  // Arranque rápido: dos toques para que el agente no pregunte lo obvio, y "Ya tengo vana pay"
-  // para identificarse con el teléfono (hoy con un proveedor de demostración en el servidor).
+  // Arranque: una sola pregunta con dos botones. "Sí" pide el número y saluda por nombre; "No"
+  // pasa la conversación al agente para acompañar a abrir la cuenta; "Solo quiero ver productos"
+  // salta el paso. Las tallas y demás las pregunta el agente solo cuando hacen falta.
   function renderQuickStart() {
     var card = document.createElement("div"); card.className = "vpc-quick";
-    var known = profile.talla_calzado || profile.talla_ropa || profile.compra_para;
     card.innerHTML =
-      '<div class="vpc-quick-row"><span>Para ir directo a lo tuyo</span>' +
-        '<button type="button" class="vpc-quick-id">Ya tengo vana pay</button></div>' +
-      (known
-        ? '<div class="vpc-quick-known">Tu perfil: ' + esc([profile.compra_para, profile.genero, profile.talla_ropa && ("ropa " + profile.talla_ropa), profile.talla_calzado && ("calzado " + profile.talla_calzado)].filter(Boolean).join(" · ")) + ' <button type="button" class="vpc-quick-edit">cambiar</button></div>'
-        : '<div class="vpc-quick-steps"></div>') +
-      '<div class="vpc-quick-idbox" hidden><div class="vpc-phone-row"><span class="vpc-phone-cc">+502</span>' +
-        '<input type="tel" inputmode="numeric" maxlength="9" placeholder="Tu número de vana pay" aria-label="Teléfono"></div>' +
-        '<button type="button" class="vpc-pay vpc-quick-go">Identificarme</button>' +
-        '<small>Solo usamos tu número para reconocer tu cuenta. En esta demo se cargan datos de prueba.</small>' +
-        '<div class="vpc-phone-err" hidden></div></div>';
-    var steps = card.querySelector(".vpc-quick-steps");
-    var STEPS = [
-      { key: "compra_para", q: "¿Para quién compras?", opts: ["Para mí", "Para regalo"] },
-      { key: "genero", q: "¿Para hombre o mujer?", opts: ["Hombre", "Mujer", "Da igual"] },
-      { key: "talla_calzado", q: "¿Tu talla de calzado?", opts: ["36", "37", "38", "39", "40", "41", "42", "43", "Omitir"] },
-      { key: "talla_ropa", q: "¿Tu talla de ropa?", opts: ["S", "M", "L", "XL", "Omitir"] }
-    ];
-    function renderStep(i) {
-      if (!steps) return;
-      if (i >= STEPS.length) {
-        steps.innerHTML = '<div class="vpc-quick-known">Listo, ya te conozco un poco: ' + esc([profile.compra_para, profile.genero, profile.talla_ropa && ("ropa " + profile.talla_ropa), profile.talla_calzado && ("calzado " + profile.talla_calzado)].filter(Boolean).join(" · ") || "sin datos") + ". Dime qué buscas.</div>";
-        return;
-      }
-      var st = STEPS[i];
-      steps.innerHTML = "<div class=\"vpc-quick-q\">" + esc(st.q) + "</div><div class=\"vpc-quick-opts\">" +
-        st.opts.map(function (o) { return '<button type="button" class="vpc-chip" data-v="' + esc(o) + '">' + esc(o) + "</button>"; }).join("") + "</div>";
-      steps.querySelectorAll("button").forEach(function (b) {
-        b.addEventListener("click", function () {
-          var v = b.getAttribute("data-v");
-          if (v !== "Omitir" && v !== "Da igual") { var patch = {}; patch[st.key] = v.toLowerCase() === "para mí" || v.toLowerCase() === "para regalo" ? v.toLowerCase() : v; saveProfile(patch); }
-          track("chat_profile_step", { chatStep: st.key });
-          renderStep(i + 1);
-        });
-      });
-    }
-    renderStep(0);
-    var edit = card.querySelector(".vpc-quick-edit");
-    if (edit) edit.addEventListener("click", function () {
-      var k = card.querySelector(".vpc-quick-known"); var div = document.createElement("div"); div.className = "vpc-quick-steps";
-      k.replaceWith(div); steps = div; renderStep(0);
-    });
+      '<div class="vpc-quick-q">¿Ya tienes vana pay?</div>' +
+      '<div class="vpc-quick-yn">' +
+        '<button type="button" class="vpc-quick-yes">Sí, ya tengo</button>' +
+        '<button type="button" class="vpc-quick-no">No, todavía no</button>' +
+      "</div>" +
+      '<button type="button" class="vpc-quick-skip">Solo quiero ver productos</button>' +
+      '<div class="vpc-quick-idbox" hidden>' +
+        '<label>Tu número de vana pay</label>' +
+        '<div class="vpc-phone-row"><span class="vpc-phone-cc">+502</span>' +
+        '<input type="tel" inputmode="numeric" maxlength="9" placeholder="5555 5555" autocomplete="tel-national" aria-label="Teléfono"></div>' +
+        '<button type="button" class="vpc-pay vpc-quick-go">Continuar</button>' +
+        '<small>Solo lo usamos para reconocer tu cuenta. En esta demo se cargan datos de prueba.</small>' +
+        '<div class="vpc-phone-err" hidden></div>' +
+      "</div>";
     var idbox = card.querySelector(".vpc-quick-idbox");
-    card.querySelector(".vpc-quick-id").addEventListener("click", function () {
-      idbox.hidden = !idbox.hidden;
-      if (!idbox.hidden) { try { idbox.querySelector("input").value = sessionStorage.getItem("vp.chat.phone") || ""; } catch (e) { /* noop */ } idbox.querySelector("input").focus(); }
+    card.querySelector(".vpc-quick-skip").addEventListener("click", function () { track("chat_onboard", { chatAnswer: "skip" }); card.remove(); });
+    card.querySelector(".vpc-quick-no").addEventListener("click", function () {
+      track("chat_onboard", { chatAnswer: "no" });
+      card.remove();
+      if (!busy) send("No tengo cuenta de vana pay todavía. ¿Me ayudas a crearla?");
+    });
+    card.querySelector(".vpc-quick-yes").addEventListener("click", function () {
+      track("chat_onboard", { chatAnswer: "yes" });
+      card.querySelector(".vpc-quick-yn").hidden = true; card.querySelector(".vpc-quick-skip").hidden = true;
+      card.querySelector(".vpc-quick-q").textContent = "Qué bien. Dime tu número y te reconozco.";
+      idbox.hidden = false;
+      var inp = idbox.querySelector("input");
+      try { inp.value = sessionStorage.getItem("vp.chat.phone") || ""; } catch (e) { /* noop */ }
+      inp.focus();
     });
     card.querySelector(".vpc-quick-go").addEventListener("click", function () {
       var input = idbox.querySelector("input"), err = idbox.querySelector(".vpc-phone-err");
@@ -573,21 +557,18 @@
         .then(function (r) { return r.ok ? r.json() : r.json().then(function (j) { throw new Error(j.detail || ("HTTP " + r.status)); }); })
         .then(function (j) {
           track("chat_identify", { chatFound: !!j.exists, chatDemo: !!j.demo });
+          card.remove();
           if (j.exists) {
             identified = j;
             if (j.profile) saveProfile(j.profile);
             add(fmt("Hola " + j.first_name + ". Tu cuenta de vana pay está lista" + (j.disponible_q ? " y tienes **" + VP.money(j.disponible_q) + " disponibles** para comprar en paguitos" : "") + ". Dime qué buscas y te muestro lo que te alcanza con tu crédito." + (j.demo ? "\n\nPerfil de demostración." : "")), "bot");
             setChips(["Algo que me alcance con mi crédito", "Lo más vendido", "Busco un regalo"]);
           } else {
-            // Sin cuenta: el agente toma la conversación y acompaña a crearla.
             add(fmt("No encontramos una cuenta de vana pay con ese número."), "sys");
-            card.remove();
             if (!busy) send("No tengo cuenta de vana pay todavía. ¿Me ayudas a crearla?");
-            return;
           }
-          card.remove();
         })
-        .catch(function (e) { err.textContent = "No pude verificar (" + (e && e.message ? e.message : "error") + "). Intenta de nuevo."; err.hidden = false; go.disabled = false; go.textContent = "Identificarme"; });
+        .catch(function (e) { err.textContent = "No pude verificar (" + (e && e.message ? e.message : "error") + "). Intenta de nuevo."; err.hidden = false; go.disabled = false; go.textContent = "Continuar"; });
     });
     addNode(card);
   }

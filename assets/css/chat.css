@@ -260,7 +260,14 @@ html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
 .vpc-quick{align-self:stretch; border:1px solid rgba(37,211,102,.35); background:#F4FDF7; border-radius:14px; padding:10px 12px; display:flex; flex-direction:column; gap:8px}
 .vpc-quick-row{display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:.82rem; color:#1E7B45; font-weight:700}
 .vpc-quick-id{border:0; background:var(--ink,#0B1F24); color:#fff; border-radius:999px; padding:7px 12px; font:inherit; font-size:.8rem; font-weight:700; cursor:pointer}
-.vpc-quick-q{font-size:.88rem; font-weight:700}
+.vpc-quick-q{font-size:1rem; font-weight:900; color:var(--ink,#0B1F24)}
+.vpc-quick-yn{display:flex; gap:8px}
+.vpc-quick-yn button{flex:1; border:0; border-radius:999px; padding:11px 12px; font:inherit; font-size:.9rem; font-weight:700; cursor:pointer}
+.vpc-quick-yes{background:var(--ink,#0B1F24); color:#fff}
+.vpc-quick-no{background:#fff; color:var(--ink,#0B1F24); box-shadow:inset 0 0 0 1.5px rgba(11,31,36,.25)}
+.vpc-quick-skip{border:0; background:none; color:var(--n70,#5B6770); font:inherit; font-size:.8rem; cursor:pointer; text-decoration:underline; align-self:flex-start; padding:0}
+.vpc-quick-idbox label{font-size:.85rem; font-weight:700}
+[hidden].vpc-quick-yn,[hidden].vpc-quick-skip{display:none}
 .vpc-quick-opts{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px}
 .vpc-quick-opts .vpc-chip{padding:5px 10px}
 .vpc-quick-known{font-size:.82rem; color:var(--n70,#5B6770)}
