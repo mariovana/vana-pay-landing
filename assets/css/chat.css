@@ -29,6 +29,9 @@
 }
 @keyframes vpc-ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.75);opacity:0}}
 @keyframes vpc-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+@keyframes vpc-glow{0%,100%{box-shadow:0 12px 30px rgba(11,31,36,.35), 0 0 18px rgba(37,211,102,.35)}50%{box-shadow:0 12px 30px rgba(11,31,36,.35), 0 0 34px rgba(37,211,102,.7)}}
+@keyframes vpc-nudge{0%,86%,100%{transform:translateY(0)}90%{transform:translateY(-7px)}94%{transform:translateY(0)}97%{transform:translateY(-3px)}}
+@keyframes vpc-point{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
 .no-anim .vpc-fab .vpc-fab-ring,.no-anim .vpc-fab .vpc-fab-dot{animation:none}
 .vpc-open .vpc-fab,.vpc-open .vpc-teasers{display:none}
 
@@ -64,22 +67,34 @@ html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
 html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
 
 @media (max-width:719px){
-  /* Barra fija a todo el ancho en vez del bubble redondo */
+  /* Píldora flotante separada de los bordes (si tocara el borde, Safari tiñe su barra con el
+     mismo negro y se funde). Borde neón verde animado como el "Comprar por chat" de la landing,
+     brillo que respira y un rebote corto cada 6 s para llamar la atención. */
   .vpc-fab{
-    left:0; right:0; bottom:0; width:auto; height:auto; border-radius:0;
-    display:flex; align-items:center; gap:12px; text-align:left;
-    padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
-    box-shadow:0 -10px 30px rgba(8,107,125,.22);
+    left:14px; right:14px; bottom:calc(12px + env(safe-area-inset-bottom, 0px));
+    width:auto; height:auto; border-radius:999px; text-align:left;
+    display:flex; align-items:center; gap:12px;
+    padding:11px 16px 11px 12px;
+    border:2px solid transparent;
+    background:
+      linear-gradient(var(--ink,#0B1F24), var(--ink,#0B1F24)) padding-box,
+      conic-gradient(from var(--ssang), #A9F5C9, #5EE39A, #EFFFF5, #0FB3CE, #5EE39A, #A9F5C9) border-box;
+    box-shadow:0 12px 30px rgba(11,31,36,.35), 0 0 22px rgba(37,211,102,.45);
+    animation:ss-spin 2.8s linear infinite, vpc-glow 2.8s ease-in-out infinite, vpc-nudge 6s ease-in-out infinite;
   }
   .vpc-fab:hover{transform:none}
-  .vpc-fab .ico{width:28px; height:28px; flex:0 0 auto; color:var(--wa,#25D366)}
+  .vpc-fab .ico{
+    width:40px; height:40px; flex:0 0 auto; padding:9px; box-sizing:border-box; border-radius:50%;
+    color:var(--ink,#0B1F24); background:var(--wa,#25D366); animation:vpc-pulse 1.6s ease-in-out infinite;
+  }
   .vpc-fab .vpc-fab-txt{color:#fff}
   .vpc-fab .vpc-fab-ring,.vpc-fab .vpc-fab-dot{display:none}
   .vpc-fab .vpc-fab-txt{display:flex; flex-direction:column; flex:1; min-width:0; line-height:1.15}
   .vpc-fab .vpc-fab-txt b{font-size:.98rem; font-weight:900}
   .vpc-fab .vpc-fab-txt small{font-size:.76rem; font-weight:400; opacity:.9; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-  .vpc-fab .vpc-fab-go{display:block; font-size:1.8rem; line-height:1; color:var(--wa,#25D366)}
-  .vpc-teasers{right:12px; left:12px; bottom:calc(84px + env(safe-area-inset-bottom, 0px)); max-width:none; align-items:flex-end}
+  .vpc-fab .vpc-fab-go{display:block; font-size:1.8rem; line-height:1; color:var(--wa,#25D366); animation:vpc-point 1.4s ease-in-out infinite}
+  .no-anim .vpc-fab,.no-anim .vpc-fab .ico,.no-anim .vpc-fab .vpc-fab-go{animation:none}
+  .vpc-teasers{right:14px; left:14px; bottom:calc(92px + env(safe-area-inset-bottom, 0px)); max-width:none; align-items:flex-end}
   .vpc-teasers-list{align-items:flex-end}
   .vpc-teaser{font-size:.9rem; max-width:88%}
 
