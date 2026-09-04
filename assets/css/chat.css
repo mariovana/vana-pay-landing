@@ -6,24 +6,26 @@
    anclado abajo a la derecha.
    ============================================================ */
 
+/* Identidad de vana pay chat: negro (--ink) y verde (--wa #25D366) como la card "Por chat" de la
+   landing. El teal de vana pay se reserva para las acciones de pago. */
 .vpc-fab{
   position:fixed; right:18px; bottom:18px; z-index:900;
   width:64px; height:64px; border-radius:50%; border:0; cursor:pointer;
-  display:grid; place-items:center; color:#fff;
-  background:linear-gradient(135deg,var(--brand,#0FB3CE),var(--cyan,#18CAE7));
-  box-shadow:0 12px 32px rgba(15,179,206,.45), 0 2px 6px rgba(8,107,125,.25);
+  display:grid; place-items:center; color:var(--wa,#25D366);
+  background:var(--ink,#0B1F24);
+  box-shadow:0 12px 32px rgba(11,31,36,.35), 0 0 18px rgba(37,211,102,.35);
   transition:transform .18s ease, box-shadow .18s ease;
 }
-.vpc-fab:hover{transform:translateY(-2px) scale(1.04); box-shadow:0 16px 40px rgba(15,179,206,.55)}
+.vpc-fab:hover{transform:translateY(-2px) scale(1.04); box-shadow:0 16px 40px rgba(11,31,36,.4), 0 0 26px rgba(37,211,102,.5)}
 .vpc-fab .ico{width:30px;height:30px;fill:currentColor; grid-area:1/1}
 .vpc-fab .vpc-fab-txt,.vpc-fab .vpc-fab-go{display:none}
 .vpc-fab .vpc-fab-ring{
   grid-area:1/1; width:100%; height:100%; border-radius:50%;
-  border:2px solid rgba(24,202,231,.9); animation:vpc-ring 2.2s ease-out infinite;
+  border:2px solid rgba(37,211,102,.9); animation:vpc-ring 2.2s ease-out infinite;
 }
 .vpc-fab .vpc-fab-dot{
   position:absolute; top:6px; right:6px; width:14px; height:14px; border-radius:50%;
-  background:var(--accent,#F7AE4F); border:2px solid #fff; animation:vpc-pulse 1.6s ease-in-out infinite;
+  background:var(--wa,#25D366); border:2px solid var(--ink,#0B1F24); animation:vpc-pulse 1.6s ease-in-out infinite;
 }
 @keyframes vpc-ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.75);opacity:0}}
 @keyframes vpc-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
@@ -46,11 +48,11 @@
   font-size:.92rem; line-height:1.35; max-width:100%;
   transform-origin:100% 100%; animation:vpc-pop .42s cubic-bezier(.2,1.4,.4,1) both;
 }
-.vpc-teaser:hover{background:var(--brand-10,#E7F7FA)}
-.vpc-teaser-avatar{width:26px; height:26px; border-radius:50%; flex:0 0 auto; background:var(--aqua,#CFF0F5); padding:4px}
+.vpc-teaser:hover{background:#E9FBF0}
+.vpc-teaser-avatar{width:26px; height:26px; border-radius:50%; flex:0 0 auto; background:var(--ink,#0B1F24); padding:5px; box-shadow:0 0 0 2px rgba(37,211,102,.7)}
 .vpc-teaser-body{min-width:44px; min-height:1.35em; display:inline-block; padding-top:2px}
 .vpc-teaser-typing{display:inline-flex; gap:5px; align-items:center; height:1.35em}
-.vpc-teaser-typing i{width:7px;height:7px;border-radius:50%;background:var(--brand,#0FB3CE);animation:vpc-blink 1s infinite}
+.vpc-teaser-typing i{width:7px;height:7px;border-radius:50%;background:var(--wa,#25D366);animation:vpc-blink 1s infinite}
 .vpc-teaser-typing i:nth-child(2){animation-delay:.15s}.vpc-teaser-typing i:nth-child(3){animation-delay:.3s}
 .vpc-teaser.is-text .vpc-teaser-body{animation:vpc-fadein .25s ease both}
 @keyframes vpc-pop{0%{transform:scale(.6) translateY(12px);opacity:0}100%{transform:none;opacity:1}}
@@ -59,6 +61,7 @@
 /* Bloqueo del scroll de la página con el chat abierto (iOS incluido) */
 html.vpc-lock, html.vpc-lock body{overflow:hidden; height:100%}
 html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
+html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
 
 @media (max-width:719px){
   /* Barra fija a todo el ancho en vez del bubble redondo */
@@ -69,18 +72,20 @@ html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
     box-shadow:0 -10px 30px rgba(8,107,125,.22);
   }
   .vpc-fab:hover{transform:none}
-  .vpc-fab .ico{width:28px; height:28px; flex:0 0 auto}
+  .vpc-fab .ico{width:28px; height:28px; flex:0 0 auto; color:var(--wa,#25D366)}
+  .vpc-fab .vpc-fab-txt{color:#fff}
   .vpc-fab .vpc-fab-ring,.vpc-fab .vpc-fab-dot{display:none}
   .vpc-fab .vpc-fab-txt{display:flex; flex-direction:column; flex:1; min-width:0; line-height:1.15}
   .vpc-fab .vpc-fab-txt b{font-size:.98rem; font-weight:900}
   .vpc-fab .vpc-fab-txt small{font-size:.76rem; font-weight:400; opacity:.9; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-  .vpc-fab .vpc-fab-go{display:block; font-size:1.8rem; line-height:1; opacity:.9}
+  .vpc-fab .vpc-fab-go{display:block; font-size:1.8rem; line-height:1; color:var(--wa,#25D366)}
   .vpc-teasers{right:12px; left:12px; bottom:calc(84px + env(safe-area-inset-bottom, 0px)); max-width:none; align-items:flex-end}
   .vpc-teasers-list{align-items:flex-end}
   .vpc-teaser{font-size:.9rem; max-width:88%}
 
   /* Ventana a pantalla completa: altura real del viewport (chat.js la ajusta con el teclado) */
-  .vpc-panel{inset:0; height:100dvh; border-radius:0; overscroll-behavior:contain}
+  .vpc-panel{inset:0; top:0 !important; bottom:auto; height:100dvh; border-radius:0; overscroll-behavior:contain}
+  .vpc-foot{display:none}  /* con teclado abierto cada píxel cuenta */
   .vpc-head{padding-top:calc(12px + env(safe-area-inset-top, 0px))}
   .vpc-log{overscroll-behavior:contain; -webkit-overflow-scrolling:touch}
   .vpc-cards{overscroll-behavior-x:contain}
@@ -114,18 +119,20 @@ html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
 
 .vpc-head{
   display:flex; align-items:center; gap:12px; padding:14px 16px;
-  background:linear-gradient(120deg,var(--brand,#0FB3CE),var(--cyan,#18CAE7)); color:#fff;
+  background:var(--ink,#0B1F24); color:#fff; position:relative; overflow:hidden;
 }
+.vpc-head::before{content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(360px 200px at 92% 0%, rgba(37,211,102,.28), transparent 60%)}
+.vpc-head > *{position:relative}
 .vpc-head img{height:22px;filter:brightness(0) invert(1)}
 .vpc-head b{display:block;font-size:1rem;line-height:1.1}
-.vpc-head small{display:block;font-size:.78rem;opacity:.9}
+.vpc-head small{display:block;font-size:.78rem;color:#5EE39A}
 .vpc-head .vpc-close{
   margin-left:auto; width:36px; height:36px; border-radius:50%; border:0;
   background:rgba(255,255,255,.2); color:#fff; font-size:1.3rem; line-height:1; cursor:pointer;
 }
 .vpc-note{
-  margin:0; padding:8px 16px; font-size:.78rem; color:var(--brand-deep,#086B7D);
-  background:var(--aqua,#CFF0F5); border-bottom:1px solid rgba(8,107,125,.08);
+  margin:0; padding:8px 16px; font-size:.78rem; color:#1E7B45;
+  background:#E9FBF0; border-bottom:1px solid rgba(37,211,102,.18);
 }
 
 .vpc-log{flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px; scroll-behavior:smooth}
@@ -134,11 +141,11 @@ html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
 .vpc-log > *{flex-shrink:0}
 .vpc-msg{max-width:88%; padding:10px 14px; border-radius:16px; font-size:.95rem; line-height:1.4; white-space:pre-wrap; word-break:break-word}
 .vpc-msg.bot{align-self:flex-start; background:#F2F5F7; border-bottom-left-radius:6px}
-.vpc-msg.me{align-self:flex-end; background:var(--brand,#0FB3CE); color:#fff; border-bottom-right-radius:6px}
+.vpc-msg.me{align-self:flex-end; background:var(--ink,#0B1F24); color:#fff; border-bottom-right-radius:6px}
 .vpc-msg.sys{align-self:center; background:transparent; color:var(--n70,#5B6770); font-size:.8rem; padding:2px 8px}
 .vpc-msg.err{align-self:center; background:#FDECEC; color:#9B1C1C; font-size:.85rem}
 .vpc-typing{align-self:flex-start; display:inline-flex; gap:6px; align-items:center; color:var(--n70,#5B6770); font-size:.82rem; padding:4px 6px}
-.vpc-typing i{width:7px;height:7px;border-radius:50%;background:var(--brand,#0FB3CE);animation:vpc-blink 1s infinite}
+.vpc-typing i{width:7px;height:7px;border-radius:50%;background:var(--wa,#25D366);animation:vpc-blink 1s infinite}
 .vpc-typing i:nth-child(2){animation-delay:.15s}.vpc-typing i:nth-child(3){animation-delay:.3s}
 @keyframes vpc-blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
 
@@ -169,10 +176,10 @@ html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
 .vpc-card .vpc-opts{font-size:.72rem; color:var(--n70,#5B6770)}
 .vpc-card .vpc-reason{font-size:.74rem; color:var(--n70,#5B6770); line-height:1.3}
 .vpc-card button{
-  margin-top:auto; border:1.5px solid var(--brand,#0FB3CE); background:#fff; color:var(--brand-strong,#0C93AB);
+  margin-top:auto; border:1.5px solid var(--ink,#0B1F24); background:#fff; color:var(--ink,#0B1F24);
   border-radius:999px; padding:6px 10px; font:inherit; font-size:.8rem; font-weight:700; cursor:pointer;
 }
-.vpc-card button:hover{background:var(--brand-10,#E7F7FA)}
+.vpc-card button:hover{background:#E9FBF0; border-color:var(--wa,#25D366)}
 .vpc-card.out .vpc-price{color:var(--n70,#5B6770)}
 
 .vpc-merchants .vpc-card{flex:0 0 172px; text-decoration:none; color:inherit; display:flex; flex-direction:column}
@@ -229,18 +236,19 @@ html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
 
 .vpc-chips{display:flex; gap:8px; flex-wrap:wrap; padding:0 16px 8px}
 .vpc-chips:empty{display:none}
-.vpc-chip{border:1px solid rgba(8,107,125,.2); background:#fff; border-radius:999px; padding:6px 12px; font:inherit; font-size:.8rem; cursor:pointer; color:var(--brand-deep,#086B7D)}
-.vpc-chip:hover{background:var(--brand-10,#E7F7FA)}
+.vpc-chip{border:1px solid rgba(11,31,36,.22); background:#fff; border-radius:999px; padding:6px 12px; font:inherit; font-size:.8rem; cursor:pointer; color:var(--ink,#0B1F24)}
+.vpc-chip:hover{background:#E9FBF0; border-color:var(--wa,#25D366)}
 
 .vpc-form{display:flex; gap:8px; padding:12px 16px 16px; border-top:1px solid rgba(8,107,125,.08); background:#fff}
 .vpc-form input{
   flex:1; min-width:0; border:1.5px solid rgba(8,107,125,.18); border-radius:999px; padding:11px 16px;
   font:inherit; font-size:.95rem; outline:none;
 }
-.vpc-form input:focus{border-color:var(--brand,#0FB3CE)}
+.vpc-form input:focus{border-color:var(--wa,#25D366); box-shadow:0 0 0 3px rgba(37,211,102,.18)}
 .vpc-form button{
-  border:0; border-radius:999px; padding:0 18px; background:var(--brand,#0FB3CE); color:#fff;
+  border:0; border-radius:999px; padding:0 18px; background:var(--ink,#0B1F24); color:#fff;
   font:inherit; font-weight:700; cursor:pointer;
 }
+.vpc-form button:hover{background:#163038}
 .vpc-form button:disabled{opacity:.5; cursor:default}
 .vpc-foot{margin:0; padding:0 16px 10px; font-size:.7rem; color:var(--n70,#5B6770); text-align:center}

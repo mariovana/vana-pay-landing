@@ -187,10 +187,14 @@
 
   var isMobile = function () { return window.matchMedia("(max-width: 719px)").matches; };
   var savedScroll = 0;
+  // iOS: al abrir el teclado Safari empuja la página y desplaza lo que está en position:fixed.
+  // Remedio estable: el panel SIEMPRE en top:0, su altura = viewport visible, y cada vez que
+  // Safari mueva la ventana se regresa a 0 (la página está bloqueada, no pierde nada).
   function fitViewport() {
-    if (panel.hidden || !isMobile()) { panel.style.height = ""; panel.style.top = ""; return; }
+    if (panel.hidden || !isMobile()) { panel.style.height = ""; return; }
     var vv = window.visualViewport;
-    if (vv) { panel.style.height = Math.round(vv.height) + "px"; panel.style.top = Math.round(vv.offsetTop) + "px"; }
+    if (vv) panel.style.height = Math.round(vv.height) + "px";
+    if (window.scrollY || (vv && vv.offsetTop)) window.scrollTo(0, 0);
     scrollLog();
   }
   if (window.visualViewport) {
@@ -198,6 +202,11 @@
     window.visualViewport.addEventListener("scroll", fitViewport);
   }
   window.addEventListener("resize", fitViewport);
+  window.addEventListener("scroll", function () { if (!panel.hidden && isMobile() && window.scrollY) window.scrollTo(0, 0); }, { passive: true });
+  panel.addEventListener("focusin", function () {
+    if (!isMobile()) return;
+    setTimeout(fitViewport, 50); setTimeout(fitViewport, 350); setTimeout(fitViewport, 700);
+  });
   function lockPage() {
     if (!isMobile()) return;
     savedScroll = window.scrollY || 0;
