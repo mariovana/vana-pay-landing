@@ -186,6 +186,8 @@
 .vpc-phone .vpc-pay{margin-top:4px}
 .vpc-phone-err{font-size:.8rem; color:#9B1C1C}
 .vpc-paybtns{display:flex; flex-direction:column; gap:8px; margin-bottom:8px}
+/* Los display propios ganan al [hidden] del navegador: se hace explícito. */
+.vpc-phone[hidden],.vpc-paybtns[hidden],.vpc-phone-err[hidden],.vpc-teasers[hidden],.vpc-panel[hidden]{display:none}
 .vpc-checkout small{display:block; margin-top:8px; font-size:.74rem; color:var(--n70,#5B6770); line-height:1.35}
 
 .vpc-chips{display:flex; gap:8px; flex-wrap:wrap; padding:0 16px 8px}

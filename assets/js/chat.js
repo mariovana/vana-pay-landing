@@ -475,53 +475,54 @@
       html += "<small>Aún no hay un enlace de pago. Agrega algo al carrito primero.</small>";
       box.innerHTML = html; addNode(box); return;
     }
-    // Paso previo al pago: teléfono opcional para registrar la compra en vana pay y prellenar el
-    // checkout. Los botones de pago aparecen después de "Continuar".
-    html += '<form class="vpc-phone">' +
+    // Teléfono opcional en la misma tarjeta; se guarda al tocar "Pagar" (un solo paso). Se abre la
+    // pestaña de inmediato (gesto del usuario, sin bloqueo de popups) y se le pone la URL cuando
+    // el registro responde o pasan 2.5 s, lo que ocurra primero. El pago nunca se bloquea.
+    html += '<div class="vpc-phone">' +
       '<label>Tu número de teléfono <span>(opcional)</span></label>' +
       '<div class="vpc-phone-row"><span class="vpc-phone-cc">+502</span>' +
       '<input type="tel" inputmode="numeric" maxlength="9" placeholder="5555 5555" autocomplete="tel-national" aria-label="Número de teléfono"></div>' +
-      '<small>Con tu número registramos esta compra en tu cuenta de vana pay y dejamos tu checkout listo. Nunca pidas ni escribas aquí datos de tarjeta.</small>' +
-      '<button type="submit" class="vpc-pay">Continuar al pago</button>' +
+      '<small>Con tu número registramos esta compra en tu cuenta de vana pay y dejamos tu checkout listo. Nunca escribas aquí datos de tarjeta.</small>' +
       '<div class="vpc-phone-err" hidden></div>' +
-    "</form>" +
-    '<div class="vpc-paybtns" hidden></div>' +
+    "</div>" +
+    '<div class="vpc-paybtns">' + handoffs.map(payBtn).join("") + "</div>" +
     "<small class=\"vpc-checkout-foot\">" + (handoffs.length > 1
       ? "Cada botón abre el checkout de su tienda. Ahí eliges vana pay como forma de pago y ves tus paguitos según tu perfil. El primer paguito se paga hoy."
       : "Vas al checkout de " + esc(seller) + ". Ahí eliges vana pay como forma de pago y ves tus paguitos según tu perfil. El primer paguito se paga hoy.") + "</small>";
     box.innerHTML = html;
 
-    var formEl = box.querySelector(".vpc-phone"), phoneIn = formEl.querySelector("input"), errEl = formEl.querySelector(".vpc-phone-err");
-    var btns = box.querySelector(".vpc-paybtns");
+    var phoneIn = box.querySelector(".vpc-phone input"), errEl = box.querySelector(".vpc-phone-err");
     try { var saved = sessionStorage.getItem("vp.chat.phone"); if (saved) phoneIn.value = saved; } catch (e) { /* noop */ }
-    function showButtons(list) {
-      btns.innerHTML = list.map(payBtn).join("");
-      btns.hidden = false; formEl.hidden = true;
-      btns.querySelectorAll(".vpc-pay").forEach(function (a) {
-        a.addEventListener("click", function () { track("chat_checkout", { chatItems: items.length, chatSeller: a.getAttribute("data-seller") }); });
-      });
-      scrollLog();
-    }
-    formEl.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var digits = phoneIn.value.replace(/\D/g, "");
-      if (digits && !/^[2-7]\d{7}$/.test(digits)) { errEl.textContent = "Escribe un número de Guatemala de 8 dígitos, o déjalo vacío."; errEl.hidden = false; return; }
-      errEl.hidden = true;
-      var submit = formEl.querySelector("button"); submit.disabled = true; submit.textContent = "Preparando tu checkout";
-      try { if (digits) sessionStorage.setItem("vp.chat.phone", digits); } catch (err) { /* noop */ }
-      fetch(AGENT_URL + "/api/checkout-intent", {
-        method: "POST", headers: { "Content-Type": "application/json" },
+    phoneIn.addEventListener("input", function () { errEl.hidden = true; });
+    var intentSent = null;  // una sola llamada por tarjeta aunque haya dos botones
+    function sendIntent(digits) {
+      if (intentSent) return intentSent;
+      intentSent = fetch(AGENT_URL + "/api/checkout-intent", {
+        method: "POST", headers: { "Content-Type": "application/json" }, keepalive: true,
         body: JSON.stringify({ session_id: sid, phone: digits ? "+502" + digits : null })
-      }).then(function (r) { return r.ok ? r.json() : r.json().then(function (j) { throw new Error(j.detail || ("HTTP " + r.status)); }); })
-        .then(function (j) {
-          track("chat_checkout_intent", { chatPhone: !!digits, chatStores: (j.handoffs || []).length });
-          showButtons(j.handoffs && j.handoffs.length ? j.handoffs : handoffs);
-        })
-        .catch(function (err) {
-          // Si el registro falla, el pago no se bloquea: se muestran los botones igual.
-          errEl.textContent = "No pude registrar tu número (" + (err && err.message ? err.message : "error") + "). Puedes pagar igual."; errEl.hidden = false;
-          showButtons(handoffs);
-        });
+      }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+      return intentSent;
+    }
+    box.querySelectorAll(".vpc-pay").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        var digits = phoneIn.value.replace(/\D/g, "");
+        if (digits && !/^[2-7]\d{7}$/.test(digits)) {
+          e.preventDefault();
+          errEl.textContent = "Escribe un número de Guatemala de 8 dígitos, o déjalo vacío."; errEl.hidden = false;
+          phoneIn.focus(); return;
+        }
+        try { if (digits) sessionStorage.setItem("vp.chat.phone", digits); } catch (err) { /* noop */ }
+        track("chat_checkout", { chatItems: items.length, chatSeller: a.getAttribute("data-seller"), chatPhone: !!digits });
+        var url = a.href;
+        e.preventDefault();
+        var w = null;
+        try { w = window.open("about:blank", "_blank"); } catch (err) { w = null; }
+        var go = function () { if (w && !w.closed) { try { w.location.href = url; } catch (err) { location.assign(url); } } else { location.assign(url); } };
+        var done = false;
+        var finish = function () { if (!done) { done = true; go(); } };
+        setTimeout(finish, 2500);
+        sendIntent(digits).then(finish, finish);
+      });
     });
     addNode(box);
   }
