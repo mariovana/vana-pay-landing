@@ -85,7 +85,7 @@ html.vpc-lock body{position:fixed; left:0; right:0; width:100%}
   .vpc-log{overscroll-behavior:contain; -webkit-overflow-scrolling:touch}
   .vpc-cards{overscroll-behavior-x:contain}
   .vpc-form{padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px))}
-  .vpc-form input,.vpc-phone input{font-size:16px}  /* evita el zoom de iOS al enfocar */
+  .vpc-panel .vpc-form input,.vpc-panel .vpc-phone input{font-size:16px}  /* evita el zoom de iOS al enfocar (más específico que la regla base) */
 }
 
 /* Barra de pago fija sobre el cajón de texto mientras hay un checkout */
