@@ -54,7 +54,7 @@
       var html = window.VPChat && window.VPChat.active
         ? '<a class="ss-chat" href="#" data-vpchat-q="' + esc(q) + '">' +
             '<svg class="ico"><use href="#i-wa"/></svg>' +
-            "<span>Pregúntale al personal shopper: <b>" + esc(q) + "</b> y te dice dónde pagarlo en paguitos</span></a>"
+            "<span>Pregúntale a Shopi: <b>" + esc(q) + "</b> y te dice dónde pagarlo en paguitos</span></a>"
         : "";
       html += (window.VPChat && window.VPChat.active ? [] : hits.filter(function (x) { return x.m.chatEnabled; })).map(function (x) {
         var msg = "Hola, quiero comprar *" + q + "* en *" + x.m.name + "* con vana pay. ¿Me ayudas?";

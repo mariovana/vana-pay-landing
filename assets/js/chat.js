@@ -46,7 +46,7 @@
     try { sessionStorage.setItem("vp.chat.store", focusSlug); } catch (e) { /* noop */ }
     STORE_NAME = focusSlug ? NAMES[focusSlug] : ALL_NAMES;
     var sub = panel && panel.querySelector(".vpc-head small");
-    if (sub) sub.textContent = focusSlug ? "Tu personal shopper en " + STORE_NAME : "Dime qué quieres comprar y te digo dónde pagarlo en paguitos";
+    if (sub) sub.textContent = focusSlug ? "Te ayudo a comprar en " + STORE_NAME + " en paguitos" : "Dime qué quieres comprar y te digo dónde pagarlo en paguitos";
     var note = panel && panel.querySelector(".vpc-note");
     if (note) note.textContent = (focusSlug ? NAMES[focusSlug] + " es la tienda." : "Compras en el comercio.") + " vana pay es tu forma de pago.";
   }
@@ -97,10 +97,13 @@
 
   // ---- DOM ----------------------------------------------------------------------
   var ICON = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 5v2h10V9H7zm0 4v2h7v-2H7z"/></svg>';
+  var SHOPI_SRC = (VP.ROOT || "") + "assets/img/shopi.svg";
+  var SHOPI = '<img class="vpc-shopi" src="' + SHOPI_SRC + '" alt="">';
   var fab = document.createElement("button");
   fab.type = "button"; fab.className = "vpc-fab"; fab.setAttribute("aria-label", "Abrir el chat del personal shopper");
-  fab.innerHTML = '<span class="vpc-fab-ring" aria-hidden="true"></span>' + ICON +
-    '<span class="vpc-fab-txt"><b>Compra por chat en paguitos</b><small>Tu personal shopper te ayuda a elegir y pagar</small></span>' +
+  fab.setAttribute("aria-label", "Abrir el chat con Shopi, el agente de vana pay");
+  fab.innerHTML = '<span class="vpc-fab-ring" aria-hidden="true"></span>' + SHOPI +
+    '<span class="vpc-fab-txt"><b>Compra con Shopi en paguitos</b><small>El agente de vana pay te ayuda a elegir y pagar</small></span>' +
     '<span class="vpc-fab-go" aria-hidden="true">&rsaquo;</span>' +
     '<span class="vpc-fab-dot" aria-hidden="true"></span>';
 
@@ -108,7 +111,7 @@
   // la persona abre el chat o las cierra. Una vez por sesión. Con reduced-motion, una sola
   // burbuja fija.
   var TEASERS = [
-    "Hola, soy tu personal shopper. ¿Qué buscas hoy?",
+    "Hola, soy Shopi, el agente de vana pay. ¿Qué buscas hoy?",
     "Dime qué quieres comprar y te digo dónde pagarlo en paguitos.",
     "¿Nuevo en vana pay? Pregúntame qué es y qué necesitas para empezar."
   ];
@@ -124,7 +127,7 @@
   function pushTeaser(text, i) {
     var list = teasers.querySelector(".vpc-teasers-list");
     var b = document.createElement("div"); b.className = "vpc-teaser";
-    b.innerHTML = '<img class="vpc-teaser-avatar" src="' + (VP.ROOT || "") + 'assets/img/favicon.svg" alt="">' +
+    b.innerHTML = '<img class="vpc-teaser-avatar" src="' + SHOPI_SRC + '" alt="">' +
       '<span class="vpc-teaser-body"><span class="vpc-teaser-typing"><i></i><i></i><i></i></span></span>';
     b.addEventListener("click", function () { open("teaser-" + (i + 1)); });
     list.appendChild(b);
@@ -154,8 +157,8 @@
   panel.className = "vpc-panel"; panel.hidden = true; panel.setAttribute("aria-label", "vana pay chat");
   panel.innerHTML =
     '<header class="vpc-head">' +
-      '<img src="' + (VP.ROOT || "") + 'assets/img/logo-vanapay.svg" alt="vana pay">' +
-      '<div><b>vana pay chat</b><small>' + (focusSlug ? "Tu personal shopper en " + esc(STORE_NAME) : "Dime qué quieres comprar y te digo dónde pagarlo en paguitos") + "</small></div>" +
+      SHOPI +
+      '<div><b>Shopi <span class="vpc-head-by">el agente de vana pay</span></b><small>' + (focusSlug ? "Te ayudo a comprar en " + esc(STORE_NAME) + " en paguitos" : "Dime qué quieres comprar y te digo dónde pagarlo en paguitos") + "</small></div>" +
       '<button type="button" class="vpc-close" aria-label="Cerrar">&times;</button>' +
     "</header>" +
     '<p class="vpc-note">' + (focusSlug ? esc(STORE_NAME) + " es la tienda." : "Compras en el comercio.") + " vana pay es tu forma de pago.</p>" +
@@ -271,8 +274,8 @@
     if (!greeted) {
       greeted = true;
       add(fmt(focusSlug
-        ? "Hola, soy tu personal shopper de vana pay en " + STORE_NAME + ". Puedo ayudarte a encontrar algo y pagarlo en paguitos, o contarte cómo funciona vana pay y qué necesitas para tenerlo."
-        : "Hola, soy tu personal shopper de vana pay. Te ayudo a encontrar lo que quieras comprar y a pagarlo en paguitos."));
+        ? "Hola, soy Shopi, el agente de vana pay. Te ayudo a encontrar algo en " + STORE_NAME + " y a pagarlo en paguitos."
+        : "Hola, soy Shopi, el agente de vana pay. Te ayudo a encontrar lo que quieras comprar y a pagarlo en paguitos."));
       setChips(["¿Qué es vana pay?", "¿Qué necesito para tener vana pay?", "¿Cómo funcionan los paguitos?"].concat(focusSlug === "cat" ? ["Busco botas", "Ver mochilas"] : ["Lo más vendido", "Busco un regalo"]));
       renderQuickStart();
     }
@@ -412,8 +415,8 @@
         }
         typing(false);
         var box = add(fmt(network
-          ? "Se cortó la conexión con el personal shopper. Revisa tu señal y vuelve a intentar."
-          : "El personal shopper no pudo responder ahora (" + err.message + ")."), "err");
+          ? "Se cortó la conexión con Shopi. Revisa tu señal y vuelve a intentar."
+          : "Shopi no pudo responder ahora (" + err.message + ")."), "err");
         var retry = document.createElement("button");
         retry.type = "button"; retry.className = "vpc-chip vpc-retry"; retry.textContent = "Reintentar";
         retry.addEventListener("click", function () { if (!busy) { box.remove(); send(text); } });

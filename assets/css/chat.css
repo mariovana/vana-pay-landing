@@ -18,6 +18,7 @@
 }
 .vpc-fab:hover{transform:translateY(-2px) scale(1.04); box-shadow:0 16px 40px rgba(11,31,36,.4), 0 0 26px rgba(37,211,102,.5)}
 .vpc-fab .ico{width:30px;height:30px;fill:currentColor; grid-area:1/1}
+.vpc-fab .vpc-shopi{width:40px; height:40px; grid-area:1/1; display:block}
 .vpc-fab .vpc-fab-txt,.vpc-fab .vpc-fab-go{display:none}
 .vpc-fab .vpc-fab-ring{
   grid-area:1/1; width:100%; height:100%; border-radius:50%;
@@ -52,7 +53,7 @@
   transform-origin:100% 100%; animation:vpc-pop .42s cubic-bezier(.2,1.4,.4,1) both;
 }
 .vpc-teaser:hover{background:#E9FBF0}
-.vpc-teaser-avatar{width:26px; height:26px; border-radius:50%; flex:0 0 auto; background:var(--ink,#0B1F24); padding:5px; box-shadow:0 0 0 2px rgba(37,211,102,.7)}
+.vpc-teaser-avatar{width:30px; height:30px; flex:0 0 auto}
 .vpc-teaser-body{min-width:44px; min-height:1.35em; display:inline-block; padding-top:2px}
 .vpc-teaser-typing{display:inline-flex; gap:5px; align-items:center; height:1.35em}
 .vpc-teaser-typing i{width:7px;height:7px;border-radius:50%;background:var(--wa,#25D366);animation:vpc-blink 1s infinite}
@@ -83,17 +84,14 @@ html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
     animation:ss-spin 2.8s linear infinite, vpc-glow 2.8s ease-in-out infinite, vpc-nudge 6s ease-in-out infinite;
   }
   .vpc-fab:hover{transform:none}
-  .vpc-fab .ico{
-    width:40px; height:40px; flex:0 0 auto; padding:9px; box-sizing:border-box; border-radius:50%;
-    color:var(--ink,#0B1F24); background:var(--wa,#25D366); animation:vpc-pulse 1.6s ease-in-out infinite;
-  }
+  .vpc-fab .vpc-shopi{width:44px; height:44px; flex:0 0 auto; animation:vpc-pulse 1.6s ease-in-out infinite}
   .vpc-fab .vpc-fab-txt{color:#fff}
   .vpc-fab .vpc-fab-ring,.vpc-fab .vpc-fab-dot{display:none}
   .vpc-fab .vpc-fab-txt{display:flex; flex-direction:column; flex:1; min-width:0; line-height:1.15}
   .vpc-fab .vpc-fab-txt b{font-size:.98rem; font-weight:900}
   .vpc-fab .vpc-fab-txt small{font-size:.76rem; font-weight:400; opacity:.9; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   .vpc-fab .vpc-fab-go{display:block; font-size:1.8rem; line-height:1; color:var(--wa,#25D366); animation:vpc-point 1.4s ease-in-out infinite}
-  .no-anim .vpc-fab,.no-anim .vpc-fab .ico,.no-anim .vpc-fab .vpc-fab-go{animation:none}
+  .no-anim .vpc-fab,.no-anim .vpc-fab .vpc-shopi,.no-anim .vpc-fab .vpc-fab-go{animation:none}
   .vpc-teasers{right:14px; left:14px; bottom:calc(92px + env(safe-area-inset-bottom, 0px)); max-width:none; align-items:flex-end}
   .vpc-teasers-list{align-items:flex-end}
   .vpc-teaser{font-size:.9rem; max-width:88%}
@@ -141,7 +139,8 @@ html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
 }
 .vpc-head::before{content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(360px 200px at 92% 0%, rgba(37,211,102,.28), transparent 60%)}
 .vpc-head > *{position:relative}
-.vpc-head img{height:22px;filter:brightness(0) invert(1)}
+.vpc-head .vpc-shopi{width:40px; height:40px; flex:0 0 auto}
+.vpc-head-by{font-weight:400; font-size:.8rem; opacity:.85; margin-left:4px}
 .vpc-head b{display:block;font-size:1rem;line-height:1.1}
 .vpc-head small{display:block;font-size:.78rem;color:#5EE39A}
 .vpc-head .vpc-close{
