@@ -221,11 +221,13 @@
   // viewport visible NO se toca el scroll del log: Safari los dispara mientras la persona
   // selecciona texto o mueve la lupa, y re-desplazar ahí cancela la selección (copiar/pegar).
   function fitViewport(adjustScroll) {
-    if (panel.hidden || !isMobile()) { panel.style.height = ""; panel.style.top = ""; return; }
+    if (panel.hidden || !isMobile()) { panel.style.height = ""; panel.style.top = ""; panel.classList.remove("vpc-kb"); return; }
     var vv = window.visualViewport;
     if (vv) {
       panel.style.height = Math.round(vv.height) + "px";
       panel.style.top = Math.round(vv.offsetTop) + "px";
+      // Teclado abierto de verdad: el viewport visible perdió al menos 150 px de alto.
+      panel.classList.toggle("vpc-kb", vv.height < window.innerHeight - 150);
     }
     if (adjustScroll) keepFocusedVisible();
   }
@@ -239,14 +241,13 @@
     if (!(t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA"))) return;
     focusedField = t;
     if (!isMobile()) return;
-    panel.classList.add("vpc-kb");  // esconde los chips para dejar espacio al teclado
     setTimeout(function () { fitViewport(true); }, 50); setTimeout(function () { fitViewport(true); }, 350); setTimeout(function () { fitViewport(true); }, 700);
   });
   panel.addEventListener("focusout", function () {
     setTimeout(function () {
       var a = document.activeElement;
       if (a && panel.contains(a) && (a.tagName === "INPUT" || a.tagName === "TEXTAREA")) return;
-      focusedField = null; panel.classList.remove("vpc-kb"); fitViewport(true);
+      focusedField = null; fitViewport(true);
     }, 250);
   });
   function lockPage() {
@@ -277,7 +278,7 @@
       renderQuickStart();
     }
     track("chat_open", { chatContext: ctx || "fab" });
-    setTimeout(function () { input.focus(); }, 50);
+    if (!isMobile()) setTimeout(function () { input.focus(); }, 50);
     if (!modeChecked) {
       modeChecked = true;
       fetch(AGENT_URL + "/health").then(function (r) { return r.json(); }).then(function (h) {
@@ -421,7 +422,8 @@
       add(fmt("No pude conectar con el personal shopper. " + (err && err.message ? err.message : "")), "err");
     }).then(function () {
       typing(false);
-      busy = false; sendBtn.disabled = false; input.disabled = false; input.focus();
+      busy = false; sendBtn.disabled = false; input.disabled = false;
+      if (!isMobile()) input.focus();
     });
 
     function handle(type, d) {
