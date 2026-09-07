@@ -97,8 +97,33 @@
 
   // ---- DOM ----------------------------------------------------------------------
   var ICON = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 5v2h10V9H7zm0 4v2h7v-2H7z"/></svg>';
-  var SHOPI_SRC = (VP.ROOT || "") + "assets/img/shopi.svg";
-  var SHOPI = '<img class="vpc-shopi" src="' + SHOPI_SRC + '" alt="">';
+  // Shopi va inline (no <img>) para poder animarlo: parpadea y mira alrededor en reposo, mueve los
+  // ojitos mientras piensa, brinca cuando agregas algo, y su color cuenta la compra (verde mientras
+  // acompaña, cyan de vana con algo en el carrito, teal de pago al llegar al checkout). Todo por CSS
+  // (chat.css, .sh-*) y respeta html.no-anim.
+  function shopiSVG(cls) {
+    return '<svg class="vpc-shopi ' + (cls || "") + '" viewBox="0 0 64 64" aria-hidden="true" focusable="false">' +
+      '<path class="sh-handle" d="M22 24V17.5C22 12.3 26.5 8 32 8s10 4.3 10 9.5V24" fill="none" stroke-width="5" stroke-linecap="round"/>' +
+      '<path class="sh-bag" d="M15.5 22h33c1.6 0 3 1.2 3.2 2.8l3.3 27.4C55.4 56.6 51.9 60 47.5 60h-31c-4.4 0-7.9-3.4-7.5-7.8l3.3-27.4c.2-1.6 1.6-2.8 3.2-2.8z"/>' +
+      '<g class="sh-eyes"><g class="sh-look">' +
+        '<rect class="sh-eye" x="24" y="33" width="5.5" height="12" rx="2.75"/>' +
+        '<rect class="sh-eye" x="34.5" y="33" width="5.5" height="12" rx="2.75"/>' +
+      "</g></g></svg>";
+  }
+  var SHOPI = shopiSVG("");
+  // Estado de ánimo (clase en cada Shopi visible) y etapa de compra (color, en <html>).
+  function shopis() { return document.querySelectorAll(".vpc-shopi"); }
+  function mood(name, on) { shopis().forEach(function (el) { el.classList.toggle(name, on !== false); }); }
+  var cheerTimer = null;
+  function cheer() {
+    mood("happy", true);
+    clearTimeout(cheerTimer);
+    cheerTimer = setTimeout(function () { mood("happy", false); }, 1500);
+  }
+  function stage(name) {
+    if (name) document.documentElement.setAttribute("data-vpc-stage", name);
+    else document.documentElement.removeAttribute("data-vpc-stage");
+  }
   var fab = document.createElement("button");
   fab.type = "button"; fab.className = "vpc-fab"; fab.setAttribute("aria-label", "Abrir el chat del personal shopper");
   fab.setAttribute("aria-label", "Abrir el chat con Shopi, el agente de vana pay");
@@ -127,7 +152,7 @@
   function pushTeaser(text, i) {
     var list = teasers.querySelector(".vpc-teasers-list");
     var b = document.createElement("div"); b.className = "vpc-teaser";
-    b.innerHTML = '<img class="vpc-teaser-avatar" src="' + SHOPI_SRC + '" alt="">' +
+    b.innerHTML = shopiSVG("vpc-teaser-avatar") +
       '<span class="vpc-teaser-body"><span class="vpc-teaser-typing"><i></i><i></i><i></i></span></span>';
     b.addEventListener("click", function () { open("teaser-" + (i + 1)); });
     list.appendChild(b);
@@ -270,6 +295,7 @@
     if (slug !== undefined) setFocus(slug);
     panel.hidden = false;
     document.documentElement.classList.add("vpc-open");
+    cheer();
     lockPage(); fitViewport(true);
     if (!greeted) {
       greeted = true;
@@ -357,6 +383,7 @@
 
   function typing(on, label) {
     var t = log.querySelector(".vpc-typing");
+    mood("thinking", !!on);
     if (!on) { if (t) t.remove(); return; }
     if (!t) { t = document.createElement("div"); t.className = "vpc-typing"; log.appendChild(t); }
     t.innerHTML = "<i></i><i></i><i></i>" + (label ? " <span>" + esc(label) + "</span>" : "");
@@ -681,7 +708,7 @@
           if (!res.ok) { addBtn.disabled = false; addBtn.textContent = "Agregar al carrito"; fail(res.message || "La tienda no pudo agregarlo."); return; }
           var chosen = Object.keys(selected).map(function (k) { return selected[k]; }).join(", ");
           track("chat_add_to_cart", { chatProduct: data.title, chatSeller: data.store || "" });
-          closeSheet();
+          closeSheet(); cheer();
           add(fmt("Listo, agregué **" + data.title + "**" + (chosen ? " (" + chosen + ")" : "") + " a tu carrito. ¿Quieres pagar ahora o seguir viendo?"));
           setChips([{ label: "Pagar ahora", message: "Quiero pagar lo que tengo en el carrito" }, { label: "Seguir viendo", message: "Muéstrame más opciones parecidas" }, { label: "Ver mi carrito", message: "¿Qué tengo en el carrito?" }], true);
         })
@@ -796,6 +823,7 @@
     var items = cart.items || [];
     var count = cart.item_count != null ? cart.item_count : items.reduce(function (n, i) { return n + (i.quantity || 0); }, 0);
     var subtotal = cart.subtotal != null ? cart.subtotal : items.reduce(function (n, i) { return n + (i.price || 0) * (i.quantity || 0); }, 0);
+    stage(count > 0 ? "cart" : null);
     var el = log.querySelector(".vpc-cart") || document.createElement("div");
     el.className = "vpc-cart";
     var thumbs = items.filter(function (i) { return i.image_url; }).slice(0, 3).map(function (i) {
@@ -812,6 +840,7 @@
     var handoffs = p.handoffs || [];
     var single = handoffs.length === 1;
     var old = log.querySelector(".vpc-cart"); if (old) old.remove();  // el resumen del carrito sobra aquí
+    if (handoffs.length) { stage("pay"); cheer(); }
     var box = document.createElement("div"); box.className = "vpc-checkout";
     var subtotal = cart.subtotal != null ? cart.subtotal : items.reduce(function (n, i) { return n + (i.price || 0) * (i.quantity || 0); }, 0);
     function lines(list) {

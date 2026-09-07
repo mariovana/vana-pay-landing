@@ -343,3 +343,30 @@ html.vpc-lock body > :not(.vpc-panel){visibility:hidden}
 .vpc-sheet-ask{flex:0 0 auto !important; border:1.5px solid var(--ink,#0B1F24); background:#fff; color:var(--ink,#0B1F24)}
 .vpc-sheet-add{border:0; background:var(--ink,#0B1F24); color:#fff}
 .vpc-sheet-add:disabled{background:rgba(11,31,36,.35); cursor:default}
+
+
+/* ---- Shopi animado ---- */
+/* Color por etapa de compra: verde mientras acompaña, cyan de vana con algo en el carrito,
+   teal (color de pago) al llegar al checkout. */
+html[data-vpc-stage="cart"]{--vpc-sh:#18CAE7}
+html[data-vpc-stage="pay"]{--vpc-sh:#0FB3CE}
+.vpc-shopi{--sh:var(--vpc-sh, #25D366); display:block; overflow:visible}
+.vpc-shopi .sh-bag{fill:var(--sh); transition:fill .7s ease}
+.vpc-shopi .sh-handle{stroke:var(--sh); transition:stroke .7s ease}
+.vpc-shopi .sh-eye{fill:#0B1F24}
+.vpc-shopi .sh-eyes,.vpc-shopi .sh-look,.vpc-shopi .sh-eye{transform-box:fill-box; transform-origin:center}
+/* Reposo: parpadeo cada ~4 s y una mirada de reojo cada ~7 s (desfasados para que no coincidan) */
+.vpc-shopi .sh-eyes{animation:sh-blink 4.2s ease-in-out infinite}
+.vpc-shopi .sh-look{animation:sh-glance 7s ease-in-out infinite 1.3s}
+@keyframes sh-blink{0%,92%,100%{transform:scaleY(1)} 95%{transform:scaleY(.08)}}
+@keyframes sh-glance{0%,72%,100%{transform:translateX(0)} 78%,86%{transform:translateX(3px)} 90%,96%{transform:translateX(-2px)}}
+/* Pensando: los ojitos van de lado a lado */
+.vpc-shopi.thinking .sh-look{animation:sh-think 1.4s ease-in-out infinite}
+@keyframes sh-think{0%,100%{transform:translateX(-3px)} 50%{transform:translateX(3px)}}
+/* Feliz (agregar, abrir, checkout): brinco con ojitos entrecerrados */
+.vpc-shopi.happy{animation:sh-bounce .9s cubic-bezier(.34,1.56,.64,1) 2}
+.vpc-shopi.happy .sh-eye{animation:sh-squint .9s ease-in-out 2}
+@keyframes sh-bounce{0%,100%{transform:translateY(0) rotate(0)} 30%{transform:translateY(-4px) rotate(-6deg)} 60%{transform:translateY(-2px) rotate(5deg)}}
+@keyframes sh-squint{0%,100%{transform:scaleY(1)} 40%,70%{transform:scaleY(.45) translateY(3px)}}
+.no-anim .vpc-shopi *{animation:none !important}
+.no-anim .vpc-shopi{animation:none !important}
