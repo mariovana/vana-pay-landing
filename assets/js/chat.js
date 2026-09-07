@@ -300,6 +300,7 @@
   }
   var modeChecked = false;
   function close() {
+    closeSheet();
     panel.hidden = true;
     document.documentElement.classList.remove("vpc-open");
     unlockPage(); fitViewport(false);
@@ -313,7 +314,7 @@
     ask: function (text, ctx) { open(ctx || "search", ""); if (text && !busy) setTimeout(function () { send(text); }, 250); }
   };
   panel.querySelector(".vpc-close").addEventListener("click", close);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) { if (sheet) closeSheet(); else close(); } });
 
   // Los CTAs de personal shopper de esta tienda abren el widget en vez de WhatsApp.
   // Fase de captura para que el listener de wa_click (analytics.js) no cuente
@@ -491,14 +492,14 @@
               : '<div class="vpc-price">' + (prod.price != null ? MONEY(prod.price) : "") + (prod.in_stock === false ? " · agotado" : "") + "</div>") +
             (opts ? '<div class="vpc-opts">' + esc(opts) + "</div>" : "") +
             (it.reason ? '<div class="vpc-reason">' + esc(it.reason) + "</div>" : "") +
-            (p.layout === "list" ? "" : '<button type="button">Lo quiero</button>') +
+            (p.layout === "list" ? "" : '<button type="button">Ver detalles</button>') +
           "</div>";
         var img = card.querySelector("img");
         if (img) img.addEventListener("error", function () { img.remove(); });
-        var btn = card.querySelector("button");
-        if (btn) btn.addEventListener("click", function () {
-          if (!busy) send("Quiero " + prod.title + (prod.option_values ? "" : ". ¿Qué tallas y colores hay?"));
-        });
+        // Toda la tarjeta abre el producto dentro del chat (fotos, descripción, talla, agregar).
+        card.setAttribute("role", "button"); card.tabIndex = 0;
+        card.addEventListener("click", function () { openSheet(prod); });
+        card.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openSheet(prod); } });
         row.appendChild(card);
       });
       addNode(row);
@@ -511,6 +512,181 @@
     } else if (component === "guide" || component === "plan") {
       if (p.title) add(fmt(p.title), "sys");
     }
+  }
+
+  // ---- hoja de producto ------------------------------------------------------------
+  // Tocar una tarjeta abre el producto DENTRO del chat, como en la app de Shop: galería de fotos,
+  // descripción, talla/color y "Agregar al carrito". Agregar no pasa por el modelo: el carrito real
+  // cambia en Shopify y el agente lo ve en su contexto en el siguiente turno. La hoja solo muestra
+  // productos que ya salieron en el chat (el servidor exige un id visto en la sesión).
+  var sheet = null;
+  function priceHTML(price, priceMax, inStock) {
+    if (price == null) return "";
+    var from = priceMax != null && priceMax > price ? '<small class="vpc-from">desde</small> ' : "";
+    var out = inStock === false ? ' <small class="vpc-out">agotado</small>' : "";
+    if (price > PAGUI_MIN) {
+      return paguiHTML(price, "vpc-price vpc-price-pagui") + '<div class="vpc-fullprice">' + from + MONEY(price) + " en total" + out + "</div>";
+    }
+    return '<div class="vpc-price">' + from + MONEY(price) + out + "</div>";
+  }
+  function closeSheet() {
+    if (!sheet) return;
+    var el = sheet; sheet = null;
+    el.classList.add("vpc-sheet-out");
+    setTimeout(function () { el.remove(); }, 200);
+  }
+  function openSheet(prod) {
+    closeSheet();
+    var el = document.createElement("section"); el.className = "vpc-sheet"; el.setAttribute("aria-label", "Producto");
+    el.innerHTML =
+      '<div class="vpc-sheet-head"><button type="button" class="vpc-sheet-back">&#8249; Volver al chat</button><span class="vpc-sheet-store">' + esc(prod.brand || STORE_NAME) + "</span></div>" +
+      '<div class="vpc-sheet-body">' +
+        '<div class="vpc-gallery">' + (prod.image_url ? '<img src="' + esc(thumb(prod.image_url, 900)) + '" alt="">' : "") + "</div>" +
+        '<div class="vpc-dots"></div>' +
+        '<div class="vpc-sheet-info">' +
+          '<h3 class="vpc-sheet-title">' + esc(prod.title) + "</h3>" +
+          '<div class="vpc-sheet-price">' + priceHTML(prod.price, null, prod.in_stock) + "</div>" +
+          '<div class="vpc-sheet-opts"></div>' +
+          '<div class="vpc-sheet-desc">' + (prod.short_description ? esc(prod.short_description) : "") + "</div>" +
+          '<div class="vpc-sheet-more"><i></i><i></i><i></i> <span>Cargando fotos y detalles</span></div>' +
+          '<div class="vpc-sheet-err" hidden></div>' +
+        "</div>" +
+      "</div>" +
+      '<div class="vpc-sheet-foot">' +
+        '<button type="button" class="vpc-sheet-ask">Preguntar a Shopi</button>' +
+        '<button type="button" class="vpc-sheet-add" disabled>Agregar al carrito</button>' +
+      "</div>";
+    panel.appendChild(el); sheet = el;
+    track("chat_product_open", { chatProduct: prod.title || "" });
+
+    var gallery = el.querySelector(".vpc-gallery"), dots = el.querySelector(".vpc-dots");
+    var optsBox = el.querySelector(".vpc-sheet-opts"), priceBox = el.querySelector(".vpc-sheet-price");
+    var descBox = el.querySelector(".vpc-sheet-desc"), more = el.querySelector(".vpc-sheet-more"), errBox = el.querySelector(".vpc-sheet-err");
+    var addBtn = el.querySelector(".vpc-sheet-add");
+    var data = null, selected = {}, current = null, images = [];
+
+    el.querySelector(".vpc-sheet-back").addEventListener("click", closeSheet);
+    el.querySelector(".vpc-sheet-ask").addEventListener("click", function () {
+      // La persona escribe su propia pregunta; el producto queda nombrado para que Shopi sepa de cuál habla.
+      closeSheet();
+      input.value = "Sobre " + (data ? data.title : prod.title) + ": ";
+      input.focus();
+      try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) { /* noop */ }
+    });
+
+    function setGallery(list) {
+      images = list.filter(Boolean);
+      if (!images.length) return;
+      gallery.innerHTML = images.map(function (u) { return '<img src="' + esc(thumb(u, 900)) + '" alt="" loading="lazy">'; }).join("");
+      gallery.querySelectorAll("img").forEach(function (im) { im.addEventListener("error", function () { im.style.display = "none"; }); });
+      dots.innerHTML = images.length > 1 ? images.map(function (_, i) { return '<i class="' + (i ? "" : "on") + '"></i>'; }).join("") : "";
+    }
+    gallery.addEventListener("scroll", function () {
+      var i = Math.round(gallery.scrollLeft / Math.max(1, gallery.clientWidth));
+      dots.querySelectorAll("i").forEach(function (d, k) { d.className = k === i ? "on" : ""; });
+    }, { passive: true });
+    function showImage(url) {
+      var i = images.indexOf(url);
+      if (i >= 0) gallery.scrollTo({ left: i * gallery.clientWidth, behavior: "smooth" });
+    }
+
+    // Variante que cumple con TODO lo elegido hasta ahora (null si aún falta elegir).
+    function matches(v, sel) {
+      return Object.keys(sel).every(function (k) { return v.options && v.options[k] === sel[k]; });
+    }
+    function resolve() {
+      if (!data) return null;
+      if (!data.options.length) return data.variants[0] || null;
+      if (Object.keys(selected).length < data.options.length) return null;
+      return data.variants.filter(function (v) { return matches(v, selected); })[0] || null;
+    }
+    function renderOptions() {
+      optsBox.innerHTML = "";
+      data.options.forEach(function (o) {
+        var g = document.createElement("div"); g.className = "vpc-optgroup";
+        g.innerHTML = '<div class="vpc-optname">' + esc(o.name) + (selected[o.name] ? ': <b>' + esc(selected[o.name]) + "</b>" : "") + "</div>";
+        var row = document.createElement("div"); row.className = "vpc-optvals";
+        o.values.forEach(function (val) {
+          // Sin existencias si ninguna variante disponible tiene este valor junto con lo demás elegido.
+          var others = {}; Object.keys(selected).forEach(function (k) { if (k !== o.name) others[k] = selected[k]; });
+          others[o.name] = val;
+          var ok = data.variants.some(function (v) { return v.available && matches(v, others); });
+          var b = document.createElement("button"); b.type = "button";
+          b.className = "vpc-optchip" + (selected[o.name] === val ? " sel" : "") + (ok ? "" : " off");
+          b.textContent = val;
+          b.addEventListener("click", function () {
+            if (selected[o.name] === val) delete selected[o.name]; else selected[o.name] = val;
+            update();
+          });
+          row.appendChild(b);
+        });
+        g.appendChild(row); optsBox.appendChild(g);
+      });
+    }
+    function update() {
+      current = resolve();
+      renderOptions();
+      var price = current ? current.price : data.price;
+      priceBox.innerHTML = priceHTML(price, current ? null : data.price_max, current ? current.available : data.in_stock);
+      if (current && current.image) showImage(current.image);
+      var missing = data.options.filter(function (o) { return !selected[o.name]; }).map(function (o) { return o.name.toLowerCase(); });
+      if (!data.variants.length || data.in_stock === false) { addBtn.disabled = true; addBtn.textContent = "Agotado"; }
+      else if (missing.length) { addBtn.disabled = true; addBtn.textContent = "Elige " + missing.join(" y "); }
+      else if (!current || !current.available) { addBtn.disabled = true; addBtn.textContent = "Agotado en esa combinación"; }
+      else { addBtn.disabled = false; addBtn.textContent = "Agregar al carrito"; }
+    }
+    function fail(msg) {
+      more.hidden = true;
+      errBox.hidden = false; errBox.textContent = msg;
+    }
+
+    fetch(AGENT_URL + "/api/product?session_id=" + encodeURIComponent(sid) + "&id=" + encodeURIComponent(prod.product_id))
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (d) {
+        if (sheet !== el) return;
+        data = d;
+        d.options = d.options || []; d.variants = d.variants || [];
+        el.querySelector(".vpc-sheet-title").textContent = d.title || prod.title;
+        el.querySelector(".vpc-sheet-store").textContent = d.store || prod.brand || STORE_NAME;
+        setGallery(d.images && d.images.length ? d.images : [prod.image_url]);
+        if (d.description) {
+          descBox.textContent = d.description;
+          if (d.description.length > 220) {
+            descBox.classList.add("clamp");
+            var t = document.createElement("button"); t.type = "button"; t.className = "vpc-sheet-toggle"; t.textContent = "Ver más";
+            t.addEventListener("click", function () { var c = descBox.classList.toggle("clamp"); t.textContent = c ? "Ver más" : "Ver menos"; });
+            descBox.insertAdjacentElement("afterend", t);
+          }
+        } else if (!descBox.textContent) {
+          descBox.textContent = "La tienda no publicó descripción para este producto.";
+        }
+        more.hidden = true;
+        // Si la tarjeta ya era una variante (talla/color), viene preseleccionada.
+        var ov = prod.option_values || {};
+        d.options.forEach(function (o) { if (ov[o.name] && o.values.indexOf(ov[o.name]) >= 0) selected[o.name] = ov[o.name]; });
+        update();
+      })
+      .catch(function () { fail("No pude cargar los detalles ahora. Pregúntale a Shopi o intenta de nuevo."); });
+
+    addBtn.addEventListener("click", function () {
+      if (!current || addBtn.disabled) return;
+      addBtn.disabled = true; addBtn.textContent = "Agregando";
+      errBox.hidden = true;
+      fetch(AGENT_URL + "/api/cart/add", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ session_id: sid, product_id: current.id, quantity: 1 })
+      }).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(function (res) {
+          if (res.cart) renderCart(res.cart);
+          if (!res.ok) { addBtn.disabled = false; addBtn.textContent = "Agregar al carrito"; fail(res.message || "La tienda no pudo agregarlo."); return; }
+          var chosen = Object.keys(selected).map(function (k) { return selected[k]; }).join(", ");
+          track("chat_add_to_cart", { chatProduct: data.title, chatSeller: data.store || "" });
+          closeSheet();
+          add(fmt("Listo, agregué **" + data.title + "**" + (chosen ? " (" + chosen + ")" : "") + " a tu carrito. ¿Quieres pagar ahora o seguir viendo?"));
+          setChips([{ label: "Pagar ahora", message: "Quiero pagar lo que tengo en el carrito" }, { label: "Seguir viendo", message: "Muéstrame más opciones parecidas" }, { label: "Ver mi carrito", message: "¿Qué tengo en el carrito?" }], true);
+        })
+        .catch(function () { addBtn.disabled = false; addBtn.textContent = "Agregar al carrito"; fail("Se cortó la conexión. Intenta de nuevo."); });
+    });
   }
 
   // Arranque: una sola pregunta con dos botones. "Sí" pide el número y saluda por nombre; "No"
