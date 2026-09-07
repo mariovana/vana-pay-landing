@@ -672,7 +672,9 @@
       .then(function (d) {
         if (sheet !== el) return;
         data = d;
-        d.options = d.options || []; d.variants = d.variants || [];
+        // "Title: Default Title" es el placeholder de Shopify para productos sin variantes.
+        d.options = (d.options || []).filter(function (o) { return o.name !== "Title" && (o.values || []).some(function (v) { return v !== "Default Title"; }); });
+        d.variants = d.variants || [];
         el.querySelector(".vpc-sheet-title").textContent = d.title || prod.title;
         el.querySelector(".vpc-sheet-store").textContent = d.store || prod.brand || STORE_NAME;
         setGallery(d.images && d.images.length ? d.images : [prod.image_url]);
