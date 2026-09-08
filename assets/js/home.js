@@ -126,19 +126,24 @@
         return window.VP.offerCardHTML(o, data.bySlug);
       }).join("");
 
-    // Banner de vana pay chat: un CTA prellenado por tienda del piloto
-    // (chatEnabled viene de build_data → ampliar el piloto es solo data).
-    var pilot = document.getElementById("pilotStores");
-    if (pilot) {
-      pilot.innerHTML = data.merchants.filter(function (m) { return m.chatEnabled; })
+    // Card de Shopi: logos de las 14 tiendas Shopify donde compra el agente
+    // (VP.AGENT_STORES) y, sin widget activo, los prompts caen a WhatsApp de vana.
+    var shops = document.getElementById("shopiStores");
+    if (shops) {
+      var logos = (window.VP.AGENT_STORES || []).map(function (slug) { return data.bySlug[slug]; }).filter(Boolean)
         .map(function (m) {
-          return '<a class="pilot-btn" data-wa-context="pilot-banner" data-wa-slug="' + m.slug +
-            '" href="' + window.VP.chatMerchantLink(m.name) + '" target="_blank" rel="noopener">' +
-            '<img src="' + window.VP.ROOT + m.logo + '" alt="">' +
-            "<span><b>Comprar en " + m.name + "</b><small>con tu personal shopper</small></span>" +
-            '<svg class="ico"><use href="#i-wa"/></svg></a>';
+          return '<a href="comercios/' + m.slug + '/" title="' + m.name + '"><img src="' + window.VP.ROOT + m.logo + '" alt="' + m.name + '" loading="lazy"></a>';
         }).join("");
+      shops.innerHTML = '<span class="shopi-stores-label">Shopi ya compra en estas tiendas</span>' + logos;
     }
+    document.querySelectorAll("a[data-vpchat-q]").forEach(function (a) {
+      var q = a.getAttribute("data-vpchat-q");
+      var msg = !q ? "Hola, quiero comprar con vana pay. ¿Me ayudas?"
+              : q.charAt(0) === "¿" ? "Hola. " + q
+              : "Hola. " + q + ". ¿Me ayudas a comprarlo con vana pay?";
+      a.href = window.VP.waRaw(msg);
+      a.target = "_blank"; a.rel = "noopener";
+    });
 
     // Chips del piloto de personal shopper en la card "Por chat": link
     // prellenado por tienda, con el nombre real desde merchants.json.

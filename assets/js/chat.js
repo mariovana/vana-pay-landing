@@ -348,6 +348,15 @@
   var pageSlug = STORES.filter(function (s) { return location.pathname.indexOf("/comercios/" + s + "/") >= 0; })[0] || "";
   var onPilotPage = !!pageSlug;
   document.addEventListener("click", function (e) {
+    var ask = e.target.closest && e.target.closest("a[data-vpchat-q]");
+    if (ask) {
+      // Card de Shopi en la landing: la pregunta de ejemplo abre el chat ya enviada.
+      e.preventDefault(); e.stopPropagation();
+      var q = ask.getAttribute("data-vpchat-q");
+      if (q) window.VPChat.ask(q, ask.getAttribute("data-wa-context") || "way-shopi");
+      else open(ask.getAttribute("data-wa-context") || "way-shopi", "");
+      return;
+    }
     var a = e.target.closest && e.target.closest("a[data-pilot], a[data-wa-slug], .chatbox a.btn-chat");
     if (!a) return;
     var slug = a.getAttribute("data-pilot") || a.getAttribute("data-wa-slug") || pageSlug;

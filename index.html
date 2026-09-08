@@ -9,16 +9,16 @@
   <meta property="og:description" content="Una nueva forma de pagar tus compras: divide el pago en paguitos quincenales, sin tarjeta de crédito.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=76">
-  <link rel="stylesheet" href="assets/css/chat.css?v=79">
+  <link rel="stylesheet" href="assets/css/styles.css?v=80">
+  <link rel="stylesheet" href="assets/css/chat.css?v=80">
   <script src="assets/js/config.js?v=76"></script>
   <script src="assets/js/analytics.js?v=76" defer></script>
   <script src="assets/js/cards.js?v=76" defer></script>
   <script src="assets/js/anim.js?v=76" defer></script>
   <script src="assets/js/search.js?v=76" defer></script>
-  <script src="assets/js/home.js?v=76" defer></script>
+  <script src="assets/js/home.js?v=80" defer></script>
   <script src="assets/js/embed-height.js?v=76" defer></script>
-  <script src="assets/js/chat.js?v=79" defer></script>
+  <script src="assets/js/chat.js?v=80" defer></script>
 </head>
 <body>
 
@@ -165,18 +165,29 @@
           </div>
         </div>
       </div>
-      <div class="way way-chat reveal d2">
+      <div class="way way-chat way-shopi reveal d2">
         <div class="way-copy">
-          <span class="eyebrow way-chat-eyebrow"><svg class="ico"><use href="#i-wa"/></svg> Por chat · Nuevo: Personal shopper</span>
-          <h3 class="way-chat-title">Compra por chat.<br>Paga en paguitos.</h3>
-          <p>Por ahora en Dressy, CAT y Adoc: compras por chat con un agente de vana pay que te ayuda a encontrarlo, comprarlo y pagarlo en paguitos.</p>
-          <div class="pilot-stores" id="pilotStores"></div>
+          <span class="eyebrow way-chat-eyebrow"><img class="shopi-mini" src="assets/img/shopi.svg" alt=""> Nuevo · Shopi, el agente de vana pay</span>
+          <h3 class="way-chat-title">Dile a Shopi qué buscas.<br>Págalo en paguitos.</h3>
+          <p>Shopi busca en 14 tiendas afiliadas, te muestra opciones con fotos, arma tu carrito y te lleva a pagar con vana pay. Aquí mismo, sin bajar nada.</p>
+          <div class="shopi-asks" id="shopiAsks">
+            <a class="shopi-ask" data-vpchat-q="Busco tenis" data-wa-context="way-shopi" href="#">Busco tenis</a>
+            <a class="shopi-ask" data-vpchat-q="Busco un regalo para mi novia" data-wa-context="way-shopi" href="#">Un regalo para mi novia</a>
+            <a class="shopi-ask" data-vpchat-q="Busco audífonos de menos de Q500" data-wa-context="way-shopi" href="#">Audífonos de menos de Q500</a>
+            <a class="shopi-ask" data-vpchat-q="¿Qué es vana pay?" data-wa-context="way-shopi" href="#">¿Qué es vana pay?</a>
+          </div>
+          <a class="btn btn-shopi" data-vpchat-q="" data-wa-context="way-shopi" href="#"><img class="shopi-mini" src="assets/img/shopi.svg" alt=""> Hablar con Shopi</a>
+          <div class="shopi-stores" id="shopiStores" aria-label="Tiendas donde compra Shopi"></div>
           <a class="way-more" href="donde-comprar/?mod=whatsapp">Ver otras tiendas por chat <svg class="ico"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="way-mock chatband-demo" aria-hidden="true">
-          <div class="bubble me">Busco unas botas de trabajo</div>
-          <div class="bubble">En CAT las tienes. ¿Te ayudamos a comprarlas en paguitos?</div>
-          <div class="bubble me">¡Sí, va!</div>
+        <div class="way-mock chatband-demo shopi-demo" aria-hidden="true">
+          <div class="shopi-demo-head"><img src="assets/img/shopi.svg" alt=""><span><b>Shopi</b><small>el agente de vana pay</small></span></div>
+          <div class="bubble me">Busco unas botas de trabajo, talla 42</div>
+          <div class="bubble">En CAT tengo estas en tu talla. Toca una para ver fotos y agregarla.</div>
+          <div class="mini-prod"><img src="assets/img/mock/cat-botas.jpg" alt=""><span><b>Botas Invader Mid Vent CT</b><small>CAT · Q1,199.99</small></span><em>en paguitos</em></div>
+          <div class="bubble me">Esa. ¿La pago en paguitos?</div>
+          <div class="bubble">Va, ya está en tu carrito. Al pagar eliges vana pay y ahí ves tus paguitos.</div>
+          <div class="mini-pay shopi-pay">Pagar con vana pay en CAT</div>
         </div>
       </div>
     </div>
