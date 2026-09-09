@@ -940,15 +940,14 @@ h3{font-weight:700;font-size:1.15rem;line-height:1.25}
   .step-side .step-photo{width:148px;height:168px}
 }
 @media (min-width:960px){
-  .hero{--hero-mock-zoom:.76}
-  .hero-grid{position:relative}
-  .hero-person{display:block;position:absolute;right:-12px;bottom:-88px;height:600px;z-index:0;filter:drop-shadow(0 20px 30px rgba(54,64,73,.16))}
-  .hero .mock{position:relative;z-index:1;margin-left:0;margin-right:auto;max-width:390px;zoom:var(--hero-mock-zoom);rotate:-3deg;align-self:end;margin-bottom:12px}
   .ctaband{text-align:left;padding:48px 340px 48px 48px;min-height:300px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
   .ctaband .btn{margin-top:22px}
   .ctaband-person{display:block;position:absolute;right:64px;bottom:0;height:100%;object-fit:contain;object-position:bottom}
 }
-@media (min-width:960px) and (max-width:1199px){
-  .hero-person{height:520px;right:-24px}
-  .hero{--hero-mock-zoom:.7}
+/* Hero en pantallas anchas: tres columnas sin traslape (texto · calculadora · persona).
+   Nada tapa a la persona; ella queda de pie sobre el borde inferior del hero. */
+@media (min-width:1200px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) 300px 320px;gap:28px;align-items:center}
+  .hero .mock{order:2;zoom:var(--hero-mock-zoom,.75);max-width:400px;margin:0}
+  .hero-person{order:3;display:block;height:480px;width:auto;justify-self:end;align-self:end;margin-bottom:-88px;filter:drop-shadow(0 20px 30px rgba(54,64,73,.16))}
 }
