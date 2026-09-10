@@ -25,7 +25,17 @@
     else if (q && /^https?:\/\//.test(q) && allowedAgent(q)) localStorage.setItem("vp.agent", q.replace(/\/+$/, ""));
   } catch (e) { /* sin storage: solo VP.AGENT_URL */ }
   var AGENT_URL = VP.AGENT_URL || "";
-  try { AGENT_URL = localStorage.getItem("vp.agent") || AGENT_URL; } catch (e) { /* noop */ }
+  try {
+    // Con agente de producción configurado, el guardado en el navegador solo manda si es un
+    // servidor local de desarrollo o si se pidió con ?agent= en esta carga. Los túneles viejos
+    // (trycloudflare) que quedaron guardados en los navegadores del equipo se descartan.
+    var stored = localStorage.getItem("vp.agent");
+    if (stored) {
+      var dev = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(stored);
+      if (!AGENT_URL || dev || qs.has("agent")) AGENT_URL = stored;
+      else localStorage.removeItem("vp.agent");
+    }
+  } catch (e) { /* sin storage: solo VP.AGENT_URL */ }
   if (!AGENT_URL) return;
   AGENT_URL = AGENT_URL.replace(/\/+$/, "");
 

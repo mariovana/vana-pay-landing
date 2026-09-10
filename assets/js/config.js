@@ -13,7 +13,7 @@ window.VP = {
   // producción: sin URL no se carga ningún widget y los CTAs siguen a
   // WhatsApp. En dev, ?agent=1 guarda http://localhost:8010 en localStorage
   // ("vp.agent") y aparece el widget; ?agent=0 lo apaga.
-  AGENT_URL: "",
+  AGENT_URL: "https://shopi.pay.vana.gt",  // Shopi en la infra de vana (Max, 2026-09-10); "" apaga el widget
   AGENT_DEV_URL: "http://localhost:8010",
   // ?agent=<url> acepta solo estos hosts (evita que un link apunte el widget a un servidor ajeno).
   AGENT_HOSTS: [/^localhost(:\d+)?$/, /^127\.0\.0\.1(:\d+)?$/, /\.trycloudflare\.com$/, /\.vana\.gt$/, /\.fly\.dev$/, /\.onrender\.com$/],
